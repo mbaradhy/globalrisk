@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Global Risk Atlas — Measurement audit</title>
+<meta name="description" content="Why the atlas's single risk score has no unit, and a sound replacement: measured counts, probabilities of named events, expected loss in deaths, dollars and people.">
+<meta name="author" content="M. BARADHY">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column in the atlas's console identity; exhibits (tables, diagram, formulas) sit in the same column. */
+:root{
+  --bg:#0a1018; --panel:#111a25; --panel2:#16212e; --line:#24323f; --ink:#e3e9ee; --muted:#8c9aa8;
+  --accent:#7fd1ff; --warn:#ffb547; --crit:#ff5c4d; --ok:#5fd39a;
+  --f-head:'Barlow Condensed','Arial Narrow',sans-serif; --f-body:'Source Sans 3',system-ui,sans-serif; --f-mono:'JetBrains Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){ --bg:#f4f6f8; --panel:#ffffff; --panel2:#eaeef2; --line:#d3dae2; --ink:#121a22; --muted:#5a6977; --accent:#0b6fa8; --warn:#9a5d00; --crit:#b8322a; --ok:#1f7a4d; color-scheme:light } }
+:root[data-theme="light"]{ --bg:#f4f6f8; --panel:#ffffff; --panel2:#eaeef2; --line:#d3dae2; --ink:#121a22; --muted:#5a6977; --accent:#0b6fa8; --warn:#9a5d00; --crit:#b8322a; --ok:#1f7a4d; color-scheme:light }
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;padding-block:0 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:860px;margin:0 auto}
+header.top{border-bottom:1px solid var(--line);padding:22px 0 16px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:flex-end;justify-content:space-between}
+.brand{font-family:var(--f-head);font-weight:700;font-size:1.9rem;letter-spacing:.02em;line-height:1}
+.brand span{color:var(--accent)}
+.meta{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+h1{font-family:var(--f-head);font-weight:700;font-size:clamp(2rem,5vw,3rem);letter-spacing:.02em;line-height:1.05;margin:34px 0 10px;text-wrap:balance}
+h2{font-family:var(--f-head);font-weight:700;font-size:1.55rem;letter-spacing:.03em;margin:44px 0 10px;text-wrap:balance}
+h3{font-size:1.05rem;margin:22px 0 6px}
+p{margin:0 0 14px;max-width:68ch}
+.lead{font-size:1.15rem;max-width:62ch;color:var(--ink)}
+.note{color:var(--muted);font-size:.9rem}
+ul,ol{padding-left:22px;max-width:70ch}
+li{margin:0 0 7px}
+strong{font-weight:600}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;padding:12px 16px;margin:14px 0;white-space:normal;line-height:1.7}
+.formula sub,.formula sup{font-size:.72em}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:560px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--line)}
+th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500;border-bottom-color:var(--muted)}
+td.u{font-family:var(--f-mono);font-size:.82rem;color:var(--accent);white-space:nowrap}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin:16px 0}
+.card.warn{border-color:var(--warn)}
+.card h3{margin-top:0}
+figure{margin:18px 0}
+figure svg{display:block;width:100%;height:auto}
+figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0}
+.kv div{background:var(--panel2);border-radius:4px;padding:10px 12px}
+.kv b{display:block;font-family:var(--f-mono);font-size:1.3rem;font-weight:500}
+.kv small{color:var(--muted);font-size:.8rem}
+blockquote{margin:14px 0;padding:12px 16px;border-left:3px solid var(--warn);background:var(--panel);border-radius:4px;max-width:70ch}
+a{color:var(--accent)}
+footer{margin-top:48px;border-top:1px solid var(--line);padding-top:12px;font-size:.82rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+@media (max-width:700px){body{font-size:16px} th,td{padding:7px 8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div><div class="brand">GLOBAL <span>RISK</span> ATLAS</div><div class="meta">© 2026 M. BARADHY · Measurement audit · 30 Oct 2026</div></div>
+  <a class="meta" href="https://mbaradhy.github.io/globalrisk/">Open the atlas →</a>
+</header>
+
+<h1>Why the single score has no unit, and what replaces it</h1>
+<p class="lead">A reader asked what the atlas's "65" meant, in what unit, and how its inputs were weighted. He was right to ask: the score adds up quantities that share no unit, so it ranks moods, it does not measure anything. The fix is to show only three kinds of number, each with a unit the reader can check: the measured state of the world, the probability of named events over a fixed horizon, and the expected loss those events would cause.</p>
+
+<h2>1 · What the score is today</h2>
+<p>The tension score (57 on 30 Oct 2026) is the mean of severity × likelihood over the 55 active risks, each on a 1–5 scale, rescaled to 100. The earlier version (65) also added points for disaster alerts, earthquakes, space weather and media coverage.</p>
+<div class="formula">Score = 100 / (25 · n) · Σ<sub>i</sub> s<sub>i</sub> · l<sub>i</sub> &nbsp;&nbsp; with s<sub>i</sub>, l<sub>i</sub> ∈ {1, …, 5}, n = 55 &nbsp;→&nbsp; 787 / (55 · 25) · 100 = 57.2</div>
+<p>Five faults, in order of importance:</p>
+<div class="tw"><table>
+<tr><th>#</th><th>Fault</th><th>Why it matters</th><th>Where it shows in the atlas</th></tr>
+<tr><td>1</td><td><strong>Ordinal scales are multiplied and averaged.</strong> Severity 1–5 and likelihood 1–5 are rankings, not quantities: "4" is not twice "2".</td><td>Multiplication and averages are undefined on rankings. This is the known flaw of risk matrices: products of ranks compress ranges and can reverse the true order of two risks (Cox 2008).</td><td>Hormuz 5×5 = 25 and Ebola 4×4 = 16 are treated as "25 vs 16", a ratio with no meaning.</td></tr>
+<tr><td>2</td><td><strong>No common unit across risks.</strong> A war, a food-price index and a cyber outbreak share one severity scale.</td><td>A sum only has meaning when every term carries the same unit (deaths, dollars, people). Cubic metres plus linear metres.</td><td>The same "5" covers Hormuz (an oil-flow collapse) and Sudan (a famine).</td></tr>
+<tr><td>3</td><td><strong>"Likelihood" mixes two questions.</strong> For an ongoing crisis it means "continues"; for a latent one, "breaks out".</td><td>A probability is only defined for a stated event over a stated horizon with a resolution rule.</td><td>Ukraine war = 5 (continues), Taiwan blockade = 2 (starts): different questions, same scale.</td></tr>
+<tr><td>4</td><td><strong>Dependence is ignored.</strong> The atlas has 100 cause-and-effect links, yet the score and the "25 major crises" count treat risks as separate items.</td><td>Correlated items double-count: Iran war → Hormuz → oil shock → EU gas crunch is one chain counted four times.</td><td>The 25 "major crises" contain several chains of one root event.</td></tr>
+<tr><td>5</td><td><strong>Weights and constants are chosen, not estimated.</strong> The old live add-ons (+2 per red alert, +4 if Kp ≥ 7) and the cascade constants (0.82, 0.6 + s/12.5) have no calibration.</td><td>Without a target quantity there is nothing to calibrate against, so the weights can be neither wrong nor right.</td><td>Removed from the score on 30 Oct; still present in the cascade model.</td></tr>
+</table></div>
+<p>What the score can still do: rank the atlas's own domains and show whether its author's assessments moved between two dates. What it cannot do: tell a reader what 57 means in the world.</p>
+
+<h2>2 · What a sound risk number is</h2>
+<p>In quantitative risk analysis a risk is a triplet (Kaplan &amp; Garrick, 1981): what can happen, how likely it is, and what it would cost. The number that follows is the expected loss, and it has a unit because the consequence has one.</p>
+<div class="formula">R<sub>i</sub> = p<sub>i</sub> × C<sub>i</sub> &nbsp;&nbsp; p<sub>i</sub> ∈ [0, 1] over horizon H; &nbsp; C<sub>i</sub> in deaths, US$, people displaced…</div>
+<p>Two properties make this usable, and both fail for the 1–5 score:</p>
+<ul>
+<li><strong>Expected losses add, whatever the dependence between events.</strong> Linearity of expectation holds even when the Iran war and the Hormuz closure are correlated, so a total expected loss is legitimate. Dependence changes the spread (the chance that several losses land in the same year), which needs a dependence model.</li>
+<li><strong>Probabilities are checkable.</strong> A forecast "80–95 % that Hormuz flows stay below half of pre-war levels through June 2027" resolves to true or false and can be scored. "Likelihood 5" cannot.</li>
+</ul>
+<h3>How published indices avoid the trap</h3>
+<div class="tw"><table>
+<tr><th>Index</th><th>What it measures</th><th>Unit</th><th>How it aggregates</th></tr>
+<tr><td><a href="https://www.jbs.cam.ac.uk/faculty-research/centres/risk/publications/multi-threat/global-risk-index-2019/">Cambridge Global Risk Index</a></td><td>Expected annual economic loss from 22 threat types in 279 cities</td><td class="u">GDP@Risk, US$</td><td>Sums expected losses per threat; all in dollars</td></tr>
+<tr><td><a href="https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Methodology">INFORM Risk</a> (EU Joint Research Centre)</td><td>A country's humanitarian risk from hazard &amp; exposure, vulnerability, lack of coping capacity</td><td class="u">index 0–10, declared composite</td><td>Geometric mean of three dimensions built from measured indicators; "risk equals zero if one of the three dimensions is zero"</td></tr>
+<tr><td>IPCC assessment reports</td><td>Confidence that a climate statement is true</td><td class="u">calibrated bands</td><td>No aggregation across statements; each keeps its own band ("very likely" = 90–100 %)</td></tr>
+<tr><td>Forecasting tournaments (Good Judgment, Metaculus)</td><td>Probability of a resolvable event by a date</td><td class="u">% with a resolution rule</td><td>Scored after resolution with Brier scores; forecasts of the same question are averaged, never different questions</td></tr>
+</table></div>
+<p>The lesson is consistent: either measure in a common physical or monetary unit and add, or keep each probability attached to its own question and never add. A composite is acceptable only when its inputs are measured indicators and it says it is a composite, as INFORM does. Multiplying judgement ranks and averaging them across unrelated events is what the literature on risk matrices advises against: Thomas, Bratvold &amp; Bickel (2014) found such matrices look "authoritative, and intellectually rigorous" without evidence that they perform.</p>
+
+<h2>3 · The proposal: three layers, each with a unit</h2>
+<figure>
+<svg viewBox="0 0 760 404" role="img" aria-label="Three layers, each in its own unit; nothing is added across them" font-size="13" font-family="Source Sans 3, system-ui, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+<text x="24" y="30" font-size="15" font-weight="600" fill="var(--ink)">Three layers, each in its own unit; nothing is added across them</text>
+<g fill="none" stroke="var(--muted)" stroke-width="1.25"><path d="M262 140V172" marker-end="url(#arr)"/><path d="M262 260V292" marker-end="url(#arr)"/><path d="M500 216H540" marker-end="url(#arr)"/><path d="M540 336H500" marker-end="url(#arr)"/></g>
+<rect x="24" y="52" width="476" height="88" rx="8" fill="none" stroke="var(--muted)" stroke-width="1.25"/>
+<text x="36" y="76" font-weight="600" fill="var(--ink)">Layer 1 · Measured state of the world</text>
+<text x="36" y="96" font-size="11.5" fill="var(--ink)">Conflicts, battle deaths, people in acute hunger, displaced, prices</text>
+<text x="36" y="114" font-size="11.5" fill="var(--muted)">Unit: counts, people, $/b · dated · no judgement enters</text>
+<rect x="24" y="172" width="476" height="88" rx="8" fill="none" stroke="var(--muted)" stroke-width="1.25"/>
+<text x="36" y="196" font-weight="600" fill="var(--ink)">Layer 2 · Forecasts of named events</text>
+<text x="36" y="216" font-size="11.5" fill="var(--ink)">“X happens before date T”: probability band, source, resolution rule</text>
+<text x="36" y="234" font-size="11.5" fill="var(--muted)">Unit: % · agency / market / atlas (≈) · scored once resolved</text>
+<rect x="24" y="292" width="476" height="88" rx="8" fill="var(--accent)" fill-opacity="0.12" stroke="var(--accent)" stroke-width="2"/>
+<text x="36" y="316" font-weight="600" fill="var(--ink)">Layer 3 · Expected impact</text>
+<text x="36" y="336" font-size="11.5" fill="var(--ink)">Sum of probability × consequence range, one total per dimension</text>
+<text x="36" y="354" font-size="11.5" fill="var(--muted)">Unit: deaths, US$ output, people · totals add; tails by Monte Carlo</text>
+<rect x="540" y="180" width="196" height="72" rx="8" fill="none" stroke="var(--muted)" stroke-width="1.25"/>
+<text x="552" y="204" font-weight="600" fill="var(--ink)">Track record</text>
+<text x="552" y="224" font-size="11.5" fill="var(--ink)">Brier score of resolved</text>
+<text x="552" y="242" font-size="11.5" fill="var(--ink)">questions, calibration</text>
+<rect x="540" y="300" width="196" height="72" rx="8" fill="none" stroke="var(--muted)" stroke-width="1.25"/>
+<text x="552" y="324" font-weight="600" fill="var(--ink)">Causal link network</text>
+<text x="552" y="344" font-size="11.5" fill="var(--ink)">100 links as conditional</text>
+<text x="552" y="362" font-size="11.5" fill="var(--ink)">probabilities with lags</text>
+<text x="272" y="160" font-size="11.5" fill="var(--muted)">informs the bands</text>
+<text x="272" y="280" font-size="11.5" fill="var(--muted)">only p enters, never a rank</text>
+<text x="520" y="168" text-anchor="middle" font-size="11.5" fill="var(--muted)">resolved</text>
+<text x="520" y="288" text-anchor="middle" font-size="11.5" fill="var(--muted)">dependence</text>
+</svg>
+<figcaption>Measured counts inform the forecasts; only a probability enters the expected-loss layer; the causal links supply the dependence for its tails, and resolved questions feed the track record.</figcaption>
+</figure>
+
+<h3>Layer 1 — Measured state of the world</h3>
+<p>Observed quantities from the agencies that count them, with the date of the figure. No judgement enters this layer.</p>
+<div class="tw"><table>
+<tr><th>Quantity</th><th>Unit</th><th>Source that measures it</th></tr>
+<tr><td>State-based armed conflicts in the year</td><td class="u">conflicts (count)</td><td>UCDP</td></tr>
+<tr><td>Battle-related deaths, last 12 months</td><td class="u">deaths</td><td>UCDP / ACLED</td></tr>
+<tr><td>People in acute food insecurity (IPC phase 3+)</td><td class="u">people</td><td>IPC</td></tr>
+<tr><td>Forcibly displaced people</td><td class="u">people</td><td>UNHCR</td></tr>
+<tr><td>Active public-health emergencies of international concern</td><td class="u">count</td><td>WHO</td></tr>
+<tr><td>Brent, TTF gas, FAO food price index, Niño-3.4 anomaly</td><td class="u">$/b, €/MWh, index points, °C</td><td>markets, FAO, NOAA</td></tr>
+</table></div>
+
+<h3>Layer 2 — Forecasts of named events</h3>
+<p>Every risk is rewritten as a question that resolves to yes or no at a date, with a probability range and its source.</p>
+<div class="formula">E<sub>i</sub>: "X happens (or persists) before T<sub>i</sub>" &nbsp;&nbsp; p<sub>i</sub> ∈ [p<sub>i</sub><sup>lo</sup>, p<sub>i</sub><sup>hi</sup>] &nbsp;&nbsp; source ∈ {agency, market, atlas}</div>
+<ul>
+<li>A range, not a point, states the uncertainty honestly; the atlas's own estimates use IPCC-style bands (very unlikely &lt; 10 %, unlikely 10–33 %, about as likely as not 33–66 %, likely 66–90 %, very likely &gt; 90 %).</li>
+<li>Each question has a resolution rule written down: which source decides, on which date.</li>
+<li>Resolved questions are scored. The Brier score of a forecast p for an event that resolves to y ∈ {0, 1} is (p − y)²; the atlas publishes its running average, so readers can see whether its ≈ figures deserve trust.</li>
+</ul>
+
+<h3>Layer 3 — Expected impact, in units</h3>
+<p>Each event gets a consequence range per impact dimension, taken from scenario work by agencies (IMF, IEA, World Bank, WFP) where it exists, and labelled "atlas estimate" where it does not.</p>
+<div class="formula">L<sub>d</sub> = Σ<sub>i</sub> p<sub>i</sub> · E[C<sub>i,d</sub> | E<sub>i</sub>] &nbsp;&nbsp; d ∈ {deaths, US$ output lost, people in IPC3+, people displaced}</div>
+<ul>
+<li>The total per dimension is a legitimate sum: expectations add regardless of dependence.</li>
+<li>The spread and the tail need the dependence structure. The atlas already has it: the 100 cause-and-effect links become a Bayesian network (each link a conditional probability with a lag), and a Monte Carlo run over that network gives the distribution of each year's loss, the probability that at least one systemic shock lands in the next 12 months, and the 90th-percentile year.</li>
+</ul>
+<div class="formula">P(at least one systemic shock in H) = 1 − Π<sub>i</sub> (1 − p<sub>i</sub>) &nbsp;(independent) &nbsp;&nbsp;or by Monte Carlo on the link network (dependent)</div>
+<p><strong>What is dropped.</strong> The 0–100 tension score, the 1–5 likelihood scale, and the sum of mixed live events. Severity survives only as a plain-language tag on each dossier (local / national / regional / global), never as a number that enters a formula.</p>
+<p><strong>What the headline shows.</strong> Three or four Layer-1 counts with their dates, the top Layer-2 probabilities with sources, and one Layer-3 line per dimension with its range. No single number.</p>
+
+<h2>4 · Worked example: the Iran → Hormuz → oil chain</h2>
+<p>Today the atlas scores this chain as four risks at 5 × 5 = 25 each. In the new units it is one root event with named consequences.</p>
+<div class="tw"><table>
+<tr><th>Layer</th><th>Today</th><th>Proposed</th></tr>
+<tr><td>1 — measured</td><td>Likelihood 5, severity 5</td><td>Hormuz flows 2.9 Mb/d on 11 Oct 2026, 83 % below the pre-war average; Brent 106.6 $/b on 14 Oct vs 70.9 $/b in February (atlas indicators, already sourced)</td></tr>
+<tr><td>2 — forecast</td><td>"Normal Hormuz flows restored by end-2026: ≈ 20 %" (atlas)</td><td>Same question, as a range with a rule: "Monthly transits above 80 % of the 2025 average in December 2026, per Kpler/UKMTO: 10–25 % (atlas estimate)". Its complement, 75–90 % that the disruption persists, is the number a reader wants when asking "risk of what?"</td></tr>
+<tr><td>3 — expected impact</td><td>none</td><td>For the persisting case, one line per dimension with its source: world output lost (IMF or IEA scenario), extra people in IPC3+ via fertiliser and freight (WFP), and the household line the atlas already has for France. Expected impact = probability × consequence range.</td></tr>
+</table></div>
+<p>The arithmetic, with an illustrative consequence (not a sourced figure): if an agency scenario puts the output loss of a persisting disruption at 0.5 % of world GDP, roughly US$ 0.55 trillion, the expected loss is 0.8 × 0.55 ≈ US$ 0.44 trillion over the horizon, with a range from the probability band (0.75–0.90) and the scenario band.</p>
+<p>The cascade model keeps its role, with better clothes: each link becomes a conditional probability ("given a persisting Hormuz disruption, EU gas rationing in at least one member state this winter: 10–20 %") instead of the constant 0.82 × (0.6 + s/12.5). The network then drives the Monte Carlo run of Layer 3, and double counting disappears because oil, gas and fertiliser are consequences of one event, not four events.</p>
+
+<h2>5 · What the headline becomes</h2>
+<div class="tw"><table>
+<tr><th>Today</th><th>Unit today</th><th>Proposed</th><th>Unit</th></tr>
+<tr><td>Tension score 57/100</td><td class="u">% of a maximum of ranks</td><td>dropped</td><td class="u">—</td></tr>
+<tr><td>25 major crises under way</td><td class="u">atlas risks with severity ≥ 4</td><td>State-based armed conflicts this year (UCDP); battle deaths last 12 months</td><td class="u">conflicts; deaths</td></tr>
+<tr><td>0 live alerts</td><td class="u">mixed alerts</td><td>kept, shown as a list, not a number</td><td class="u">—</td></tr>
+<tr><td>Likelihood 1–5 per risk</td><td class="u">rank</td><td>Probability range of a named event by a date, with source and resolution rule</td><td class="u">%</td></tr>
+<tr><td>Severity 1–5 per risk</td><td class="u">rank</td><td>Consequence range per dimension</td><td class="u">deaths, US$, people</td></tr>
+<tr><td>—</td><td class="u">—</td><td>Expected loss per dimension, 12 months, with range</td><td class="u">deaths, US$, people</td></tr>
+<tr><td>—</td><td class="u">—</td><td>Probability of at least one systemic shock in 12 months (Monte Carlo on the link network)</td><td class="u">%</td></tr>
+<tr><td>Index history chart</td><td class="u">score over time</td><td>Forecast history: how each probability moved, and the Brier score of resolved questions</td><td class="u">%; score</td></tr>
+<tr><td>Domain tension 69 (climate)</td><td class="u">% of maximum</td><td>Expected loss by domain</td><td class="u">US$, people</td></tr>
+</table></div>
+
+<h2>6 · Build plan</h2>
+<div class="tw"><table>
+<tr><th>Phase</th><th>What changes in the atlas</th><th>What it needs</th><th>Effort</th></tr>
+<tr><td>1 — Honest numbers</td><td>Headline = Layer-1 measured counts (UCDP, IPC, UNHCR, WHO) + top Layer-2 probabilities. Tension score removed from header, dashboard and history. Each of the 55 risks rewritten as a resolvable question with a probability band, source and resolution rule.</td><td>UCDP and IPC data (public, free), WHO PHEIC list; a rewrite pass over the 55 dossiers</td><td>1–2 sessions</td></tr>
+<tr><td>2 — Expected impact</td><td>Consequence ranges per event and dimension from agency scenarios (IMF WEO, IEA, WFP, World Bank), "atlas estimate" where none exists; expected-loss lines per dimension; links converted to conditional probabilities; Monte Carlo in the browser (10 000 runs is instant)</td><td>Scenario figures gathered and cited per event; the link table extended with a conditional probability and a lag</td><td>2–3 sessions</td></tr>
+<tr><td>3 — Track record</td><td>Each question's resolution recorded at its date; Brier score and calibration chart (forecast % vs observed frequency) on the Method tab; monthly snapshot of all probabilities in the relay</td><td>A small store in the relay (the same KV as today) and a monthly review habit</td><td>1 session, then ongoing</td></tr>
+</table></div>
+<p>Phase 1 alone answers the three questions: every number has a unit, nothing is weighted, and "risk of what" is on every line.</p>
+
+<h2>7 · Limits that remain</h2>
+<ul>
+<li><strong>Atlas estimates stay judgements.</strong> A probability band from the atlas is an informed guess until the track record shows otherwise. Phase 3 is what turns "≈ 15 %" into a claim with evidence behind it.</li>
+<li><strong>Consequence ranges are wide.</strong> Agency scenarios disagree, and many events (a Taiwan blockade) have no published loss estimate. The range must stay visible; a point estimate would smuggle the old problem back in.</li>
+<li><strong>Deaths and dollars are not one unit.</strong> The layers keep them apart on purpose. Any single "global risk number" would need a declared exchange rate between a life and a dollar, which is a value choice, not a measurement.</li>
+<li><strong>Conditional probabilities on 100 links are many parameters.</strong> Most will be atlas estimates at first. They should carry the same ≈ and band as everything else, and the Monte Carlo output should be labelled as depending on them.</li>
+<li><strong>Measured counts lag.</strong> UCDP conflict counts are yearly; IPC figures update by country on their own calendar. The date of each figure belongs next to it.</li>
+</ul>
+
+<h2>8 · In one paragraph</h2>
+<blockquote>The first score multiplied and averaged 1–5 rankings across unrelated risks, then added earthquakes and media coverage with chosen weights: no unit, no meaning. The live events are already out, and the score itself goes next. What stays is three kinds of number, each with a unit: measured counts from the agencies that count them (conflicts, battle deaths, people in acute hunger), the probability of a named event by a date with its source and a resolution rule, and the expected loss in deaths, dollars or people, with its range. Nothing crosses from one kind to another, and every forecast is scored once it resolves, so readers can see whether the atlas's own estimates deserve trust.</blockquote>
+
+<h2>Sources</h2>
+<ul class="note">
+<li><a href="https://arxiv.org/pdf/2103.05440">Problems with Risk Matrices Using Ordinal Scales (arXiv 2103.05440)</a>, which summarises Cox (2008), "What's Wrong with Risk Matrices?", and Thomas, Bratvold &amp; Bickel (2014), "The Risk of Using Risk Matrices"</li>
+<li><a href="https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Methodology">INFORM Risk Index — Methodology, EU Joint Research Centre</a></li>
+<li><a href="https://www.jbs.cam.ac.uk/faculty-research/centres/risk/publications/multi-threat/global-risk-index-2019/">Cambridge Global Risk Index 2019 — Executive Summary</a></li>
+<li>Kaplan, S. &amp; Garrick, B. J. (1981), "On the quantitative definition of risk", <em>Risk Analysis</em> 1(1) — cited from memory, not opened</li>
+<li>IPCC calibrated likelihood language (AR5/AR6 guidance note) — bands cited from memory, not opened</li>
+<li>Atlas figures (55 active risks, sum 787, indicators and forecasts) from the atlas dataset of 29–30 Oct 2026</li>
+</ul>
+
+<footer><span>© 2026 M. BARADHY · Global Risk Atlas · Measurement audit</span><span>Informational analysis, not official advice.</span></footer>
+</div>
+</body>
+</html>
