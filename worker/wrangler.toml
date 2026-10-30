@@ -1,14 +1,20 @@
-# Data relay for the Global Risk Atlas (Cloudflare Worker). Deploy: npx wrangler deploy
+# Data relay for the Global Risk Atlas (Cloudflare Worker "atlas-api").
+# Deployed automatically by Cloudflare Workers Builds from this folder on every push to main.
 name = "atlas-api"
 main = "atlas-api-worker.js"
 compatibility_date = "2026-10-01"
+workers_dev = true
+keep_vars = true   # keep variables set in the Cloudflare dashboard
 
+# KV store for visits, ship counts and hourly headline counts.
+# Replace the id with yours: Cloudflare → Storage & Databases → KV → atlas-stats → ID
 [[kv_namespaces]]
 binding = "STATS"
 id = "PUT_YOUR_KV_NAMESPACE_ID_HERE"
 
+# Count headlines every hour
 [triggers]
 crons = ["0 * * * *"]
 
-# Secrets (set with: npx wrangler secret put NAME):
+# Secrets stay in Cloudflare (Settings → Variables and Secrets), never in this file:
 # STATS_KEY, OPENSKY_CLIENT_ID, OPENSKY_CLIENT_SECRET, AISSTREAM_KEY, FIRMS_KEY, CF_RADAR_TOKEN
