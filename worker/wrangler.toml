@@ -1,0 +1,14 @@
+# Data relay for the Global Risk Atlas (Cloudflare Worker). Deploy: npx wrangler deploy
+name = "atlas-api"
+main = "atlas-api-worker.js"
+compatibility_date = "2026-10-01"
+
+[[kv_namespaces]]
+binding = "STATS"
+id = "PUT_YOUR_KV_NAMESPACE_ID_HERE"
+
+[triggers]
+crons = ["0 * * * *"]
+
+# Secrets (set with: npx wrangler secret put NAME):
+# STATS_KEY, OPENSKY_CLIENT_ID, OPENSKY_CLIENT_SECRET, AISSTREAM_KEY, FIRMS_KEY, CF_RADAR_TOKEN

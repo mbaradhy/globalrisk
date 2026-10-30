@@ -1,0 +1,619 @@
+<title>Two-Week Household Reserve</title>
+<meta name="author" content="M. BARADHY">
+<meta name="copyright" content="© 2026 M. BARADHY">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: field-manual page — sticky section index on the left, content column on the right; collapses to one column with a scrolling index strip on phones. FR/EN switch is pure CSS (radio + sibling selector) so it works without JavaScript. */
+:root{
+  --bg:#f1f2ee; --surface:#ffffff; --ink:#1b2225; --muted:#596468; --line:#d3d8d2;
+  --accent:#c2501a; --accent-soft:#f7e4d8; --accent-ink:#ffffff;
+  --ess:#b8461a; --rec:#2d6f8f; --opt:#6b7275;
+  --good:#2f7a4b; --good-soft:#dcefe2;
+  --f-display:"Archivo Narrow","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121719; --surface:#1a2124; --ink:#e4e8e5; --muted:#9aa5a7; --line:#2d373a;
+  --accent:#e8743a; --accent-soft:#3a2418; --accent-ink:#1a1009;
+  --ess:#ef8a55; --rec:#6db3d4; --opt:#9aa3a6; --good:#6cc28e; --good-soft:#1c3326;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121719; --surface:#1a2124; --ink:#e4e8e5; --muted:#9aa5a7; --line:#2d373a;
+  --accent:#e8743a; --accent-soft:#3a2418; --accent-ink:#1a1009;
+  --ess:#ef8a55; --rec:#6db3d4; --opt:#9aa3a6; --good:#6cc28e; --good-soft:#1c3326;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+/* language switch */
+.lgr{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+#lg-en:checked ~ .wrap [lang="fr"],#lg-fr:checked ~ .wrap [lang="en"]{display:none!important}
+.lang{display:inline-flex;border:2px solid var(--ink);border-radius:4px;overflow:hidden;font-family:var(--f-display);font-weight:700;font-size:1rem;justify-self:start}
+.lang label{padding:6px 16px;cursor:pointer;color:var(--ink);user-select:none}
+#lg-fr:checked ~ .wrap label[for="lg-fr"],#lg-en:checked ~ .wrap label[for="lg-en"]{background:var(--ink);color:var(--bg)}
+#lg-fr:focus-visible ~ .wrap label[for="lg-fr"],#lg-en:focus-visible ~ .wrap label[for="lg-en"]{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.1}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.75rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+.lede{max-width:64ch;color:var(--muted);font-size:1.02rem}
+.eyebrow{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:600;color:var(--accent)}
+header.top{display:grid;gap:12px;padding-bottom:24px;border-bottom:3px solid var(--ink);margin-bottom:28px}
+.toprow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.byline{font-family:var(--f-mono);font-size:.82rem;color:var(--muted);letter-spacing:.02em}
+.byline b{color:var(--ink);font-weight:500}
+.stamp{display:inline-flex;gap:8px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.stamp > span{border:1px solid var(--line);padding:2px 8px;border-radius:3px;background:var(--surface)}
+.grid{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;align-items:start}
+nav.idx{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);display:flex;flex-direction:column;gap:2px;font-family:var(--f-display);font-size:1rem}
+nav.idx a{color:var(--muted);text-decoration:none;padding:6px 10px;border-left:3px solid transparent}
+nav.idx a:hover,nav.idx a:focus-visible{color:var(--ink);border-left-color:var(--accent);outline:none}
+main{display:flex;flex-direction:column;gap:56px;min-width:0}
+section{display:flex;flex-direction:column;gap:18px;scroll-margin-top:16px;min-width:0}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+/* calculator */
+.calc{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--accent);padding:20px;display:grid;gap:20px}
+.inputs{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:6px}
+.field > label{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.stepper button{width:38px;height:38px;border:0;background:var(--bg);color:var(--ink);font-size:1.2rem;cursor:pointer}
+.stepper button:hover{background:var(--accent-soft)}
+.stepper button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.stepper input{width:48px;height:38px;border:0;text-align:center;font-family:var(--f-mono);font-size:1rem;background:var(--surface);color:var(--ink)}
+.toggle{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.92rem}
+.toggle input{width:18px;height:18px;accent-color:var(--accent)}
+.figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.fig{background:var(--surface);padding:14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.fig b{font-family:var(--f-mono);font-size:1.45rem;font-weight:500;font-variant-numeric:tabular-nums}
+.fig > span{font-size:.8rem;color:var(--muted)}
+.progress{display:flex;flex-direction:column;gap:6px}
+.bar{height:10px;background:var(--bg);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--good);width:0;transition:width .3s}
+.progress small{color:var(--muted);font-variant-numeric:tabular-nums}
+/* lists */
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.85rem;color:var(--muted);align-items:center}
+.pri{display:inline-block;font-family:var(--f-mono);font-size:.68rem;padding:1px 6px;border-radius:3px;border:1px solid currentColor;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.pri.E{color:var(--ess)}.pri.R{color:var(--rec)}.pri.O{color:var(--opt)}
+.cat{background:var(--surface);border:1px solid var(--line)}
+.cat-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.cat-h small{font-family:var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.row{display:grid;grid-template-columns:28px minmax(0,1fr) 128px 84px;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);align-items:start}
+.row:last-child{border-bottom:0}
+.row input[type=checkbox]{width:20px;height:20px;margin-top:2px;accent-color:var(--good);cursor:pointer}
+.row.done .nm{text-decoration:line-through;color:var(--muted)}
+.row.done{background:var(--good-soft)}
+.nm{font-weight:600;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.note{font-size:.86rem;color:var(--muted);margin-top:2px}
+.where{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;align-items:center}
+.where .chip{font-size:.74rem;background:var(--bg);border:1px solid var(--line);padding:1px 7px;border-radius:10px;color:var(--ink)}
+.buy{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;font-size:.76rem}
+.buy b{font-weight:600;color:var(--muted)}
+.buy a{border:1px solid var(--accent);color:var(--accent);padding:1px 8px;border-radius:10px;text-decoration:none;white-space:nowrap}
+.buy a:hover,.buy a:focus-visible{background:var(--accent);color:var(--accent-ink);outline:none}
+.qty{font-family:var(--f-mono);font-size:.92rem;font-variant-numeric:tabular-nums}
+.qty small{display:block;font-family:var(--f-body);color:var(--muted);font-size:.76rem}
+.cost{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums;font-size:.92rem}
+/* baskets */
+.baskets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.bk{background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.bk-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.bk-h small{font-family:var(--f-mono);color:var(--muted)}
+.bk ul{list-style:none;margin:0;padding:8px 14px 12px;display:flex;flex-direction:column;gap:4px;font-size:.9rem}
+.bk li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:8px}
+.bk li .q{font-family:var(--f-mono);color:var(--muted);font-size:.84rem;font-variant-numeric:tabular-nums}
+.bk li a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:2px}
+/* tables & prose */
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.92rem}
+th{font-family:var(--f-display);font-size:.95rem;font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.box{background:var(--surface);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.box ul,.box ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.checks{list-style:none;padding:0!important}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks input{width:18px;height:18px;margin-top:3px;accent-color:var(--good);flex:none}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);padding:12px 16px;font-size:.93rem}
+.steps{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.steps li:last-child{border-bottom:0}
+.steps .tm{font-family:var(--f-mono);color:var(--accent);font-size:.85rem;padding-top:2px}
+.freq{font-family:var(--f-mono)}
+a{color:var(--accent)}
+.btn{font:inherit;font-size:.85rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:4px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:6px}
+@media (max-width:860px){
+  .grid{grid-template-columns:minmax(0,1fr);gap:20px}
+  nav.idx{position:static;flex-direction:row;overflow-x:auto;gap:4px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  nav.idx a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent;padding:6px 8px}
+  nav.idx a:hover{border-bottom-color:var(--accent)}
+  .figs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .two,.baskets{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .row{grid-template-columns:24px minmax(0,1fr) 72px}
+  .row .qty{grid-column:2}
+  .row .cost{grid-column:3;grid-row:1}
+}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+
+<input class="lgr" type="radio" name="lang" id="lg-fr" checked>
+<input class="lgr" type="radio" name="lang" id="lg-en">
+<div class="wrap">
+<header class="top">
+  <div class="toprow">
+    <div class="eyebrow"><span lang="fr">Préparation du foyer · France · 14 jours</span><span lang="en">Household preparedness · France · 14 days</span></div>
+    <div class="lang" role="group" aria-label="Langue / Language"><label for="lg-fr">FR</label><label for="lg-en">EN</label></div>
+  </div>
+  <div class="byline">© 2026 <b>M. BARADHY</b> · <span lang="fr">Version d'octobre 2026</span><span lang="en">October 2026 edition</span></div>
+  <h1><span lang="fr">Réserve familiale 14 jours</span><span lang="en">Two-Week Household Reserve</span></h1>
+  <p class="lede"><span lang="fr">Un plan concret pour tenir deux semaines sans magasins, sans paiement par carte, sans internet ni électricité, le scénario le plus probable d'une cyberattaque majeure ou d'un conflit. Indiquez la taille de votre foyer : la liste, les quantités et le budget s'adaptent. Cochez les articles au fur et à mesure ; vos coches sont enregistrées dans ce navigateur.</span><span lang="en">A practical plan to get your household through two weeks without shops, card payments, internet or mains power, the most likely shape of a major cyberattack or a wider conflict. Set your household size, and the shopping list, quantities and budget update. Tick items as you buy them; your ticks are saved in this browser.</span></p>
+  <div class="stamp"><span><span lang="fr">Synthèse des consignes officielles : FR · UE · NL · BE · UK · US · DE · CH · JP · SE · NO</span><span lang="en">Compiled from official guidance: FR · EU · NL · BE · UK · US · DE · CH · JP · SE · NO</span></span><span><span lang="fr">14 jours, au-dessus de tous les minimums nationaux</span><span lang="en">14 days, above every national minimum</span></span><span><span lang="fr">Prix indicatifs, oct. 2026</span><span lang="en">Prices indicative, Oct 2026</span></span></div>
+</header>
+
+<div class="grid">
+<nav class="idx" aria-label="Sections">
+  <a href="#calc"><span lang="fr">Votre foyer</span><span lang="en">Your household</span></a>
+  <a href="#list"><span lang="fr">Liste d'achats</span><span lang="en">Shopping list</span></a>
+  <a href="#baskets"><span lang="fr">Paniers par magasin</span><span lang="en">Basket per shop</span></a>
+  <a href="#stores"><span lang="fr">Où acheter</span><span lang="en">Where to buy</span></a>
+  <a href="#data"><span lang="fr">Données &amp; numérique</span><span lang="en">Data &amp; digital</span></a>
+  <a href="#money"><span lang="fr">Argent &amp; papiers</span><span lang="en">Money &amp; papers</span></a>
+  <a href="#plan"><span lang="fr">Plan familial</span><span lang="en">Family plan</span></a>
+  <a href="#crisis"><span lang="fr">Le jour J</span><span lang="en">When it happens</span></a>
+  <a href="#upkeep"><span lang="fr">Entretien</span><span lang="en">Upkeep</span></a>
+  <a href="#compare"><span lang="fr">Consignes par pays</span><span lang="en">Country guidance</span></a>
+  <a href="#sources">Sources</a>
+</nav>
+
+<main>
+<section id="calc">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Étape 1</span><span lang="en">Step 1</span></div><h2><span lang="fr">Votre foyer</span><span lang="en">Your household</span></h2></div>
+  <div class="calc">
+    <div class="inputs">
+      <div class="field"><label for="in-a"><span lang="fr">Adultes &amp; ados</span><span lang="en">Adults &amp; teens</span></label>
+        <div class="stepper"><button type="button" data-d="a" data-v="-1" aria-label="−">−</button><input id="in-a" type="number" min="1" max="12" value="2" inputmode="numeric"><button type="button" data-d="a" data-v="1" aria-label="+">+</button></div></div>
+      <div class="field"><label for="in-c"><span lang="fr">Enfants (moins de 12 ans)</span><span lang="en">Children (under 12)</span></label>
+        <div class="stepper"><button type="button" data-d="c" data-v="-1" aria-label="−">−</button><input id="in-c" type="number" min="0" max="12" value="0" inputmode="numeric"><button type="button" data-d="c" data-v="1" aria-label="+">+</button></div></div>
+      <div class="field"><label for="in-p"><span lang="fr">Animaux</span><span lang="en">Pets</span></label>
+        <div class="stepper"><button type="button" data-d="p" data-v="-1" aria-label="−">−</button><input id="in-p" type="number" min="0" max="10" value="0" inputmode="numeric"><button type="button" data-d="p" data-v="1" aria-label="+">+</button></div></div>
+      <label class="toggle"><input type="checkbox" id="in-opt"> <span lang="fr">Inclure les options (station d'énergie, solaire)</span><span lang="en">Include optional upgrades (power station, solar)</span></label>
+    </div>
+    <div class="figs">
+      <div class="fig"><b id="f-water">0 L</b><span><span lang="fr">d'eau en bouteille (3 L/pers./jour, comme JP, CH, UK)</span><span lang="en">bottled water (3 L/person/day, as JP, CH, UK)</span></span></div>
+      <div class="fig"><b id="f-kcal">0</b><span><span lang="fr">kcal pour 14 jours (2 200/adulte/jour, comme DE)</span><span lang="en">kcal for 14 days (2,200/adult/day, as DE)</span></span></div>
+      <div class="fig"><b id="f-ess">€0</b><span><span lang="fr">budget essentiels</span><span lang="en">essentials budget</span></span></div>
+      <div class="fig"><b id="f-all">€0</b><span><span lang="fr">essentiels + recommandés</span><span lang="en">essentials + recommended</span></span></div>
+    </div>
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><small id="ptxt"></small></div>
+  </div>
+  <div class="callout"><span lang="fr">Constituez-la en 4 à 6 semaines plutôt qu'en un seul passage. Utilisez la méthode japonaise du « stock du quotidien » : gardez un peu plus de ce que vous mangez déjà, consommez le plus ancien en premier et remplacez-le à la course suivante. Rien ne se perd, et pas besoin d'achats de panique.</span><span lang="en">Build it over 4–6 weeks rather than in one trip. Use the Japanese "everyday stockpiling" method: keep a little extra of what you already eat, eat the oldest first and replace it on the next shop. Nothing goes to waste and you never need a big panic-buying trip.</span></div>
+</section>
+
+<section id="list">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Étape 2</span><span lang="en">Step 2</span></div><h2><span lang="fr">Liste d'achats</span><span lang="en">Shopping list</span></h2>
+    <p class="lede"><span lang="fr">Quantités pour tout le foyer, pour 14 jours. Un enfant compte pour 0,7 adulte pour la nourriture. Les liens « Acheter » ouvrent une recherche sur le site du magasin.</span><span lang="en">Quantities are for your whole household for 14 days. Children count as 0.7 of an adult for food. The "Buy" links open a search on the shop's website.</span></p></div>
+  <div class="legend"><span><span class="pri E"><span lang="fr">Essentiel</span><span lang="en">Essential</span></span> <span lang="fr">d'abord</span><span lang="en">buy first</span></span><span><span class="pri R"><span lang="fr">Recommandé</span><span lang="en">Recommended</span></span> <span lang="fr">ensuite</span><span lang="en">next</span></span><span><span class="pri O"><span lang="fr">Option</span><span lang="en">Optional</span></span> <span lang="fr">si le budget le permet</span><span lang="en">if budget allows</span></span><button class="btn" id="reset" type="button"><span lang="fr">Tout décocher</span><span lang="en">Clear all ticks</span></button></div>
+  <div id="cats" style="display:flex;flex-direction:column;gap:18px"></div>
+</section>
+
+<section id="baskets">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Étape 3</span><span lang="en">Step 3</span></div><h2><span lang="fr">Paniers par magasin</span><span lang="en">Basket per shop</span></h2>
+    <p class="lede"><span lang="fr">La même liste regroupée par magasin. Chaque ligne ouvre l'article sur le site ; ajoutez-le au panier, puis commandez et payez vous-même. « Copier » met la liste dans le presse-papiers pour une commande drive ou un message.</span><span lang="en">The same list grouped by shop. Each line opens the item on the shop's site; add it to your basket, then order and pay yourself. "Copy" puts the list on your clipboard for a click-and-collect order or a message.</span></p></div>
+  <div class="baskets" id="bask"></div>
+</section>
+
+<section id="stores">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Étape 4</span><span lang="en">Step 4</span></div><h2><span lang="fr">Où acheter en France</span><span lang="en">Where to buy in France</span></h2>
+    <p class="lede"><span lang="fr">Aucun magasin « survie » spécialisé n'est nécessaire. Aucun produit n'est agréé par l'État : méfiez-vous de tout ce qui est vendu comme « le kit officiel du gouvernement ».</span><span lang="en">Nothing here needs a specialist "survival" shop. No product is officially approved by the State, so ignore anything sold as "the official government kit".</span></p></div>
+  <div class="tbl"><table>
+    <thead><tr><th><span lang="fr">Magasin</span><span lang="en">Store</span></th><th><span lang="fr">À y acheter</span><span lang="en">Buy there</span></th><th><span lang="fr">Conseil</span><span lang="en">Tip</span></th></tr></thead>
+    <tbody>
+      <tr><td><b><span lang="fr">Supermarchés</span><span lang="en">Supermarkets</span></b><br>Leclerc, Carrefour, Lidl, Aldi, Intermarché, Auchan</td><td><span lang="fr">Eau, toute la nourriture, piles, sacs poubelle, papier toilette, lingettes, briquets, litière, cartouches de gaz (souvent)</span><span lang="en">Water, all food, batteries, bin bags, toilet paper, wipes, lighters, cat litter, gas cartridges (often)</span></td><td><span lang="fr">Les conserves marque distributeur sont bon marché et se gardent 2 à 3 ans. Les promos de Lidl et Aldi proposent souvent lampes frontales et batteries externes.</span><span lang="en">Own-brand canned goods are cheap and keep 2–3 years. Lidl and Aldi weekly offers often include headlamps and power banks.</span></td></tr>
+      <tr><td><b>Decathlon</b></td><td><span lang="fr">Réchaud, cartouches de gaz, lampes frontales, lanternes, sacs de couchage, couvertures de survie, jerricans pliables, trousse de secours, filtre à eau, couteau multifonction, sifflet</span><span lang="en">Camping stove, gas cartridges, headlamps, lanterns, sleeping bags, survival blankets, foldable water containers, first-aid kit, water filter, multi-tool, whistle</span></td><td><span lang="fr">Le meilleur arrêt unique pour le matériel non alimentaire. Vérifiez que réchaud et cartouches ont la même valve.</span><span lang="en">The best single stop for the non-food kit. Check the stove and cartridge use the same valve type.</span></td></tr>
+      <tr><td><b><span lang="fr">Pharmacie</span><span lang="en">Pharmacy</span></b></td><td><span lang="fr">Traitements habituels, paracétamol, solutés de réhydratation, thermomètre, pansements, masques FFP2, gel</span><span lang="en">Regular medication, paracetamol, oral rehydration salts, thermometer, dressings, FFP2 masks, hand gel</span></td><td><span lang="fr">Demandez à votre médecin une ordonnance couvrant un mois de réserve pour tout traitement vital.</span><span lang="en">Ask your doctor for a prescription that covers an extra month of any vital treatment.</span></td></tr>
+      <tr><td><b><span lang="fr">Bricolage</span><span lang="en">DIY stores</span></b><br>Leroy Merlin, Castorama, Brico Dépôt</td><td><span lang="fr">Extincteur, détecteurs de fumée et de CO, seaux à couvercle, jerricans, ruban adhésif, gants, bâche</span><span lang="en">Fire extinguisher, smoke and CO detectors, buckets with lids, jerrycans, duct tape, work gloves, plastic sheeting</span></td><td><span lang="fr">Prenez un extincteur à poudre ABC (2 kg pour un appartement, 6 kg pour une maison).</span><span lang="en">Pick an ABC powder extinguisher (2 kg for a flat, 6 kg for a house).</span></td></tr>
+      <tr><td><b><span lang="fr">Électronique</span><span lang="en">Electronics</span></b><br>Boulanger, Darty, Fnac</td><td><span lang="fr">Radio d'urgence, batteries externes, disque dur externe, clés USB, station d'énergie, panneau solaire</span><span lang="en">Emergency radio, power banks, external hard drive, USB keys, portable power station, solar panel</span></td><td><span lang="fr">Choisissez une radio FM + AM, à dynamo, solaire et rechargeable en USB.</span><span lang="en">Choose a radio with FM + AM, hand crank, solar and USB charging.</span></td></tr>
+      <tr><td><b><span lang="fr">Action / discount</span><span lang="en">Action / discount stores</span></b></td><td><span lang="fr">Piles, lanternes LED, sacs zip, boîtes de rangement, bougies, allumettes</span><span lang="en">Batteries, LED lanterns, zip bags, storage boxes, candles, matches</span></td><td><span lang="fr">Bien pour les petits compléments. Prenez la radio et les frontales d'une marque reconnue.</span><span lang="en">Fine for cheap extras. Buy the radio and headlamps from a better-known brand.</span></td></tr>
+      <tr><td><b><span lang="fr">En ligne</span><span lang="en">Online</span></b><br>Amazon.fr, Cdiscount</td><td><span lang="fr">Radio à dynamo, station d'énergie, panneau solaire, pochette étanche</span><span lang="en">Hand-crank radio, power station, solar panel, waterproof document pouch</span></td><td><span lang="fr">Lisez les avis et vérifiez que le vendeur est dans l'UE (garantie et marquage CE).</span><span lang="en">Read reviews and check the seller is in the EU (warranty and CE marking).</span></td></tr>
+      <tr><td><b><span lang="fr">Librairie / IGN</span><span lang="en">Bookshop / IGN</span></b></td><td><span lang="fr">Carte routière papier d'Île-de-France et de votre région</span><span lang="en">Paper road map of Île-de-France and your region</span></td><td><span lang="fr">GPS et cartes en ligne peuvent tomber ; une carte papier est une assurance bon marché.</span><span lang="en">GPS and online maps may be down; a paper map is cheap insurance.</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="data">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Étape 5</span><span lang="en">Step 5</span></div><h2><span lang="fr">Données &amp; numérique</span><span lang="en">Data &amp; digital</span></h2>
+    <p class="lede"><span lang="fr">En cas de cyberattaque, c'est le plus important. Objectif : perdre votre téléphone, votre compte cloud ou votre appli bancaire ne doit pas vous bloquer.</span><span lang="en">In a cyberattack this matters most. The goal is that losing your phone, your cloud account or your bank app does not lock you out of your life.</span></p></div>
+  <div class="two">
+    <div class="box"><h3><span lang="fr">Sauvegardes (règle 3-2-1)</span><span lang="en">Backups (3-2-1 rule)</span></h3>
+      <ul class="checks">
+        <li><input type="checkbox" id="d1"><label for="d1"><span lang="fr">Gardez 3 copies des données importantes : l'appareil, un service cloud et un disque externe.</span><span lang="en">Keep 3 copies of important data: your device, a cloud service, and an external drive.</span></label></li>
+        <li><input type="checkbox" id="d2"><label for="d2"><span lang="fr">Sur 2 supports différents (ex. cloud + disque SSD/HDD).</span><span lang="en">Store copies on 2 kinds of media (e.g. cloud + external SSD/HDD).</span></label></li>
+        <li><input type="checkbox" id="d3"><label for="d3"><span lang="fr">1 copie hors ligne : branchez le disque seulement pour sauvegarder, puis débranchez-le. Un rançongiciel ne peut pas atteindre un disque débranché.</span><span lang="en">Keep 1 copy offline: plug the drive in only to back up, then unplug it. Ransomware cannot reach a disconnected drive.</span></label></li>
+        <li><input type="checkbox" id="d4"><label for="d4"><span lang="fr">Sauvegardez chaque mois, avec un rappel dans l'agenda.</span><span lang="en">Back up monthly. Set a calendar reminder.</span></label></li>
+        <li><input type="checkbox" id="d5"><label for="d5"><span lang="fr">Chiffrez le disque (BitLocker sous Windows, FileVault sur Mac, ou VeraCrypt).</span><span lang="en">Encrypt the drive (BitLocker on Windows, FileVault on Mac, or VeraCrypt).</span></label></li>
+        <li><input type="checkbox" id="d6"><label for="d6"><span lang="fr">Testez une restauration : ouvrez un fichier depuis la sauvegarde.</span><span lang="en">Test one restore: open a file from the backup to confirm it works.</span></label></li>
+      </ul></div>
+    <div class="box"><h3><span lang="fr">Comptes &amp; accès</span><span lang="en">Accounts &amp; access</span></h3>
+      <ul class="checks">
+        <li><input type="checkbox" id="d7"><label for="d7"><span lang="fr">Utilisez un gestionnaire de mots de passe, avec un mot de passe maître mémorisé.</span><span lang="en">Use a password manager with a strong master password you have memorised.</span></label></li>
+        <li><input type="checkbox" id="d8"><label for="d8"><span lang="fr">Activez la double authentification sur e-mail, banque et gestionnaire de mots de passe.</span><span lang="en">Enable two-factor authentication on email, bank and password manager.</span></label></li>
+        <li><input type="checkbox" id="d9"><label for="d9"><span lang="fr">Imprimez les codes de secours 2FA et rangez-les avec vos documents papier.</span><span lang="en">Print the 2FA backup codes and keep them with your paper documents.</span></label></li>
+        <li><input type="checkbox" id="d10"><label for="d10"><span lang="fr">Vérifiez que votre e-mail principal a un moyen de récupération autre que le seul téléphone.</span><span lang="en">Make sure your main email account has a recovery method that is not your phone alone.</span></label></li>
+        <li><input type="checkbox" id="d11"><label for="d11"><span lang="fr">Mettez à jour téléphones, ordinateurs et box, et activez les mises à jour automatiques.</span><span lang="en">Update phones, computers and router now, and turn on automatic updates.</span></label></li>
+        <li><input type="checkbox" id="d12"><label for="d12"><span lang="fr">Téléchargez des cartes hors ligne (Organic Maps, ou zones hors ligne Google Maps) pour l'Île-de-France et là où vit votre famille.</span><span lang="en">Download offline maps (Organic Maps, or offline areas in Google Maps) for Île-de-France and where your family lives.</span></label></li>
+      </ul></div>
+    <div class="box"><h3><span lang="fr">Sur la clé USB chiffrée</span><span lang="en">Keep a copy on the encrypted USB key</span></h3>
+      <ul>
+        <li><span lang="fr">Scans : carte d'identité, passeport, carte Vitale, mutuelle, permis</span><span lang="en">Scans of ID, passport, carte Vitale, mutuelle card, driving licence</span></li>
+        <li><span lang="fr">Bail ou titre de propriété, contrats d'assurance habitation et auto</span><span lang="en">Lease or property deed, home and car insurance contracts</span></li>
+        <li><span lang="fr">RIB et numéros de contact de chaque banque</span><span lang="en">Bank details (RIB) and contact numbers for each bank</span></li>
+        <li><span lang="fr">Ordonnances, carnet de vaccination, comptes rendus médicaux</span><span lang="en">Prescriptions, vaccination records, medical summaries</span></li>
+        <li><span lang="fr">Photos de famille et tout ce qui est irremplaçable</span><span lang="en">Family photos and anything irreplaceable</span></li>
+        <li><span lang="fr">Une copie de ce fichier</span><span lang="en">A copy of this file</span></li>
+      </ul></div>
+    <div class="box"><h3><span lang="fr">Pendant une attaque</span><span lang="en">During an attack</span></h3>
+      <ul>
+        <li><span lang="fr">Attendez-vous à de faux messages « urgents » de la banque, de l'État ou de livreurs. Ne cliquez jamais ; allez vous-même sur le site ou l'appli officielle.</span><span lang="en">Expect fake "urgent" messages from your bank, the government or delivery firms. Never click links in them; go to the official site or app yourself.</span></li>
+        <li><span lang="fr">Les alertes officielles arrivent par FR-Alert et à la radio, jamais par SMS avec un lien demandant vos informations.</span><span lang="en">Official alerts come via FR-Alert on your phone and on the radio, not by SMS links asking for details.</span></li>
+        <li><span lang="fr">Vérifiez une rumeur auprès de deux sources officielles avant d'agir ou de partager.</span><span lang="en">Check rumours against two official sources before acting or sharing.</span></li>
+        <li><span lang="fr">Si un compte est piraté, changez le mot de passe depuis un appareil sain et prévenez vos contacts.</span><span lang="en">If an account is compromised, change its password from a clean device and warn your contacts.</span></li>
+      </ul></div>
+  </div>
+</section>
+
+<section id="money">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Étape 6</span><span lang="en">Step 6</span></div><h2><span lang="fr">Argent &amp; papiers</span><span lang="en">Money &amp; papers</span></h2></div>
+  <div class="two">
+    <div class="box"><h3><span lang="fr">Espèces</span><span lang="en">Cash</span></h3>
+      <ul>
+        <li><span lang="fr">Terminaux de paiement et distributeurs sont parmi les premiers à tomber lors d'une cyberattaque ou d'une coupure.</span><span lang="en">Card terminals and ATMs are among the first things to fail in a cyberattack or blackout.</span></li>
+        <li><span lang="fr">Gardez de quoi couvrir 1 à 2 semaines de dépenses essentielles (nourriture, carburant, pharmacie), en petites coupures (5, 10, 20 €) et quelques pièces.</span><span lang="en">Keep enough cash for 1–2 weeks of essential spending (food, fuel, pharmacy), in small notes (€5, €10, €20) and some coins.</span></li>
+        <li><span lang="fr">Rangez-les discrètement chez vous, en deux endroits.</span><span lang="en">Store it in a discreet place at home, split in two.</span></li>
+        <li><span lang="fr">Un compte dans une deuxième banque évite un point de défaillance unique.</span><span lang="en">An account at a second bank avoids a single point of failure.</span></li>
+      </ul></div>
+    <div class="box"><h3><span lang="fr">Dossier papier (pochette étanche)</span><span lang="en">Paper folder (waterproof pouch)</span></h3>
+      <ul class="checks">
+        <li><input type="checkbox" id="m1"><label for="m1"><span lang="fr">Photocopies des pièces d'identité, passeports, carte Vitale, mutuelle</span><span lang="en">Photocopies of IDs, passports, carte Vitale, mutuelle</span></label></li>
+        <li><input type="checkbox" id="m2"><label for="m2"><span lang="fr">Ordonnances et liste des médicaments avec doses</span><span lang="en">Prescriptions and list of medications with doses</span></label></li>
+        <li><input type="checkbox" id="m3"><label for="m3"><span lang="fr">Contrats d'assurance et numéros de police</span><span lang="en">Insurance contracts and policy numbers</span></label></li>
+        <li><input type="checkbox" id="m4"><label for="m4"><span lang="fr">Liste imprimée des numéros importants (voir Plan familial)</span><span lang="en">Printed list of key phone numbers (see Family plan)</span></label></li>
+        <li><input type="checkbox" id="m5"><label for="m5"><span lang="fr">Codes de secours 2FA et numéros d'urgence des banques</span><span lang="en">2FA backup codes and bank emergency numbers</span></label></li>
+        <li><input type="checkbox" id="m6"><label for="m6"><span lang="fr">Carte papier avec vos points de rendez-vous</span><span lang="en">Paper map with your meeting points marked</span></label></li>
+      </ul></div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Étape 7</span><span lang="en">Step 7</span></div><h2><span lang="fr">Plan familial &amp; communication</span><span lang="en">Family plan &amp; communications</span></h2>
+    <p class="lede"><span lang="fr">Décidez-le avant, écrivez-le et donnez-en une copie à chacun.</span><span lang="en">Agree on this before anything happens, write it down, and give everyone a copy.</span></p></div>
+  <div class="two">
+    <div class="box"><h3><span lang="fr">À décider ensemble</span><span lang="en">Decide together</span></h3>
+      <ul>
+        <li><span lang="fr"><b>Point de rendez-vous 1 :</b> le domicile. <b>Point 2 :</b> un lieu fixe proche si le domicile est inaccessible. <b>Point 3 :</b> un proche hors de la ville.</span><span lang="en"><b>Meeting point 1:</b> home. <b>Meeting point 2:</b> a fixed place nearby if home is unsafe. <b>Point 3:</b> a relative outside the city.</span></li>
+        <li><span lang="fr">Qui récupère les enfants à l'école, et le plan de mise en sûreté (PPMS) de l'école.</span><span lang="en">Who collects the children from school, and the school's own emergency plan.</span></li>
+        <li><span lang="fr">Qui prend des nouvelles des proches âgés ou isolés et des voisins.</span><span lang="en">Who checks on elderly or isolated relatives and neighbours.</span></li>
+        <li><span lang="fr">Une règle si les téléphones ne marchent plus : ex. « rentrer et attendre jusqu'à 18 h, puis aller au point 2 ».</span><span lang="en">A rule if phones are down: e.g. "go home and wait until 18:00, then go to point 2".</span></li>
+        <li><span lang="fr">Un contact hors région que tout le monde appelle. Privilégiez les SMS aux appels.</span><span lang="en">One out-of-area contact everyone calls or texts. Send SMS rather than calls.</span></li>
+      </ul></div>
+    <div class="box"><h3><span lang="fr">Information officielle</span><span lang="en">Official information</span></h3>
+      <ul>
+        <li><span lang="fr"><b>FR-Alert :</b> alertes envoyées à tous les téléphones de la zone. Gardez le téléphone chargé et allumé.</span><span lang="en"><b>FR-Alert:</b> alerts sent to every phone in the affected area. Keep your phone charged and on.</span></li>
+        <li><span lang="fr"><b>Radio</b> (sans internet) : France Inter <span class="freq">87.8 FM</span> à Paris ; ici Paris Île-de-France <span class="freq">107.1 FM</span>. Notez les fréquences de vos autres régions.</span><span lang="en"><b>Radio</b> (works with no internet): France Inter <span class="freq">87.8 FM</span> in Paris; ici Paris Île-de-France <span class="freq">107.1 FM</span>. Note the frequencies for your other regions.</span></li>
+        <li><span lang="fr"><b>Sirènes :</b> le signal national d'alerte est un son montant et descendant, trois fois 1 min 41 s. Rentrez, fermez les fenêtres, écoutez la radio.</span><span lang="en"><b>Sirens:</b> the national alert signal is a rising and falling tone, three times 1 min 41 s. Go inside, close windows, listen to the radio.</span></li>
+        <li><span lang="fr"><b>Numéros d'urgence :</b></span><span lang="en"><b>Emergency numbers:</b></span> <span class="freq">112</span>, <span class="freq">15</span> SAMU, <span class="freq">17</span> police, <span class="freq">18</span> <span lang="fr">pompiers</span><span lang="en">fire</span>, <span class="freq">114</span> <span lang="fr">par SMS</span><span lang="en">by SMS</span>.</li>
+        <li><span lang="fr">Risques pour votre adresse : georisques.gouv.fr</span><span lang="en">Local risks for your address: georisques.gouv.fr</span></li>
+      </ul></div>
+    <div class="box"><h3><span lang="fr">Compétences en un week-end</span><span lang="en">Skills worth one weekend</span></h3>
+      <ul>
+        <li><span lang="fr">Formation PSC1 aux premiers secours (environ 7 h, autour de 60 €) : Croix-Rouge, Protection Civile ou pompiers.</span><span lang="en">First-aid course PSC1 (about 7 h, around €60) from the Red Cross, Protection Civile or the fire brigade.</span></li>
+        <li><span lang="fr">Savoir où sont le robinet d'arrivée d'eau, le compteur électrique et la vanne de gaz, et comment les fermer.</span><span lang="en">Know where your water stopcock, electricity meter and gas valve are, and how to close them.</span></li>
+        <li><span lang="fr">Faire une soirée test sans électricité : réchaud, frontales, radio.</span><span lang="en">Practise one evening without power: cook on the stove, light with headlamps, listen to the radio.</span></li>
+      </ul></div>
+    <div class="box"><h3><span lang="fr">Entraide</span><span lang="en">Community</span></h3>
+      <ul>
+        <li><span lang="fr">Échangez vos numéros avec deux ou trois voisins. Les ressources partagées vont beaucoup plus loin.</span><span lang="en">Swap numbers with two or three neighbours. Shared resources go much further.</span></li>
+        <li><span lang="fr">Sachez qui dans l'immeuble est âgé, handicapé ou seul.</span><span lang="en">Know who in the building is elderly, disabled or alone.</span></li>
+        <li><span lang="fr">Le guide invite aussi à s'engager : Réserve civique, Protection Civile, Croix-Rouge, réserves militaires et de police.</span><span lang="en">The guide also suggests volunteering: Réserve civique, Protection Civile, Red Cross, or the military and police reserves.</span></li>
+      </ul></div>
+  </div>
+</section>
+
+<section id="crisis">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Étape 8</span><span lang="en">Step 8</span></div><h2><span lang="fr">Le jour J</span><span lang="en">When it happens</span></h2>
+    <p class="lede"><span lang="fr">Une grande panne s'annonce rarement. Si plusieurs services tombent en même temps (électricité, carte bancaire, données mobiles), supposez que cela peut durer et suivez cet ordre.</span><span lang="en">A large outage rarely announces itself. If several services fail at once (power, card payments, mobile data), assume it may last and follow this sequence.</span></p></div>
+  <ol class="steps">
+    <li><span class="tm">0–1 h</span><div><span lang="fr"><b>S'informer.</b> Allumez la radio à piles. Vérifiez FR-Alert. Ne vous fiez pas aux réseaux sociaux.</span><span lang="en"><b>Get information.</b> Turn on the battery radio. Check FR-Alert. Do not rely on social media.</span></div></li>
+    <li><span class="tm">0–1 h</span><div><span lang="fr"><b>Faire le plein d'eau.</b> Tant que le robinet coule, remplissez baignoire, seaux et jerricans. La pression peut baisser si les pompes perdent l'alimentation.</span><span lang="en"><b>Fill water.</b> While taps still run, fill the bath, buckets and foldable containers. Water pressure can drop when pumps lose power.</span></div></li>
+    <li><span class="tm">1–6 h</span><div><span lang="fr"><b>Contacter la famille</b> par SMS, une fois. Appliquez le plan familial. Économisez la batterie : mode économie, luminosité basse, données coupées.</span><span lang="en"><b>Contact family</b> by SMS, once. Apply your family plan. Save phone battery: low-power mode, screen brightness down, data off when not needed.</span></div></li>
+    <li><span class="tm">1–6 h</span><div><span lang="fr"><b>Protéger le frigo.</b> Gardez-le fermé ; un congélateur plein tient environ 24 à 48 h. Mangez d'abord le frais et le surgelé, puis la réserve.</span><span lang="en"><b>Protect the fridge.</b> Keep it closed; a full freezer holds about 24–48 h. Eat fresh and frozen food first, then the reserve.</span></div></li>
+    <li><span class="tm"><span lang="fr">Jour 1</span><span lang="en">Day 1</span></span><div><span lang="fr"><b>Organiser le logement.</b> Une pièce chaude, frontales à portée, réchaud près d'une fenêtre ouverte ou sur le balcon, détecteur de CO allumé.</span><span lang="en"><b>Organise the home.</b> One warm room, headlamps at hand, stove set up near an open window or on the balcony, CO detector on.</span></div></li>
+    <li><span class="tm"><span lang="fr">J2–3</span><span lang="en">Day 2–3</span></span><div><span lang="fr"><b>Rationner raisonnablement.</b> 2 L d'eau potable par personne et par jour restent non négociables ; réduisez plutôt l'eau de toilette. Prenez des nouvelles des voisins.</span><span lang="en"><b>Ration sensibly.</b> 2 L of drinking water per person per day stays non-negotiable; cut washing water instead. Check on neighbours.</span></div></li>
+    <li><span class="tm"><span lang="fr">J4+</span><span lang="en">Day 4+</span></span><div><span lang="fr"><b>Suivre les consignes officielles</b> sur les points de distribution, les déplacements et la mise à l'abri. Payez en espèces ; gardez la voiture pour les urgences.</span><span lang="en"><b>Follow official instructions</b> on distribution points, travel and shelter. Use cash; keep the car for emergencies.</span></div></li>
+  </ol>
+  <div class="callout"><span lang="fr"><b>Jamais</b> de barbecue, charbon, groupe électrogène ou chauffage d'appoint de terrasse à l'intérieur ou sur un balcon fermé. Le monoxyde de carbone tue chaque hiver en France.</span><span lang="en"><b>Never</b> use a barbecue, charcoal, generator or patio heater indoors or on an enclosed balcony. Carbon monoxide kills silently every winter in France.</span></div>
+</section>
+
+<section id="upkeep">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Étape 9</span><span lang="en">Step 9</span></div><h2><span lang="fr">Entretien</span><span lang="en">Upkeep</span></h2></div>
+  <div class="tbl"><table>
+    <thead><tr><th><span lang="fr">Quand</span><span lang="en">When</span></th><th><span lang="fr">Quoi faire</span><span lang="en">What to do</span></th></tr></thead>
+    <tbody>
+      <tr><td><span lang="fr">Chaque mois</span><span lang="en">Every month</span></td><td><span lang="fr">Sauvegarde hors ligne de vos données. Recharger les batteries externes.</span><span lang="en">Offline backup of your data. Recharge power banks.</span></td></tr>
+      <tr><td><span lang="fr">Tous les 6 mois (ex. aux changements d'heure)</span><span lang="en">Every 6 months (e.g. when the clocks change)</span></td><td><span lang="fr">Vérifier les dates, consommer et remplacer les plus anciens. Tester radio, frontales, détecteurs de fumée et de CO. Remplacer l'eau périmée.</span><span lang="en">Check use-by dates, eat and replace the oldest food. Test radio, headlamps, smoke and CO detectors. Replace bottled water past its date.</span></td></tr>
+      <tr><td><span lang="fr">Chaque année</span><span lang="en">Every year</span></td><td><span lang="fr">Mettre à jour médicaments et ordonnances, documents papier, liste de numéros et plan familial. Vérifier l'extincteur. Refaire le calcul si le foyer change.</span><span lang="en">Update medications and prescriptions, paper documents, phone list and family plan. Check the extinguisher gauge. Redo the calculator if the household changes.</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="compare">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Fondements</span><span lang="en">Evidence</span></div><h2><span lang="fr">Comparaison des pays</span><span lang="en">How countries compare</span></h2>
+    <p class="lede"><span lang="fr">Les consignes officielles vont de 72 heures à 10 jours. Ce plan retient 14 jours, l'objectif américain pour l'eau à domicile, et le chiffre le plus exigeant de chaque pays.</span><span lang="en">Official guidance varies from 72 hours to 10 days. This plan uses 14 days, the US Red Cross target for water at home, and takes the strictest figure from each country.</span></p></div>
+  <div class="tbl"><table>
+    <thead><tr><th><span lang="fr">Pays</span><span lang="en">Country</span></th><th><span lang="fr">Objectif</span><span lang="en">Target</span></th><th><span lang="fr">Eau</span><span lang="en">Water</span></th><th><span lang="fr">Points notables</span><span lang="en">Notable points</span></th></tr></thead>
+    <tbody>
+      <tr><td><b><span lang="fr">Union européenne</span><span lang="en">European Union</span></b></td><td><span lang="fr">72 h minimum</span><span lang="en">72 h minimum</span></td><td>—</td><td><span lang="fr">La stratégie de préparation de mars 2025 demande à chaque État membre de promouvoir 72 h d'autonomie.</span><span lang="en">Preparedness strategy of March 2025 asks every member state to promote 72 h of self-sufficiency.</span></td></tr>
+      <tr><td><b>France</b></td><td>72 h</td><td><span lang="fr">6 L / pers. (2 L/jour)</span><span lang="en">6 L / person (2 L/day)</span></td><td><span lang="fr">Guide « Tous responsables » (nov. 2025) : guerre, cyberattaques, désinformation. Kit : eau, nourriture, radio, lampe, médicaments, secours, espèces, documents.</span><span lang="en">Guide "Tous responsables" (Nov 2025) names war, cyberattacks and disinformation. Kit: water, food, radio, lamp, medicine, first aid, cash, documents.</span></td></tr>
+      <tr><td><b><span lang="fr">Pays-Bas</span><span lang="en">Netherlands</span></b></td><td>72 h</td><td>—</td><td><span lang="fr">Livret « Denk vooruit » envoyé à environ 8,5 millions de foyers dès nov. 2025. Scénarios : panne d'électricité, attaque numérique, inondation.</span><span lang="en">"Denk vooruit" booklet posted to about 8.5 million households from Nov 2025. Scenarios: power cut, digital attack, flooding.</span></td></tr>
+      <tr><td><b><span lang="fr">Belgique</span><span lang="en">Belgium</span></b></td><td>72 h</td><td>—</td><td><span lang="fr">Campagne du Centre de crise (avr. 2026) : eau et vivres pour 3 jours, lampe, radio à piles, canaux officiels.</span><span lang="en">National Crisis Centre campaign (Apr 2026): water and food for 3 days, torch, battery radio, know official channels.</span></td></tr>
+      <tr><td><b><span lang="fr">Royaume-Uni</span><span lang="en">United Kingdom</span></b></td><td><span lang="fr">Pas de durée fixe</span><span lang="en">No fixed period</span></td><td><span lang="fr">≥ 3 L / pers.</span><span lang="en">≥ 3 L / person</span></td><td><span lang="fr">Site « Prepare » (mai 2024) : lampe, batterie externe, radio, piles, secours, nourriture sans cuisson, bébés et animaux. Liste nord-irlandaise : doubles de clés et lunettes.</span><span lang="en">"Prepare" site (May 2024): torch, power bank, radio, spare batteries, first aid, no-cook food, baby and pet supplies. NI list adds spare keys and glasses.</span></td></tr>
+      <tr><td><b><span lang="fr">États-Unis</span><span lang="en">United States</span></b></td><td><span lang="fr">Kit 3 jours ; 2 semaines d'eau à domicile</span><span lang="en">3 days kit; 2 weeks of water at home</span></td><td><span lang="fr">≈ 3,8 L / pers. / jour (1 gallon, hygiène incluse)</span><span lang="en">≈ 3.8 L / person / day (1 gallon, incl. hygiene)</span></td><td><span lang="fr">FEMA / Croix-Rouge. Ajoute sifflet, masques, bâche et adhésif pour le confinement, outils pour couper les arrivées, espèces.</span><span lang="en">FEMA / Red Cross. Adds whistle, masks, plastic sheeting and tape for sheltering in place, tools to shut off utilities, cash.</span></td></tr>
+      <tr><td><b><span lang="fr">Allemagne</span><span lang="en">Germany</span></b></td><td><span lang="fr">10 jours</span><span lang="en">10 days</span></td><td><span lang="fr">20 L / pers. (2 L/jour)</span><span lang="en">20 L / person (2 L/day)</span></td><td><span lang="fr">Le BBK donne des poids pour 10 jours à environ 2 200 kcal/jour : 3,5 kg de féculents, 4 kg de légumes et légumineuses, 2,5 kg de fruits, 2,6 L de laitages.</span><span lang="en">BBK gives food by weight for 10 days at about 2,200 kcal/day: 3.5 kg grains, 4 kg vegetables and legumes, 2.5 kg fruit, 2.6 L dairy.</span></td></tr>
+      <tr><td><b><span lang="fr">Suisse</span><span lang="en">Switzerland</span></b></td><td><span lang="fr">Provisions de secours</span><span lang="en">Emergency stock</span></td><td><span lang="fr">9 L / pers. = 3 jours (3 L/jour)</span><span lang="en">9 L / person = 3 days (3 L/day)</span></td><td><span lang="fr">L'eau d'hygiène n'est pas comprise ; prévoir en plus.</span><span lang="en">Hygiene water not included in the 9 L; plan extra for washing.</span></td></tr>
+      <tr><td><b><span lang="fr">Japon</span><span lang="en">Japan</span></b></td><td><span lang="fr">3 jours min., 1 semaine idéal</span><span lang="en">3 days minimum, 1 week ideal</span></td><td><span lang="fr">3 L / pers. / jour</span><span lang="en">3 L / person / day</span></td><td><span lang="fr">Tokyo promeut le « stock du quotidien », plus lampes, radios rechargeables et réchauds à cartouche.</span><span lang="en">Tokyo promotes "everyday stockpiling" of foods you normally eat, plus torches, rechargeable radios and cassette gas stoves.</span></td></tr>
+      <tr><td><b><span lang="fr">Suède</span><span lang="en">Sweden</span></b></td><td><span lang="fr">Au moins 1 semaine</span><span lang="en">At least 1 week</span></td><td><span lang="fr">Bouteilles et bidons</span><span lang="en">Bottled and canned water</span></td><td><span lang="fr">Brochure « En cas de crise ou de guerre » (nov. 2024) : nourriture sans frigo, sacs de couchage, radio, batteries, liste papier des numéros, espèces.</span><span lang="en">"In case of crisis or war" brochure (Nov 2024): food that needs no fridge, sleeping bags and blankets, radio, power banks, paper phone list, cash.</span></td></tr>
+      <tr><td><b><span lang="fr">Norvège</span><span lang="en">Norway</span></b></td><td><span lang="fr">1 semaine (depuis 2024, 3 jours avant)</span><span lang="en">1 week (since 2024, was 3 days)</span></td><td>—</td><td><span lang="fr">DSB : environ 84 % des foyers acceptent de devoir tenir seuls une semaine ; moins de la moitié stockent de l'eau.</span><span lang="en">DSB: about 84% of households accept they must cope alone for a week; fewer than half store drinking water.</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="two">
+    <div class="box"><h3><span lang="fr">Ce sur quoi tous s'accordent</span><span lang="en">Where they all agree</span></h3>
+      <ul>
+        <li><span lang="fr">L'eau d'abord, puis une nourriture sans frigo et avec peu ou pas de cuisson.</span><span lang="en">Water first, then food that needs no fridge and little or no cooking.</span></li>
+        <li><span lang="fr">Une radio qui fonctionne sans secteur ni internet.</span><span lang="en">A radio that works without mains power or internet.</span></li>
+        <li><span lang="fr">Éclairage, piles de rechange et batteries chargées.</span><span lang="en">Light, spare batteries and charged power banks.</span></li>
+        <li><span lang="fr">Médicaments, premiers secours, hygiène.</span><span lang="en">Medication, first aid, hygiene supplies.</span></li>
+        <li><span lang="fr">Espèces, copies des documents, liste papier des numéros.</span><span lang="en">Cash, copies of documents, a paper list of phone numbers.</span></li>
+        <li><span lang="fr">Prévoir pour enfants, aînés, besoins médicaux et animaux.</span><span lang="en">Plans for children, older relatives, people with medical needs, and pets.</span></li>
+      </ul></div>
+    <div class="box"><h3><span lang="fr">Ce que ce plan retient de chacun</span><span lang="en">What this plan takes from each</span></h3>
+      <ul>
+        <li><span lang="fr"><b>Durée :</b> 14 jours (objectif US pour l'eau), au-delà des 10 jours allemands.</span><span lang="en"><b>Length:</b> 14 days (US home water target), beyond Germany's 10 days.</span></li>
+        <li><span lang="fr"><b>Eau :</b> 3 L/jour en bouteilles (JP, CH, UK) plus des jerricans pour l'hygiène, pour approcher les 3,8 L américains.</span><span lang="en"><b>Water:</b> 3 L/day bottled (JP, CH, UK) plus containers for hygiene to approach the US 3.8 L.</span></li>
+        <li><span lang="fr"><b>Nourriture :</b> repères allemands en calories et en poids, ramenés à 14 jours.</span><span lang="en"><b>Food:</b> German calorie and weight benchmarks, scaled to 14 days.</span></li>
+        <li><span lang="fr"><b>Méthode :</b> le stock du quotidien japonais.</span><span lang="en"><b>Method:</b> Japanese everyday stockpiling, rotating what you eat.</span></li>
+        <li><span lang="fr"><b>Confinement :</b> kit issu de la liste américaine.</span><span lang="en"><b>Shelter-in-place kit:</b> from the US list.</span></li>
+        <li><span lang="fr"><b>Scénario cyber :</b> mis en avant par la France et les Pays-Bas ; voir la partie Données.</span><span lang="en"><b>Cyber scenario:</b> emphasised by France and the Netherlands; covered in the Data section.</span></li>
+      </ul></div>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><div class="eyebrow"><span lang="fr">Références</span><span lang="en">References</span></div><h2>Sources</h2></div>
+  <div class="box"><ul>
+    <li><a href="https://www.info.gouv.fr/actualite/tous-responsables-un-guide-pour-mieux-faire-face-aux-risques" target="_blank" rel="noopener">France — Tous responsables (info.gouv.fr)</a></li>
+    <li><a href="https://lepetitjournal.com/expat-pratique/lue-encourage-les-citoyens-preparer-un-kit-de-survie-de-72-heures-en-cas-de-crise-409003" target="_blank" rel="noopener">EU — 72 h (Le Petit Journal)</a></li>
+    <li><a href="https://www.rijksoverheid.nl/actueel/nieuws/2025/11/17/minister-van-oosten-presenteert-informatieboekje-bereid-je-voor-op-een-noodsituatie" target="_blank" rel="noopener">Netherlands — Denk vooruit (Rijksoverheid)</a></li>
+    <li><a href="https://www.vrt.be/vrtnws/fr/2026/04/21/le-centre-national-de-crise-lance-une-campagne-incitant-les-belg/" target="_blank" rel="noopener">Belgium — Centre de crise (VRT)</a></li>
+    <li><a href="https://news.stv.tv/world/government-releases-household-emergency-plan-urging-public-to-be-prepared-for-crisis-including-pandemic" target="_blank" rel="noopener">UK — Prepare (STV)</a></li>
+    <li><a href="https://www.nidirect.gov.uk/articles/household-emergency-kit" target="_blank" rel="noopener">UK — Household emergency kit (nidirect)</a></li>
+    <li><a href="https://www.redcross.org/content/dam/redcross/atg/PDF_s/Preparedness___Disaster_Recovery/Disaster_Preparedness/Food_Safety/Food_and_Water-English.revised_7-09.pdf" target="_blank" rel="noopener">US — Food and Water in an Emergency (FEMA / Red Cross)</a></li>
+    <li><a href="https://gema.georgia.gov/node/14461" target="_blank" rel="noopener">US — Build a Kit (Georgia EMA)</a></li>
+    <li><a href="https://www.infranken.de/ratgeber/verbraucher/notfall-vorraete-diese-offizielle-checkliste-zeigt-was-du-brauchst-art-5310710" target="_blank" rel="noopener">Germany — BBK 10 days (inFranken)</a></li>
+    <li><a href="https://www.zh.ch/de/wirtschaft-arbeit/wirtschaftliche-landesversorgung/notvorrat/wasser.html" target="_blank" rel="noopener">Switzerland — Notvorrat (Kanton Zürich)</a></li>
+    <li><a href="https://www.bichiku.metro.tokyo.lg.jp/en/why/" target="_blank" rel="noopener">Japan — Tokyo everyday stockpiling</a></li>
+    <li><a href="https://www.nippon.com/en/japan-data/h01939/" target="_blank" rel="noopener">Japan — nippon.com</a></li>
+    <li><a href="https://www.mcf.se/en/advice-for-individuals/home-preparedness--prepping-for-at-least-a-week/basics-of-home-emergency-preparedness/" target="_blank" rel="noopener">Sweden — MCF</a></li>
+    <li><a href="https://dsb.no/siteassets/rapporter-og-publikasjoner/rapporter/rapport-om-husholdningers-egenberedskap-2025" target="_blank" rel="noopener">Norway — DSB 2025</a></li>
+    <li><a href="https://www.georisques.gouv.fr/" target="_blank" rel="noopener">Géorisques</a></li>
+    <li><a href="https://www.cybermalveillance.gouv.fr/" target="_blank" rel="noopener">Cybermalveillance.gouv.fr</a></li>
+  </ul></div>
+</section>
+
+<footer>
+  <p>© 2026 M. BARADHY</p>
+  <p><span lang="fr">Prix moyens indicatifs pour la France en octobre 2026, variables selon les magasins. Les liens « Acheter » lancent une recherche sur le site du magasin : vérifiez le produit, la quantité et le prix avant de commander. Quantités indicatives ; adaptez aux régimes, bébés (lait, couches) et besoins médicaux.</span><span lang="en">Prices are rough averages for France in October 2026 and vary by store. "Buy" links run a search on the shop's site: check the product, quantity and price before ordering. Quantities are planning estimates; adapt to special diets, babies (formula, nappies) and medical needs.</span></p>
+  <p><span lang="fr">Les comprimés d'iode sont distribués par les pharmacies aux habitants proches des sites nucléaires et ne se prennent que sur ordre des autorités.</span><span lang="en">Iodine tablets are distributed by pharmacies to people living near nuclear sites and must only be taken when the authorities say so.</span></p>
+</footer>
+</main>
+</div>
+</div>
+
+<script>
+(function(){
+  var KEY='kit14-v2';
+  var S={a:2,c:0,p:0,opt:false,lang:null,done:{}};
+  try{var raw=localStorage.getItem(KEY);if(raw){var o=JSON.parse(raw);for(var k in o)S[k]=o[k];}}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+
+  // language
+  var rf=document.getElementById('lg-fr'),re=document.getElementById('lg-en');
+  var L=S.lang||((navigator.language||'fr').toLowerCase().indexOf('fr')===0?'fr':'en');
+  (L==='en'?re:rf).checked=true;document.documentElement.lang=L;
+  function setLang(l){L=l;S.lang=l;document.documentElement.lang=l;save();render();}
+  rf.addEventListener('change',function(){if(rf.checked)setLang('fr');});
+  re.addEventListener('change',function(){if(re.checked)setLang('en');});
+
+  function T(o){if(typeof o==='string')return o;return '<span lang="fr">'+o.fr+'</span><span lang="en">'+o.en+'</span>';}
+  function P(o){return typeof o==='string'?o:o[L];}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+
+  var W={SUP:{fr:'Supermarché',en:'Supermarket'},DEC:'Decathlon',PHA:{fr:'Pharmacie',en:'Pharmacy'},DIY:'Leroy Merlin / Castorama',ELE:'Boulanger / Darty / Fnac',ACT:'Action',WEB:{fr:'En ligne',en:'Online'},BOOK:{fr:'Librairie / IGN',en:'Bookshop / IGN'}};
+  var SHOPS={
+    CAR:{name:'Carrefour',url:'https://www.carrefour.fr/s?q='},
+    DEC:{name:'Decathlon',url:'https://www.decathlon.fr/search?Ntt='},
+    AMZ:{name:'Amazon.fr',url:'https://www.amazon.fr/s?k='},
+    LM:{name:'Leroy Merlin',url:'https://www.leroymerlin.fr/v3/search/search.do?keyword='},
+    BOU:{name:'Boulanger',url:'https://www.boulanger.com/resultats?tr='},
+    FNAC:{name:'Fnac',url:'https://www.fnac.com/SearchResult/ResultList.aspx?Search='},
+    PHA:{name:{fr:'Pharmacie (sur place)',en:'Pharmacy (in person)'},url:null}
+  };
+  var U={cans:{fr:'boîtes',en:'cans'},pcs:{fr:'pcs',en:'pcs'},set:{fr:'lot',en:'set'},sets:{fr:'lots',en:'sets'},jars:{fr:'pots',en:'jars'},boxes:{fr:'boîtes',en:'boxes'},box:{fr:'boîte',en:'box'},bottles:{fr:'flacons',en:'bottles'},rolls:{fr:'rouleaux',en:'rolls'},packs:{fr:'paquets',en:'packs'},bags:{fr:'sacs',en:'bags'},bag:{fr:'sac',en:'bag'},pets:{fr:'animaux',en:'pets'},pers:{fr:'pers.',en:'people'}};
+  function up(x){return Math.ceil(x-1e-9);}
+  function B(shop,q){return {s:shop,q:q};}
+
+  var CATS=[
+   {name:{fr:'Eau',en:'Water'},items:[
+    {id:'w1',n:{fr:'Eau en bouteille',en:'Bottled water'},note:{fr:'3 L par personne et par jour pour boire et cuisiner (minimum Japon, Suisse, UK), plus les animaux. L\'eau de toilette vient des jerricans.',en:'3 L per person per day for drinking and cooking (Japan, Switzerland, UK minimum), plus pets. Washing water comes from the containers below.'},q:function(h){return h.people*42+h.p*7;},u:'L',sub:function(q){return {fr:'≈ '+up(q/9)+' packs de 6 × 1,5 L',en:'≈ '+up(q/9)+' packs of 6 × 1.5 L'};},bq:function(q){return up(q/9)+' packs';},cost:function(q){return up(q/9)*2.6;},w:['SUP'],b:[B('CAR','eau de source 6x1,5L')],pr:'E'},
+    {id:'w2',n:{fr:'Jerricans pliables 20 L',en:'Foldable water containers, 20 L'},note:{fr:'À remplir au robinet dès les premiers signes, pour la toilette et les WC. Les États-Unis comptent 3,8 L/pers./jour hygiène comprise.',en:'Fill from the tap at the first sign of trouble, for washing and flushing. The US counts about 3.8 L per person per day once hygiene is included.'},q:function(h){return Math.max(2,up(h.people/2));},u:'pcs',price:10,w:['DEC','DIY'],b:[B('DEC','jerrican pliable'),B('AMZ','jerrican pliable 20L')],pr:'R'},
+    {id:'w3',n:{fr:'Pastilles de purification ou gourde filtrante',en:'Water purification tablets or filter bottle'},note:{fr:'En secours si l\'eau en bouteille manque.',en:'Back-up if bottled water runs out.'},q:function(){return 1;},u:'set',price:15,w:['DEC','PHA'],b:[B('DEC','pastilles purification eau'),B('AMZ','pastilles purification eau')],pr:'R'}
+   ]},
+   {name:{fr:'Nourriture (sans frigo)',en:'Food (no fridge needed)'},items:[
+    {id:'f1',n:{fr:'Pâtes, riz, couscous',en:'Pasta, rice, couscous'},note:{fr:'Le couscous se prépare avec de l\'eau bouillante versée dessus.',en:'Couscous only needs boiling water poured over it.'},q:function(h){return up(h.eat*2);},u:'kg',price:2,w:['SUP'],b:[B('CAR','pâtes'),B('CAR','couscous')],pr:'E'},
+    {id:'f2',n:{fr:'Conserves de poisson ou viande',en:'Canned fish or meat'},note:{fr:'Thon, sardines, maquereau, poulet, chili. Se mangent froids.',en:'Tuna, sardines, mackerel, chicken, chili. Edible cold.'},q:function(h){return up(h.eat*10);},u:'cans',price:1.9,w:['SUP'],b:[B('CAR','conserve thon'),B('CAR','sardines')],pr:'E'},
+    {id:'f3',n:{fr:'Plats cuisinés et légumes en conserve',en:'Canned ready meals and vegetables'},note:{fr:'Ratatouille, petit salé aux lentilles, cassoulet, légumes.',en:'Ratatouille, lentils with sausage, cassoulet, vegetables.'},q:function(h){return up(h.eat*10);},u:'cans',price:1.9,w:['SUP'],b:[B('CAR','plat cuisiné conserve'),B('CAR','légumes conserve')],pr:'E'},
+    {id:'f4',n:{fr:'Haricots, lentilles, pois chiches en conserve',en:'Canned beans, lentils, chickpeas'},note:{fr:'Protéines et fibres, prêts à manger.',en:'Protein and fibre, ready to eat.'},q:function(h){return up(h.eat*6);},u:'cans',price:1.1,w:['SUP'],b:[B('CAR','lentilles conserve')],pr:'E'},
+    {id:'f5',n:{fr:'Flocons d\'avoine, muesli, céréales',en:'Oats, muesli or cereal'},note:{fr:'Petit-déjeuner avec lait UHT ou eau.',en:'Breakfast with UHT milk or water.'},q:function(h){return up(h.eat*1.5);},u:'kg',price:3,w:['SUP'],b:[B('CAR','flocons d\'avoine')],pr:'E'},
+    {id:'f6',n:{fr:'Biscottes, crackers, pain longue conservation',en:'Crackers, biscottes, long-life bread'},note:{fr:'Pour remplacer le pain.',en:'Bread replacement.'},q:function(h){return up(h.eat*1);},u:'kg',price:3.5,w:['SUP'],b:[B('CAR','biscottes')],pr:'E'},
+    {id:'f14',n:{fr:'Fruits en conserve ou en bocal',en:'Canned or jarred fruit'},note:{fr:'Le BBK allemand prévoit 2,5 kg de fruits par personne pour 10 jours.',en:'Germany\'s BBK plans 2.5 kg of fruit per person for 10 days.'},q:function(h){return up(h.eat*6);},u:'jars',price:2,w:['SUP'],b:[B('CAR','fruits au sirop')],pr:'R'},
+    {id:'f7',n:{fr:'Lait UHT ou boisson végétale',en:'UHT milk or plant drink'},note:{fr:'Ou lait en poudre, moins encombrant.',en:'Or milk powder, which takes less space.'},q:function(h){return up(h.eat*7);},u:'L',price:1.1,w:['SUP'],b:[B('CAR','lait UHT')],pr:'R'},
+    {id:'f8',n:{fr:'Fruits secs et oléagineux',en:'Nuts and dried fruit'},note:{fr:'Beaucoup de calories, aucune préparation.',en:'Dense calories, no preparation.'},q:function(h){return up(h.eat*1);},u:'kg',price:12,w:['SUP'],b:[B('CAR','fruits secs')],pr:'R'},
+    {id:'f9',n:{fr:'Beurre de cacahuète ou pâte à tartiner',en:'Peanut butter or spread'},note:'',q:function(h){return up(h.eat*1);},u:'jars',price:3,w:['SUP'],b:[B('CAR','beurre de cacahuète')],pr:'R'},
+    {id:'f10',n:{fr:'Compotes en gourde',en:'Fruit compote pouches'},note:{fr:'Vitamines et moral, surtout pour les enfants.',en:'Vitamins and morale, especially for children.'},q:function(h){return up(h.eat*10);},u:'pcs',price:0.45,w:['SUP'],b:[B('CAR','compote gourde')],pr:'R'},
+    {id:'f11',n:{fr:'Chocolat, barres de céréales ou énergétiques',en:'Chocolate, energy or cereal bars'},note:'',q:function(h){return up(h.eat*10);},u:'pcs',price:0.6,w:['SUP','ACT'],b:[B('CAR','barre de céréales')],pr:'R'},
+    {id:'f12',n:{fr:'Huile, sel, sucre ou miel, café, thé',en:'Oil, salt, sugar or honey, coffee, tea'},note:{fr:'Les bases pour tout le foyer.',en:'Basics for the whole household.'},q:function(){return 1;},u:'set',price:15,w:['SUP'],b:[B('CAR','café moulu')],pr:'R'},
+    {id:'f13',n:{fr:'Nourriture pour animaux',en:'Pet food'},note:{fr:'Deux semaines par animal.',en:'Two weeks per animal.'},q:function(h){return h.p;},u:'pets',price:15,w:['SUP'],b:[B('CAR','croquettes')],pr:'E'}
+   ]},
+   {name:{fr:'Cuisson',en:'Cooking'},items:[
+    {id:'c1',n:{fr:'Réchaud à gaz (cartouche ou cassette)',en:'Gas stove (cartridge or cassette)'},note:{fr:'Réchaud de table à cassette (le standard japonais) ou réchaud de camping. À utiliser près d\'une fenêtre ouverte ou sur un balcon ouvert.',en:'A table-top cassette stove (the Japanese standard) or a camping stove. Use near an open window or on an open balcony.'},q:function(){return 1;},u:'pcs',price:25,w:['DEC','SUP'],b:[B('DEC','réchaud cartouche'),B('AMZ','réchaud à cassette gaz')],pr:'E'},
+    {id:'c2',n:{fr:'Cartouches de gaz compatibles',en:'Gas cartridges matching the stove'},note:{fr:'Environ 1 h 30 à 2 h de flamme chacune.',en:'About 1 h 30–2 h of burning each.'},q:function(h){return up(h.people*14*0.25/1.75)+1;},u:'pcs',price:3.5,w:['DEC','SUP'],b:[B('DEC','cartouche gaz')],pr:'E'},
+    {id:'c3',n:{fr:'Briquets et allumettes',en:'Lighters and matches'},note:'',q:function(){return 3;},u:'pcs',price:1.5,w:['SUP','ACT'],b:[B('CAR','briquet')],pr:'E'},
+    {id:'c4',n:{fr:'Ouvre-boîte manuel',en:'Manual can opener'},note:'',q:function(){return 1;},u:'pcs',price:5,w:['SUP','ACT'],b:[B('CAR','ouvre boîte'),B('AMZ','ouvre boîte manuel')],pr:'E'},
+    {id:'c5',n:{fr:'Détecteur de monoxyde de carbone',en:'Carbon monoxide detector'},note:{fr:'Indispensable si vous cuisinez ou chauffez au gaz.',en:'Essential if you cook or heat with gas.'},q:function(){return 1;},u:'pcs',price:22,w:['DIY'],b:[B('LM','détecteur monoxyde de carbone'),B('AMZ','détecteur monoxyde de carbone')],pr:'E'}
+   ]},
+   {name:{fr:'Éclairage, énergie & radio',en:'Light, power & radio'},items:[
+    {id:'p1',n:{fr:'Radio d\'urgence (FM/AM, dynamo, solaire, USB)',en:'Emergency radio (FM/AM, crank, solar, USB)'},note:{fr:'Votre lien avec l\'information officielle sans internet.',en:'Your link to official information with no internet.'},q:function(){return 1;},u:'pcs',price:45,w:['ELE','WEB','DEC'],b:[B('BOU','radio dynamo'),B('AMZ','radio urgence dynamo solaire'),B('FNAC','radio dynamo')],pr:'E'},
+    {id:'p2',n:{fr:'Lampe frontale',en:'Headlamp'},note:{fr:'Mains libres, une par personne.',en:'Hands free, one each.'},q:function(h){return h.people;},u:'pcs',price:15,w:['DEC','SUP'],b:[B('DEC','lampe frontale')],pr:'E'},
+    {id:'p3',n:{fr:'Lanterne LED',en:'LED lantern'},note:{fr:'Plus sûre que les bougies.',en:'Safer than candles.'},q:function(h){return h.people>3?2:1;},u:'pcs',price:15,w:['DEC','ACT'],b:[B('DEC','lanterne LED')],pr:'E'},
+    {id:'p4',n:{fr:'Piles AA et AAA',en:'Batteries AA and AAA'},note:{fr:'Adaptées à la radio, aux lampes et au thermomètre.',en:'Match your radio, lamps and thermometer.'},q:function(h){return 24+h.people*6;},u:'pcs',price:0.45,w:['SUP','ACT'],b:[B('CAR','piles AA'),B('AMZ','piles AA AAA')],pr:'E'},
+    {id:'p5',n:{fr:'Batterie externe 20 000 mAh',en:'Power bank 20,000 mAh'},note:{fr:'Recharge un téléphone environ 4 fois.',en:'Each one recharges a phone about 4 times.'},q:function(h){return h.a;},u:'pcs',price:25,w:['ELE','SUP','WEB'],b:[B('BOU','batterie externe 20000 mAh'),B('AMZ','batterie externe 20000mAh')],pr:'E'},
+    {id:'p6',n:{fr:'Chargeur USB pour voiture',en:'Car charger for phones (USB)'},note:'',q:function(){return 1;},u:'pcs',price:10,w:['ELE','SUP'],b:[B('BOU','chargeur allume cigare USB')],pr:'R'},
+    {id:'p7',n:{fr:'Station d\'énergie portable 300–500 Wh',en:'Portable power station, 300–500 Wh'},note:{fr:'Alimente lampes, téléphones, ordinateur ou box pendant des jours.',en:'Runs lights, phones, a laptop or a router for days.'},q:function(h){return h.opt?1:0;},u:'pcs',price:350,w:['ELE','WEB'],b:[B('BOU','station énergie portable'),B('AMZ','station électrique portable 500Wh')],pr:'O'},
+    {id:'p8',n:{fr:'Panneau solaire pliable 100 W',en:'Foldable solar panel, 100 W'},note:{fr:'Recharge la station au soleil.',en:'Recharges the power station in sunlight.'},q:function(h){return h.opt?1:0;},u:'pcs',price:160,w:['ELE','WEB','DEC'],b:[B('AMZ','panneau solaire pliable 100W'),B('BOU','panneau solaire portable')],pr:'O'}
+   ]},
+   {name:{fr:'Chaleur',en:'Warmth'},items:[
+    {id:'h1',n:{fr:'Sac de couchage, confort 5 °C ou moins',en:'Sleeping bag, comfort rating 5 °C or lower'},note:{fr:'Pour rester au chaud sans chauffage.',en:'Lets you stay warm without heating.'},q:function(h){return h.people;},u:'pcs',price:35,w:['DEC'],b:[B('DEC','sac de couchage 5°')],pr:'R'},
+    {id:'h2',n:{fr:'Couvertures de survie',en:'Survival blankets'},note:{fr:'Légères, bon marché, utiles aussi en secourisme.',en:'Light, cheap, also for first aid.'},q:function(h){return h.people;},u:'pcs',price:2,w:['DEC','PHA'],b:[B('DEC','couverture de survie')],pr:'E'},
+    {id:'h3',n:{fr:'Sous-vêtements thermiques ou laine',en:'Thermal or wool base layers'},note:{fr:'Utilisez ce que vous avez ; achetez un ensemble si besoin.',en:'Use what you have; buy one set if needed.'},q:function(h){return h.people;},u:'sets',price:20,w:['DEC'],b:[B('DEC','sous-vêtement thermique')],pr:'O'}
+   ]},
+   {name:{fr:'Santé',en:'Health'},items:[
+    {id:'m1',n:{fr:'Traitement habituel, 2 semaines de plus',en:'Regular medication, 2+ weeks extra'},note:{fr:'Demandez à votre médecin une ordonnance couvrant une réserve.',en:'Ask your doctor for a prescription covering a reserve.'},q:function(h){return h.people;},u:'pers',price:0,w:['PHA'],b:[B('PHA','')],pr:'E'},
+    {id:'m2',n:{fr:'Trousse de premiers secours',en:'First-aid kit'},note:{fr:'Pansements, compresses, antiseptique, sparadrap, ciseaux, pince, gants.',en:'Dressings, compresses, antiseptic, tape, scissors, tweezers, gloves.'},q:function(){return 1;},u:'set',price:25,w:['PHA','DEC'],b:[B('DEC','trousse de secours'),B('AMZ','trousse de secours')],pr:'E'},
+    {id:'m3',n:{fr:'Paracétamol',en:'Paracetamol'},note:{fr:'Douleur et fièvre ; forme enfant si besoin. Vendu en pharmacie.',en:'Pain and fever; children\'s form if needed. Sold in pharmacies.'},q:function(){return 2;},u:'boxes',price:2.2,w:['PHA'],b:[B('PHA','')],pr:'E'},
+    {id:'m4',n:{fr:'Solutés de réhydratation orale',en:'Oral rehydration salts'},note:{fr:'En cas de diarrhée, important pour les enfants.',en:'For diarrhoea, important for children.'},q:function(){return 1;},u:'box',price:6,w:['PHA'],b:[B('PHA','')],pr:'E'},
+    {id:'m5',n:{fr:'Thermomètre',en:'Thermometer'},note:'',q:function(){return 1;},u:'pcs',price:8,w:['PHA','SUP'],b:[B('AMZ','thermomètre médical')],pr:'R'},
+    {id:'m6',n:{fr:'Masques FFP2',en:'FFP2 masks'},note:{fr:'Poussière, fumée, maladie.',en:'Dust, smoke, illness.'},q:function(h){return h.people*10;},u:'pcs',price:0.5,w:['PHA','SUP'],b:[B('AMZ','masque FFP2')],pr:'R'},
+    {id:'m7',n:{fr:'Gel hydroalcoolique',en:'Hand sanitiser gel'},note:'',q:function(){return 2;},u:'bottles',price:3,w:['PHA','SUP'],b:[B('CAR','gel hydroalcoolique')],pr:'E'}
+   ]},
+   {name:{fr:'Hygiène & sanitaires',en:'Hygiene & sanitation'},items:[
+    {id:'y1',n:{fr:'Papier toilette',en:'Toilet paper'},note:'',q:function(h){return h.people*6;},u:'rolls',price:0.4,w:['SUP'],b:[B('CAR','papier toilette')],pr:'E'},
+    {id:'y2',n:{fr:'Lingettes',en:'Wet wipes'},note:{fr:'Pour se laver quand l\'eau manque.',en:'Washing when water is scarce.'},q:function(h){return h.people*2;},u:'packs',price:2,w:['SUP','ACT'],b:[B('CAR','lingettes')],pr:'E'},
+    {id:'y3',n:{fr:'Sacs poubelle résistants 50 L',en:'Heavy-duty bin bags, 50 L'},note:{fr:'Déchets et sacs pour toilettes de secours.',en:'Waste and emergency toilet liners.'},q:function(){return 30;},u:'bags',price:0.15,w:['SUP','DIY'],b:[B('CAR','sac poubelle 50L')],pr:'E'},
+    {id:'y4',n:{fr:'Seau avec couvercle étanche',en:'Bucket with tight lid'},note:{fr:'Toilettes de secours si l\'eau est coupée.',en:'Emergency toilet if water stops.'},q:function(){return 1;},u:'pcs',price:9,w:['DIY'],b:[B('LM','seau avec couvercle')],pr:'R'},
+    {id:'y5',n:{fr:'Litière pour chat',en:'Cat litter'},note:{fr:'Pour couvrir les déchets dans les toilettes de secours.',en:'Covers waste in the emergency toilet.'},q:function(){return 1;},u:'bag',price:5,w:['SUP'],b:[B('CAR','litière')],pr:'R'},
+    {id:'y6',n:{fr:'Savon, protections hygiéniques, couches si besoin',en:'Soap, sanitary products, nappies if needed'},note:{fr:'À adapter au foyer.',en:'Adapt to the household.'},q:function(){return 1;},u:'set',price:15,w:['SUP','PHA'],b:[B('CAR','savon')],pr:'E'}
+   ]},
+   {name:{fr:'Sécurité & outils',en:'Home safety & tools'},items:[
+    {id:'t1',n:{fr:'Extincteur poudre ABC 2 kg',en:'Fire extinguisher, ABC powder 2 kg'},note:'',q:function(){return 1;},u:'pcs',price:30,w:['DIY'],b:[B('LM','extincteur poudre ABC 2kg')],pr:'R'},
+    {id:'t2',n:{fr:'Détecteur de fumée (obligatoire)',en:'Smoke detector (legally required)'},note:{fr:'Vérifiez qu\'il fonctionne.',en:'Check it works.'},q:function(){return 1;},u:'pcs',price:15,w:['DIY','SUP'],b:[B('LM','détecteur de fumée')],pr:'E'},
+    {id:'t3',n:{fr:'Couteau multifonction',en:'Multi-tool or pocket knife'},note:'',q:function(){return 1;},u:'pcs',price:20,w:['DEC','DIY'],b:[B('DEC','couteau multifonction')],pr:'R'},
+    {id:'t4',n:{fr:'Ruban adhésif toilé, bâche, gants',en:'Duct tape, plastic sheeting, work gloves'},note:{fr:'Bâche et adhésif pour calfeutrer une pièce en cas de confinement (consigne américaine).',en:'Sheeting and tape seal a room if told to shelter in place (US guidance).'},q:function(){return 1;},u:'set',price:12,w:['DIY','ACT'],b:[B('LM','ruban adhésif toilé'),B('LM','bâche plastique')],pr:'R'},
+    {id:'t7',n:{fr:'Doubles des clés, lunettes de rechange',en:'Spare house and car keys, spare glasses'},note:{fr:'De la liste britannique ; on les oublie facilement.',en:'From the UK checklist; easy to forget.'},q:function(){return 1;},u:'set',price:10,w:['DIY'],b:[],pr:'R'},
+    {id:'t5',n:{fr:'Sifflet',en:'Whistle'},note:{fr:'Pour signaler sa présence si on est bloqué.',en:'To signal if trapped.'},q:function(h){return h.people;},u:'pcs',price:3,w:['DEC'],b:[B('DEC','sifflet')],pr:'R'},
+    {id:'t6',n:{fr:'Sac d\'évacuation (sac à dos)',en:'Grab bag (backpack)'},note:{fr:'Contient le kit 72 h si vous devez partir.',en:'Holds the 72 h kit if you must leave.'},q:function(){return 1;},u:'pcs',price:20,w:['DEC'],b:[B('DEC','sac à dos 30L')],pr:'R'}
+   ]},
+   {name:{fr:'Données, documents & cartes',en:'Data, documents & maps'},items:[
+    {id:'k1',n:{fr:'Disque dur externe 1–2 To',en:'External drive 1–2 TB'},note:{fr:'Sauvegarde hors ligne ; à garder débranché.',en:'Offline backup; keep unplugged.'},q:function(){return 1;},u:'pcs',price:70,w:['ELE','WEB'],b:[B('BOU','disque dur externe 2 To'),B('FNAC','disque dur externe 2 To')],pr:'E'},
+    {id:'k2',n:{fr:'Clé USB 64 Go',en:'USB key 64 GB'},note:{fr:'Copie chiffrée des documents.',en:'Encrypted copy of documents.'},q:function(){return 1;},u:'pcs',price:12,w:['ELE','SUP'],b:[B('BOU','clé USB 64 Go')],pr:'E'},
+    {id:'k3',n:{fr:'Pochette étanche pour documents',en:'Waterproof document pouch'},note:{fr:'Copies papier et espèces.',en:'Paper copies and cash.'},q:function(){return 1;},u:'pcs',price:10,w:['DEC','WEB'],b:[B('DEC','pochette étanche'),B('AMZ','pochette étanche documents')],pr:'E'},
+    {id:'k4',n:{fr:'Carte papier d\'Île-de-France',en:'Paper map of Île-de-France'},note:'',q:function(){return 1;},u:'pcs',price:9,w:['BOOK'],b:[B('FNAC','carte routière Île-de-France')],pr:'R'},
+    {id:'k5',n:{fr:'Carnet et stylos',en:'Notebook and pens'},note:{fr:'Contacts, notes, messages.',en:'Contacts, notes, messages.'},q:function(){return 1;},u:'set',price:4,w:['SUP','ACT'],b:[B('CAR','carnet')],pr:'E'}
+   ]}
+  ];
+  var PRI={E:{fr:'Essentiel',en:'Essential'},R:{fr:'Recommandé',en:'Recommended'},O:{fr:'Option',en:'Optional'}};
+
+  var ia=document.getElementById('in-a'),ic=document.getElementById('in-c'),ip=document.getElementById('in-p'),io=document.getElementById('in-opt');
+  function clamp(v,lo,hi){v=parseInt(v,10);if(isNaN(v))v=lo;return Math.max(lo,Math.min(hi,v));}
+  function eur(x){return Math.round(x).toLocaleString('fr-FR')+' €';}
+  function link(b){var s=SHOPS[b.s];return s.url?s.url+encodeURIComponent(b.q):null;}
+  function qtyText(it,q){return q+' '+T(U[it.u]||it.u);}
+  function qtyPlain(it,q){return it.bq?it.bq(q):q+' '+P(U[it.u]||it.u);}
+
+  function render(){
+    ia.value=S.a;ic.value=S.c;ip.value=S.p;io.checked=!!S.opt;
+    var h={a:S.a,c:S.c,p:S.p,opt:S.opt,people:S.a+S.c,eat:S.a+0.7*S.c};
+    var host=document.getElementById('cats');host.innerHTML='';
+    var tE=0,tR=0,tO=0,n=0,nd=0,baskets={};
+    CATS.forEach(function(cat){
+      var rows=[],sub=0;
+      cat.items.forEach(function(it){
+        var q=it.q(h);if(!q)return;
+        var c=it.cost?it.cost(q):q*(it.price||0);
+        if(it.pr==='E')tE+=c;else if(it.pr==='R')tR+=c;else tO+=c;
+        sub+=c;n++;var d=!!S.done[it.id];if(d)nd++;
+        var buys=it.b.filter(function(b){return SHOPS[b.s].url;}).map(function(b){return '<a href="'+esc(link(b))+'" target="_blank" rel="noopener">'+SHOPS[b.s].name+' ↗</a>';}).join('');
+        if(it.b.length){var first=it.b[0];(baskets[first.s]=baskets[first.s]||[]).push({it:it,q:q,b:first,d:d});}
+        rows.push('<div class="row'+(d?' done':'')+'"><input type="checkbox" id="i-'+it.id+'" data-id="'+it.id+'"'+(d?' checked':'')+' aria-label="'+esc(it.n.fr)+'">'+
+          '<div><label class="nm" for="i-'+it.id+'">'+T(it.n)+' <span class="pri '+it.pr+'">'+T(PRI[it.pr])+'</span></label>'+
+          (it.note?'<div class="note">'+T(it.note)+'</div>':'')+
+          '<div class="where">'+it.w.map(function(k){return '<span class="chip">'+T(W[k])+'</span>';}).join('')+'</div>'+
+          (buys?'<div class="buy"><b>'+T({fr:'Acheter :',en:'Buy:'})+'</b>'+buys+'</div>':'')+'</div>'+
+          '<div class="qty">'+qtyText(it,q)+(it.sub?'<small>'+T(it.sub(q))+'</small>':'')+'</div>'+
+          '<div class="cost">'+(c?eur(c):'—')+'</div></div>');
+      });
+      if(!rows.length)return;
+      var el=document.createElement('div');el.className='cat';
+      el.innerHTML='<div class="cat-h"><h3>'+T(cat.name)+'</h3><small>≈ '+eur(sub)+'</small></div>'+rows.join('');
+      host.appendChild(el);
+    });
+    // baskets
+    var bh=document.getElementById('bask');bh.innerHTML='';
+    ['CAR','DEC','AMZ','LM','BOU','FNAC','PHA'].forEach(function(k){
+      var list=baskets[k];if(!list)return;var s=SHOPS[k];
+      var lis=list.map(function(x){var u=link(x.b);var nm=T(x.it.n);
+        return '<li><span class="q">'+esc(qtyPlain(x.it,x.q))+'</span>'+(u?'<a href="'+esc(u)+'" target="_blank" rel="noopener">'+nm+'</a>':'<span>'+nm+'</span>')+'</li>';}).join('');
+      var el=document.createElement('div');el.className='bk';
+      el.innerHTML='<div class="bk-h"><h3>'+T(s.name)+'</h3><span style="display:flex;gap:8px;align-items:center"><small>'+list.length+' '+T({fr:'articles',en:'items'})+'</small><button class="btn" type="button" data-copy="'+k+'">'+T({fr:'Copier',en:'Copy'})+'</button></span></div><ul>'+lis+'</ul>';
+      bh.appendChild(el);
+    });
+    bh._data=baskets;
+    var water=h.people*42+h.p*7;
+    var kcal=Math.round((S.a*2200+S.c*1500)*14);
+    document.getElementById('f-water').textContent=water+' L';
+    document.getElementById('f-kcal').textContent=kcal.toLocaleString('fr-FR');
+    document.getElementById('f-ess').textContent=eur(tE);
+    document.getElementById('f-all').textContent=eur(tE+tR)+(S.opt?' (+'+eur(tO)+')':'');
+    document.getElementById('pbar').style.width=(n?nd/n*100:0)+'%';
+    document.getElementById('ptxt').innerHTML=T({fr:nd+' articles cochés sur '+n,en:nd+' of '+n+' items ticked'});
+  }
+
+  document.querySelectorAll('.stepper button').forEach(function(b){
+    b.addEventListener('click',function(){var d=b.dataset.d;var lim={a:[1,12],c:[0,12],p:[0,10]}[d];S[d]=clamp(S[d]+parseInt(b.dataset.v,10),lim[0],lim[1]);save();render();});
+  });
+  [[ia,'a',1,12],[ic,'c',0,12],[ip,'p',0,10]].forEach(function(x){x[0].addEventListener('change',function(){S[x[1]]=clamp(x[0].value,x[2],x[3]);save();render();});});
+  io.addEventListener('change',function(){S.opt=io.checked;save();render();});
+  document.getElementById('cats').addEventListener('change',function(e){var id=e.target.dataset&&e.target.dataset.id;if(!id)return;S.done[id]=e.target.checked;save();render();});
+  document.getElementById('reset').addEventListener('click',function(){Object.keys(S.done).forEach(function(k){if(k.indexOf('x-')!==0)delete S.done[k];});save();render();});
+  document.getElementById('bask').addEventListener('click',function(e){
+    var btn=e.target.closest('[data-copy]');if(!btn)return;var k=btn.dataset.copy;var list=document.getElementById('bask')._data[k]||[];
+    var txt=P(SHOPS[k].name)+'\n'+list.map(function(x){var u=link(x.b);return '- '+qtyPlain(x.it,x.q)+' · '+P(x.it.n)+(u?' — '+u:'');}).join('\n');
+    var done=function(){btn.innerHTML=T({fr:'Copié',en:'Copied'});setTimeout(function(){btn.innerHTML=T({fr:'Copier',en:'Copy'});},1600);};
+    var fallback=function(){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(err){}document.body.removeChild(ta);};
+    try{navigator.clipboard.writeText(txt).then(done,fallback);}catch(err){fallback();}
+  });
+  document.querySelectorAll('.checks input').forEach(function(cb){
+    cb.checked=!!S.done['x-'+cb.id];
+    cb.addEventListener('change',function(){S.done['x-'+cb.id]=cb.checked;save();});
+  });
+  render();
+})();
+</script>
