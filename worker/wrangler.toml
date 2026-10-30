@@ -13,9 +13,9 @@ keep_vars = true   # keep variables set in the Cloudflare dashboard
 binding = "STATS"
 id = "4de9db1dcb62412dace5d2ab8100089d"   # atlas-stats
 
-# Count headlines every 30 minutes
+# Every 10 minutes: keep OpenSky fresh; every 30 minutes: headlines, ships, outcomes, snapshot
 [triggers]
-crons = ["*/30 * * * *"]
+crons = ["*/10 * * * *"]
 
 # Secrets stay in Cloudflare (Settings → Variables and Secrets), never in this file:
 # STATS_KEY, OPENSKY_CLIENT_ID, OPENSKY_CLIENT_SECRET, AISSTREAM_KEY, FIRMS_KEY, CF_RADAR_TOKEN, RESOLVE_KEY

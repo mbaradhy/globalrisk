@@ -318,7 +318,7 @@ async function fires(env, ctx) {
 }
 // What is configured (no secrets are returned)
 function layersStatus(env) {
-  return new Response(JSON.stringify({ planes: true, planesGlobal: !!(env.OPENSKY_CLIENT_ID && env.OPENSKY_CLIENT_SECRET), regions: Object.keys(HOT), ships: !!env.AISSTREAM_KEY, outages: !!env.CF_RADAR_TOKEN, fires: !!env.FIRMS_KEY, attention: !!env.STATS }), { headers: { ...J, ...CORS } });
+  return new Response(JSON.stringify({ planes: true, planesGlobal: !!(env.OPENSKY_CLIENT_ID && env.OPENSKY_CLIENT_SECRET), regions: Object.keys(HOT), ships: !!env.AISSTREAM_KEY, outages: !!env.CF_RADAR_TOKEN, fires: !!env.FIRMS_KEY, attention: !!env.STATS, oskKick: !!env.GH_DISPATCH_TOKEN }), { headers: { ...J, ...CORS } });
 }
 
 // ---------- Media attention: headlines per risk, counted every hour (cron) or on demand ----------
@@ -496,6 +496,20 @@ async function autoResolve(env, force) {
   return done;
 }
 
+
+// GitHub's own schedule is unreliable, so the relay asks GitHub to run the OpenSky job when the snapshot is over 9 minutes old.
+// Needs secret GH_DISPATCH_TOKEN: a fine-grained GitHub token for mbaradhy/globalrisk with "Actions: Read and write".
+async function oskKick(env) {
+  if (!env.GH_DISPATCH_TOKEN || !env.STATS) return;
+  const v = await env.STATS.get("osk:last"); let t = 0;
+  if (v) { const m = v.slice(0, 60).match(/"time":(\d+)/); if (m) t = +m[1] * 1000; }
+  if (Date.now() - t < 9 * 60000) return;
+  const r = await fetch("https://api.github.com/repos/mbaradhy/globalrisk/actions/workflows/opensky.yml/dispatches", { method: "POST",
+    headers: { Authorization: "Bearer " + env.GH_DISPATCH_TOKEN, Accept: "application/vnd.github+json", "User-Agent": "atlas-api", "X-GitHub-Api-Version": "2022-11-28", "Content-Type": "application/json" },
+    body: JSON.stringify({ ref: "main" }) });
+  await env.STATS.put("osk:kick", JSON.stringify({ at: new Date().toISOString(), status: r.status }), { expirationTtl: 86400 });
+}
+
 // ---------- OpenSky bridge: OpenSky blocks Cloudflare, so a scheduled GitHub job fetches it with your keys every 10 min
 // and POSTs the snapshot here (header X-Key = secret OSK_PUSH_KEY); the atlas reads it with GET /osk.
 async function osk(request, env, ctx) {
@@ -586,7 +600,12 @@ const CORS = {
 };
 
 export default {
-  async scheduled(event, env, ctx) { ctx.waitUntil(Promise.all([attUpdate(env, ctx).catch(() => {}), env.AISSTREAM_KEY ? aisRefresh(env, 20000).catch(() => {}) : null, autoResolve(env).catch(() => {})]).then(() => snapTake(env)).catch(() => {})); },
+  async scheduled(event, env, ctx) {
+    // every 10 minutes: make sure the OpenSky snapshot is fresh; every 30 minutes: headlines, ships, outcomes, snapshot
+    ctx.waitUntil(oskKick(env).catch(() => {}));
+    if (new Date(event.scheduledTime || Date.now()).getUTCMinutes() % 30 >= 10) return;
+    ctx.waitUntil(Promise.all([attUpdate(env, ctx).catch(() => {}), env.AISSTREAM_KEY ? aisRefresh(env, 20000).catch(() => {}) : null, autoResolve(env).catch(() => {})]).then(() => snapTake(env)).catch(() => {}));
+  },
   async fetch(request, env, ctx) {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
     const url = new URL(request.url);

@@ -23,6 +23,7 @@ Empty values are skipped, so you can add keys one at a time. `secrets.json` is i
 | `CF_RADAR_TOKEN` | dash.cloudflare.com → My Profile → API Tokens → Create Custom Token → permission Account · Radar · Read |
 | `RESOLVE_KEY` | any long password you make up; used to record question outcomes |
 | `OSK_PUSH_KEY` | any password you make up; the GitHub OpenSky job uses it to hand snapshots to the relay (same value as the GitHub secret) |
+| `GH_DISPATCH_TOKEN` | GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token: repository access *Only select repositories* → `globalrisk`; permissions → **Actions: Read and write**; expiration up to 1 year. Lets the relay start the OpenSky job on time (GitHub's own schedule is unreliable). |
 | `STATS_KEY` | any password you make up; opens the visitor statistics page |
 
 ## Without scripts
