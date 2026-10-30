@@ -406,18 +406,18 @@ window.addEventListener("resize",function(){if(lmCv)lmResize();});
 
 /* ===== Global Risk Index history ===== */
 var griHist=null,griHistAt=0,griRange=7;try{griRange=+localStorage.getItem("gra-grir")||7;}catch(e){}
-function griLocal(){try{return JSON.parse(localStorage.getItem("gra-grih")||"[]");}catch(e){return [];}}
+function griLocal(){try{return JSON.parse(localStorage.getItem("gra-grih2")||"[]");}catch(e){return [];}}
 function griRecord(g){
   if(performance.now()<45000)return; /* wait until the live feeds have loaded */
   var hk=new Date().toISOString().slice(0,13)+":00Z",loc=griLocal();
   if(loc.length&&loc[loc.length-1][0]===hk)return;
   loc.push([hk,Math.round(g.tot*10)/10]);if(loc.length>2200)loc=loc.slice(-2200);
-  try{localStorage.setItem("gra-grih",JSON.stringify(loc));}catch(e){}
-  if(/^https?:$/.test(location.protocol))try{fetch(orderedBases()[0]+"/gri?v="+g.tot.toFixed(1),{mode:"cors"}).catch(function(){});}catch(e){}
+  try{localStorage.setItem("gra-grih2",JSON.stringify(loc));}catch(e){}
+  if(/^https?:$/.test(location.protocol))try{fetch(orderedBases()[0]+"/gri?s=2&v="+g.tot.toFixed(1),{mode:"cors"}).catch(function(){});}catch(e){}
   griHistAt=0;if(document.getElementById("gri-hist"))drawGriHist();
 }
 function loadGriHist(){if(griHist&&Date.now()-griHistAt<15*60e3)return Promise.resolve(griHist);
-  return relay("gri?days=90",12000).then(function(j){return j.points||[];},function(){return [];}).then(function(srv){
+  return relay("gri?s=2&days=90",12000).then(function(j){return j.points||[];},function(){return [];}).then(function(srv){
     var m={};griLocal().forEach(function(p){m[p[0]]=p[1];});srv.forEach(function(p){m[p[0]]=p[1];});
     griHist=Object.keys(m).sort().map(function(k){return [Date.parse(k),m[k]];});griHistAt=Date.now();return griHist;});}
 function drawGriHist(){
@@ -442,7 +442,7 @@ function drawGriHist(){
     el.innerHTML='<div class="ah"><h2>'+esc(T2("Historique du score de tension","Tension score history"))+'</h2><div class="seg">'+[[2,"48 h"],[7,T2("7 j","7 d")],[30,T2("30 j","30 d")],[90,T2("90 j","90 d")]].map(function(r){return '<button type="button" data-grr="'+r[0]+'" aria-pressed="'+(griRange===r[0])+'">'+r[1]+'</button>';}).join("")+'</div></div>'+
      '<div class="ghc">'+chg(d1,T2("vs il y a 24 h","vs 24 h ago"))+chg(d7,T2("vs il y a 7 j","vs 7 days ago"))+'<span><small>'+esc(T2("Min · max de la période","Period low · high"))+'</small><b class="mono">'+nf(lo,0)+' · '+nf(hi,0)+'</b></span></div>'+
      '<svg viewBox="0 0 '+W+' '+H+'" class="ghs" role="img" aria-label="'+esc(T2("Courbe de l'indice mondial des risques","Global Risk Index curve"))+'">'+bands+grid+'<path d="'+path+'" fill="none" stroke="#7fd1ff" stroke-width="2.2" stroke-linejoin="round"/>'+dots+'<circle cx="'+X(now).toFixed(1)+'" cy="'+Y(g.tot).toFixed(1)+'" r="5" fill="'+g.col+'" stroke="#0a1018" stroke-width="2"/>'+ticks+'</svg>'+
-     '<p class="note">'+esc(all.length<3?T2("L'enregistrement vient de commencer : un point par heure, la courbe se remplit au fil du temps.","Recording has just started: one point per hour, the curve fills in over time."):T2("Un point par heure depuis le ","One point per hour since ")+first.toLocaleDateString(L==="fr"?"fr-FR":"en-GB",{day:"numeric",month:"short",year:"numeric"})+T2(" (médiane des navigateurs ouverts). Les années passées ne peuvent pas être reconstituées honnêtement : l'indice dépend des alertes du moment."," (median across open browsers). Earlier years can't be honestly rebuilt: the index depends on the alerts of the moment."))+'</p>';
+     '<p class="note">'+esc(all.length<3?T2("L'enregistrement vient de commencer : un point par heure, la courbe se remplit au fil du temps.","Recording has just started: one point per hour, the curve fills in over time."):T2("Un point par heure depuis le ","One point per hour since ")+first.toLocaleDateString(L==="fr"?"fr-FR":"en-GB",{day:"numeric",month:"short",year:"numeric"})+T2(" (médiane des navigateurs ouverts). Le score ne bouge que lorsque les évaluations des risques sont mises à jour."," (median across open browsers). The score only moves when the risk assessments are updated."))+'</p>';
     el.querySelectorAll("[data-grr]").forEach(function(b){b.onclick=function(){griRange=+b.dataset.grr;try{localStorage.setItem("gra-grir",griRange);}catch(e){}drawGriHist();};});
   });
 }

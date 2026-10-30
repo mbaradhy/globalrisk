@@ -330,22 +330,23 @@ async function attention(env, ctx) {
 // the relay keeps up to 7 reports per hour and serves the hourly median (robust to an odd report).
 async function gri(url, env, ctx) {
   if (!env.STATS) return jerr(503, "STATS KV not bound");
+  const P = url.searchParams.get("s") === "2" ? "gri2:" : "gri:"; // series 2 = tension score without live add-ons (from 30 Oct 2026)
   const v = parseFloat(url.searchParams.get("v"));
   if (!isNaN(v)) {
     if (v < 0 || v > 100) return jerr(400, "out of range");
-    const now = new Date(), k = "gri:" + day(now), hh = String(now.getUTCHours()).padStart(2, "0");
+    const now = new Date(), k = P + day(now), hh = String(now.getUTCHours()).padStart(2, "0");
     const d = (await env.STATS.get(k, "json")) || { h: {} };
     const arr = d.h[hh] || [];
     if (arr.length < 7) { arr.push(Math.round(v * 10) / 10); d.h[hh] = arr; await env.STATS.put(k, JSON.stringify(d), { expirationTtl: 400 * 86400 }); }
     return new Response(JSON.stringify({ ok: true }), { headers: { ...J, ...CORS } });
   }
   const days = Math.min(90, Math.max(1, parseInt(url.searchParams.get("days") || "30", 10)));
-  return cached("gri-hist-" + days + "-" + Math.floor(Date.now() / 900000), 900, ctx, async () => {
+  return cached(P + "hist-" + days + "-" + Math.floor(Date.now() / 900000), 900, ctx, async () => {
     const med = a => { const b = a.slice().sort((x, y) => x - y), m = b.length >> 1; return b.length % 2 ? b[m] : (b[m - 1] + b[m]) / 2; };
     const pts = [];
     for (let i = days - 1; i >= 0; i--) {
       const dd = day(new Date(Date.now() - i * 86400000));
-      const x = await env.STATS.get("gri:" + dd, "json");
+      const x = await env.STATS.get(P + dd, "json");
       if (x) Object.keys(x.h).sort().forEach(hh => pts.push([dd + "T" + hh + ":00Z", Math.round(med(x.h[hh]) * 10) / 10]));
     }
     return JSON.stringify({ at: new Date().toISOString(), points: pts });
