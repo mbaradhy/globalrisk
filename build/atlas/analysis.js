@@ -232,7 +232,7 @@ function anaConf(el){
 /* ===== 6. Live layers (globe) ===== */
 var LYR={planes:false,ships:false,outages:false,fires:false},LBASE="dark",LST={},LDATA={planes:[],ships:null,outages:[],fires:[]},lyrCfg=null;
 try{var ls_=JSON.parse(localStorage.getItem("gra-lyr")||"null");if(ls_){Object.assign(LYR,ls_.l||{});LBASE=ls_.b||"dark";}}catch(e){}
-var LYR_DEF=[["planes",{fr:"Trafic aérien",en:"Air traffic"},"#ffffff",{fr:"ADS-B · adsb.lol (données ouvertes)",en:"ADS-B · adsb.lol (open data)"}],["ships",{fr:"Navires (AIS)",en:"Ships (AIS)"},"#4fc3e0",{fr:"aisstream.io · clé requise",en:"aisstream.io · key needed"}],["outages",{fr:"Coupures d'internet",en:"Internet outages"},"#a98af6",{fr:"Cloudflare Radar · 7 jours",en:"Cloudflare Radar · 7 days"}],["fires",{fr:"Feux & frappes (Ukraine, Russie, Moyen-Orient)",en:"Fires & strikes (Ukraine, Russia, Middle East)"},"#ff9a3d",{fr:"NASA FIRMS · 24 h",en:"NASA FIRMS · 24 h"}]];
+var LYR_DEF=[["planes",{fr:"Trafic aérien",en:"Air traffic"},"#ffffff",{fr:"ADS-B · adsb.lol (données ouvertes)",en:"ADS-B · adsb.lol (open data)"}],["ships",{fr:"Navires (AIS)",en:"Ships (AIS)"},"#4fc3e0",{fr:"aisstream.io · AIS en direct",en:"aisstream.io · live AIS"}],["outages",{fr:"Coupures d'internet",en:"Internet outages"},"#a98af6",{fr:"Cloudflare Radar · 7 jours",en:"Cloudflare Radar · 7 days"}],["fires",{fr:"Feux & frappes (Ukraine, Russie, Moyen-Orient)",en:"Fires & strikes (Ukraine, Russia, Middle East)"},"#ff9a3d",{fr:"NASA FIRMS · 24 h",en:"NASA FIRMS · 24 h"}]];
 var BASES=[["dark",{fr:"Sombre",en:"Dark"}],["sat",{fr:"Satellite (hier)",en:"Satellite (yesterday)"}],["night",{fr:"Lumières de nuit",en:"Night lights"}]];
 var PLANE_R=["gulf","levant","blacksea","baltic","taiwan","europe","london","madrid","rome","warsaw","istanbul","nordic","alps","nyc","chicago","atlanta","dallas","la","florida","denver","seattle","tokyo","shanghai","beijing","delhi","singapore","seoul","dubai","paris","frankfurt","amsterdam","athens","lisbon","dublin","moscow","kyiv","toronto","sf","phoenix","houston","dc","boston","minneapolis","mexico","saopaulo","bogota","buenosaires","lima","cairo","johannesburg","lagos","nairobi","casablanca","riyadh","tehran","mumbai","bangkok","hongkong","chengdu","jakarta","manila","sydney","melbourne","auckland","natrack","anchorage"];
 var TRAIL={},planeSrc="",relayCfg=null;
@@ -262,7 +262,7 @@ function lyrSave(){try{localStorage.setItem("gra-lyr",JSON.stringify({l:LYR,b:LB
 function relay(path,ms){return relayText(path).then(function(t){var j=JSON.parse(t);if(j&&j.error&&!j.ships&&!j.ac)throw new Error(j.error);return j;});}
 function relayText(path){var bs=orderedBases(),i=0;return new Promise(function(res,rej){(function nx(){if(i>=bs.length){rej(new Error("failed"));return;}fetch(bs[i++]+"/"+path,{mode:"cors"}).then(function(r){if(!r.ok)return r.text().then(function(t){var m=t;try{m=JSON.parse(t).error||t;}catch(x){}var er=new Error(String(m).slice(0,140));er.final=r.status===503||r.status===400;throw er;});return r.text();}).then(res).catch(function(e){if(e.final||i>=bs.length)rej(e);else nx();});})();});}
 function lyrLoad(k){
-  if(LST[k]==="loading")return;LST[k]="loading";lyrPanel();
+  if(LST[k]==="loading")return;LST[k]="loading";lyrPanel();try{lmUpd(k);}catch(e){}
   var p;
   if(k==="planes")p=loadPlanes();
   else if(k==="ships")p=relay("ships",25000).then(function(j){if(j.error)throw new Error(j.error);LDATA.ships=j;return (j.ships||[]).length+" "+T2("navires","ships");});
