@@ -23,7 +23,7 @@ function srcList(){var cfg=relayCfg||{};var rc=function(k){return (typeof rssCac
      ["MeteoAlarm / NWS",T2("Alertes officielles","Official warnings"),!AREA?{s:"idle",t:T2("zone non choisie","no area set")}:areaWarn?{s:"ok",t:srcAgo(areaAt)}:areaWarn===false?{s:"err"}:{s:"idle"}]]],
    [{fr:"Carte en direct",en:"Live map"},[
      [T2("Avions","Aircraft"),"adsb.lol",LST.planes&&LST.planes.ok?{s:"ok",t:srcAgo(+LST.planes.at)}:LST.planes&&LST.planes.ok===false?{s:"err"}:{s:"idle"}],
-     [T2("Avions (mondial)","Aircraft worldwide"),"OpenSky",!cfg.planesGlobal?{s:"key"}:oskErr?{s:"err",t:T2("injoignable depuis Cloudflare","unreachable from Cloudflare")}:oskErr===null?{s:"ok"}:{s:"idle"}],
+     [T2("Avions (mondial)","Aircraft worldwide"),T2("OpenSky · direct, sans clé","OpenSky · direct, no key"),oskErr?{s:"err",t:oskErr}:oskErr===null&&oskAt?{s:"ok",t:srcAgo(oskAt)}:{s:"idle"}],
      [T2("Navires","Ships"),"aisstream.io",cfg.ships?(LST.ships&&LST.ships.ok?{s:"ok",t:srcAgo(+LST.ships.at)}:LST.ships&&LST.ships.ok===false?{s:"err"}:{s:"idle"}):{s:"key"}],
      [T2("Feux & frappes","Fires & strikes"),"NASA FIRMS",cfg.fires?(LST.fires&&LST.fires.ok?{s:"ok",t:srcAgo(+LST.fires.at)}:LST.fires&&LST.fires.ok===false?{s:"err"}:{s:"idle"}):{s:"key"}],
      [T2("Coupures d'internet","Internet outages"),"Cloudflare Radar",cfg.outages?(LST.outages&&LST.outages.ok?{s:"ok",t:srcAgo(+LST.outages.at)}:LST.outages&&LST.outages.ok===false?{s:"err"}:{s:"idle"}):{s:"key"}]]],

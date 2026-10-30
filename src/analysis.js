@@ -239,18 +239,24 @@ var TRAIL={},planeSrc="",relayCfg=null;
 function relayCfgP(){if(relayCfg)return Promise.resolve(relayCfg);return relay("layers",10000).then(function(j){relayCfg=j;return j;},function(){return {};});}
 function poolMap(arr,n,fn){var i=0,out=[],act=0;return new Promise(function(res){function nx(){if(i>=arr.length&&!act){res(out);return;}while(act<n&&i<arr.length){(function(k){act++;fn(arr[k]).then(function(v){out[k]=v;},function(){out[k]=null;}).then(function(){act--;nx();});})(i++);}}nx();});}
 function addTrail(h,la,lo){var t=TRAIL[h]||(TRAIL[h]=[]);var l=t[t.length-1];if(!l||Math.abs(l[0]-la)>0.01||Math.abs(l[1]-lo)>0.01)t.push([la,lo]);if(t.length>40)t.shift();}
-var oskErr;
+var oskErr,oskSnap=null,oskAt=0,oskWait=0;
 function loadPlanes(){var now=Date.now();
   function cfgRegions(){return (relayCfg&&relayCfg.regions)||PLANE_R;}
   function regional(){return poolMap(cfgRegions(),6,function(r){return relay("planes?r="+r,15000);}).then(function(a){var seen={},out=[];
     a.forEach(function(j){((j&&(j.ac||j.aircraft))||[]).forEach(function(x){if(typeof x.lat!=="number"||seen[x.hex])return;seen[x.hex]=1;var ago=(x.seen_pos||x.seen||0)*1000;
       out.push({h:x.hex,cs:(x.flight||"").trim(),og:x.r||"",ty:x.t||"",la:x.lat,lo:x.lon,alt:x.alt_baro==="ground"?0:(+x.alt_baro||0),gs:+x.gs||0,trk:+x.track||0,gnd:x.alt_baro==="ground",t:now-ago});});});
     planeSrc="ADS-B · "+a.filter(Boolean).length+" "+T2("zones","regions");return out;});}
-  return relayCfgP().then(function(cfg){
-    if(cfg&&cfg.planesGlobal)return relay("planes?r=all",30000).then(function(j){var st=j.states||[];var out=[];var t0=(j.time||now/1000)*1000;
-      st.forEach(function(a){if(a[6]==null||a[5]==null)return;out.push({h:a[0],cs:(a[1]||"").trim(),og:a[2],la:a[6],lo:a[5],alt:a[8]?0:Math.round((a[7]||a[13]||0)*3.281),gs:(a[9]||0)*1.944,trk:a[10]||0,gnd:!!a[8],t:(a[3]?a[3]*1000:t0)});});
-      if(!out.length)throw new Error("empty");planeSrc="OpenSky";oskErr=null;return out;}).catch(function(e){oskErr=String(e&&e.message||e).slice(0,120);return regional();});
-    return regional();});
+  /* OpenSky blocks Cloudflare, so the browser asks it directly (anonymous, no key): one worldwide snapshot at most every 10 min,
+     merged with the live regional ADS-B feeds; regional positions win where both exist */
+  function osky(){var age=now-oskAt;if(oskSnap&&age<600000)return Promise.resolve(oskSnap);if(now<oskWait)return Promise.resolve(oskSnap);
+    var ctl=typeof AbortController!=="undefined"?new AbortController():null;var tm=setTimeout(function(){if(ctl)ctl.abort();},20000);
+    return fetch("https://opensky-network.org/api/states/all",{mode:"cors",signal:ctl?ctl.signal:undefined}).then(function(r){clearTimeout(tm);
+      if(r.status===429){oskWait=now+3600000;throw new Error(T2("quota OpenSky atteint","OpenSky quota reached"));}if(!r.ok)throw new Error("OpenSky "+r.status);return r.json();}).then(function(j){
+      var st=j.states||[],out=[],t0=(j.time||now/1000)*1000;st.forEach(function(a){if(a[6]==null||a[5]==null)return;out.push({h:a[0],cs:(a[1]||"").trim(),og:a[2],la:a[6],lo:a[5],alt:a[8]?0:Math.round((a[7]||a[13]||0)*3.281),gs:(a[9]||0)*1.944,trk:a[10]||0,gnd:!!a[8],t:(a[3]?a[3]*1000:t0)});});
+      if(!out.length)throw new Error("empty");oskSnap=out;oskAt=now;oskErr=null;return out;},function(e){clearTimeout(tm);oskErr=String(e&&e.message||e).slice(0,120);if(/Failed to fetch|NetworkError|CORS|abort/i.test(oskErr))oskWait=now+1800000;return oskSnap;});}
+  return Promise.all([regional(),osky()]).then(function(r){var reg=r[0]||[],gl=r[1]||[];if(!gl.length)return reg;
+    var seen={};reg.forEach(function(a){seen[a.h]=1;});var add=0;gl.forEach(function(a){if(!seen[a.h]){reg.push(a);add++;}});
+    planeSrc=planeSrc+" + OpenSky "+nf(add,0);return reg;});
 }
 var AIS_NAMES={hormuz:{fr:"Ormuz",en:"Hormuz"},bab:{fr:"Bab el-Mandeb",en:"Bab el-Mandeb"},suez:{fr:"Suez",en:"Suez"},malacca:{fr:"Malacca",en:"Malacca"},taiwan:{fr:"Détroit de Taïwan",en:"Taiwan Strait"},finland:{fr:"Golfe de Finlande",en:"Gulf of Finland"},channel:{fr:"Manche",en:"English Channel"}};
 function lyrSave(){try{localStorage.setItem("gra-lyr",JSON.stringify({l:LYR,b:LBASE}));}catch(e){}}
