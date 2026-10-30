@@ -244,7 +244,7 @@ async function planes(url, ctx, env) {
 // Ships: a few seconds of live AIS from aisstream.io (needs secret AISSTREAM_KEY)
 const AIS_BOX = { hormuz: [[24, 54], [27.6, 58.6]], bab: [[11, 42], [15.5, 45]], suez: [[29.5, 32.2], [31.6, 32.8]], malacca: [[1, 100], [4.5, 104]], taiwan: [[22, 118], [26, 121.5]], finland: [[59, 22], [60.7, 30]], channel: [[49.8, -2], [51.3, 2]] };
 function inBox(la, lo, b) { return la >= b[0][0] && la <= b[1][0] && lo >= b[0][1] && lo <= b[1][1]; }
-async function collectAis(key, ms) {
+async function collectAis(key, ms, boxes, cap) {
   const resp = await fetch("https://stream.aisstream.io/v0/stream", { headers: { Upgrade: "websocket" } });
   const ws = resp.webSocket;
   if (!ws) throw new Error("aisstream refused the connection (" + resp.status + ")");
@@ -253,7 +253,7 @@ async function collectAis(key, ms) {
   ws.addEventListener("close", ev => { closed = "closed by aisstream (" + ev.code + (ev.reason ? " " + ev.reason : "") + ")"; });
   let sample = "", perr = "";
   ws.addEventListener("message", async ev => {
-    if (++n > 1500) return;
+    if (++n > (cap || 1500)) return;
     try {
       const x = ev.data;
       const txt = typeof x === "string" ? x : (x && typeof x.text === "function") ? await x.text() : new TextDecoder().decode(x instanceof ArrayBuffer ? new Uint8Array(x) : x);
@@ -266,7 +266,7 @@ async function collectAis(key, ms) {
       ships[m.MMSI] = [Math.round(la * 1000) / 1000, Math.round(lo * 1000) / 1000, Math.round((pr.Sog || 0) * 10) / 10, Math.round(pr.Cog || 0), String(m.ShipName || "").trim(), m.MMSI];
     } catch (e) { if (!perr) perr = String(e.message || e).slice(0, 80); }
   });
-  ws.send(JSON.stringify({ APIKey: key, BoundingBoxes: Object.values(AIS_BOX), FilterMessageTypes: ["PositionReport"] }));
+  ws.send(JSON.stringify({ APIKey: key, BoundingBoxes: boxes || Object.values(AIS_BOX), FilterMessageTypes: ["PositionReport"] }));
   await new Promise(r => setTimeout(r, ms || 9000));
   try { ws.close(1000, "done"); } catch (e) {}
   const list = Object.values(ships);
@@ -276,17 +276,20 @@ async function collectAis(key, ms) {
 // keep every ship seen in the last 30 minutes (KV), so each short listen adds to the picture; the cron tops it up every 30 min
 async function aisRefresh(env, ms) {
   let fresh = [], err = "";
-  try { fresh = await collectAis(env.AISSTREAM_KEY, ms); } catch (e) { err = String(e.message || e); }
+  // two listens at once: the straits (exact counts) and the whole world (the map); each ship is kept 30 minutes
+  const r = await Promise.allSettled([collectAis(env.AISSTREAM_KEY, ms), collectAis(env.AISSTREAM_KEY, ms, [[[-90, -180], [90, 180]]], 2500)]);
+  r.forEach(x => { if (x.status === "fulfilled") fresh = fresh.concat(x.value); else if (!err) err = String(x.reason && x.reason.message || x.reason); });
   if (!env.STATS) return { list: fresh, err };
   const now = Date.now(), rec = (await env.STATS.get("ais:recent", "json")) || {};
   fresh.forEach(x => { rec[x[5]] = x.concat([now]); });
   Object.keys(rec).forEach(k => { if (now - rec[k][6] > 30 * 60000) delete rec[k]; });
+  const ks = Object.keys(rec); if (ks.length > 8000) ks.sort((x, y) => rec[x][6] - rec[y][6]).slice(0, ks.length - 8000).forEach(k => delete rec[k]);
   await env.STATS.put("ais:recent", JSON.stringify(rec), { expirationTtl: 3600 });
   return { list: Object.values(rec).map(x => x.slice(0, 6)), err, fresh: fresh.length };
 }
 async function ships(env, ctx) {
   if (!env.AISSTREAM_KEY) return jerr(503, "AISSTREAM_KEY not set");
-  return cached("ships4", 300, ctx, async () => {
+  return cached("ships5", 300, ctx, async () => {
     const r = await aisRefresh(env, 15000), list = r.list;
     if (!list.length) throw new Error(r.err || "aisstream: no ships yet");
     const counts = {}; Object.keys(AIS_BOX).forEach(k => counts[k] = list.filter(s => inBox(s[0], s[1], AIS_BOX[k])).length);
