@@ -251,26 +251,31 @@ async function collectAis(key) {
   ws.accept();
   const ships = {}; let n = 0, err = "", closed = "";
   ws.addEventListener("close", ev => { closed = "closed by aisstream (" + ev.code + (ev.reason ? " " + ev.reason : "") + ")"; });
-  ws.addEventListener("message", ev => {
+  let sample = "", perr = "";
+  ws.addEventListener("message", async ev => {
     if (++n > 2500) return;
     try {
-      const d = JSON.parse(typeof ev.data === "string" ? ev.data : new TextDecoder().decode(ev.data));
-      if (d.error) { err = String(d.error); return; }
-      const m = d.MetaData; if (!m) return;
+      const x = ev.data;
+      const txt = typeof x === "string" ? x : (x && typeof x.text === "function") ? await x.text() : new TextDecoder().decode(x instanceof ArrayBuffer ? new Uint8Array(x) : x);
+      if (!sample) sample = txt.slice(0, 160);
+      const d = JSON.parse(txt);
+      if (d.error || d.Error) { err = String(d.error || d.Error); return; }
+      const m = d.MetaData || d.Metadata || d.metaData; if (!m) return;
       const pr = (d.Message || {}).PositionReport || {};
-      ships[m.MMSI] = [Math.round(m.latitude * 1000) / 1000, Math.round(m.longitude * 1000) / 1000, Math.round((pr.Sog || 0) * 10) / 10, Math.round(pr.Cog || 0), String(m.ShipName || "").trim(), m.MMSI];
-    } catch (e) {}
+      const la = m.latitude ?? m.Latitude ?? pr.Latitude, lo = m.longitude ?? m.Longitude ?? pr.Longitude; if (typeof la !== "number" || typeof lo !== "number") return;
+      ships[m.MMSI] = [Math.round(la * 1000) / 1000, Math.round(lo * 1000) / 1000, Math.round((pr.Sog || 0) * 10) / 10, Math.round(pr.Cog || 0), String(m.ShipName || "").trim(), m.MMSI];
+    } catch (e) { if (!perr) perr = String(e.message || e).slice(0, 80); }
   });
   ws.send(JSON.stringify({ APIKey: key, BoundingBoxes: Object.values(AIS_BOX), FilterMessageTypes: ["PositionReport"] }));
   await new Promise(r => setTimeout(r, 9000));
   try { ws.close(1000, "done"); } catch (e) {}
   const list = Object.values(ships);
-  if (!list.length) throw new Error("aisstream: " + (err || closed || "no positions received in 9 s (" + n + " messages)")); // not cached, so the next call retries
+  if (!list.length) throw new Error("aisstream: " + (err || closed || "no positions received in 9 s (" + n + " messages" + (perr ? "; parse error: " + perr : "") + (sample ? "; first: " + sample : "") + ")")); // not cached, so the next call retries
   return list;
 }
 async function ships(env, ctx) {
   if (!env.AISSTREAM_KEY) return jerr(503, "AISSTREAM_KEY not set");
-  return cached("ships2", 600, ctx, async () => {
+  return cached("ships3", 600, ctx, async () => {
     const list = await collectAis(env.AISSTREAM_KEY);
     const counts = {}; Object.keys(AIS_BOX).forEach(k => counts[k] = list.filter(s => inBox(s[0], s[1], AIS_BOX[k])).length);
     let avg = null;
