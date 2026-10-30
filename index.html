@@ -602,6 +602,10 @@ a.hl{display:block;text-decoration:none;color:var(--ink);border-bottom:1px solid
 @media (max-width:1100px){.agrid3{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.agrid3>.aside{grid-column:1/-1}}
 @media (max-width:900px){.agrid,.agrid3,#v-ana .agrid:has(.scen-l){grid-template-columns:minmax(0,1fr)}.scen-l{position:static}.cpick{margin-left:0;flex:1 1 100%}}
 @media (max-width:700px){.irow{grid-template-columns:minmax(0,1fr) auto;}.irow>span:last-child{grid-column:1/-1;font-size:.82rem}.gnt{grid-template-columns:minmax(96px,130px) minmax(0,1fr)}.hhg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.cn{font-size:1.8rem}.lyr{top:auto;bottom:10px;max-height:60%}}
+
+.ghc{display:flex;flex-wrap:wrap;gap:8px 22px}.ghc span{display:flex;flex-direction:column}.ghc small{color:var(--muted);font-size:.72rem}.ghc b{font-size:1.1rem}
+.ghs{display:block;width:100%;height:auto}
+#gri-hist .seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
 </style></head><body>
 
 <div class="wrap">
@@ -1949,6 +1953,7 @@ function showTab(t){
   if(t==="dash")drawDash();
   if(t==="news")drawNews();
   if(t==="ana")drawAna();
+  if(t==="dash"&&typeof drawGriHist==="function")setTimeout(drawGriHist,0);
   if(t!=="globe"&&typeof lyrOpen==="function")lyrOpen(false);
   document.querySelector(".stage").classList.toggle("ana",t==="ana");
   overlay();
@@ -2205,6 +2210,7 @@ function drawDash(){
   var spH=(gdOk===false&&!Object.keys(volCache).length)?'<div class="nodata"><b>'+esc(u("attOffH"))+'</b><p class="note">'+esc(u("attOffP"))+'</p></div>':sp.length?sp.map(function(id){var n=byId[id];return '<div data-go="'+id+'"><span><span style="color:'+col(n)+'">●</span> '+esc(tx(n.t))+'</span>'+spark(volCache[id].s,80,20)+spkBadge(id)+'</div>';}).join(""):'<p class="note">'+(gdOk===false?esc(u("nofeed")):Object.keys(volCache).length?"—":esc(u("loading")))+'</p>';
   el.innerHTML='<div class="dash"><p class="hint">☞ '+esc(u("clickHint"))+'</p>'+
    '<div class="card" id="gri-dash">'+griBig()+'</div>'+
+   '<div class="card" id="gri-hist"></div>'+
    '<div class="card"><h2>'+esc(u("kpiH"))+'</h2><div class="kpis">'+kp+'</div></div>'+
    '<div class="card"><h2>'+esc(u("liveH"))+'</h2><div class="kpis">'+lv+'</div></div>'+
    '<div class="grid2"><div class="card"><h2>'+esc(u("stressH"))+'</h2><div class="bars">'+stH+'</div></div><div class="card"><h2>'+esc(u("frH"))+'</h2><p class="note">'+esc(u("frN"))+'</p><div class="bars">'+frH+'</div></div></div>'+
@@ -2258,6 +2264,7 @@ function updateGRI(){
   pop.innerHTML='<div class="tot"><span>'+esc(u("gri"))+'</span><span style="color:'+g.col+'">'+Math.round(g.tot)+'/100 · '+esc(u("griBands")[g.band])+'</span></div>'+griRows(g)+
     '<p class="note">'+esc(u("griHow"))+'</p><p class="note">'+esc(u("griUpd"))+' '+t+'</p><button class="btn" type="button" data-gdash="1">'+esc(u("griOpen"))+' →</button>';
   var gd=document.getElementById("gri-dash");if(gd)gd.innerHTML=griBig();
+  if(typeof griRecord==="function")griRecord(g);
 }
 function griBig(){var g=griLast||computeGRI();return '<div class="gri-big"><div class="gri-ring">'+griRing(g,150,13,true)+'</div><div class="gri-head"><h2 style="margin:0">'+esc(u("gri"))+'</h2><p class="note">'+esc(u("griHow"))+'</p></div><div class="gri-rows">'+griRows(g)+'</div></div>';}
 function griToggle(open){var p=document.getElementById("gri-pop"),b=document.getElementById("gri");var o=open==null?p.hidden:open;p.hidden=!o;b.setAttribute("aria-expanded",o);}
@@ -2756,6 +2763,50 @@ function anaLive(el){
     b.innerHTML='<div class="note">'+esc(T2("État du relais","Relay status"))+'</div>'+rows.map(function(r){return '<div class="lvr"><span>'+esc(r[0])+'</span><span class="badge'+(r[1]?' okb':' warn')+'">'+esc(r[1]?T2("PRÊT","READY"):r[2]+T2(" À AJOUTER"," NEEDED"))+'</span></div>';}).join("")+(j.planesGlobal?'':'<p class="note">'+esc(T2("Sans OpenSky : avions autour de 28 grands aéroports et zones sensibles seulement.","Without OpenSky: planes around 28 major airports and hotspots only."))+'</p>');});
 }
 window.addEventListener("resize",function(){if(lmCv)lmResize();});
+
+/* ===== Global Risk Index history ===== */
+var griHist=null,griHistAt=0,griRange=7;try{griRange=+localStorage.getItem("gra-grir")||7;}catch(e){}
+function griLocal(){try{return JSON.parse(localStorage.getItem("gra-grih")||"[]");}catch(e){return [];}}
+function griRecord(g){
+  if(performance.now()<45000)return; /* wait until the live feeds have loaded */
+  var hk=new Date().toISOString().slice(0,13)+":00Z",loc=griLocal();
+  if(loc.length&&loc[loc.length-1][0]===hk)return;
+  loc.push([hk,Math.round(g.tot*10)/10]);if(loc.length>2200)loc=loc.slice(-2200);
+  try{localStorage.setItem("gra-grih",JSON.stringify(loc));}catch(e){}
+  if(/^https?:$/.test(location.protocol))try{fetch(orderedBases()[0]+"/gri?v="+g.tot.toFixed(1),{mode:"cors"}).catch(function(){});}catch(e){}
+  griHistAt=0;if(document.getElementById("gri-hist"))drawGriHist();
+}
+function loadGriHist(){if(griHist&&Date.now()-griHistAt<15*60e3)return Promise.resolve(griHist);
+  return relay("gri?days=90",12000).then(function(j){return j.points||[];},function(){return [];}).then(function(srv){
+    var m={};griLocal().forEach(function(p){m[p[0]]=p[1];});srv.forEach(function(p){m[p[0]]=p[1];});
+    griHist=Object.keys(m).sort().map(function(k){return [Date.parse(k),m[k]];});griHistAt=Date.now();return griHist;});}
+function drawGriHist(){
+  var el=document.getElementById("gri-hist");if(!el)return;
+  if(!el.firstChild)el.innerHTML='<p class="note">'+esc(u("loading"))+'</p>';
+  loadGriHist().then(function(all){el=document.getElementById("gri-hist");if(!el)return;
+    var now=Date.now(),g=griLast||computeGRI(),from=now-griRange*864e5;
+    var pts=all.filter(function(p){return p[0]>=from;});pts.push([now,Math.round(g.tot*10)/10]);
+    var W=800,H=210,pl=34,pr=12,pt=10,pb=26,y0=20,y1=100;
+    var vals=pts.map(function(p){return p[1];});var lo=Math.min.apply(null,vals),hi=Math.max.apply(null,vals);y0=Math.max(0,Math.floor((lo-8)/10)*10);y1=Math.min(100,Math.ceil((hi+8)/10)*10);if(y1-y0<30){y1=Math.min(100,y0+30);}
+    var X=function(t){return pl+(t-from)/(now-from)*(W-pl-pr);},Y=function(v){return pt+(1-(v-y0)/(y1-y0))*(H-pt-pb);};
+    var bands=[[0,40,"#5fd39a"],[40,60,"#ffd25a"],[60,75,"#ff9a3d"],[75,100,"#ff5c4d"]].map(function(b){var a=Math.max(b[0],y0),c=Math.min(b[1],y1);if(c<=a)return "";return '<rect x="'+pl+'" y="'+Y(c).toFixed(1)+'" width="'+(W-pl-pr)+'" height="'+(Y(a)-Y(c)).toFixed(1)+'" fill="'+b[2]+'" opacity=".07"/>';}).join("");
+    var grid="";for(var v=y0;v<=y1;v+=10)grid+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+Y(v).toFixed(1)+'" y2="'+Y(v).toFixed(1)+'" stroke="#1f2c39"/><text x="'+(pl-6)+'" y="'+(Y(v)+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#8c9aa8" font-family="JetBrains Mono,monospace">'+v+'</text>';
+    var ticks="",nT=griRange<=2?4:griRange<=7?7:6;for(var i=0;i<=nT;i++){var t=from+(now-from)*i/nT;var d=new Date(t);ticks+='<text x="'+X(t).toFixed(1)+'" y="'+(H-6)+'" text-anchor="'+(i===0?"start":i===nT?"end":"middle")+'" font-size="11" fill="#8c9aa8" font-family="JetBrains Mono,monospace">'+esc(griRange<=2?d.toLocaleTimeString(L==="fr"?"fr-FR":"en-GB",{hour:"2-digit",minute:"2-digit"}):d.toLocaleDateString(L==="fr"?"fr-FR":"en-GB",{day:"numeric",month:"short"}))+'</text>';}
+    /* break the line where there is a gap of more than 3 hours */
+    var path="",prev=null;pts.forEach(function(p){path+=(prev&&p[0]-prev[0]<3*3600e3?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1)+" ";prev=p;});
+    var dots=pts.length<60?pts.map(function(p){return '<circle cx="'+X(p[0]).toFixed(1)+'" cy="'+Y(p[1]).toFixed(1)+'" r="3" fill="'+(p[1]<40?"#5fd39a":p[1]<60?"#ffd25a":p[1]<75?"#ff9a3d":"#ff5c4d")+'"><title>'+esc(new Date(p[0]).toLocaleString(L==="fr"?"fr-FR":"en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}))+' · '+p[1]+'</title></circle>';}).join(""):"";
+    function ago(h){var t=now-h*3600e3,b=null;all.forEach(function(p){if(Math.abs(p[0]-t)<2*3600e3&&(!b||Math.abs(p[0]-t)<Math.abs(b[0]-t)))b=p;});return b;}
+    var d1=ago(24),d7=ago(168);
+    function chg(b,l){if(!b)return '<span><small>'+esc(l)+'</small><b class="mono" style="color:var(--muted)">—</b></span>';var dv=g.tot-b[1];return '<span><small>'+esc(l)+'</small><b class="mono" style="color:'+(dv>0.5?"var(--crit)":dv<-0.5?"var(--ok)":"var(--ink)")+'">'+(dv>0?"+":dv<0?"−":"±")+nf(Math.abs(dv),1)+'</b></span>';}
+    var first=all.length?new Date(all[0][0]):null;
+    el.innerHTML='<div class="ah"><h2>'+esc(T2("Historique de l'indice","Index history"))+'</h2><div class="seg">'+[[2,"48 h"],[7,T2("7 j","7 d")],[30,T2("30 j","30 d")],[90,T2("90 j","90 d")]].map(function(r){return '<button type="button" data-grr="'+r[0]+'" aria-pressed="'+(griRange===r[0])+'">'+r[1]+'</button>';}).join("")+'</div></div>'+
+     '<div class="ghc">'+chg(d1,T2("vs il y a 24 h","vs 24 h ago"))+chg(d7,T2("vs il y a 7 j","vs 7 days ago"))+'<span><small>'+esc(T2("Min · max de la période","Period low · high"))+'</small><b class="mono">'+nf(lo,0)+' · '+nf(hi,0)+'</b></span></div>'+
+     '<svg viewBox="0 0 '+W+' '+H+'" class="ghs" role="img" aria-label="'+esc(T2("Courbe de l'indice mondial des risques","Global Risk Index curve"))+'">'+bands+grid+'<path d="'+path+'" fill="none" stroke="#7fd1ff" stroke-width="2.2" stroke-linejoin="round"/>'+dots+'<circle cx="'+X(now).toFixed(1)+'" cy="'+Y(g.tot).toFixed(1)+'" r="5" fill="'+g.col+'" stroke="#0a1018" stroke-width="2"/>'+ticks+'</svg>'+
+     '<p class="note">'+esc(all.length<3?T2("L'enregistrement vient de commencer : un point par heure, la courbe se remplit au fil du temps.","Recording has just started: one point per hour, the curve fills in over time."):T2("Un point par heure depuis le ","One point per hour since ")+first.toLocaleDateString(L==="fr"?"fr-FR":"en-GB",{day:"numeric",month:"short",year:"numeric"})+T2(" (médiane des navigateurs ouverts). Les années passées ne peuvent pas être reconstituées honnêtement : l'indice dépend des alertes du moment."," (median across open browsers). Earlier years can't be honestly rebuilt: the index depends on the alerts of the moment."))+'</p>';
+    el.querySelectorAll("[data-grr]").forEach(function(b){b.onclick=function(){griRange=+b.dataset.grr;try{localStorage.setItem("gra-grir",griRange);}catch(e){}drawGriHist();};});
+  });
+}
+var _drawDash0=drawDash;drawDash=function(){_drawDash0();drawGriHist();};
 
 /* ---------- boot ---------- */
 applyI18n();renderFilters();renderPanel();fillPathSelects();

@@ -126,6 +126,19 @@ a.hl{display:block;text-decoration:none;color:var(--ink);border-bottom:1px solid
 @media (max-width:900px){.agrid,.agrid3,#v-ana .agrid:has(.scen-l){grid-template-columns:minmax(0,1fr)}.scen-l{position:static}.cpick{margin-left:0;flex:1 1 100%}}
 @media (max-width:700px){.irow{grid-template-columns:minmax(0,1fr) auto;}.irow>span:last-child{grid-column:1/-1;font-size:.82rem}.gnt{grid-template-columns:minmax(96px,130px) minmax(0,1fr)}.hhg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.cn{font-size:1.8rem}.lyr{top:auto;bottom:10px;max-height:60%}}
 '''
+r('''   '<div class="card" id="gri-dash">'+griBig()+'</div>'+''','''   '<div class="card" id="gri-dash">'+griBig()+'</div>'+
+   '<div class="card" id="gri-hist"></div>'+''')
+r('''  var gd=document.getElementById("gri-dash");if(gd)gd.innerHTML=griBig();
+}''','''  var gd=document.getElementById("gri-dash");if(gd)gd.innerHTML=griBig();
+  if(typeof griRecord==="function")griRecord(g);
+}''')
+r('''  if(t==="ana")drawAna();''','''  if(t==="ana")drawAna();
+  if(t==="dash"&&typeof drawGriHist==="function")setTimeout(drawGriHist,0);''')
+css+='''
+.ghc{display:flex;flex-wrap:wrap;gap:8px 22px}.ghc span{display:flex;flex-direction:column}.ghc small{color:var(--muted);font-size:.72rem}.ghc b{font-size:1.1rem}
+.ghs{display:block;width:100%;height:auto}
+#gri-hist .seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
+'''
 r('</style>',css+'</style>')
 open('app.html','w').write(a)
 print('analysis ok')
