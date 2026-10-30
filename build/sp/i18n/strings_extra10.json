@@ -1,0 +1,301 @@
+[
+ {
+  "en": "Household (budget, energy, food)",
+  "fr": "Foyer (budget, énergie, nourriture)"
+ },
+ {
+  "en": "Energy & fuels",
+  "fr": "Énergie & carburants"
+ },
+ {
+  "en": "Farming & food",
+  "fr": "Agriculture & alimentation"
+ },
+ {
+  "en": "Transport & logistics",
+  "fr": "Transport & logistique"
+ },
+ {
+  "en": "Manufacturing & electronics",
+  "fr": "Industrie & électronique"
+ },
+ {
+  "en": "Digital & telecoms",
+  "fr": "Numérique & télécoms"
+ },
+ {
+  "en": "Finance & markets",
+  "fr": "Finance & marchés"
+ },
+ {
+  "en": "Tourism & travel",
+  "fr": "Tourisme & voyages"
+ },
+ {
+  "en": "Public sector & security",
+  "fr": "Secteur public & sécurité"
+ },
+ {
+  "en": "your country",
+  "fr": "votre pays"
+ },
+ {
+  "en": "supplier/market: ",
+  "fr": "fournisseur/marché : "
+ },
+ {
+  "en": "your sector: ",
+  "fr": "votre secteur : "
+ },
+ {
+  "en": "My risk",
+  "fr": "Mon risque"
+ },
+ {
+  "en": "Saved in this browser, never sent",
+  "fr": "Enregistré dans ce navigateur, jamais envoyé"
+ },
+ {
+  "en": "Country you live in",
+  "fr": "Pays où vous vivez"
+ },
+ {
+  "en": "Supplier or market countries (up to 5)",
+  "fr": "Pays fournisseurs ou marchés (jusqu'à 5)"
+ },
+ {
+  "en": "+ add…",
+  "fr": "+ ajouter…"
+ },
+ {
+  "en": "chance that a new global shock relevant to you starts within a year",
+  "fr": "chance qu'un nouveau choc mondial qui vous concerne survienne d'ici un an"
+ },
+ {
+  "en": "possible global shocks: ",
+  "fr": "chocs mondiaux possibles : "
+ },
+ {
+  "en": "linked network; if independent: ",
+  "fr": "réseau lié ; si indépendants : "
+ },
+ {
+  "en": "crises already under way that affect you",
+  "fr": "crises déjà en cours qui vous touchent"
+ },
+ {
+  "en": "likely events (66 % or more) that concern you",
+  "fr": "événements probables (≥ 66 %) qui vous concernent"
+ },
+ {
+  "en": "tracked risks that concern you",
+  "fr": "risques suivis qui vous concernent"
+ },
+ {
+  "en": "of ",
+  "fr": "sur "
+ },
+ {
+  "en": "What exposes you most",
+  "fr": "Ce qui vous expose le plus"
+ },
+ {
+  "en": "relevance × chance × severity",
+  "fr": "pertinence × probabilité × gravité"
+ },
+ {
+  "en": "under way",
+  "fr": "en cours"
+ },
+ {
+  "en": "Relevance: 100 % if the risk hits your country directly, otherwise the share that reaches it through the links; × 0.8 for a supplier country; 70 % for your sector. The chance of a new shock is simulated on the linked network, with the same draws as the level.",
+  "fr": "Pertinence : 100 % si le risque touche votre pays directement, la part qui arrive par les liens sinon ; × 0,8 pour un pays fournisseur ; 70 % pour votre secteur. La chance d'un nouveau choc est simulée sur le réseau lié, avec les mêmes tirages que le niveau."
+ },
+ {
+  "en": "Print my report (PDF)",
+  "fr": "Imprimer mon rapport (PDF)"
+ },
+ {
+  "en": "Related prediction market (reference, its own wording):",
+  "fr": "Marché prédictif apparenté (référence, formulation différente) :"
+ },
+ {
+  "en": "P: chance of a new global shock (%)",
+  "fr": "P : chance d'un nouveau choc mondial (%)"
+ },
+ {
+  "en": "Ships tracked (world)",
+  "fr": "Navires suivis (monde)"
+ },
+ {
+  "en": "Aircraft (OpenSky)",
+  "fr": "Avions (OpenSky)"
+ },
+ {
+  "en": "Headlines today (running total)",
+  "fr": "Titres du jour (cumul)"
+ },
+ {
+  "en": "Ships: ",
+  "fr": "Navires : "
+ },
+ {
+  "en": "History and replay",
+  "fr": "Historique et relecture"
+ },
+ {
+  "en": "Recording has started: one point an hour. The chart and replay appear after a few hours.",
+  "fr": "L'enregistrement a commencé : un point par heure. La courbe et la relecture apparaissent après quelques heures."
+ },
+ {
+  "en": "Chart",
+  "fr": "Courbe"
+ },
+ {
+  "en": "Headlines",
+  "fr": "Titres"
+ },
+ {
+  "en": "Replay",
+  "fr": "Relecture"
+ },
+ {
+  "en": "One point an hour, recorded by your relay: slide to see the state of the world at any moment.",
+  "fr": "Un point par heure, enregistré par votre relais : glissez pour revoir l'état du monde à un moment donné."
+ },
+ {
+  "en": "Shipping down: ",
+  "fr": "Trafic maritime en baisse : "
+ },
+ {
+  "en": "ships tracked: ",
+  "fr": "navires suivis : "
+ },
+ {
+  "en": " vs ",
+  "fr": " contre "
+ },
+ {
+  "en": " usually (7-day median)",
+  "fr": " d'habitude (médiane 7 jours)"
+ },
+ {
+  "en": "Fewer aircraft reported",
+  "fr": "Moins d'avions signalés"
+ },
+ {
+  "en": " usually: data outage or disruption",
+  "fr": " d'habitude : panne de données ou perturbation"
+ },
+ {
+  "en": "Media spike: ",
+  "fr": "Pic médiatique : "
+ },
+ {
+  "en": " headlines today, ≈ ",
+  "fr": " titres aujourd'hui, ≈ "
+ },
+ {
+  "en": " × normal",
+  "fr": " × la normale"
+ },
+ {
+  "en": "P moved by ",
+  "fr": "P a bougé de "
+ },
+ {
+  "en": " points in 7 days",
+  "fr": " points en 7 jours"
+ },
+ {
+  "en": "Early-warning signals",
+  "fr": "Signaux d'alerte précoce"
+ },
+ {
+  "en": "departures from normal, detected automatically",
+  "fr": "écarts par rapport à la normale, détectés automatiquement"
+ },
+ {
+  "en": "Nothing unusual right now.",
+  "fr": "Rien d'anormal en ce moment."
+ },
+ {
+  "en": "Building the baseline: traffic signals start around ",
+  "fr": "Constitution de la référence : les signaux sur le trafic démarrent vers le "
+ },
+ {
+  "en": " (3 days of data).",
+  "fr": " (3 jours de données)."
+ },
+ {
+  "en": "Rules: a strait's ships below 50 % of their 7-day median; headlines on a risk at 2.5 × their usual pace or more; P moving 5 points or more in 7 days; aircraft below 60 % of normal.",
+  "fr": "Règles : navires d'un détroit < 50 % de leur médiane sur 7 jours ; titres sur un risque ≥ 2,5 × leur rythme habituel ; P qui bouge de 5 points ou plus en 7 jours ; avions < 60 % de la normale."
+ },
+ {
+  "en": "Embed the level on another site",
+  "fr": "Intégrer le niveau sur un autre site"
+ },
+ {
+  "en": "Paste this code into a web page: a badge showing the current level and P, linking to the atlas.",
+  "fr": "Copiez ce code dans une page web : un badge qui affiche le niveau et P à jour, avec un lien vers l'atlas."
+ },
+ {
+  "en": "Copy the code",
+  "fr": "Copier le code"
+ },
+ {
+  "en": "My exposure to global risks",
+  "fr": "Mon exposition aux risques mondiaux"
+ },
+ {
+  "en": "suppliers/markets: ",
+  "fr": "fournisseurs/marchés : "
+ },
+ {
+  "en": "under way · ",
+  "fr": "en cours · "
+ },
+ {
+  "en": "chance of a new relevant shock within 12 months: ",
+  "fr": "chance d'un nouveau choc pertinent sous 12 mois : "
+ },
+ {
+  "en": "Country report: ",
+  "fr": "Rapport pays : "
+ },
+ {
+  "en": "Risks that hit the country directly or through the links",
+  "fr": "Risques qui touchent le pays directement ou par les liens"
+ },
+ {
+  "en": "Risks, as checkable questions",
+  "fr": "Risques, sous forme de questions vérifiables"
+ },
+ {
+  "en": "Question"
+ },
+ {
+  "en": "Chance",
+  "fr": "Probabilité"
+ },
+ {
+  "en": "Why",
+  "fr": "Pourquoi"
+ },
+ {
+  "en": "Measured state of the world",
+  "fr": "État du monde, mesuré"
+ },
+ {
+  "en": "Level set by a published rule on S (global disruptions under way) and P (chance of a new global shock within 12 months, simulated on the link network). “Atlas” ranges are estimates; each question is scored at its date. Informational analysis, not official advice.",
+  "fr": "Niveau fixé par une règle publiée sur S (perturbations mondiales en cours) et P (chance d'un nouveau choc mondial sous 12 mois, simulée sur le réseau de liens). Les fourchettes « atlas » sont des estimations ; chaque question est notée à son échéance. Analyse informative, pas un conseil officiel."
+ },
+ {
+  "en": "Print report (PDF)",
+  "fr": "Imprimer le rapport (PDF)"
+ },
+ {
+  "en": "Direct",
+  "fr": "Direct"
+ }
+]

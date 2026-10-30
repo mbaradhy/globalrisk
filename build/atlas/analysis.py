@@ -4,7 +4,7 @@ def r(x,y,cnt=1):
     global a
     assert x in a,x[:80]; a=a.replace(x,y,cnt)
 iso=open('/tmp/claude-0/-home-claude/9f8c4616-27f1-5910-b924-209665f78c24/scratchpad/iso.json').read()
-js=(open('questions.js').read()+open('analysis.js').read()+open('news.js').read()+open('gri2.js').read()+open('sources.js').read()+open('level.js').read()+(open('impact.js').read() if __import__('os').path.exists('impact.js') else '')+open('phase2.js').read()+open('pwa.js').read()+open('country.js').read()).replace('/*ISO*/null',iso)
+js=(open('questions.js').read()+open('analysis.js').read()+open('news.js').read()+open('gri2.js').read()+open('sources.js').read()+open('level.js').read()+(open('impact.js').read() if __import__('os').path.exists('impact.js') else '')+open('phase2.js').read()+open('pwa.js').read()+open('country.js').read()+open('adv.js').read()).replace('/*ISO*/null',iso)
 # tab + view
 r('''  <button role="tab" data-t="kit" aria-selected="false">''','''  <button role="tab" data-t="ana" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span data-i="tAna"></span></button>
   <button role="tab" data-t="kit" aria-selected="false">''')
@@ -35,6 +35,14 @@ r('''function setLang(l){L=l;''','''function setLang(l){L=l;setTimeout(function(
 r('''/* ---------- boot ---------- */''',js+'''
 /* ---------- boot ---------- */''')
 css='''
+.my-g{display:grid;grid-template-columns:1fr 2fr;gap:12px;margin:6px 0}.my-g label{display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.my-g select,#hs-s{background:#0a1018;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font:inherit;text-transform:none;letter-spacing:0}.my-sup{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.chip{display:inline-flex;align-items:center;gap:5px;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:4px 10px;font-size:.82rem;color:var(--ink);cursor:pointer;text-transform:none;letter-spacing:0}.chip.on{border-color:var(--accent);background:#11283a}.chip input{margin:0}.my-sec{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.my-r{display:grid;grid-template-columns:minmax(0,1fr) 110px auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}.my-r small{display:block;color:var(--muted);font-size:.78rem}.my-r .my-w{color:var(--accent)}.my-r .xb{height:8px;background:var(--panel2);border-radius:4px;overflow:hidden;display:block}.my-r .xb i{display:block;height:100%}
+.qmw{grid-column:1/-1}.qmk{display:block;font-size:.78rem;color:var(--muted);text-decoration:none;margin-top:3px}.qmk:hover{color:var(--accent)}.qbox .qmk{margin-top:4px}
+.hs-svg{width:100%;height:auto;display:block;margin:6px 0}.hs-read{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0}.hs-read span small{display:block;font-size:.66rem;text-transform:uppercase;color:var(--muted);letter-spacing:.04em}
+.sig{border-left:3px solid #ffb547;padding:6px 10px;margin:6px 0;background:var(--panel2);border-radius:0 6px 6px 0;cursor:pointer}.sig.hi{border-left-color:var(--crit,#ff5c4d)}.sig small{display:block;color:var(--muted)}
+.emb{white-space:pre-wrap;word-break:break-all;background:#0a1018;border:1px solid var(--line);border-radius:6px;padding:8px;font-size:.78rem}
+@media(max-width:700px){.my-g{grid-template-columns:1fr}.my-r{grid-template-columns:minmax(0,1fr) auto}.my-r .xb{display:none}}
+
 @media(max-width:430px){.brand h1{font-size:1.08rem!important}.gri-wrap .gri .gri-t b{font-size:.8rem!important}.gri-wrap .gri .gri-t small{display:none}.gri-wrap .gri svg{width:34px!important;height:34px!important}}
 
 .wrap{padding-top:calc(14px + env(safe-area-inset-top,0px))!important}@media(max-width:900px){.wrap{padding-top:calc(10px + env(safe-area-inset-top,0px))!important}.gri-float:not(.show){transform:translateY(calc(100% + 240px))!important}}

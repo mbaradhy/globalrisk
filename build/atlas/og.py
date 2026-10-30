@@ -33,3 +33,22 @@ d.text((420 * s, 490 * s), "56 checkable questions · live map · 14-day reserve
 d.text((80 * s, 560 * s), "mbaradhy.github.io/globalrisk · " + datetime.date.today().strftime("%d %b %Y"), font=f("Inter-Medium.otf", 24 * s), fill="#5d6b78")
 im.resize((W, H), Image.LANCZOS).save(OUT, optimize=True)
 print("og.png level", lv, "S", S, "P %.0f" % P)
+
+# ---- embeddable badge (widget.html): level from S (build time) and the latest P from the relay
+WOUT = os.environ.get("ATLAS_WIDGET_OUT", os.path.join(os.path.dirname(OUT), "widget.html"))
+lv_json = json.dumps([{"k": l["k"], "c": l["c"]} for l in st["levels"]], ensure_ascii=False)
+w = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Global Risk Atlas · level</title>
+<style>html,body{margin:0;background:#0a1018;color:#e3e9ee;font:14px/1.3 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid #24323f;border-radius:12px;height:70px;box-sizing:border-box}
+b{display:block;font-size:17px;letter-spacing:.02em}small{color:#8c9aa8;font-size:12px}em{font-style:normal;color:#7fd1ff}</style></head><body>
+<a id="w" href="https://mbaradhy.github.io/globalrisk/" target="_blank" rel="noopener"></a>
+<script>
+var S=%d,P0=%.1f,LV=%s,lang=(new URLSearchParams(location.search).get("lang")||navigator.language||"en").slice(0,2)=="fr"?"fr":"en";
+function lvOf(p){return S>=2||(S>=1&&p>=50)?4:(S>=1||p>=33)?3:p>=10?2:1;}
+function ring(l,c){var s=50,r=20,o='<svg width="50" height="50" viewBox="0 0 50 50">';for(var i=0;i<5;i++){var a0=(-90+i*72+8)*Math.PI/180,a1=(-90+(i+1)*72-8)*Math.PI/180;o+='<path d="M'+(25+r*Math.cos(a0))+' '+(25+r*Math.sin(a0))+' A20 20 0 0 1 '+(25+r*Math.cos(a1))+' '+(25+r*Math.sin(a1))+'" fill="none" stroke="'+(i<l?c:'#1d2a37')+'" stroke-width="5" stroke-linecap="round"/>';}
+ return o+'<text x="25" y="26" text-anchor="middle" dominant-baseline="middle" fill="'+c+'" font-size="20" font-weight="700">'+l+'</text></svg>';}
+function draw(p,live){var l=lvOf(p),L=LV[l-1],t=lang=="fr";document.getElementById("w").innerHTML=ring(l,L.c)+'<span><b style="color:'+L.c+'">'+(t?"NIVEAU ":"LEVEL ")+l+' · '+(L.k[lang]||L.k.en).toUpperCase()+'</b><small>'+S+(t?" perturbations mondiales en cours · P ":" global disruptions under way · P ")+Math.round(p)+' %%'+(live?"":" ≈")+'</small><br><small><em>Global Risk Atlas</em> ↗</small></span>';}
+draw(P0,false);
+fetch("https://atlas-api.mbaradhy.workers.dev/gri?s=3&days=2").then(function(r){return r.json();}).then(function(j){var p=j.points||[];if(p.length)draw(p[p.length-1][1],true);}).catch(function(){});
+</script></body></html>""" % (S, P, lv_json)
+open(WOUT, "w").write(w)
+print("widget.html written")

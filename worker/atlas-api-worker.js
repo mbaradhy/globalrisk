@@ -435,6 +435,33 @@ async function fc(url, env, ctx) {
 
 
 
+
+// ---------- Hourly snapshots of the live state (history, replay and early-warning signals)
+async function snapTake(env) {
+  if (!env.STATS) return;
+  const now = new Date(), dd = day(now), hh = String(now.getUTCHours()).padStart(2, "0"), k = "snap:" + dd;
+  const d = (await env.STATS.get(k, "json")) || { h: {} };
+  if (d.h[hh]) return;
+  const s = {};
+  const g = await env.STATS.get("gri3:" + dd, "json");
+  if (g && g.h) { const hs = Object.keys(g.h).sort(); const a = g.h[hs[hs.length - 1]].slice().sort((x, y) => x - y); if (a.length) s.p = a[a.length >> 1]; }
+  const rec = await env.STATS.get("ais:recent", "json");
+  if (rec) { const list = Object.values(rec); s.sh = list.length; s.st = {}; Object.keys(AIS_BOX).forEach(b => s.st[b] = list.filter(x => inBox(x[0], x[1], AIS_BOX[b])).length); }
+  const on = await env.STATS.get("osk:n"); if (on) s.pl = +on;
+  const at = await env.STATS.get("att:" + dd, "json"); if (at) { s.hl = at.n; s.hc = at.c; }
+  d.h[hh] = s;
+  await env.STATS.put(k, JSON.stringify(d), { expirationTtl: 120 * 86400 });
+}
+async function snaps(url, env, ctx) {
+  if (!env.STATS) return jerr(503, "STATS KV not bound");
+  const days = Math.min(60, Math.max(1, parseInt(url.searchParams.get("days") || "14", 10)));
+  return cached("snaps-" + days + "-" + Math.floor(Date.now() / 900000), 900, ctx, async () => {
+    const pts = [];
+    for (let i = days - 1; i >= 0; i--) { const dd = day(new Date(Date.now() - i * 86400000)); const x = await env.STATS.get("snap:" + dd, "json"); if (x) Object.keys(x.h).sort().forEach(hh => pts.push([dd + "T" + hh + ":00Z", x.h[hh]])); }
+    return JSON.stringify({ at: new Date().toISOString(), points: pts });
+  });
+}
+
 // ---------- Automatic outcomes: questions that public data can settle on their own (runs once a day from the cron).
 // Outcomes you set by hand are never overwritten.
 async function autoResolve(env, force) {
@@ -478,6 +505,7 @@ async function osk(request, env, ctx) {
     const body = await request.text();
     if (body.length > 8e6 || !body.startsWith("{")) return jerr(400, "bad snapshot");
     await env.STATS.put("osk:last", body, { expirationTtl: 7200 });
+    const mn = body.slice(0, 80).match(/"n":(\d+)/); if (mn) await env.STATS.put("osk:n", mn[1], { expirationTtl: 7200 });
     return new Response(JSON.stringify({ ok: true, bytes: body.length }), { headers: { ...J, ...CORS } });
   }
   return cached("osk-" + Math.floor(Date.now() / 60000), 60, ctx, async () => {
@@ -558,7 +586,7 @@ const CORS = {
 };
 
 export default {
-  async scheduled(event, env, ctx) { ctx.waitUntil(Promise.all([attUpdate(env, ctx).catch(() => {}), env.AISSTREAM_KEY ? aisRefresh(env, 20000).catch(() => {}) : null, autoResolve(env).catch(() => {})])); },
+  async scheduled(event, env, ctx) { ctx.waitUntil(Promise.all([attUpdate(env, ctx).catch(() => {}), env.AISSTREAM_KEY ? aisRefresh(env, 20000).catch(() => {}) : null, autoResolve(env).catch(() => {})]).then(() => snapTake(env)).catch(() => {})); },
   async fetch(request, env, ctx) {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
     const url = new URL(request.url);
@@ -583,13 +611,14 @@ export default {
     if (key === "attention") return attention(env, ctx);
     if (key === "gri") return gri(url, env, ctx);
     if (key === "fc") return fc(url, env, ctx);
+    if (key === "snaps") return snaps(url, env, ctx);
     if (key === "osk") return osk(request, env, ctx);
     if (key === "quotes") return quotes(ctx, url.searchParams.has("debug"));
     if (key === "fx") return fx(ctx);
     if (key === "warnings") return warnings(url, ctx);
     const route = ROUTES[key];
     if (!route) {
-      return new Response(JSON.stringify({ ok: true, routes: Object.keys(ROUTES).concat(["rss", "gdacs", "planes", "ships", "outages", "fires", "layers", "attention", "gri", "fc", "osk", "quotes", "fx", "warnings", "hit", "stats"]) }), {
+      return new Response(JSON.stringify({ ok: true, routes: Object.keys(ROUTES).concat(["rss", "gdacs", "planes", "ships", "outages", "fires", "layers", "attention", "gri", "fc", "osk", "snaps", "quotes", "fx", "warnings", "hit", "stats"]) }), {
         headers: { "Content-Type": "application/json", ...CORS }
       });
     }
