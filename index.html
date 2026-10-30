@@ -2795,11 +2795,12 @@ var LYR={planes:false,ships:false,outages:false,fires:false},LBASE="dark",LST={}
 try{var ls_=JSON.parse(localStorage.getItem("gra-lyr")||"null");if(ls_){Object.assign(LYR,ls_.l||{});LBASE=ls_.b||"dark";}}catch(e){}
 var LYR_DEF=[["planes",{fr:"Trafic aérien",en:"Air traffic"},"#ffffff",{fr:"ADS-B · adsb.lol (données ouvertes)",en:"ADS-B · adsb.lol (open data)"}],["ships",{fr:"Navires (AIS)",en:"Ships (AIS)"},"#4fc3e0",{fr:"aisstream.io · clé requise",en:"aisstream.io · key needed"}],["outages",{fr:"Coupures d'internet",en:"Internet outages"},"#a98af6",{fr:"Cloudflare Radar · 7 jours",en:"Cloudflare Radar · 7 days"}],["fires",{fr:"Feux & frappes (Ukraine, Russie, Moyen-Orient)",en:"Fires & strikes (Ukraine, Russia, Middle East)"},"#ff9a3d",{fr:"NASA FIRMS · 24 h",en:"NASA FIRMS · 24 h"}]];
 var BASES=[["dark",{fr:"Sombre",en:"Dark"}],["sat",{fr:"Satellite (hier)",en:"Satellite (yesterday)"}],["night",{fr:"Lumières de nuit",en:"Night lights"}]];
-var PLANE_R=["gulf","levant","blacksea","baltic","taiwan","europe","london","madrid","rome","warsaw","istanbul","nordic","alps","nyc","chicago","atlanta","dallas","la","florida","denver","seattle","tokyo","shanghai","beijing","delhi","singapore","seoul","dubai"];
+var PLANE_R=["gulf","levant","blacksea","baltic","taiwan","europe","london","madrid","rome","warsaw","istanbul","nordic","alps","nyc","chicago","atlanta","dallas","la","florida","denver","seattle","tokyo","shanghai","beijing","delhi","singapore","seoul","dubai","paris","frankfurt","amsterdam","athens","lisbon","dublin","moscow","kyiv","toronto","sf","phoenix","houston","dc","boston","minneapolis","mexico","saopaulo","bogota","buenosaires","lima","cairo","johannesburg","lagos","nairobi","casablanca","riyadh","tehran","mumbai","bangkok","hongkong","chengdu","jakarta","manila","sydney","melbourne","auckland","natrack","anchorage"];
 var TRAIL={},planeSrc="",relayCfg=null;
 function relayCfgP(){if(relayCfg)return Promise.resolve(relayCfg);return relay("layers",10000).then(function(j){relayCfg=j;return j;},function(){return {};});}
 function poolMap(arr,n,fn){var i=0,out=[],act=0;return new Promise(function(res){function nx(){if(i>=arr.length&&!act){res(out);return;}while(act<n&&i<arr.length){(function(k){act++;fn(arr[k]).then(function(v){out[k]=v;},function(){out[k]=null;}).then(function(){act--;nx();});})(i++);}}nx();});}
 function addTrail(h,la,lo){var t=TRAIL[h]||(TRAIL[h]=[]);var l=t[t.length-1];if(!l||Math.abs(l[0]-la)>0.01||Math.abs(l[1]-lo)>0.01)t.push([la,lo]);if(t.length>40)t.shift();}
+var oskErr;
 function loadPlanes(){var now=Date.now();
   function cfgRegions(){return (relayCfg&&relayCfg.regions)||PLANE_R;}
   function regional(){return poolMap(cfgRegions(),6,function(r){return relay("planes?r="+r,15000);}).then(function(a){var seen={},out=[];
@@ -2809,7 +2810,7 @@ function loadPlanes(){var now=Date.now();
   return relayCfgP().then(function(cfg){
     if(cfg&&cfg.planesGlobal)return relay("planes?r=all",30000).then(function(j){var st=j.states||[];var out=[];var t0=(j.time||now/1000)*1000;
       st.forEach(function(a){if(a[6]==null||a[5]==null)return;out.push({h:a[0],cs:(a[1]||"").trim(),og:a[2],la:a[6],lo:a[5],alt:a[8]?0:Math.round((a[7]||a[13]||0)*3.281),gs:(a[9]||0)*1.944,trk:a[10]||0,gnd:!!a[8],t:(a[3]?a[3]*1000:t0)});});
-      if(!out.length)throw new Error("empty");planeSrc="OpenSky";return out;}).catch(function(){return regional();});
+      if(!out.length)throw new Error("empty");planeSrc="OpenSky";oskErr=null;return out;}).catch(function(e){oskErr=String(e&&e.message||e).slice(0,120);return regional();});
     return regional();});
 }
 var AIS_NAMES={hormuz:{fr:"Ormuz",en:"Hormuz"},bab:{fr:"Bab el-Mandeb",en:"Bab el-Mandeb"},suez:{fr:"Suez",en:"Suez"},malacca:{fr:"Malacca",en:"Malacca"},taiwan:{fr:"Détroit de Taïwan",en:"Taiwan Strait"},finland:{fr:"Golfe de Finlande",en:"Gulf of Finland"},channel:{fr:"Manche",en:"English Channel"}};
@@ -3191,10 +3192,10 @@ function srcList(){var cfg=relayCfg||{};var rc=function(k){return (typeof rssCac
      ["MeteoAlarm / NWS",T2("Alertes officielles","Official warnings"),!AREA?{s:"idle",t:T2("zone non choisie","no area set")}:areaWarn?{s:"ok",t:srcAgo(areaAt)}:areaWarn===false?{s:"err"}:{s:"idle"}]]],
    [{fr:"Carte en direct",en:"Live map"},[
      [T2("Avions","Aircraft"),"adsb.lol",LST.planes&&LST.planes.ok?{s:"ok",t:srcAgo(+LST.planes.at)}:LST.planes&&LST.planes.ok===false?{s:"err"}:{s:"idle"}],
-     [T2("Avions (mondial)","Aircraft worldwide"),"OpenSky",cfg.planesGlobal?{s:"ok"}:{s:"key"}],
-     [T2("Navires","Ships"),"aisstream.io",cfg.ships?(LST.ships&&LST.ships.ok?{s:"ok",t:srcAgo(+LST.ships.at)}:{s:"idle"}):{s:"key"}],
-     [T2("Feux & frappes","Fires & strikes"),"NASA FIRMS",cfg.fires?(LST.fires&&LST.fires.ok?{s:"ok",t:srcAgo(+LST.fires.at)}:{s:"idle"}):{s:"key"}],
-     [T2("Coupures d'internet","Internet outages"),"Cloudflare Radar",cfg.outages?(LST.outages&&LST.outages.ok?{s:"ok",t:srcAgo(+LST.outages.at)}:{s:"idle"}):{s:"key"}]]],
+     [T2("Avions (mondial)","Aircraft worldwide"),"OpenSky",!cfg.planesGlobal?{s:"key"}:oskErr?{s:"err",t:T2("injoignable depuis Cloudflare","unreachable from Cloudflare")}:oskErr===null?{s:"ok"}:{s:"idle"}],
+     [T2("Navires","Ships"),"aisstream.io",cfg.ships?(LST.ships&&LST.ships.ok?{s:"ok",t:srcAgo(+LST.ships.at)}:LST.ships&&LST.ships.ok===false?{s:"err"}:{s:"idle"}):{s:"key"}],
+     [T2("Feux & frappes","Fires & strikes"),"NASA FIRMS",cfg.fires?(LST.fires&&LST.fires.ok?{s:"ok",t:srcAgo(+LST.fires.at)}:LST.fires&&LST.fires.ok===false?{s:"err"}:{s:"idle"}):{s:"key"}],
+     [T2("Coupures d'internet","Internet outages"),"Cloudflare Radar",cfg.outages?(LST.outages&&LST.outages.ok?{s:"ok",t:srcAgo(+LST.outages.at)}:LST.outages&&LST.outages.ok===false?{s:"err"}:{s:"idle"}):{s:"key"}]]],
    [{fr:"Atlas",en:"Atlas"},[
      [T2("Historique du score","Score history"),T2("Chaque heure, dans votre relais","Hourly, in your relay"),griHist&&griHist.length?{s:"ok",t:griHist.length+" pts"}:{s:"idle"}]]]];
   return G;}

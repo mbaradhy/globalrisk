@@ -197,20 +197,38 @@ async function upText(u, headers) {
 const HOT = { gulf: [26.5, 54.5], levant: [33, 35.5], blacksea: [46.5, 32], baltic: [57.5, 21], taiwan: [24, 120.5], europe: [49, 4],
   london: [51.5, -1], madrid: [40.4, -3.7], rome: [42, 12.5], warsaw: [52, 19], istanbul: [40.5, 29.5], nordic: [59.5, 13], alps: [47, 9.5],
   nyc: [40.7, -74], chicago: [41.9, -87.6], atlanta: [33.6, -84.4], dallas: [32.9, -97], la: [34, -118.4], florida: [27.5, -81.5], denver: [39.8, -104.7], seattle: [47.4, -122.3],
-  tokyo: [35.6, 139.8], shanghai: [31.2, 121.5], beijing: [40, 116.5], delhi: [28.6, 77.1], singapore: [1.35, 103.9], seoul: [37.5, 127], dubai: [25.2, 55.4] };
+  tokyo: [35.6, 139.8], shanghai: [31.2, 121.5], beijing: [40, 116.5], delhi: [28.6, 77.1], singapore: [1.35, 103.9], seoul: [37.5, 127], dubai: [25.2, 55.4],
+  paris: [48.9, 2.4], frankfurt: [50, 8.6], amsterdam: [52.3, 4.8], athens: [37.9, 23.7], lisbon: [38.8, -9.1], dublin: [53.4, -6.3], moscow: [55.8, 37.6], kyiv: [50.4, 30.5],
+  toronto: [43.7, -79.6], sf: [37.6, -122.4], phoenix: [33.4, -112], houston: [29.9, -95.3], dc: [38.9, -77.4], boston: [42.4, -71], minneapolis: [44.9, -93.2], mexico: [19.4, -99.1],
+  saopaulo: [-23.4, -46.5], bogota: [4.7, -74.1], buenosaires: [-34.8, -58.5], lima: [-12, -77.1],
+  cairo: [30.1, 31.4], johannesburg: [-26.1, 28.2], lagos: [6.6, 3.3], nairobi: [-1.3, 36.9], casablanca: [33.4, -7.6],
+  riyadh: [24.9, 46.7], tehran: [35.7, 51.3], mumbai: [19.1, 72.9], bangkok: [13.7, 100.7], hongkong: [22.3, 113.9], chengdu: [30.6, 104], jakarta: [-6.1, 106.7], manila: [14.5, 121],
+  sydney: [-33.9, 151.2], melbourne: [-37.7, 144.8], auckland: [-37, 174.8], natrack: [53, -25], anchorage: [61.2, -150] };
 // Global air traffic from OpenSky Network (needs secrets OPENSKY_CLIENT_ID and OPENSKY_CLIENT_SECRET, free account)
 let oskTok = null, oskExp = 0;
 async function openskyAll(env, ctx) {
   return cached("planes-all", 90, ctx, async () => {
-    if (!oskTok || Date.now() > oskExp) {
-      const tr = await fetch("https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token", {
-        method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: "grant_type=client_credentials&client_id=" + encodeURIComponent(env.OPENSKY_CLIENT_ID) + "&client_secret=" + encodeURIComponent(env.OPENSKY_CLIENT_SECRET) });
-      if (!tr.ok) throw new Error("opensky token " + tr.status);
-      const tj = await tr.json(); oskTok = tj.access_token; oskExp = Date.now() + ((tj.expires_in || 1800) - 60) * 1000;
-    }
-    const t = await upText("https://opensky-network.org/api/states/all", { Authorization: "Bearer " + oskTok, Accept: "application/json" });
-    return '{"src":"opensky",' + t.replace(/^\s*\{/, "");
+    const T = ms => ({ signal: AbortSignal.timeout(ms) });
+    let why = "";
+    try {
+      if (!oskTok || Date.now() > oskExp) {
+        const tr = await fetch("https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token", { ...T(12000),
+          method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: "grant_type=client_credentials&client_id=" + encodeURIComponent(env.OPENSKY_CLIENT_ID) + "&client_secret=" + encodeURIComponent(env.OPENSKY_CLIENT_SECRET) });
+        if (!tr.ok) throw new Error("token " + tr.status);
+        const tj = await tr.json(); oskTok = tj.access_token; oskExp = Date.now() + ((tj.expires_in || 1800) - 60) * 1000;
+      }
+      const r = await fetch("https://opensky-network.org/api/states/all", { ...T(25000), headers: { Authorization: "Bearer " + oskTok, Accept: "application/json" } });
+      if (r.ok) return '{"src":"opensky",' + (await r.text()).replace(/^\s*\{/, "");
+      why = "api " + r.status;
+    } catch (e) { why = String(e.message || e); }
+    // the login server can be unreachable from Cloudflare: try the anonymous API (lower limits) before giving up
+    try {
+      const r = await fetch("https://opensky-network.org/api/states/all", { ...T(25000), headers: { Accept: "application/json", "User-Agent": "GlobalRiskAtlas/1.0" } });
+      if (r.ok) return '{"src":"opensky-anon",' + (await r.text()).replace(/^\s*\{/, "");
+      why += "; anonymous " + r.status;
+    } catch (e) { why += "; anonymous " + (e.message || e); }
+    throw new Error("opensky unreachable from Cloudflare (" + why + ")");
   });
 }
 async function planes(url, ctx, env) {
@@ -252,7 +270,7 @@ async function collectAis(key) {
 }
 async function ships(env, ctx) {
   if (!env.AISSTREAM_KEY) return jerr(503, "AISSTREAM_KEY not set");
-  return cached("ships", 600, ctx, async () => {
+  return cached("ships2", 600, ctx, async () => {
     const list = await collectAis(env.AISSTREAM_KEY);
     const counts = {}; Object.keys(AIS_BOX).forEach(k => counts[k] = list.filter(s => inBox(s[0], s[1], AIS_BOX[k])).length);
     let avg = null;
