@@ -1,0 +1,15 @@
+{
+  "name": "Global Risk Atlas",
+  "short_name": "Risk Atlas",
+  "description": "Global risks as checkable questions: level 1–5, probabilities, live map, 14-day household reserve.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a1018",
+  "theme_color": "#0a1018",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

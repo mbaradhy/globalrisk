@@ -1,2 +1,3 @@
 worker/secrets.json
 worker/.secrets.tmp.json
+build/atlas/i18n/*.json
