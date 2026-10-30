@@ -1,0 +1,146 @@
+[
+ {
+  "en": "Close",
+  "fr": "Fermer"
+ },
+ {
+  "en": "Media headlines (France 24, Le Monde, BBC, Al Jazeera) matching this topic:",
+  "fr": "Titres des médias (France 24, Le Monde, BBC, Al Jazeera) correspondant à ce sujet :"
+ },
+ {
+  "en": "No recent headline on this exact topic; here are the latest world headlines:",
+  "fr": "Aucun titre récent sur ce sujet précis ; voici les derniers titres internationaux :"
+ },
+ {
+  "en": "Live news feed unavailable",
+  "fr": "Flux d'actualités en direct indisponible"
+ },
+ {
+  "en": "(GDELT analysis loading…)",
+  "fr": "(analyse GDELT en cours…)"
+ },
+ {
+  "en": "Meanwhile, the atlas summary (29 Oct baseline):",
+  "fr": "En attendant, le résumé de l'atlas (base du 29 oct.) :"
+ },
+ {
+  "en": "HEADLINES",
+  "fr": "À LA UNE"
+ },
+ {
+  "en": "KEY FACTS",
+  "fr": "L'ESSENTIEL"
+ },
+ {
+  "en": "Media-attention data unavailable",
+  "fr": "Données d'attention médiatique indisponibles"
+ },
+ {
+  "en": "GDELT is overloaded and temporarily refusing requests; automatic retry in 30 min. The headlines above come from news sites.",
+  "fr": "GDELT est saturé et refuse temporairement les requêtes ; nouvel essai automatique dans 30 min. Les titres ci-dessus viennent des médias."
+ },
+ {
+  "en": "GDELT refuses direct browser requests. Once the \"atlas-api\" relay is set up on Cloudflare, the curves and spikes will appear here.",
+  "fr": "GDELT, la source de ces courbes, est saturé et refuse les requêtes pour le moment. Nouvel essai automatique ; les courbes s'afficheront dès qu'il répondra."
+ },
+ {
+  "en": "Tip: every card, bar and row is clickable and opens the risk's dossier.",
+  "fr": "Astuce : chaque carte, barre ou ligne est cliquable et ouvre le dossier du risque."
+ },
+ {
+  "en": "Details",
+  "fr": "Détails"
+ },
+ {
+  "en": "Find a causal path",
+  "fr": "Trouver un chemin causal"
+ },
+ {
+  "en": "Causal path: choose A then B",
+  "fr": "Chemin causal : choisissez A puis B"
+ },
+ {
+  "en": "Start",
+  "fr": "Départ"
+ },
+ {
+  "en": "End",
+  "fr": "Arrivée"
+ },
+ {
+  "en": "No path in that direction: here is the reverse path.",
+  "fr": "Pas de chemin dans ce sens : voici le chemin inverse."
+ },
+ {
+  "en": "LIVE",
+  "fr": "EN DIRECT"
+ },
+ {
+  "en": "Names",
+  "fr": "Noms"
+ },
+ {
+  "en": "Global Risk Index",
+  "fr": "Indice de risque mondial"
+ },
+ {
+  "en": "Moderate"
+ },
+ {
+  "en": "Elevated"
+ },
+ {
+  "en": "High"
+ },
+ {
+  "en": "Severe"
+ },
+ {
+  "en": "Structural baseline",
+  "fr": "Base structurelle"
+ },
+ {
+  "en": "Average severity × likelihood of the 55 active risks (29 Oct baseline)",
+  "fr": "Moyenne gravité × probabilité des 55 risques actifs (base du 29 oct.)"
+ },
+ {
+  "en": "Ongoing disasters (GDACS)",
+  "fr": "Catastrophes en cours (GDACS)"
+ },
+ {
+  "en": "Strong earthquakes (USGS, 7 d)",
+  "fr": "Séismes forts (USGS, 7 j)"
+ },
+ {
+  "en": "Space weather (Kp)",
+  "fr": "Météo spatiale (Kp)"
+ },
+ {
+  "en": "Media attention (GDELT)",
+  "fr": "Attention médiatique (GDELT)"
+ },
+ {
+  "en": "no live data",
+  "fr": "pas de donnée en direct"
+ },
+ {
+  "en": "Recalculated at",
+  "fr": "Recalculé à"
+ },
+ {
+  "en": "An atlas index, not an official measure: structural baseline plus live adjustments (see Method).",
+  "fr": "Indice de l'atlas, pas une mesure officielle : base structurelle + ajustements en direct (voir Méthode)."
+ },
+ {
+  "en": "Open the dashboard",
+  "fr": "Ouvrir le tableau de bord"
+ },
+ {
+  "en": "Filters",
+  "fr": "Filtres"
+ },
+ {
+  "en": "14-day reserve",
+  "fr": "Réserve 14 jours"
+ }
+]

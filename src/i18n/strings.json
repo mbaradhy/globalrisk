@@ -1,0 +1,3945 @@
+[
+ {
+  "en": "Wars",
+  "fr": "Guerres"
+ },
+ {
+  "en": "Flashpoints",
+  "fr": "Points chauds"
+ },
+ {
+  "en": "Hybrid & cyber",
+  "fr": "Hybride & cyber"
+ },
+ {
+  "en": "Economy",
+  "fr": "Économie"
+ },
+ {
+  "en": "Energy",
+  "fr": "Énergie"
+ },
+ {
+  "en": "Supply & chokepoints",
+  "fr": "Chaînes & détroits"
+ },
+ {
+  "en": "Food",
+  "fr": "Alimentation"
+ },
+ {
+  "en": "Climate",
+  "fr": "Climat"
+ },
+ {
+  "en": "Quakes & space",
+  "fr": "Séismes & espace"
+ },
+ {
+  "en": "Health",
+  "fr": "Santé"
+ },
+ {
+  "en": "Humanitarian",
+  "fr": "Humanitaire"
+ },
+ {
+  "en": "Politics & alliances",
+  "fr": "Politique & alliances"
+ },
+ {
+  "en": "Russia–Ukraine war",
+  "fr": "Guerre Russie–Ukraine"
+ },
+ {
+  "en": "Massive Russian strikes on Ukraine's energy grid; Ukraine launched over 1,000 drones at Russian oil sites on 19 Oct 2026. Trilateral Ukraine–Russia–US talks are announced for November.",
+  "fr": "Frappes massives russes sur le réseau énergétique ukrainien ; plus de 1 000 drones ukrainiens lancés contre les sites pétroliers russes le 19 oct. 2026. Des pourparlers tripartites Ukraine–Russie–États-Unis sont annoncés pour novembre."
+ },
+ {
+  "en": "Outcome of November talks; energy truce; US sanctions (currently paused).",
+  "fr": "Issue des pourparlers de novembre ; trêve énergétique ; sanctions américaines (mises en pause)."
+ },
+ {
+  "en": "Pressure on European energy and defence budgets; risk of hybrid actions in France.",
+  "fr": "Pression sur l'énergie et la défense européennes ; risque d'actions hybrides en France."
+ },
+ {
+  "en": "Iran war",
+  "fr": "Guerre avec l'Iran"
+ },
+ {
+  "en": "US–Israeli strikes since 28 Feb 2026 (Ali Khamenei killed). Successive ceasefires and a memorandum failed; the memorandum was declared over on 8 July. US naval blockade of Iran's southern ports; no active talks in mid-October.",
+  "fr": "Frappes américano-israéliennes depuis le 28 févr. 2026 (mort d'Ali Khamenei). Cessez-le-feu et mémorandum successifs ont échoué ; le mémorandum a été déclaré caduc le 8 juillet. Blocus naval américain des ports du sud de l'Iran ; pas de négociation active mi-octobre."
+ },
+ {
+  "en": "Revived mediation (Qatar, Pakistan); strikes on Gulf energy facilities.",
+  "fr": "Reprise d'une médiation (Qatar, Pakistan) ; frappes sur les installations du Golfe."
+ },
+ {
+  "en": "Dearer fuel, gas and electricity; inflation.",
+  "fr": "Carburant, gaz et électricité plus chers ; inflation."
+ },
+ {
+  "en": "Israel–Hezbollah war",
+  "fr": "Guerre Israël–Hezbollah"
+ },
+ {
+  "en": "New war in Lebanon in 2026, linked to the Iran front. Repeated truces (April, May, June) but continued Israeli strikes and Hezbollah attacks.",
+  "fr": "Nouvelle guerre au Liban en 2026, liée au front iranien. Trêves répétées (avril, mai, juin) mais frappes israéliennes et attaques du Hezbollah continues."
+ },
+ {
+  "en": "Whether the 19 June ceasefire holds; displaced people.",
+  "fr": "Tenue du cessez-le-feu du 19 juin ; déplacés."
+ },
+ {
+  "en": "Gaza"
+ },
+ {
+  "en": "Ceasefire since 10 Oct 2025, but a year on its promises are mostly unmet: strikes, displacement, stalled reconstruction. Over 73,000 killed according to Gaza's health ministry (Aug 2026).",
+  "fr": "Cessez-le-feu en vigueur depuis le 10 oct. 2025, mais promesses largement non tenues un an après : frappes, déplacement, reconstruction bloquée. Plus de 73 000 morts selon le ministère de la Santé de Gaza (août 2026)."
+ },
+ {
+  "en": "Humanitarian access; stabilisation force; reconstruction.",
+  "fr": "Accès humanitaire ; force de stabilisation ; reconstruction."
+ },
+ {
+  "en": "Houthis (Yemen)",
+  "fr": "Houthis (Yémen)"
+ },
+ {
+  "en": "Joined the war against Israel on 28 Mar 2026; declared a blockade of Saudi ports and ships in the Bab el-Mandeb on 20 Jul 2026.",
+  "fr": "Entrés dans la guerre contre Israël le 28 mars 2026 ; blocus déclaré le 20 juil. 2026 contre les ports et navires saoudiens dans le détroit de Bab el-Mandeb."
+ },
+ {
+  "en": "Sudan war",
+  "fr": "Guerre au Soudan"
+ },
+ {
+  "en": "Army (SAF) versus Rapid Support Forces (RSF). Famine (IPC 5) confirmed in El Fasher and Kadugli; the army claimed gains in North Kordofan in early Oct 2026. World's largest displacement crisis.",
+  "fr": "Armée (SAF) contre Forces de soutien rapide (RSF). Famine (IPC 5) confirmée à El Fasher et Kadougli ; l'armée revendique des gains au Nord-Kordofan début oct. 2026. Plus grande crise de déplacement au monde."
+ },
+ {
+  "en": "Fighting in Kordofan and Darfur; aid corridors.",
+  "fr": "Combats au Kordofan et au Darfour ; corridors d'aide."
+ },
+ {
+  "en": "Sahel (Mali, Burkina, Niger)"
+ },
+ {
+  "en": "Jihadist insurgency; since Sept 2025 the al-Qaeda-linked JNIM has blockaded fuel convoys to Bamako, paralysing Mali's economy.",
+  "fr": "Insurrection djihadiste ; le JNIM (lié à al-Qaïda) impose depuis sept. 2025 un blocus des convois de carburant vers Bamako, qui paralyse l'économie malienne."
+ },
+ {
+  "en": "Stability of the junta in Bamako; spread to coastal states.",
+  "fr": "Stabilité de la junte à Bamako ; extension vers les pays côtiers."
+ },
+ {
+  "en": "Eastern DR Congo",
+  "fr": "Est de la RD Congo"
+ },
+ {
+  "en": "Conflict with the M23 (Rwanda-backed according to the UN) in the mineral-rich Kivu provinces; fragile peace deals.",
+  "fr": "Conflit avec le M23 (soutenu par le Rwanda selon l'ONU) dans les provinces minières du Kivu ; accords de paix fragiles."
+ },
+ {
+  "en": "Myanmar civil war",
+  "fr": "Guerre civile en Birmanie"
+ },
+ {
+  "en": "Junta versus ethnic armed groups and resistance; rare-earth mining areas in Kachin.",
+  "fr": "Junte contre groupes armés ethniques et résistance ; zones de terres rares au Kachin."
+ },
+ {
+  "en": "Haiti (gangs)",
+  "fr": "Haïti (gangs)"
+ },
+ {
+  "en": "Gangs control most of Port-au-Prince; humanitarian crisis and displacement.",
+  "fr": "Les gangs contrôlent l'essentiel de Port-au-Prince ; crise humanitaire et déplacements."
+ },
+ {
+  "en": "Somalia (al-Shabaab, piracy)",
+  "fr": "Somalie (al-Shabaab, piraterie)"
+ },
+ {
+  "en": "Al-Shabaab insurgency; piracy has resurged in the Gulf of Aden since 2024.",
+  "fr": "Insurrection d'al-Shabaab ; regain de piraterie dans le golfe d'Aden depuis 2024."
+ },
+ {
+  "en": "Taiwan Strait",
+  "fr": "Détroit de Taïwan"
+ },
+ {
+  "en": "Chinese live-fire drills in Oct 2026 after President Lai's speech; large war games in December after a record $11bn US arms sale. Almost daily grey-zone pressure.",
+  "fr": "Exercices de tir réel chinois en oct. 2026 après le discours du président Lai ; grandes manœuvres en décembre après une vente d'armes américaines record de 11 Md$. Pression « zone grise » quasi quotidienne."
+ },
+ {
+  "en": "Blockade drills; maritime 'quarantine'; incidents.",
+  "fr": "Exercices de blocus ; quarantaine maritime ; incidents."
+ },
+ {
+  "en": "A blockade would cut Europe off from advanced chips: cars, phones, healthcare.",
+  "fr": "Un blocus priverait l'Europe de puces avancées : voitures, téléphones, santé."
+ },
+ {
+  "en": "South China Sea",
+  "fr": "Mer de Chine méridionale"
+ },
+ {
+  "en": "Repeated clashes between Chinese and Philippine coast guards; a major shipping lane.",
+  "fr": "Heurts répétés entre garde-côtes chinois et philippins ; route maritime majeure."
+ },
+ {
+  "en": "Korean peninsula",
+  "fr": "Péninsule coréenne"
+ },
+ {
+  "en": "North Korea's nuclear arsenal; military cooperation with Russia (troops and munitions).",
+  "fr": "Arsenal nucléaire nord-coréen ; coopération militaire avec la Russie (troupes et munitions)."
+ },
+ {
+  "en": "India–Pakistan",
+  "fr": "Inde–Pakistan"
+ },
+ {
+  "en": "After the May 2025 strikes, US think tanks rate a new armed conflict as possible in 2026. Two nuclear powers.",
+  "fr": "Après les frappes de mai 2025, les think tanks américains jugent un nouveau conflit armé possible en 2026. Deux puissances nucléaires."
+ },
+ {
+  "en": "NATO eastern flank / Baltic",
+  "fr": "Flanc est de l'OTAN / Baltique"
+ },
+ {
+  "en": "The area most exposed to a Russian test of NATO: drone incursions, GPS jamming, incidents at sea.",
+  "fr": "Zone la plus exposée à un test de l'OTAN par la Russie : incursions de drones, brouillage GPS, incidents en mer."
+ },
+ {
+  "en": "Greenland & Arctic",
+  "fr": "Groenland & Arctique"
+ },
+ {
+  "en": "US pressure over Greenland in Jan 2026; NATO countries deployed forces; Arctic rivalry.",
+  "fr": "Pressions américaines sur le Groenland en janv. 2026 ; des pays de l'OTAN déploient des forces ; rivalité arctique."
+ },
+ {
+  "en": "Venezuela after Maduro",
+  "fr": "Venezuela après Maduro"
+ },
+ {
+  "en": "US strikes on 3 Jan 2026 and capture of Nicolás Maduro; Delcy Rodríguez acting president, recognised by Washington; oil opened to private firms and a US deal on reserves (August).",
+  "fr": "Frappes américaines le 3 janv. 2026 et capture de Nicolás Maduro ; Delcy Rodríguez présidente par intérim, reconnue par Washington ; ouverture du pétrole au privé et accord américain sur les réserves (août)."
+ },
+ {
+  "en": "Hybrid warfare in Europe",
+  "fr": "Guerre hybride en Europe"
+ },
+ {
+  "en": "Explosive drone defused at Leipzig airport (4 Aug 2026): Berlin blamed Russia on 1 Sept. Drones closing airports, factory fires, sabotage; EU sanctions on Russian hackers (Jul 2026).",
+  "fr": "Drone piégé désamorcé à l'aéroport de Leipzig (4 août 2026) : Berlin accuse la Russie le 1er sept. Drones fermant des aéroports, incendies d'usines, sabotages ; sanctions de l'UE contre des pirates russes (juil. 2026)."
+ },
+ {
+  "en": "Attacks on energy, transport, elections.",
+  "fr": "Attaques contre l'énergie, les transports, les élections."
+ },
+ {
+  "en": "Cancelled flights, local outages, disinformation: the reason for 72-hour kits.",
+  "fr": "Vols annulés, pannes locales, désinformation : la raison d'être des kits 72 h."
+ },
+ {
+  "en": "Undersea cables & pipelines",
+  "fr": "Câbles sous-marins & gazoducs"
+ },
+ {
+  "en": "Several cables and pipelines damaged in the Baltic since 2023; EU protection plan (2025).",
+  "fr": "Plusieurs câbles et gazoducs endommagés en Baltique depuis 2023 ; plan européen de protection (2025)."
+ },
+ {
+  "en": "Ransomware & cyberattacks",
+  "fr": "Rançongiciels & cyberattaques"
+ },
+ {
+  "en": "Attacks on hospitals, local authorities, airports (passenger check-in) and companies; criminal and state actors.",
+  "fr": "Attaques contre hôpitaux, collectivités, aéroports (enregistrement des passagers) et entreprises ; acteurs criminels et étatiques."
+ },
+ {
+  "en": "Payments, healthcare, transport disrupted: offline backups and cash.",
+  "fr": "Paiements, soins, transports interrompus : sauvegardes hors ligne et espèces."
+ },
+ {
+  "en": "Disinformation & interference",
+  "fr": "Désinformation & ingérence"
+ },
+ {
+  "en": "Coordinated campaigns, amplified by generative AI, targeting elections and social cohesion; named in the French guide.",
+  "fr": "Campagnes coordonnées, amplifiées par l'IA générative, visant élections et cohésion sociale ; citées par le guide français."
+ },
+ {
+  "en": "Global growth under strain",
+  "fr": "Croissance mondiale sous tension"
+ },
+ {
+  "en": "IMF (Oct 2026): 3.1% in 2026, 3.4% in 2027; energy importers outside the tech value chain face the hardest outlook.",
+  "fr": "FMI (oct. 2026) : 3,1 % en 2026, 3,4 % en 2027 ; les pays importateurs d'énergie hors filière tech sont les plus exposés."
+ },
+ {
+  "en": "Inflation returns",
+  "fr": "Retour de l'inflation"
+ },
+ {
+  "en": "Global headline inflation of 4.7% in 2026 according to the IMF, driven by energy, freight and food.",
+  "fr": "Inflation mondiale de 4,7 % en 2026 selon le FMI, tirée par l'énergie, le fret et l'alimentation."
+ },
+ {
+  "en": "Lower purchasing power; higher interest rates.",
+  "fr": "Pouvoir d'achat en baisse ; taux d'intérêt plus élevés."
+ },
+ {
+  "en": "AI boom: bubble and risks",
+  "fr": "Boom de l'IA : bulle et risques"
+ },
+ {
+  "en": "The IMF lists a 'reassessment of AI expectations' among the main downside risks; investment increasingly debt-financed.",
+  "fr": "Le FMI cite une « réévaluation des attentes sur l'IA » parmi les principaux risques ; investissements de plus en plus financés par la dette."
+ },
+ {
+  "en": "Public debt",
+  "fr": "Dettes publiques"
+ },
+ {
+  "en": "Fiscal vulnerabilities flagged by the IMF; higher rates raise debt-service costs.",
+  "fr": "Vulnérabilités budgétaires citées par le FMI ; des taux plus élevés alourdissent le service de la dette."
+ },
+ {
+  "en": "Trade wars & tariffs",
+  "fr": "Guerres commerciales & droits de douane"
+ },
+ {
+  "en": "US tariffs and retaliation; a Supreme Court setback (Feb 2026); 'renewed trade tensions' among IMF risks.",
+  "fr": "Droits de douane américains et représailles ; revers judiciaire à la Cour suprême (févr. 2026) ; « tensions commerciales renouvelées » parmi les risques du FMI."
+ },
+ {
+  "en": "Households in France (impact lens)",
+  "fr": "Foyers en France (vue d'impact)"
+ },
+ {
+  "en": "Where the risk chains land: energy bills, food prices, outages, cyberattacks, disinformation. See the Two-Week Household Reserve.",
+  "fr": "Point d'arrivée des chaînes de risques : factures d'énergie, prix alimentaires, pannes, cyberattaques, désinformation. Voir la Réserve familiale 14 jours."
+ },
+ {
+  "en": "Oil price shock",
+  "fr": "Choc pétrolier"
+ },
+ {
+  "en": "Brent around $106.6 on 14 Oct 2026 against a $70.9 February average before the war; the year's high was $126 on 30 April.",
+  "fr": "Brent à environ 106,6 $ le 14 oct. 2026 contre 70,9 $ en moyenne en février avant la guerre ; record de l'année à 126 $ le 30 avril."
+ },
+ {
+  "en": "Fuel, heating oil, transport, plastics.",
+  "fr": "Carburant, chauffage au fioul, transport, plastiques."
+ },
+ {
+  "en": "Europe gas crunch",
+  "fr": "Crise du gaz en Europe"
+ },
+ {
+  "en": "Storage at 75% on 21 Oct 2026 (ACER) against a 90% target for 1 Nov; TTF hit €100.9/MWh on 28 Oct, more than triple the pre-war level (~€30); Qatari LNG almost absent.",
+  "fr": "Stockages à 75 % le 21 oct. 2026 (ACER) pour un objectif de 90 % au 1er nov. ; le TTF a touché 100,9 €/MWh le 28 oct., plus du triple d'avant-guerre (~30 €) ; GNL qatari quasi absent."
+ },
+ {
+  "en": "Winter cold; Asian competition for LNG.",
+  "fr": "Froid de l'hiver ; concurrence asiatique pour le GNL."
+ },
+ {
+  "en": "Heating and electricity bills; possible calls to cut use.",
+  "fr": "Factures de chauffage et d'électricité ; possibles appels à la sobriété."
+ },
+ {
+  "en": "Power grids & blackouts",
+  "fr": "Réseaux électriques & black-outs"
+ },
+ {
+  "en": "Iberian blackout of April 2025; Ukraine's grid under bombardment; 20,000 people lost power near St Petersburg after the 19 Oct 2026 drones.",
+  "fr": "Black-out ibérique d'avril 2025 ; réseau ukrainien bombardé ; 20 000 foyers privés de courant près de Saint-Pétersbourg après les drones du 19 oct. 2026."
+ },
+ {
+  "en": "No power: heating, payments, water pumps, phones.",
+  "fr": "Sans courant : chauffage, paiements, pompes à eau, téléphones."
+ },
+ {
+  "en": "Zaporizhzhia nuclear plant",
+  "fr": "Centrale de Zaporijjia"
+ },
+ {
+  "en": "Europe's largest nuclear plant, on the front line, monitored by the IAEA.",
+  "fr": "Plus grande centrale d'Europe, sur la ligne de front, sous surveillance de l'AIEA."
+ },
+ {
+  "en": "Strait of Hormuz",
+  "fr": "Détroit d'Ormuz"
+ },
+ {
+  "en": "About 20% of world crude and LNG. On 11 Oct 2026 only 2.9 million barrels passed, against 17.1 mb/d before the war; 15 attacks on ships from 6 to 14 Oct (UKMTO).",
+  "fr": "Environ 20 % du pétrole et du GNL mondiaux. Le 11 oct. 2026, seulement 2,9 millions de barils sont passés, contre 17,1 Mb/j avant la guerre ; 15 attaques de navires du 6 au 14 oct. (UKMTO)."
+ },
+ {
+  "en": "Bab el-Mandeb & Suez"
+ },
+ {
+  "en": "The Houthi blockade pushes ships around Africa via the Cape of Good Hope (10–14 extra days).",
+  "fr": "Le blocus houthi pousse les navires à contourner l'Afrique par le cap de Bonne-Espérance (10 à 14 jours de plus)."
+ },
+ {
+  "en": "Advanced semiconductors",
+  "fr": "Semi-conducteurs avancés"
+ },
+ {
+  "en": "Taiwan makes most of the most advanced chips; a critical global dependency.",
+  "fr": "Taïwan produit l'essentiel des puces les plus avancées ; dépendance mondiale critique."
+ },
+ {
+  "en": "Shipping & war-risk insurance",
+  "fr": "Fret & assurance maritime"
+ },
+ {
+  "en": "Diversions and war-risk premiums raise transport costs.",
+  "fr": "Détournements et primes de risque de guerre renchérissent le transport."
+ },
+ {
+  "en": "Fertiliser",
+  "fr": "Engrais"
+ },
+ {
+  "en": "The Gulf exports urea and ammonia; FAO notes concern over fertiliser, fuel and freight costs.",
+  "fr": "Le Golfe exporte urée et ammoniac ; la FAO note des inquiétudes sur le coût des engrais, du carburant et du fret."
+ },
+ {
+  "en": "Rare earths & critical minerals",
+  "fr": "Terres rares & minerais critiques"
+ },
+ {
+  "en": "China dominates refining and uses export controls as leverage; magnets, defence, electric vehicles.",
+  "fr": "La Chine domine le raffinage et utilise les contrôles à l'export comme levier ; aimants, défense, véhicules électriques."
+ },
+ {
+  "en": "World food prices",
+  "fr": "Prix alimentaires mondiaux"
+ },
+ {
+  "en": "FAO index at 136.0 in Sept 2026, highest since Nov 2022: cereals +5.1% (Black Sea, drought), vegetable oils up.",
+  "fr": "Indice FAO à 136,0 en sept. 2026, au plus haut depuis nov. 2022 : céréales +5,1 % (mer Noire, sécheresse), huiles végétales en hausse."
+ },
+ {
+  "en": "Dearer groceries; the case for a rotating stock.",
+  "fr": "Courses plus chères ; intérêt du stock tournant."
+ },
+ {
+  "en": "Black Sea grain corridor",
+  "fr": "Corridor céréalier de la mer Noire"
+ },
+ {
+  "en": "Black Sea logistics constraints support wheat and maize prices (FAO).",
+  "fr": "Les contraintes logistiques en mer Noire soutiennent les prix du blé et du maïs (FAO)."
+ },
+ {
+  "en": "Drought-hit harvests",
+  "fr": "Récoltes menacées par la sécheresse"
+ },
+ {
+  "en": "Dry weather in North America and Southeast Asia (palm oil); El Niño typically threatens Australia, southern Africa and India's monsoon.",
+  "fr": "Temps sec en Amérique du Nord et en Asie du Sud-Est (huile de palme) ; El Niño menace habituellement l'Australie, l'Afrique australe et la mousson indienne."
+ },
+ {
+  "en": "Strong, possibly historic El Niño",
+  "fr": "El Niño fort, peut-être historique"
+ },
+ {
+  "en": "NOAA (8 Oct 2026): Niño-3.4 at +2.1 °C; over 83% chance of a strong to very strong El Niño through Jan–Mar 2027; 83% chance of a historic event in Oct–Dec.",
+  "fr": "NOAA (8 oct. 2026) : Niño-3.4 à +2,1 °C ; plus de 83 % de chances d'un El Niño fort à très fort jusqu'à janv.–mars 2027 ; 83 % de chances d'un épisode historique en oct.–déc."
+ },
+ {
+  "en": "Peak expected in December; next NOAA discussion on 12 Nov.",
+  "fr": "Pic attendu en décembre ; prochaine discussion NOAA le 12 nov."
+ },
+ {
+  "en": "Record-heat year",
+  "fr": "Année record de chaleur"
+ },
+ {
+  "en": "2026 on track to be the hottest year on record, with 2027 possibly next, driven by El Niño on top of warming.",
+  "fr": "2026 en voie de devenir l'année la plus chaude jamais mesurée, 2027 pouvant suivre, sous l'effet d'El Niño et du réchauffement."
+ },
+ {
+  "en": "Cyclones & floods",
+  "fr": "Cyclones & inondations"
+ },
+ {
+  "en": "El Niño shifts cyclone activity: stronger in the central and eastern Pacific, often weaker in the Atlantic. Tracked live via GDACS and NASA.",
+  "fr": "El Niño déplace l'activité cyclonique : plus forte dans le Pacifique central et oriental, souvent plus faible dans l'Atlantique. Suivi en direct via GDACS et NASA."
+ },
+ {
+  "en": "Wildfires",
+  "fr": "Feux de forêt"
+ },
+ {
+  "en": "Heat and drought raise the risk; active fires tracked live (NASA EONET).",
+  "fr": "Chaleur et sécheresse accroissent le risque ; foyers actifs suivis en direct (NASA EONET)."
+ },
+ {
+  "en": "Venezuela earthquakes (June 2026)",
+  "fr": "Séismes au Venezuela (juin 2026)"
+ },
+ {
+  "en": "M7.2 and M7.5 doublet near Morón on 24 June 2026: at least 2,295 killed.",
+  "fr": "Doublet de magnitudes 7,2 et 7,5 près de Morón le 24 juin 2026 : au moins 2 295 morts."
+ },
+ {
+  "en": "Space weather",
+  "fr": "Météo spatiale"
+ },
+ {
+  "en": "Solar cycle 25 near its maximum: geomagnetic storms possible (GPS, satellites, grids). Live Kp index.",
+  "fr": "Cycle solaire 25 proche de son maximum : tempêtes géomagnétiques possibles (GPS, satellites, réseaux). Indice Kp en direct."
+ },
+ {
+  "en": "Bundibugyo Ebola (DR Congo)",
+  "fr": "Ebola Bundibugyo (RD Congo)"
+ },
+ {
+  "en": "As of 21 Sept 2026: 7,773 confirmed cases and 3,759 deaths in 63 health zones; a public health emergency of international concern; the largest recorded outbreak of this virus. Low risk in Europe.",
+  "fr": "Au 21 sept. 2026 : 7 773 cas confirmés et 3 759 décès dans 63 zones de santé ; urgence de santé publique de portée internationale ; plus grande épidémie connue de ce virus. Risque faible en Europe."
+ },
+ {
+  "en": "Avian flu H5N1",
+  "fr": "Grippe aviaire H5N1"
+ },
+ {
+  "en": "Sporadic human cases (4th in Bangladesh in 2026); poultry culls.",
+  "fr": "Cas humains sporadiques (4e cas au Bangladesh en 2026) ; abattages de volailles."
+ },
+ {
+  "en": "Mpox clade I"
+ },
+ {
+  "en": "209 clade I cases in the EU/EEA in Aug 2026, down from 276 in July.",
+  "fr": "209 cas de clade I dans l'UE/EEE en août 2026, en baisse par rapport à juillet (276)."
+ },
+ {
+  "en": "Acute hunger hotspots",
+  "fr": "Foyers de faim aiguë"
+ },
+ {
+  "en": "Famine confirmed in Sudan; severe food insecurity in Gaza, the Sahel, Haiti; worsened by prices and El Niño.",
+  "fr": "Famine confirmée au Soudan ; insécurité alimentaire grave à Gaza, au Sahel, en Haïti ; aggravée par les prix et El Niño."
+ },
+ {
+  "en": "Forced displacement",
+  "fr": "Déplacements forcés"
+ },
+ {
+  "en": "Over 100 million people forcibly displaced worldwide (UNHCR); Sudan is the largest crisis.",
+  "fr": "Plus de 100 millions de personnes déplacées de force dans le monde (HCR) ; le Soudan est la plus grande crise."
+ },
+ {
+  "en": "Humanitarian funding cuts",
+  "fr": "Baisse de l'aide humanitaire"
+ },
+ {
+  "en": "Steep funding cuts since 2025; UN agencies forced to scale back aid.",
+  "fr": "Fortes réductions des financements depuis 2025 ; agences de l'ONU contraintes de réduire leur aide."
+ },
+ {
+  "en": "Migration to Europe",
+  "fr": "Migrations vers l'Europe"
+ },
+ {
+  "en": "Central and eastern Mediterranean routes; a major political issue and disinformation target.",
+  "fr": "Routes de Méditerranée centrale et orientale ; enjeu politique majeur et cible de désinformation."
+ },
+ {
+  "en": "US midterm elections (3 Nov)",
+  "fr": "Élections de mi-mandat américaines (3 nov.)"
+ },
+ {
+  "en": "The result will shape tariff policy, support for Ukraine and Middle East strategy.",
+  "fr": "Le résultat influencera la politique douanière, l'aide à l'Ukraine et la stratégie au Moyen-Orient."
+ },
+ {
+  "en": "Transatlantic uncertainty",
+  "fr": "Incertitude transatlantique"
+ },
+ {
+  "en": "Doubts over the US commitment to Europe: Greenland, paused sanctions on Russia, pressure on Ukraine; Europe is rearming.",
+  "fr": "Doutes sur l'engagement américain envers l'Europe : Groenland, pause des sanctions contre la Russie, pressions sur l'Ukraine ; l'Europe se réarme."
+ },
+ {
+  "en": "Iran closed the strait and attacks tankers.",
+  "fr": "L'Iran a fermé le détroit et attaque les pétroliers."
+ },
+ {
+  "en": "A fifth of world crude transits Hormuz; flows collapsed in October.",
+  "fr": "Un cinquième du brut mondial transite par Ormuz ; les flux se sont effondrés en octobre."
+ },
+ {
+  "en": "Qatari LNG is stuck behind the strait.",
+  "fr": "Le GNL qatari est bloqué derrière le détroit."
+ },
+ {
+  "en": "Gulf urea and ammonia exports pass through Hormuz.",
+  "fr": "Les exportations d'urée et d'ammoniac du Golfe passent par Ormuz."
+ },
+ {
+  "en": "War-risk insurance and detours push up freight.",
+  "fr": "Assurance risque de guerre et détours renchérissent le fret."
+ },
+ {
+  "en": "The Hezbollah front is tied to the Iran war.",
+  "fr": "Le front du Hezbollah est lié à la guerre iranienne."
+ },
+ {
+  "en": "The Houthis joined the war on 28 Mar 2026.",
+  "fr": "Les Houthis sont entrés en guerre le 28 mars 2026."
+ },
+ {
+  "en": "Strikes and fighting displace civilians across the region.",
+  "fr": "Frappes et combats déplacent des civils dans la région."
+ },
+ {
+  "en": "The Houthis cite the Gaza war to justify their attacks.",
+  "fr": "Les Houthis justifient leurs attaques par la guerre à Gaza."
+ },
+ {
+  "en": "Restricted aid access and destruction.",
+  "fr": "Accès humanitaire restreint et destructions."
+ },
+ {
+  "en": "Strikes in south Lebanon empty villages.",
+  "fr": "Les frappes au sud du Liban vident les villages."
+ },
+ {
+  "en": "Blockade declared on Saudi ports and ships.",
+  "fr": "Blocus déclaré contre les ports et navires saoudiens."
+ },
+ {
+  "en": "Somali piracy has resurged in the Gulf of Aden.",
+  "fr": "La piraterie somalienne a repris dans le golfe d'Aden."
+ },
+ {
+  "en": "Ships avoid Suez and sail round Africa.",
+  "fr": "Les navires évitent Suez et contournent l'Afrique."
+ },
+ {
+  "en": "Costlier freight raises import prices.",
+  "fr": "Un fret plus cher renchérit les importations."
+ },
+ {
+  "en": "Fuel, transport and plastics feed into prices.",
+  "fr": "Carburant, transport et plastiques se répercutent sur les prix."
+ },
+ {
+  "en": "Importing countries lose purchasing power.",
+  "fr": "Les pays importateurs perdent du pouvoir d'achat."
+ },
+ {
+  "en": "Prices at the pump and for heating oil.",
+  "fr": "Prix à la pompe et du fioul."
+ },
+ {
+  "en": "Moving aid and farming cost more.",
+  "fr": "Le transport de l'aide et l'agriculture coûtent plus cher."
+ },
+ {
+  "en": "Electricity and heating cost more.",
+  "fr": "Électricité et chauffage plus chers."
+ },
+ {
+  "en": "Higher winter bills; possible demand cuts in a cold snap.",
+  "fr": "Factures d'hiver plus élevées ; sobriété possible en cas de froid."
+ },
+ {
+  "en": "European industry cuts output.",
+  "fr": "L'industrie européenne réduit sa production."
+ },
+ {
+  "en": "Food and energy take a bigger share of budgets.",
+  "fr": "L'alimentation et l'énergie pèsent plus dans les budgets."
+ },
+ {
+  "en": "Higher rates raise debt service.",
+  "fr": "Des taux plus élevés alourdissent le service de la dette."
+ },
+ {
+  "en": "Dearer fertiliser cuts yields.",
+  "fr": "Des engrais plus chers réduisent les rendements."
+ },
+ {
+  "en": "Droughts in Southeast Asia, Australia, southern Africa, India.",
+  "fr": "Sécheresses en Asie du Sud-Est, Australie, Afrique australe, Inde."
+ },
+ {
+  "en": "El Niño adds heat on top of the warming trend.",
+  "fr": "El Niño ajoute de la chaleur au réchauffement de fond."
+ },
+ {
+  "en": "Shifts cyclone activity to the central and eastern Pacific.",
+  "fr": "Déplace l'activité cyclonique vers le Pacifique central et oriental."
+ },
+ {
+  "en": "Crop losses in already fragile countries.",
+  "fr": "Pertes de récoltes dans des pays déjà fragiles."
+ },
+ {
+  "en": "Less rice, palm oil, wheat and maize.",
+  "fr": "Moins de riz, d'huile de palme, de blé et de maïs."
+ },
+ {
+  "en": "Dried-out vegetation.",
+  "fr": "Végétation desséchée."
+ },
+ {
+  "en": "Air-conditioning demand surges while plants lack cooling water.",
+  "fr": "La demande de climatisation explose et les centrales manquent d'eau de refroidissement."
+ },
+ {
+  "en": "Heat stress on crops.",
+  "fr": "Stress thermique sur les cultures."
+ },
+ {
+  "en": "Floods and destroyed homes.",
+  "fr": "Inondations et destructions de logements."
+ },
+ {
+  "en": "Food weighs heavily in price indices.",
+  "fr": "L'alimentation pèse lourd dans l'indice des prix."
+ },
+ {
+  "en": "Poor importing countries can no longer afford imports.",
+  "fr": "Les pays importateurs pauvres ne peuvent plus acheter."
+ },
+ {
+  "en": "Dearer groceries.",
+  "fr": "Courses plus chères."
+ },
+ {
+  "en": "Black Sea constraints support grain prices.",
+  "fr": "Les contraintes en mer Noire soutiennent les prix des céréales."
+ },
+ {
+  "en": "Strikes on ports and shipping.",
+  "fr": "Frappes sur les ports et la navigation."
+ },
+ {
+  "en": "Ukrainian drones hit Russian refineries and terminals.",
+  "fr": "Les drones ukrainiens frappent raffineries et terminaux russes."
+ },
+ {
+  "en": "A nuclear plant on the front line.",
+  "fr": "Centrale nucléaire sur la ligne de front."
+ },
+ {
+  "en": "Russian strikes on Ukraine's grid.",
+  "fr": "Frappes russes sur le réseau ukrainien."
+ },
+ {
+  "en": "Russia's hybrid campaign targets Ukraine's backers.",
+  "fr": "La campagne hybride russe vise les soutiens de l'Ukraine."
+ },
+ {
+  "en": "Military tension on NATO's eastern flank.",
+  "fr": "Tension militaire sur le flanc est de l'OTAN."
+ },
+ {
+  "en": "North Korean troops and munitions for Russia.",
+  "fr": "Troupes et munitions nord-coréennes pour la Russie."
+ },
+ {
+  "en": "US decisions (paused sanctions, talks) shape the war.",
+  "fr": "Les décisions américaines (sanctions en pause, pourparlers) pèsent sur la guerre."
+ },
+ {
+  "en": "Doubts over US guarantees raise the risk of a test.",
+  "fr": "Les doutes sur la garantie américaine augmentent le risque d'un test."
+ },
+ {
+  "en": "Pressure over Greenland divided allies.",
+  "fr": "Les pressions sur le Groenland ont divisé les alliés."
+ },
+ {
+  "en": "Undersea infrastructure is a target.",
+  "fr": "Les infrastructures sous-marines sont des cibles."
+ },
+ {
+  "en": "Drones, GPS jamming and incidents in the Baltic.",
+  "fr": "Drones, brouillage GPS et incidents en mer Baltique."
+ },
+ {
+  "en": "The same networks run sabotage and disinformation.",
+  "fr": "Les mêmes réseaux mènent sabotage et désinformation."
+ },
+ {
+  "en": "Closed airports, outages, fear.",
+  "fr": "Aéroports fermés, pannes, peur."
+ },
+ {
+  "en": "The Baltic is where most cable incidents happen.",
+  "fr": "La Baltique concentre les incidents sur câbles."
+ },
+ {
+  "en": "Internet outages and slowdowns.",
+  "fr": "Coupures internet et lenteurs."
+ },
+ {
+  "en": "Hospitals, payments, transport halted.",
+  "fr": "Hôpitaux, paiements, transports à l'arrêt."
+ },
+ {
+  "en": "Energy operators are targets.",
+  "fr": "Les opérateurs d'énergie sont des cibles."
+ },
+ {
+  "en": "No power: heating, payments, water, phones.",
+  "fr": "Sans courant : chauffage, paiements, eau, téléphones."
+ },
+ {
+  "en": "The idle plant deprives Ukraine of power.",
+  "fr": "La centrale à l'arrêt prive l'Ukraine d'électricité."
+ },
+ {
+  "en": "A major geomagnetic storm can damage transformers.",
+  "fr": "Une tempête géomagnétique majeure peut endommager les transformateurs."
+ },
+ {
+  "en": "AI-generated content aimed at voters.",
+  "fr": "Contenus générés par IA visant les électeurs."
+ },
+ {
+  "en": "Migration is a favourite disinformation theme.",
+  "fr": "La migration est un thème favori des campagnes de désinformation."
+ },
+ {
+  "en": "A sharp correction would hit investment and wealth.",
+  "fr": "Une forte correction frapperait l'investissement et les patrimoines."
+ },
+ {
+  "en": "AI investment increasingly debt-financed.",
+  "fr": "Investissements IA de plus en plus financés par la dette."
+ },
+ {
+  "en": "Generative AI makes disinformation cheap and massive.",
+  "fr": "L'IA générative rend la désinformation bon marché et massive."
+ },
+ {
+  "en": "Tariffs slow trade and investment.",
+  "fr": "Les droits de douane freinent le commerce et l'investissement."
+ },
+ {
+  "en": "Tariffed imports cost more.",
+  "fr": "Les importations taxées coûtent plus cher."
+ },
+ {
+  "en": "Trade disputes strain transatlantic ties.",
+  "fr": "Les différends commerciaux tendent la relation transatlantique."
+ },
+ {
+  "en": "Export controls are used as retaliation.",
+  "fr": "Les contrôles à l'export servent de représailles."
+ },
+ {
+  "en": "The vote shapes tariff policy.",
+  "fr": "Le résultat du scrutin oriente la politique douanière."
+ },
+ {
+  "en": "Congress shapes support for Ukraine and NATO.",
+  "fr": "Le Congrès pèse sur l'aide à l'Ukraine et à l'OTAN."
+ },
+ {
+  "en": "Less fiscal room to absorb shocks.",
+  "fr": "Moins de marge budgétaire pour amortir les chocs."
+ },
+ {
+  "en": "Jobs and wages.",
+  "fr": "Emploi et salaires."
+ },
+ {
+  "en": "A blockade would halt advanced chip exports.",
+  "fr": "Un blocus stopperait les exportations de puces avancées."
+ },
+ {
+  "en": "The same Chinese maritime pressure.",
+  "fr": "Même pression maritime chinoise."
+ },
+ {
+  "en": "At the heart of US–China rivalry.",
+  "fr": "Cœur de la rivalité sino-américaine."
+ },
+ {
+  "en": "Chips go into cars, phones, data centres.",
+  "fr": "Les puces entrent dans les voitures, téléphones, centres de données."
+ },
+ {
+  "en": "AI depends on Taiwanese chips.",
+  "fr": "L'IA dépend des puces taïwanaises."
+ },
+ {
+  "en": "Magnet shortages for industry and defence.",
+  "fr": "Pénuries d'aimants pour l'industrie et la défense."
+ },
+ {
+  "en": "Kachin mines feed China's rare earths.",
+  "fr": "Les mines du Kachin alimentent la Chine en terres rares."
+ },
+ {
+  "en": "Kivu holds mining areas (coltan, tin).",
+  "fr": "Le Kivu abrite des zones minières (coltan, étain)."
+ },
+ {
+  "en": "Insecurity and weak health systems hamper the response.",
+  "fr": "Insécurité et systèmes de santé faibles freinent la riposte."
+ },
+ {
+  "en": "Fighting and displacement camps.",
+  "fr": "Combats et camps de déplacés."
+ },
+ {
+  "en": "Sieges, fighting and blocked aid.",
+  "fr": "Sièges, combats et blocage de l'aide."
+ },
+ {
+  "en": "The world's largest displacement crisis.",
+  "fr": "Plus grande crise de déplacement au monde."
+ },
+ {
+  "en": "Blockades and insecurity cut off markets and harvests.",
+  "fr": "Blocus et insécurité coupent marchés et récoltes."
+ },
+ {
+  "en": "Departures towards North Africa and Europe.",
+  "fr": "Départs vers l'Afrique du Nord et l'Europe."
+ },
+ {
+  "en": "Air strikes and fighting.",
+  "fr": "Bombardements et combats."
+ },
+ {
+  "en": "Gang violence.",
+  "fr": "Violence des gangs."
+ },
+ {
+  "en": "Roads cut, markets closed.",
+  "fr": "Routes coupées, marchés fermés."
+ },
+ {
+  "en": "Fewer rations distributed.",
+  "fr": "Moins de rations distribuées."
+ },
+ {
+  "en": "Less money for outbreak response.",
+  "fr": "Moins de moyens pour la riposte aux épidémies."
+ },
+ {
+  "en": "Reduced vaccination and testing.",
+  "fr": "Vaccination et dépistage réduits."
+ },
+ {
+  "en": "Hunger drives people to leave.",
+  "fr": "La faim pousse au départ."
+ },
+ {
+  "en": "Some displaced people try to reach Europe.",
+  "fr": "Une partie des déplacés tente de rejoindre l'Europe."
+ },
+ {
+  "en": "Pressure on Mediterranean routes.",
+  "fr": "Pression sur les routes méditerranéennes."
+ },
+ {
+  "en": "Poultry culls raise egg and meat prices.",
+  "fr": "Les abattages de volailles renchérissent œufs et viande."
+ },
+ {
+  "en": "Opening Venezuelan oil could add supply over time.",
+  "fr": "L'ouverture du pétrole vénézuélien pourrait ajouter de l'offre à terme."
+ },
+ {
+  "en": "Homes destroyed.",
+  "fr": "Logements détruits."
+ },
+ {
+  "en": "Escalation would hit South Asian trade and markets.",
+  "fr": "Une escalade frapperait commerce et marchés d'Asie du Sud."
+ },
+ {
+  "en": "A major shipping lane under strain.",
+  "fr": "Route maritime majeure sous tension."
+ },
+ {
+  "en": "Iran war → European gas → bills",
+  "fr": "Guerre iranienne → gaz européen → factures"
+ },
+ {
+  "en": "El Niño → harvests → hunger → displacement",
+  "fr": "El Niño → récoltes → faim → déplacements"
+ },
+ {
+  "en": "Red Sea → freight → inflation → debt",
+  "fr": "Mer Rouge → fret → inflation → dette"
+ },
+ {
+  "en": "Ukraine → hybrid war → infrastructure",
+  "fr": "Ukraine → guerre hybride → infrastructures"
+ },
+ {
+  "en": "Taiwan → chips → AI → growth",
+  "fr": "Taïwan → puces → IA → croissance"
+ },
+ {
+  "en": "Hormuz → fertiliser → food prices → hunger",
+  "fr": "Ormuz → engrais → prix alimentaires → faim"
+ },
+ {
+  "en": "Base case",
+  "fr": "Scénario central"
+ },
+ {
+  "en": "Hormuz flows, gas storage on 1 Nov, FAO index.",
+  "fr": "Flux à Ormuz, stocks de gaz au 1er nov., indice FAO."
+ },
+ {
+  "en": "Hormuz stays intermittently disrupted, Brent swings around $95–115, Europe gets through winter with high prices but no widespread rationing; Ukraine talks move slowly; El Niño peaks in December then weakens in spring 2027.",
+  "fr": "Ormuz reste perturbé par intermittence, le Brent oscille autour de 95–115 $, l'Europe traverse l'hiver avec des prix élevés mais sans rationnement généralisé ; les pourparlers sur l'Ukraine avancent lentement ; El Niño culmine en décembre puis s'affaiblit au printemps 2027."
+ },
+ {
+  "en": "Deterioration",
+  "fr": "Dégradation"
+ },
+ {
+  "en": "Attacks on onshore facilities, cold snap, AI-linked defaults.",
+  "fr": "Attaques d'installations à terre, vague de froid, faillites liées à l'IA."
+ },
+ {
+  "en": "Lasting Hormuz closure and strikes on Gulf facilities, a cold European winter, a food price spike with El Niño, hybrid escalation against European infrastructure and a shock in AI markets.",
+  "fr": "Fermeture durable d'Ormuz et frappes sur les installations du Golfe, hiver froid en Europe, flambée des prix alimentaires avec El Niño, escalade hybride contre les infrastructures européennes et choc sur les marchés de l'IA."
+ },
+ {
+  "en": "Improvement",
+  "fr": "Amélioration"
+ },
+ {
+  "en": "Naval blockade lifted, energy truce respected.",
+  "fr": "Levée du blocus naval, trêve énergétique respectée."
+ },
+ {
+  "en": "A US–Iran deal reopening Hormuz, a Ukraine ceasefire from the November talks, a mild winter and easing energy and food prices in the first half of 2027.",
+  "fr": "Accord États-Unis–Iran rouvrant Ormuz, cessez-le-feu en Ukraine issu des pourparlers de novembre, hiver doux et détente des prix de l'énergie et de l'alimentation au premier semestre 2027."
+ },
+ {
+  "en": "Bundibugyo Ebola: the largest recorded outbreak of this virus, little covered in Europe.",
+  "fr": "Ebola Bundibugyo : la plus grande épidémie connue de ce virus, peu couverte en Europe."
+ },
+ {
+  "en": "The Bamako blockade could topple a Sahel state.",
+  "fr": "Le blocus de Bamako peut faire tomber un État du Sahel."
+ },
+ {
+  "en": "Fertiliser: the Hormuz shock to farming will show up in 2027 harvests.",
+  "fr": "Engrais : le choc d'Ormuz sur l'agriculture se verra dans les récoltes de 2027."
+ },
+ {
+  "en": "Historic El Niño + already high prices: risk of food export bans.",
+  "fr": "El Niño historique + prix déjà hauts : risque de restrictions d'exportations alimentaires."
+ },
+ {
+  "en": "Brent crude",
+  "fr": "Pétrole Brent"
+ },
+ {
+  "en": "Pre-war (Feb)",
+  "fr": "Avant-guerre (fév.)"
+ },
+ {
+  "en": "2026 high (30 Apr)",
+  "fr": "Pic 2026 (30 avr.)"
+ },
+ {
+  "en": "2026 monthly averages, then 14 Oct price.",
+  "fr": "Moyennes mensuelles 2026, puis cours du 14 oct."
+ },
+ {
+  "en": "European gas (TTF)",
+  "fr": "Gaz européen (TTF)"
+ },
+ {
+  "en": "Pre-war",
+  "fr": "Avant-guerre"
+ },
+ {
+  "en": "Highest since 2022.",
+  "fr": "Plus haut depuis 2022."
+ },
+ {
+  "en": "EU gas storage",
+  "fr": "Stockage de gaz UE"
+ },
+ {
+  "en": "1 Nov target",
+  "fr": "Objectif 1er nov."
+ },
+ {
+  "en": "ACER and GIE data.",
+  "fr": "Données ACER et GIE."
+ },
+ {
+  "en": "Hormuz flows",
+  "fr": "Flux à Ormuz"
+ },
+ {
+  "en": "Pre-war average",
+  "fr": "Moyenne avant-guerre"
+ },
+ {
+  "en": "Million barrels per day (September: 81% of pre-war, excluding Iran).",
+  "fr": "Millions de barils par jour (septembre : 81 % du niveau d'avant-guerre, hors Iran)."
+ },
+ {
+  "en": "FAO Food Price Index",
+  "fr": "Indice FAO des prix alimentaires"
+ },
+ {
+  "en": "Record (Mar 2022)",
+  "fr": "Record (mars 2022)"
+ },
+ {
+  "en": "1990–2026 average",
+  "fr": "Moyenne 1990–2026"
+ },
+ {
+  "en": "2014–2016 = 100. October figure out on 6 Nov.",
+  "fr": "Base 2014–2016 = 100. Chiffre d'octobre publié le 6 nov."
+ },
+ {
+  "en": "Niño-3.4 anomaly",
+  "fr": "Anomalie Niño-3.4"
+ },
+ {
+  "en": "'Strong' threshold",
+  "fr": "Seuil « fort »"
+ },
+ {
+  "en": "Historic threshold (RONI)",
+  "fr": "Seuil historique (RONI)"
+ },
+ {
+  "en": "Departure from normal in the equatorial Pacific.",
+  "fr": "Écart à la normale dans le Pacifique équatorial."
+ },
+ {
+  "en": "World growth 2026",
+  "fr": "Croissance mondiale 2026"
+ },
+ {
+  "en": "IMF forecast; 3.4% expected in 2027.",
+  "fr": "Prévision FMI ; 3,4 % attendu en 2027."
+ },
+ {
+  "en": "World inflation 2026",
+  "fr": "Inflation mondiale 2026"
+ },
+ {
+  "en": "IMF forecast; 4.1% expected in 2027.",
+  "fr": "Prévision FMI ; 4,1 % attendu en 2027."
+ },
+ {
+  "en": "Ebola: confirmed cases",
+  "fr": "Ebola : cas confirmés"
+ },
+ {
+  "en": "3,759 confirmed deaths; DR Congo.",
+  "fr": "3 759 décès confirmés ; RD Congo."
+ },
+ {
+  "en": "Strong to very strong El Niño through Jan–Mar 2027",
+  "fr": "El Niño fort à très fort jusqu'à janv.–mars 2027"
+ },
+ {
+  "en": "Historic El Niño event in Oct–Dec 2026",
+  "fr": "Épisode El Niño historique en oct.–déc. 2026"
+ },
+ {
+  "en": "2026 the hottest year on record",
+  "fr": "2026, année la plus chaude jamais mesurée"
+ },
+ {
+  "en": "likely",
+  "fr": "probable"
+ },
+ {
+  "en": "Brent above $100 on 31 Dec 2026",
+  "fr": "Brent au-dessus de 100 $ le 31 déc. 2026"
+ },
+ {
+  "en": "Normal Hormuz flows restored by end-2026",
+  "fr": "Flux normaux rétablis à Ormuz d'ici fin 2026"
+ },
+ {
+  "en": "Gas rationing in an EU country this winter",
+  "fr": "Rationnement du gaz dans un pays de l'UE cet hiver"
+ },
+ {
+  "en": "General ceasefire in Ukraine before 31 Mar 2027",
+  "fr": "Cessez-le-feu général en Ukraine avant le 31 mars 2027"
+ },
+ {
+  "en": "FAO index above 140 by Mar 2027",
+  "fr": "Indice FAO au-dessus de 140 d'ici mars 2027"
+ },
+ {
+  "en": "Ebola emergency (PHEIC) lifted by mid-2027",
+  "fr": "Fin de l'urgence Ebola (PHEIC) d'ici mi-2027"
+ },
+ {
+  "en": "Chinese blockade of Taiwan in 2027",
+  "fr": "Blocus chinois de Taïwan en 2027"
+ },
+ {
+  "en": "New major sabotage attributed to Russia in the EU by Mar 2027",
+  "fr": "Nouveau sabotage majeur attribué à la Russie dans l'UE d'ici mars 2027"
+ },
+ {
+  "en": "EU gas storage target date (90%)",
+  "fr": "Date cible de stockage de gaz de l'UE (90 %)"
+ },
+ {
+  "en": "US midterm elections",
+  "fr": "Élections de mi-mandat aux États-Unis"
+ },
+ {
+  "en": "FAO Food Price Index (October)",
+  "fr": "Indice FAO des prix alimentaires (octobre)"
+ },
+ {
+  "en": "COP31 in Antalya (Türkiye)",
+  "fr": "COP31 à Antalya (Turquie)"
+ },
+ {
+  "en": "Next NOAA ENSO discussion",
+  "fr": "Prochaine discussion ENSO de la NOAA"
+ },
+ {
+  "en": "Ukraine–Russia–US talks (November, date TBC)",
+  "fr": "Pourparlers Ukraine–Russie–États-Unis (novembre, date à confirmer)"
+ },
+ {
+  "en": "Expected El Niño peak (December)",
+  "fr": "Pic attendu d'El Niño (décembre)"
+ },
+ {
+  "en": "Full EU ban on Russian gas imports (January)",
+  "fr": "Interdiction totale des importations de gaz russe dans l'UE (janvier)"
+ },
+ {
+  "en": "Global <span>Risk</span> Atlas",
+  "fr": "Atlas des <span>risques</span> mondiaux"
+ },
+ {
+  "en": "Baseline as of",
+  "fr": "Base de données au"
+ },
+ {
+  "en": "Globe"
+ },
+ {
+  "en": "Link network",
+  "fr": "Réseau des liens"
+ },
+ {
+  "en": "Mind map",
+  "fr": "Carte mentale"
+ },
+ {
+  "en": "Matrix & list",
+  "fr": "Matrice & liste"
+ },
+ {
+  "en": "Briefing"
+ },
+ {
+  "en": "Method",
+  "fr": "Méthode"
+ },
+ {
+  "en": "Links",
+  "fr": "Liens"
+ },
+ {
+  "en": "Live alerts",
+  "fr": "Alertes en direct"
+ },
+ {
+  "en": "Rotate",
+  "fr": "Rotation"
+ },
+ {
+  "en": "How does",
+  "fr": "Comment"
+ },
+ {
+  "en": "Find path",
+  "fr": "Trouver le chemin"
+ },
+ {
+  "en": "Search…",
+  "fr": "Rechercher…"
+ },
+ {
+  "en": "Informational analysis, not official advice. In an emergency, follow the authorities.",
+  "fr": "Analyse informative, pas un avis officiel. En cas d'urgence, suivez les autorités."
+ },
+ {
+  "en": "Severity",
+  "fr": "Gravité"
+ },
+ {
+  "en": "Likelihood 12 months",
+  "fr": "Probabilité 12 mois"
+ },
+ {
+  "en": "Since",
+  "fr": "Depuis"
+ },
+ {
+  "en": "Confidence",
+  "fr": "Confiance"
+ },
+ {
+  "en": "Watch for",
+  "fr": "À surveiller"
+ },
+ {
+  "en": "Impact for a household in France",
+  "fr": "Impact pour un foyer en France"
+ },
+ {
+  "en": "Consequences",
+  "fr": "Conséquences"
+ },
+ {
+  "en": "Causes"
+ },
+ {
+  "en": "Sources"
+ },
+ {
+  "en": "Simulate a shock",
+  "fr": "Simuler un choc"
+ },
+ {
+  "en": "Horizon"
+ },
+ {
+  "en": "months",
+  "fr": "mois"
+ },
+ {
+  "en": "Cascade effects (illustrative model, not a forecast)",
+  "fr": "Effets en cascade (modèle illustratif, pas une prévision)"
+ },
+ {
+  "en": "Select a risk on the globe, network, map or list.",
+  "fr": "Sélectionnez un risque sur le globe, le réseau, la carte ou la liste."
+ },
+ {
+  "en": "How to read the atlas",
+  "fr": "Comment lire l'atlas"
+ },
+ {
+  "en": "Each point is a risk and each arc a cause-and-effect link explained in one sentence. Colour = domain, size = severity. Click to open the dossier, then \"Simulate a shock\" to see how it spreads.",
+  "fr": "Chaque point est un risque, chaque arc une relation de cause à effet expliquée en une phrase. Couleur = domaine, taille = gravité. Cliquez pour ouvrir le dossier, puis « Simuler un choc » pour voir la propagation."
+ },
+ {
+  "en": "active",
+  "fr": "actif"
+ },
+ {
+  "en": "escalating",
+  "fr": "en escalade"
+ },
+ {
+  "en": "latent"
+ },
+ {
+  "en": "de-escalating",
+  "fr": "en désescalade"
+ },
+ {
+  "en": "ended",
+  "fr": "terminé"
+ },
+ {
+  "en": "causes",
+  "fr": "cause"
+ },
+ {
+  "en": "amplifies",
+  "fr": "amplifie"
+ },
+ {
+  "en": "constrains",
+  "fr": "freine"
+ },
+ {
+  "en": "depends on",
+  "fr": "dépend de"
+ },
+ {
+  "en": "mitigates",
+  "fr": "atténue"
+ },
+ {
+  "en": "same actor",
+  "fr": "même acteur"
+ },
+ {
+  "en": "high",
+  "fr": "élevée"
+ },
+ {
+  "en": "medium",
+  "fr": "moyenne"
+ },
+ {
+  "en": "low",
+  "fr": "faible"
+ },
+ {
+  "en": "Top 10 risks right now",
+  "fr": "Les 10 risques les plus importants"
+ },
+ {
+  "en": "Chains of consequences",
+  "fr": "Chaînes de conséquences"
+ },
+ {
+  "en": "Three 12-month scenarios (atlas assessment)",
+  "fr": "Trois scénarios à 12 mois (évaluation de l'atlas)"
+ },
+ {
+  "en": "Blind spots",
+  "fr": "Angles morts"
+ },
+ {
+  "en": "Live feeds are unavailable here. They work in the downloaded file, opened in a browser with internet.",
+  "fr": "Flux en direct indisponibles ici. Ils fonctionnent dans le fichier téléchargé, ouvert dans un navigateur avec internet."
+ },
+ {
+  "en": "Signposts",
+  "fr": "Signaux"
+ },
+ {
+  "en": "Risk",
+  "fr": "Risque"
+ },
+ {
+  "en": "Domain",
+  "fr": "Domaine"
+ },
+ {
+  "en": "Status",
+  "fr": "Statut"
+ },
+ {
+  "en": "Score"
+ },
+ {
+  "en": "Method & sources",
+  "fr": "Méthode & sources"
+ },
+ {
+  "en": "Severity scale",
+  "fr": "Échelle de gravité"
+ },
+ {
+  "en": "Likelihood scale (12 months)",
+  "fr": "Échelle de probabilité (12 mois)"
+ },
+ {
+  "en": "Link types",
+  "fr": "Types de liens"
+ },
+ {
+  "en": "Live feeds",
+  "fr": "Flux en direct"
+ },
+ {
+  "en": "Limits",
+  "fr": "Limites"
+ },
+ {
+  "en": "No causal chain found in that direction.",
+  "fr": "Aucune chaîne causale trouvée dans ce sens."
+ },
+ {
+  "en": "Causal chain",
+  "fr": "Chaîne causale"
+ },
+ {
+  "en": "The 3D view needs WebGL and the online libraries. Use Matrix & list instead.",
+  "fr": "La vue 3D a besoin de WebGL et des bibliothèques en ligne. Utilisez la Matrice & liste."
+ },
+ {
+  "en": "Earthquake",
+  "fr": "Séisme"
+ },
+ {
+  "en": "Event",
+  "fr": "Événement"
+ },
+ {
+  "en": "Alert",
+  "fr": "Alerte"
+ },
+ {
+  "en": "Size = severity · arcs = cause → effect",
+  "fr": "Taille = gravité · arcs = cause → effet"
+ },
+ {
+  "en": "risks",
+  "fr": "risques"
+ },
+ {
+  "en": "links",
+  "fr": "liens"
+ },
+ {
+  "en": "updated",
+  "fr": "mis à jour"
+ },
+ {
+  "en": "cached",
+  "fr": "cache"
+ },
+ {
+  "en": "Exposed countries highlighted",
+  "fr": "Pays exposés en surbrillance"
+ },
+ {
+  "en": "Dashboard",
+  "fr": "Tableau de bord"
+ },
+ {
+  "en": "News",
+  "fr": "Actualités"
+ },
+ {
+  "en": "Key indicators and benchmarks",
+  "fr": "Indicateurs clés et repères"
+ },
+ {
+  "en": "Live",
+  "fr": "En direct"
+ },
+ {
+  "en": "Stress level by domain",
+  "fr": "Niveau de tension par domaine"
+ },
+ {
+  "en": "Where French households' exposure comes from",
+  "fr": "D'où vient l'exposition des foyers français"
+ },
+ {
+  "en": "Share of each risk in exposure, using the atlas cascade model.",
+  "fr": "Part de chaque risque dans l'exposition, selon le modèle de cascade de l'atlas."
+ },
+ {
+  "en": "Forecasts",
+  "fr": "Prévisions"
+ },
+ {
+  "en": "Official = public agency · Market = prediction-market probability (crowd opinion, not fact) · Atlas = atlas estimate.",
+  "fr": "Officiel = agence publique · Marché = probabilité d'un marché prédictif (avis de la foule, pas un fait) · Atlas = estimation de l'atlas."
+ },
+ {
+  "en": "Official",
+  "fr": "Officiel"
+ },
+ {
+  "en": "Market",
+  "fr": "Marché"
+ },
+ {
+  "en": "Atlas"
+ },
+ {
+  "en": "Upcoming dates",
+  "fr": "Calendrier des échéances"
+ },
+ {
+  "en": "My watchlist",
+  "fr": "Ma liste de suivi"
+ },
+ {
+  "en": "Add or remove risks with ☆ in their dossier. Saved in this browser.",
+  "fr": "Ajoutez ou retirez des risques avec ☆ dans leur dossier. Liste gardée dans ce navigateur."
+ },
+ {
+  "en": "☆ Follow",
+  "fr": "☆ Suivre"
+ },
+ {
+  "en": "★ Following",
+  "fr": "★ Suivi"
+ },
+ {
+  "en": "Media attention spikes",
+  "fr": "Pics d'attention médiatique"
+ },
+ {
+  "en": "Coverage over the last 3 days versus the monthly average (GDELT).",
+  "fr": "Couverture des 3 derniers jours comparée à la moyenne du mois (GDELT)."
+ },
+ {
+  "en": "Latest news",
+  "fr": "Dernières actualités"
+ },
+ {
+  "en": "Unverified headlines from GDELT: a signal, not established fact.",
+  "fr": "Titres non vérifiés, issus de GDELT : un signal, pas un fait établi."
+ },
+ {
+  "en": "Topic",
+  "fr": "Sujet"
+ },
+ {
+  "en": "Top 10 risks",
+  "fr": "Les 10 risques majeurs"
+ },
+ {
+  "en": "Source language",
+  "fr": "Langue des sources"
+ },
+ {
+  "en": "All",
+  "fr": "Toutes"
+ },
+ {
+  "en": "French",
+  "fr": "Français"
+ },
+ {
+  "en": "English",
+  "fr": "Anglais"
+ },
+ {
+  "en": "Period",
+  "fr": "Période"
+ },
+ {
+  "en": "3 days",
+  "fr": "3 jours"
+ },
+ {
+  "en": "7 days",
+  "fr": "7 jours"
+ },
+ {
+  "en": "Loading…",
+  "fr": "Chargement…"
+ },
+ {
+  "en": "Live feed temporarily unavailable (sources overloaded or offline). Meanwhile, open:",
+  "fr": "Flux en direct momentanément indisponible (sources saturées ou hors ligne). En attendant, ouvrez :"
+ },
+ {
+  "en": "Google News",
+  "fr": "Google Actualités"
+ },
+ {
+  "en": "GDELT"
+ },
+ {
+  "en": "Humanitarian reports (UN ReliefWeb)",
+  "fr": "Rapports humanitaires (ONU, ReliefWeb)"
+ },
+ {
+  "en": "ReliefWeb unavailable here.",
+  "fr": "ReliefWeb indisponible ici."
+ },
+ {
+  "en": "Live prediction markets",
+  "fr": "Marchés prédictifs en direct"
+ },
+ {
+  "en": "Polymarket unavailable here (works in the downloaded file).",
+  "fr": "Polymarket indisponible ici (fonctionne dans le fichier téléchargé)."
+ },
+ {
+  "en": "M4.5+ earthquakes (7 d)",
+  "fr": "Séismes M4,5+ (7 j)"
+ },
+ {
+  "en": "GDACS orange/red alerts",
+  "fr": "Alertes GDACS orange/rouge"
+ },
+ {
+  "en": "Kp index (storm if ≥ 5)",
+  "fr": "Indice Kp (tempête si ≥ 5)"
+ },
+ {
+  "en": "live in the downloaded file",
+  "fr": "en direct dans le fichier téléchargé"
+ },
+ {
+  "en": "vs"
+ },
+ {
+  "en": "today",
+  "fr": "aujourd'hui"
+ },
+ {
+  "en": "max"
+ },
+ {
+  "en": "News on this risk",
+  "fr": "Actualités de ce risque"
+ },
+ {
+  "en": "mo",
+  "fr": "m"
+ },
+ {
+  "en": "ongoing",
+  "fr": "en cours"
+ },
+ {
+  "en": "step(s)",
+  "fr": "étape(s)"
+ },
+ {
+  "en": "more: type to filter",
+  "fr": "autres : tapez pour filtrer"
+ },
+ {
+  "en": "World risks",
+  "fr": "Risques mondiaux"
+ },
+ {
+  "en": "Lik.",
+  "fr": "Prob."
+ },
+ {
+  "en": "Local, limited",
+  "fr": "Local, limité"
+ },
+ {
+  "en": "National, reversible",
+  "fr": "National, réversible"
+ },
+ {
+  "en": "Regional, notable economic effects",
+  "fr": "Régional, effets économiques notables"
+ },
+ {
+  "en": "Global for one sector (energy, food…)",
+  "fr": "Mondial sur un secteur (énergie, alimentation…)"
+ },
+ {
+  "en": "Global and systemic, mass loss of life",
+  "fr": "Mondial et systémique, pertes humaines massives"
+ },
+ {
+  "en": "Very unlikely (< 5%)",
+  "fr": "Très improbable (< 5 %)"
+ },
+ {
+  "en": "Unlikely (5–20%)",
+  "fr": "Peu probable (5–20 %)"
+ },
+ {
+  "en": "Possible (20–50%)",
+  "fr": "Possible (20–50 %)"
+ },
+ {
+  "en": "Likely (50–80%)",
+  "fr": "Probable (50–80 %)"
+ },
+ {
+  "en": "Ongoing or near-certain (> 80%)",
+  "fr": "En cours ou quasi certain (> 80 %)"
+ },
+ {
+  "en": "M4.5+ earthquakes, last 7 days",
+  "fr": "Séismes M4,5+ des 7 derniers jours"
+ },
+ {
+  "en": "Ongoing wildfires, storms, volcanoes",
+  "fr": "Feux, tempêtes, volcans en cours"
+ },
+ {
+  "en": "Disaster alerts (UN / European Commission)",
+  "fr": "Alertes catastrophes (ONU / Commission européenne)"
+ },
+ {
+  "en": "Geomagnetic Kp index",
+  "fr": "Indice géomagnétique Kp"
+ },
+ {
+  "en": "Cascade model: impact passes along links (link strength × source severity, damped 18% per step), with the lag set on each link. It illustrates mechanisms; it is not a forecast.",
+  "fr": "Modèle de cascade : l'impact se transmet le long des liens (force du lien × gravité de la source, atténué de 18 % par étape), avec le délai indiqué sur chaque lien. Il illustre des mécanismes ; ce n'est pas une prévision."
+ },
+ {
+  "en": "Structural baseline = average severity × likelihood of active risks, scaled to 100. Live adjustments: +2 per GDACS red alert and +1 per orange (max +6); +1 per M6.5+ earthquake in 7 days (max +3); +2 if Kp ≥ 5, +4 if Kp ≥ 7; media attention on the top 10 risks from −3 to +5. Bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe.",
+  "fr": "Base structurelle = moyenne de gravité × probabilité des risques actifs, ramenée sur 100. Ajustements en direct : +2 par alerte GDACS rouge et +1 par orange (max +6) ; +1 par séisme ≥ M6,5 sur 7 jours (max +3) ; +2 si Kp ≥ 5, +4 si Kp ≥ 7 ; attention médiatique des 10 risques majeurs de −3 à +5. Paliers : < 40 modéré, 40–60 élevé, 60–75 haut, > 75 sévère."
+ },
+ {
+  "en": "Severity and likelihood are the atlas's judgements, using the scale shown.",
+  "fr": "Gravité et probabilité sont des jugements de l'atlas, selon l'échelle ci-contre."
+ },
+ {
+  "en": "Casualty figures come from the authorities or agencies cited and cannot be independently verified.",
+  "fr": "Les chiffres de victimes proviennent des autorités ou agences citées et ne peuvent être vérifiés de façon indépendante."
+ },
+ {
+  "en": "No operational military detail is given.",
+  "fr": "Aucun détail opérationnel militaire n'est fourni."
+ },
+ {
+  "en": "&hl=en-GB&gl=GB&ceid=GB:en",
+  "fr": "&hl=fr&gl=FR&ceid=FR:fr"
+ },
+ {
+  "en": "red",
+  "fr": "rouge(s)"
+ },
+ {
+  "en": "Analysis"
+ },
+ {
+  "en": "Layers"
+ },
+ {
+  "en": "Scenarios",
+  "fr": "Scénarios"
+ },
+ {
+  "en": "Time travel",
+  "fr": "Machine à remonter le temps"
+ },
+ {
+  "en": "Countries",
+  "fr": "Pays"
+ },
+ {
+  "en": "Media attention",
+  "fr": "Attention médiatique"
+ },
+ {
+  "en": "Live layers",
+  "fr": "Couches en direct"
+ },
+ {
+  "en": "No change",
+  "fr": "Pas d'effet"
+ },
+ {
+  "en": "Clear easing",
+  "fr": "Nette détente"
+ },
+ {
+  "en": "Slight easing",
+  "fr": "Légère détente"
+ },
+ {
+  "en": "Strong pressure",
+  "fr": "Forte pression"
+ },
+ {
+  "en": "Moderate pressure",
+  "fr": "Pression modérée"
+ },
+ {
+  "en": "Slight pressure",
+  "fr": "Légère pression"
+ },
+ {
+  "en": "Strait of Hormuz closure",
+  "fr": "Fermeture du détroit d'Ormuz"
+ },
+ {
+  "en": "European winter",
+  "fr": "Hiver en Europe"
+ },
+ {
+  "en": "Normal"
+ },
+ {
+  "en": "Cold",
+  "fr": "Froid"
+ },
+ {
+  "en": "Very cold",
+  "fr": "Très froid"
+ },
+ {
+  "en": "El Niño"
+ },
+ {
+  "en": "As forecast",
+  "fr": "Comme prévu"
+ },
+ {
+  "en": "Stronger",
+  "fr": "Plus fort"
+ },
+ {
+  "en": "Historic",
+  "fr": "Historique"
+ },
+ {
+  "en": "Hybrid attacks in Europe",
+  "fr": "Attaques hybrides en Europe"
+ },
+ {
+  "en": "Current level",
+  "fr": "Niveau actuel"
+ },
+ {
+  "en": "Escalation",
+  "fr": "Escalade"
+ },
+ {
+  "en": "Major attack",
+  "fr": "Attaque majeure"
+ },
+ {
+  "en": "Red Sea attacks resume",
+  "fr": "Reprise des attaques en mer Rouge"
+ },
+ {
+  "en": "Taiwan blockade",
+  "fr": "Blocus de Taïwan"
+ },
+ {
+  "en": "Ukraine ceasefire",
+  "fr": "Cessez-le-feu en Ukraine"
+ },
+ {
+  "en": "No",
+  "fr": "Non"
+ },
+ {
+  "en": "Yes",
+  "fr": "Oui"
+ },
+ {
+  "en": " downward",
+  "fr": " à la baisse"
+ },
+ {
+  "en": "Fuel",
+  "fr": "Carburant"
+ },
+ {
+  "en": "Heating & power",
+  "fr": "Chauffage & électricité"
+ },
+ {
+  "en": "Overall budget",
+  "fr": "Budget global"
+ },
+ {
+  "en": "Turn on at least one shock on the left.",
+  "fr": "Activez au moins un choc à gauche."
+ },
+ {
+  "en": "Today",
+  "fr": "Aujourd'hui"
+ },
+ {
+  "en": "Scenario",
+  "fr": "Scénario"
+ },
+ {
+  "en": "points"
+ },
+ {
+  "en": "No shock active",
+  "fr": "Aucun choc actif"
+ },
+ {
+  "en": "Household in France",
+  "fr": "Foyer en France"
+ },
+ {
+  "en": "Open the 14-day reserve",
+  "fr": "Ouvrir la réserve 14 jours"
+ },
+ {
+  "en": "Key indicators: today → direction in the scenario",
+  "fr": "Indicateurs clés : aujourd'hui → direction dans le scénario"
+ },
+ {
+  "en": "When the effects arrive",
+  "fr": "Quand les effets arrivent"
+ },
+ {
+  "en": "Months after the shock · intensity 0–100",
+  "fr": "Mois après le choc · intensité 0–100"
+ },
+ {
+  "en": "Easing: ",
+  "fr": "En détente : "
+ },
+ {
+  "en": "Custom",
+  "fr": "Personnalisé"
+ },
+ {
+  "en": "Turn on",
+  "fr": "Activer"
+ },
+ {
+  "en": "Build a scenario",
+  "fr": "Construire un scénario"
+ },
+ {
+  "en": "Show in the network",
+  "fr": "Voir dans le réseau"
+ },
+ {
+  "en": "Reset",
+  "fr": "Réinitialiser"
+ },
+ {
+  "en": "Shocks spread through the atlas's 100 cause-and-effect links, with their delays. It is a simple model to explore with, not a forecast.",
+  "fr": "Les chocs se propagent par les 100 liens de cause à effet de l'atlas, avec leurs délais. C'est un modèle simple pour explorer, pas une prévision."
+ },
+ {
+  "en": "The world at a date",
+  "fr": "Le monde à une date"
+ },
+ {
+  "en": "Filled: active on that date · Outline: not started yet",
+  "fr": "Plein : actif à cette date · Contour : pas encore commencé"
+ },
+ {
+  "en": "Risk map",
+  "fr": "Carte des risques"
+ },
+ {
+  "en": "Date"
+ },
+ {
+  "en": "On this date",
+  "fr": "À cette date"
+ },
+ {
+  "en": "of 56 risks active",
+  "fr": "risques actifs sur 56"
+ },
+ {
+  "en": "at severity 5",
+  "fr": "de gravité 5"
+ },
+ {
+  "en": "Started this month",
+  "fr": "Commencés ce mois-ci"
+ },
+ {
+  "en": "Crisis start dates since 2020",
+  "fr": "Débuts des crises depuis 2020"
+ },
+ {
+  "en": "Dot sizes use the severity assessed on ",
+  "fr": "Les tailles reprennent la gravité évaluée le "
+ },
+ {
+  "en": ". Past scores would need a monthly snapshot from now on.",
+  "fr": ". Les scores passés nécessitent un instantané mensuel à partir de maintenant."
+ },
+ {
+  "en": "direct risks",
+  "fr": "risques directs"
+ },
+ {
+  "en": "knock-on",
+  "fr": "par ricochet"
+ },
+ {
+  "en": "Another country…",
+  "fr": "Autre pays…"
+ },
+ {
+  "en": "Search a country",
+  "fr": "Chercher un pays"
+ },
+ {
+  "en": "What exposes ",
+  "fr": "Ce qui expose le plus "
+ },
+ {
+  "en": " most"
+ },
+ {
+  "en": "Share of severity × likelihood",
+  "fr": "Part de gravité × probabilité"
+ },
+ {
+  "en": "direct"
+ },
+ {
+  "en": "via "
+ },
+ {
+  "en": "Risks that hit the country directly, or through the cause-and-effect links (same method as the dashboard).",
+  "fr": "Risques qui touchent le pays directement, ou par les liens de cause à effet (même calcul que le tableau de bord)."
+ },
+ {
+  "en": "Headlines about ",
+  "fr": "Titres sur "
+ },
+ {
+  "en": "Dates to watch",
+  "fr": "Dates à surveiller"
+ },
+ {
+  "en": "Your household",
+  "fr": "Votre foyer"
+ },
+ {
+  "en": "Be prepared",
+  "fr": "Se préparer"
+ },
+ {
+  "en": "The 14-day reserve list works anywhere; prices and shops are for France.",
+  "fr": "La liste de la réserve 14 jours vaut partout ; les prix et magasins sont ceux de la France."
+ },
+ {
+  "en": "No recent headline mentions this country.",
+  "fr": "Aucun titre récent ne cite ce pays."
+ },
+ {
+  "en": "News feed unavailable.",
+  "fr": "Flux d'actualités indisponible."
+ },
+ {
+  "en": "Media attention · ",
+  "fr": "Attention médiatique · "
+ },
+ {
+  "en": " days",
+  "fr": " jours"
+ },
+ {
+  "en": "Headlines mentioning each risk",
+  "fr": "Titres qui citent chaque risque"
+ },
+ {
+  "en": "COLLECTION NOT ACTIVE YET",
+  "fr": "COLLECTE PAS ENCORE ACTIVE"
+ },
+ {
+  "en": "Collecting since ",
+  "fr": "Collecte depuis le "
+ },
+ {
+  "en": "No data yet.",
+  "fr": "Aucune donnée pour l'instant."
+ },
+ {
+  "en": "Fewer headlines",
+  "fr": "Moins de titres"
+ },
+ {
+  "en": "More headlines",
+  "fr": "Plus de titres"
+ },
+ {
+  "en": "Spikes",
+  "fr": "Pics"
+ },
+ {
+  "en": "Last 2 days vs before",
+  "fr": "2 derniers jours vs avant"
+ },
+ {
+  "en": "No clear spike.",
+  "fr": "Pas de pic net."
+ },
+ {
+  "en": "Needs at least 4 days of data.",
+  "fr": "Il faut au moins 4 jours de données."
+ },
+ {
+  "en": "Severe but under-covered",
+  "fr": "Graves mais peu couverts"
+ },
+ {
+  "en": "Severity ",
+  "fr": "Gravité "
+ },
+ {
+  "en": "of mentions",
+  "fr": "des mentions"
+ },
+ {
+  "en": "How it is measured",
+  "fr": "Comment c'est mesuré"
+ },
+ {
+  "en": "Every hour, the relay counts headlines from France 24, Le Monde, BBC, Al Jazeera and ReliefWeb that mention each risk (FR and EN keywords), and keeps 30 days.",
+  "fr": "Chaque heure, le relais compte les titres de France 24, Le Monde, BBC, Al Jazeera et ReliefWeb qui citent chaque risque (mots-clés FR et EN), et garde 30 jours."
+ },
+ {
+  "en": "The relay doesn't return history yet",
+  "fr": "Le relais ne renvoie pas encore d'historique"
+ },
+ {
+  "en": " — showing current headlines only.",
+  "fr": " : affichage des titres du moment uniquement."
+ },
+ {
+  "en": "Replaces GDELT, which is rate-limited.",
+  "fr": "Remplace GDELT, limité en nombre de requêtes."
+ },
+ {
+  "en": "How fresh each figure is",
+  "fr": "Fraîcheur de chaque chiffre"
+ },
+ {
+  "en": "Age on ",
+  "fr": "Âge au "
+ },
+ {
+  "en": "Indicator",
+  "fr": "Indicateur"
+ },
+ {
+  "en": "As of",
+  "fr": "Date"
+ },
+ {
+  "en": "Age",
+  "fr": "Âge"
+ },
+ {
+  "en": "Source"
+ },
+ {
+  "en": "Verify",
+  "fr": "Vérifier"
+ },
+ {
+  "en": "under 10 days",
+  "fr": "moins de 10 jours"
+ },
+ {
+  "en": "days",
+  "fr": "jours"
+ },
+ {
+  "en": "over 30 days: needs refresh",
+  "fr": "plus de 30 jours : à rafraîchir"
+ },
+ {
+  "en": "approximate (month only)",
+  "fr": "date approximative (mois seul)"
+ },
+ {
+  "en": "Confidence in the 56 risks",
+  "fr": "Confiance dans les 56 risques"
+ },
+ {
+  "en": "High: several official or reference sources agree.",
+  "fr": "Élevée : plusieurs sources officielles ou de référence concordent."
+ },
+ {
+  "en": "Source types",
+  "fr": "Types de sources"
+ },
+ {
+  "en": "sources"
+ },
+ {
+  "en": "OFFICIAL",
+  "fr": "OFFICIEL"
+ },
+ {
+  "en": "DATA FIRMS",
+  "fr": "DONNÉES"
+ },
+ {
+  "en": "PRESS",
+  "fr": "PRESSE"
+ },
+ {
+  "en": "MARKET",
+  "fr": "MARCHÉ"
+ },
+ {
+  "en": "Needs a refresh",
+  "fr": "À rafraîchir"
+ },
+ {
+  "en": "Check the latest source",
+  "fr": "Vérifier la dernière source"
+ },
+ {
+  "en": "Air traffic",
+  "fr": "Trafic aérien"
+ },
+ {
+  "en": "ADS-B · adsb.lol (open data)",
+  "fr": "ADS-B · adsb.lol (données ouvertes)"
+ },
+ {
+  "en": "Ships (AIS)",
+  "fr": "Navires (AIS)"
+ },
+ {
+  "en": "aisstream.io · key needed",
+  "fr": "aisstream.io · clé requise"
+ },
+ {
+  "en": "Internet outages",
+  "fr": "Coupures d'internet"
+ },
+ {
+  "en": "Cloudflare Radar · 7 days",
+  "fr": "Cloudflare Radar · 7 jours"
+ },
+ {
+  "en": "Fires & strikes (Ukraine, Russia, Middle East)",
+  "fr": "Feux & frappes (Ukraine, Russie, Moyen-Orient)"
+ },
+ {
+  "en": "NASA FIRMS · 24 h"
+ },
+ {
+  "en": "Dark",
+  "fr": "Sombre"
+ },
+ {
+  "en": "Satellite (yesterday)",
+  "fr": "Satellite (hier)"
+ },
+ {
+  "en": "Night lights",
+  "fr": "Lumières de nuit"
+ },
+ {
+  "en": "regions",
+  "fr": "zones"
+ },
+ {
+  "en": "Hormuz",
+  "fr": "Ormuz"
+ },
+ {
+  "en": "Bab el-Mandeb"
+ },
+ {
+  "en": "Suez"
+ },
+ {
+  "en": "Malacca"
+ },
+ {
+  "en": "Gulf of Finland",
+  "fr": "Golfe de Finlande"
+ },
+ {
+  "en": "English Channel",
+  "fr": "Manche"
+ },
+ {
+  "en": "ships",
+  "fr": "navires"
+ },
+ {
+  "en": "outages",
+  "fr": "coupures"
+ },
+ {
+  "en": "hotspots",
+  "fr": "points chauds"
+ },
+ {
+  "en": "no aircraft received",
+  "fr": "aucun avion reçu"
+ },
+ {
+  "en": "aircraft",
+  "fr": "avions"
+ },
+ {
+  "en": "To enable: aisstream.io key in the relay",
+  "fr": "À activer : clé aisstream.io dans le relais"
+ },
+ {
+  "en": "To enable: Cloudflare Radar token in the relay",
+  "fr": "À activer : jeton Cloudflare Radar dans le relais"
+ },
+ {
+  "en": "To enable: NASA FIRMS key in the relay",
+  "fr": "À activer : clé NASA FIRMS dans le relais"
+ },
+ {
+  "en": "Unavailable",
+  "fr": "Indisponible"
+ },
+ {
+  "en": "NASA GIBS image (previous day)",
+  "fr": "Image NASA GIBS (jour précédent)"
+ },
+ {
+  "en": "Satellite image unavailable",
+  "fr": "Image satellite indisponible"
+ },
+ {
+  "en": "Ships seen in ",
+  "fr": "Navires vus en "
+ },
+ {
+  "en": "avg ",
+  "fr": "moy. "
+ },
+ {
+  "en": "In the Gulf many ships switch AIS off or are jammed: the map shows fewer than there really are.",
+  "fr": "Dans le Golfe, beaucoup de navires coupent leur AIS ou sont brouillés : la carte en montre moins qu'en réalité."
+ },
+ {
+  "en": "Live positions via the atlas-api relay. Hover a purple marker for outage details.",
+  "fr": "Positions en direct via le relais atlas-api. Survolez un point violet pour le détail d'une coupure."
+ },
+ {
+  "en": "Altitude"
+ },
+ {
+  "en": "Speed",
+  "fr": "Vitesse"
+ },
+ {
+  "en": "Heading",
+  "fr": "Cap"
+ },
+ {
+  "en": "Yellow trail: positions seen since you opened the page · dashed: 1 h ahead if the heading holds.",
+  "fr": "Trajet jaune : positions vues depuis l'ouverture de la page · pointillé : 1 h de vol si le cap ne change pas."
+ },
+ {
+  "en": "Full track (ADS-B)",
+  "fr": "Trajet complet (ADS-B)"
+ },
+ {
+  "en": "Course",
+  "fr": "Cap"
+ },
+ {
+  "en": "Ships visible now",
+  "fr": "Navires visibles"
+ },
+ {
+  "en": "Normal day",
+  "fr": "Jour normal"
+ },
+ {
+  "en": "Turn on “Ships” to see traffic.",
+  "fr": "Activez « Navires » pour voir le trafic."
+ },
+ {
+  "en": "Frequent GPS jamming: many ships switch AIS off here.",
+  "fr": "Brouillage GPS fréquent : beaucoup de navires coupent leur AIS ici."
+ },
+ {
+  "en": "3D globe",
+  "fr": "Globe 3D"
+ },
+ {
+  "en": "Earthquakes ≥ M4.5",
+  "fr": "Séismes ≥ M4,5"
+ },
+ {
+  "en": "Go to",
+  "fr": "Aller à"
+ },
+ {
+  "en": "World",
+  "fr": "Monde"
+ },
+ {
+  "en": "World · live",
+  "fr": "Monde · en direct"
+ },
+ {
+  "en": "Live map: wheel or pinch to zoom, drag to pan, click a plane or ship",
+  "fr": "Carte en direct : molette ou pincement pour zoomer, glisser pour déplacer, cliquer sur un avion ou un navire"
+ },
+ {
+  "en": "World view",
+  "fr": "Vue monde"
+ },
+ {
+  "en": "Ships",
+  "fr": "Navires"
+ },
+ {
+  "en": "Aircraft",
+  "fr": "Avions"
+ },
+ {
+  "en": "Fires",
+  "fr": "Feux"
+ },
+ {
+  "en": "Internet outage",
+  "fr": "Coupure d'internet"
+ },
+ {
+  "en": "Positions estimated between updates (speed and heading)",
+  "fr": "Positions estimées entre deux mises à jour (vitesse et cap)"
+ },
+ {
+  "en": "Planes (worldwide)",
+  "fr": "Avions (mondial)"
+ },
+ {
+  "en": "Relay status",
+  "fr": "État du relais"
+ },
+ {
+  "en": "READY",
+  "fr": "PRÊT"
+ },
+ {
+  "en": " NEEDED",
+  "fr": " À AJOUTER"
+ },
+ {
+  "en": "Without OpenSky: planes around 28 major airports and hotspots only.",
+  "fr": "Sans OpenSky : avions autour de 28 grands aéroports et zones sensibles seulement."
+ },
+ {
+  "en": "Index history",
+  "fr": "Historique de l'indice"
+ },
+ {
+  "en": "vs 24 h ago",
+  "fr": "vs il y a 24 h"
+ },
+ {
+  "en": "vs 7 days ago",
+  "fr": "vs il y a 7 j"
+ },
+ {
+  "en": "Period low · high",
+  "fr": "Min · max de la période"
+ },
+ {
+  "en": "Global Risk Index curve",
+  "fr": "Courbe de l'indice mondial des risques"
+ },
+ {
+  "en": "Recording has just started: one point per hour, the curve fills in over time.",
+  "fr": "L'enregistrement vient de commencer : un point par heure, la courbe se remplit au fil du temps."
+ },
+ {
+  "en": "One point per hour since ",
+  "fr": "Un point par heure depuis le "
+ },
+ {
+  "en": " (median across open browsers). Earlier years can't be honestly rebuilt: the index depends on the alerts of the moment.",
+  "fr": " (médiane des navigateurs ouverts). Les années passées ne peuvent pas être reconstituées honnêtement : l'indice dépend des alertes du moment."
+ },
+ {
+  "en": "Supermarket",
+  "fr": "Supermarché"
+ },
+ {
+  "en": "Pharmacy",
+  "fr": "Pharmacie"
+ },
+ {
+  "en": "Online",
+  "fr": "En ligne"
+ },
+ {
+  "en": "Bookshop / IGN",
+  "fr": "Librairie / IGN"
+ },
+ {
+  "en": "Pharmacy (in person)",
+  "fr": "Pharmacie (sur place)"
+ },
+ {
+  "en": "cans",
+  "fr": "boîtes"
+ },
+ {
+  "en": "pcs"
+ },
+ {
+  "en": "set",
+  "fr": "lot"
+ },
+ {
+  "en": "sets",
+  "fr": "lots"
+ },
+ {
+  "en": "jars",
+  "fr": "pots"
+ },
+ {
+  "en": "boxes",
+  "fr": "boîtes"
+ },
+ {
+  "en": "box",
+  "fr": "boîte"
+ },
+ {
+  "en": "bottles",
+  "fr": "flacons"
+ },
+ {
+  "en": "rolls",
+  "fr": "rouleaux"
+ },
+ {
+  "en": "packs",
+  "fr": "paquets"
+ },
+ {
+  "en": "bags",
+  "fr": "sacs"
+ },
+ {
+  "en": "bag",
+  "fr": "sac"
+ },
+ {
+  "en": "pets",
+  "fr": "animaux"
+ },
+ {
+  "en": "people",
+  "fr": "pers."
+ },
+ {
+  "en": "Water",
+  "fr": "Eau"
+ },
+ {
+  "en": "Bottled water",
+  "fr": "Eau en bouteille"
+ },
+ {
+  "en": "3 L per person per day for drinking and cooking (Japan, Switzerland, UK minimum), plus pets. Washing water comes from the containers below.",
+  "fr": "3 L par personne et par jour pour boire et cuisiner (minimum Japon, Suisse, UK), plus les animaux. L'eau de toilette vient des jerricans."
+ },
+ {
+  "en": " packs of 6 × 1.5 L"
+ },
+ {
+  "en": "Foldable water containers, 20 L",
+  "fr": "Jerricans pliables 20 L"
+ },
+ {
+  "en": "Fill from the tap at the first sign of trouble, for washing and flushing. The US counts about 3.8 L per person per day once hygiene is included.",
+  "fr": "À remplir au robinet dès les premiers signes, pour la toilette et les WC. Les États-Unis comptent 3,8 L/pers./jour hygiène comprise."
+ },
+ {
+  "en": "Water purification tablets or filter bottle",
+  "fr": "Pastilles de purification ou gourde filtrante"
+ },
+ {
+  "en": "Back-up if bottled water runs out.",
+  "fr": "En secours si l'eau en bouteille manque."
+ },
+ {
+  "en": "Food (no fridge needed)",
+  "fr": "Nourriture (sans frigo)"
+ },
+ {
+  "en": "Pasta, rice, couscous",
+  "fr": "Pâtes, riz, couscous"
+ },
+ {
+  "en": "Couscous only needs boiling water poured over it.",
+  "fr": "Le couscous se prépare avec de l'eau bouillante versée dessus."
+ },
+ {
+  "en": "Canned fish or meat",
+  "fr": "Conserves de poisson ou viande"
+ },
+ {
+  "en": "Tuna, sardines, mackerel, chicken, chili. Edible cold.",
+  "fr": "Thon, sardines, maquereau, poulet, chili. Se mangent froids."
+ },
+ {
+  "en": "Canned ready meals and vegetables",
+  "fr": "Plats cuisinés et légumes en conserve"
+ },
+ {
+  "en": "Ratatouille, lentils with sausage, cassoulet, vegetables.",
+  "fr": "Ratatouille, petit salé aux lentilles, cassoulet, légumes."
+ },
+ {
+  "en": "Canned beans, lentils, chickpeas",
+  "fr": "Haricots, lentilles, pois chiches en conserve"
+ },
+ {
+  "en": "Protein and fibre, ready to eat.",
+  "fr": "Protéines et fibres, prêts à manger."
+ },
+ {
+  "en": "Oats, muesli or cereal",
+  "fr": "Flocons d'avoine, muesli, céréales"
+ },
+ {
+  "en": "Breakfast with UHT milk or water.",
+  "fr": "Petit-déjeuner avec lait UHT ou eau."
+ },
+ {
+  "en": "Crackers, biscottes, long-life bread",
+  "fr": "Biscottes, crackers, pain longue conservation"
+ },
+ {
+  "en": "Bread replacement.",
+  "fr": "Pour remplacer le pain."
+ },
+ {
+  "en": "Canned or jarred fruit",
+  "fr": "Fruits en conserve ou en bocal"
+ },
+ {
+  "en": "Germany's BBK plans 2.5 kg of fruit per person for 10 days.",
+  "fr": "Le BBK allemand prévoit 2,5 kg de fruits par personne pour 10 jours."
+ },
+ {
+  "en": "UHT milk or plant drink",
+  "fr": "Lait UHT ou boisson végétale"
+ },
+ {
+  "en": "Or milk powder, which takes less space.",
+  "fr": "Ou lait en poudre, moins encombrant."
+ },
+ {
+  "en": "Nuts and dried fruit",
+  "fr": "Fruits secs et oléagineux"
+ },
+ {
+  "en": "Dense calories, no preparation.",
+  "fr": "Beaucoup de calories, aucune préparation."
+ },
+ {
+  "en": "Peanut butter or spread",
+  "fr": "Beurre de cacahuète ou pâte à tartiner"
+ },
+ {
+  "en": "Fruit compote pouches",
+  "fr": "Compotes en gourde"
+ },
+ {
+  "en": "Vitamins and morale, especially for children.",
+  "fr": "Vitamines et moral, surtout pour les enfants."
+ },
+ {
+  "en": "Chocolate, energy or cereal bars",
+  "fr": "Chocolat, barres de céréales ou énergétiques"
+ },
+ {
+  "en": "Oil, salt, sugar or honey, coffee, tea",
+  "fr": "Huile, sel, sucre ou miel, café, thé"
+ },
+ {
+  "en": "Basics for the whole household.",
+  "fr": "Les bases pour tout le foyer."
+ },
+ {
+  "en": "Pet food",
+  "fr": "Nourriture pour animaux"
+ },
+ {
+  "en": "Two weeks per animal.",
+  "fr": "Deux semaines par animal."
+ },
+ {
+  "en": "Cooking",
+  "fr": "Cuisson"
+ },
+ {
+  "en": "Gas stove (cartridge or cassette)",
+  "fr": "Réchaud à gaz (cartouche ou cassette)"
+ },
+ {
+  "en": "A table-top cassette stove (the Japanese standard) or a camping stove. Use near an open window or on an open balcony.",
+  "fr": "Réchaud de table à cassette (le standard japonais) ou réchaud de camping. À utiliser près d'une fenêtre ouverte ou sur un balcon ouvert."
+ },
+ {
+  "en": "Gas cartridges matching the stove",
+  "fr": "Cartouches de gaz compatibles"
+ },
+ {
+  "en": "About 1 h 30–2 h of burning each.",
+  "fr": "Environ 1 h 30 à 2 h de flamme chacune."
+ },
+ {
+  "en": "Lighters and matches",
+  "fr": "Briquets et allumettes"
+ },
+ {
+  "en": "Manual can opener",
+  "fr": "Ouvre-boîte manuel"
+ },
+ {
+  "en": "Carbon monoxide detector",
+  "fr": "Détecteur de monoxyde de carbone"
+ },
+ {
+  "en": "Essential if you cook or heat with gas.",
+  "fr": "Indispensable si vous cuisinez ou chauffez au gaz."
+ },
+ {
+  "en": "Light, power & radio",
+  "fr": "Éclairage, énergie & radio"
+ },
+ {
+  "en": "Emergency radio (FM/AM, crank, solar, USB)",
+  "fr": "Radio d'urgence (FM/AM, dynamo, solaire, USB)"
+ },
+ {
+  "en": "Your link to official information with no internet.",
+  "fr": "Votre lien avec l'information officielle sans internet."
+ },
+ {
+  "en": "Headlamp",
+  "fr": "Lampe frontale"
+ },
+ {
+  "en": "Hands free, one each.",
+  "fr": "Mains libres, une par personne."
+ },
+ {
+  "en": "LED lantern",
+  "fr": "Lanterne LED"
+ },
+ {
+  "en": "Safer than candles.",
+  "fr": "Plus sûre que les bougies."
+ },
+ {
+  "en": "Batteries AA and AAA",
+  "fr": "Piles AA et AAA"
+ },
+ {
+  "en": "Match your radio, lamps and thermometer.",
+  "fr": "Adaptées à la radio, aux lampes et au thermomètre."
+ },
+ {
+  "en": "Power bank 20,000 mAh",
+  "fr": "Batterie externe 20 000 mAh"
+ },
+ {
+  "en": "Each one recharges a phone about 4 times.",
+  "fr": "Recharge un téléphone environ 4 fois."
+ },
+ {
+  "en": "Car charger for phones (USB)",
+  "fr": "Chargeur USB pour voiture"
+ },
+ {
+  "en": "Portable power station, 300–500 Wh",
+  "fr": "Station d'énergie portable 300–500 Wh"
+ },
+ {
+  "en": "Runs lights, phones, a laptop or a router for days.",
+  "fr": "Alimente lampes, téléphones, ordinateur ou box pendant des jours."
+ },
+ {
+  "en": "Foldable solar panel, 100 W",
+  "fr": "Panneau solaire pliable 100 W"
+ },
+ {
+  "en": "Recharges the power station in sunlight.",
+  "fr": "Recharge la station au soleil."
+ },
+ {
+  "en": "Warmth",
+  "fr": "Chaleur"
+ },
+ {
+  "en": "Sleeping bag, comfort rating 5 °C or lower",
+  "fr": "Sac de couchage, confort 5 °C ou moins"
+ },
+ {
+  "en": "Lets you stay warm without heating.",
+  "fr": "Pour rester au chaud sans chauffage."
+ },
+ {
+  "en": "Survival blankets",
+  "fr": "Couvertures de survie"
+ },
+ {
+  "en": "Light, cheap, also for first aid.",
+  "fr": "Légères, bon marché, utiles aussi en secourisme."
+ },
+ {
+  "en": "Thermal or wool base layers",
+  "fr": "Sous-vêtements thermiques ou laine"
+ },
+ {
+  "en": "Use what you have; buy one set if needed.",
+  "fr": "Utilisez ce que vous avez ; achetez un ensemble si besoin."
+ },
+ {
+  "en": "Regular medication, 2+ weeks extra",
+  "fr": "Traitement habituel, 2 semaines de plus"
+ },
+ {
+  "en": "Ask your doctor for a prescription covering a reserve.",
+  "fr": "Demandez à votre médecin une ordonnance couvrant une réserve."
+ },
+ {
+  "en": "First-aid kit",
+  "fr": "Trousse de premiers secours"
+ },
+ {
+  "en": "Dressings, compresses, antiseptic, tape, scissors, tweezers, gloves.",
+  "fr": "Pansements, compresses, antiseptique, sparadrap, ciseaux, pince, gants."
+ },
+ {
+  "en": "Paracetamol",
+  "fr": "Paracétamol"
+ },
+ {
+  "en": "Pain and fever; children's form if needed. Sold in pharmacies.",
+  "fr": "Douleur et fièvre ; forme enfant si besoin. Vendu en pharmacie."
+ },
+ {
+  "en": "Oral rehydration salts",
+  "fr": "Solutés de réhydratation orale"
+ },
+ {
+  "en": "For diarrhoea, important for children.",
+  "fr": "En cas de diarrhée, important pour les enfants."
+ },
+ {
+  "en": "Thermometer",
+  "fr": "Thermomètre"
+ },
+ {
+  "en": "FFP2 masks",
+  "fr": "Masques FFP2"
+ },
+ {
+  "en": "Dust, smoke, illness.",
+  "fr": "Poussière, fumée, maladie."
+ },
+ {
+  "en": "Hand sanitiser gel",
+  "fr": "Gel hydroalcoolique"
+ },
+ {
+  "en": "Hygiene & sanitation",
+  "fr": "Hygiène & sanitaires"
+ },
+ {
+  "en": "Toilet paper",
+  "fr": "Papier toilette"
+ },
+ {
+  "en": "Wet wipes",
+  "fr": "Lingettes"
+ },
+ {
+  "en": "Washing when water is scarce.",
+  "fr": "Pour se laver quand l'eau manque."
+ },
+ {
+  "en": "Heavy-duty bin bags, 50 L",
+  "fr": "Sacs poubelle résistants 50 L"
+ },
+ {
+  "en": "Waste and emergency toilet liners.",
+  "fr": "Déchets et sacs pour toilettes de secours."
+ },
+ {
+  "en": "Bucket with tight lid",
+  "fr": "Seau avec couvercle étanche"
+ },
+ {
+  "en": "Emergency toilet if water stops.",
+  "fr": "Toilettes de secours si l'eau est coupée."
+ },
+ {
+  "en": "Cat litter",
+  "fr": "Litière pour chat"
+ },
+ {
+  "en": "Covers waste in the emergency toilet.",
+  "fr": "Pour couvrir les déchets dans les toilettes de secours."
+ },
+ {
+  "en": "Soap, sanitary products, nappies if needed",
+  "fr": "Savon, protections hygiéniques, couches si besoin"
+ },
+ {
+  "en": "Adapt to the household.",
+  "fr": "À adapter au foyer."
+ },
+ {
+  "en": "Home safety & tools",
+  "fr": "Sécurité & outils"
+ },
+ {
+  "en": "Fire extinguisher, ABC powder 2 kg",
+  "fr": "Extincteur poudre ABC 2 kg"
+ },
+ {
+  "en": "Smoke detector (legally required)",
+  "fr": "Détecteur de fumée (obligatoire)"
+ },
+ {
+  "en": "Check it works.",
+  "fr": "Vérifiez qu'il fonctionne."
+ },
+ {
+  "en": "Multi-tool or pocket knife",
+  "fr": "Couteau multifonction"
+ },
+ {
+  "en": "Duct tape, plastic sheeting, work gloves",
+  "fr": "Ruban adhésif toilé, bâche, gants"
+ },
+ {
+  "en": "Sheeting and tape seal a room if told to shelter in place (US guidance).",
+  "fr": "Bâche et adhésif pour calfeutrer une pièce en cas de confinement (consigne américaine)."
+ },
+ {
+  "en": "Spare house and car keys, spare glasses",
+  "fr": "Doubles des clés, lunettes de rechange"
+ },
+ {
+  "en": "From the UK checklist; easy to forget.",
+  "fr": "De la liste britannique ; on les oublie facilement."
+ },
+ {
+  "en": "Whistle",
+  "fr": "Sifflet"
+ },
+ {
+  "en": "To signal if trapped.",
+  "fr": "Pour signaler sa présence si on est bloqué."
+ },
+ {
+  "en": "Grab bag (backpack)",
+  "fr": "Sac d'évacuation (sac à dos)"
+ },
+ {
+  "en": "Holds the 72 h kit if you must leave.",
+  "fr": "Contient le kit 72 h si vous devez partir."
+ },
+ {
+  "en": "Data, documents & maps",
+  "fr": "Données, documents & cartes"
+ },
+ {
+  "en": "External drive 1–2 TB",
+  "fr": "Disque dur externe 1–2 To"
+ },
+ {
+  "en": "Offline backup; keep unplugged.",
+  "fr": "Sauvegarde hors ligne ; à garder débranché."
+ },
+ {
+  "en": "USB key 64 GB",
+  "fr": "Clé USB 64 Go"
+ },
+ {
+  "en": "Encrypted copy of documents.",
+  "fr": "Copie chiffrée des documents."
+ },
+ {
+  "en": "Waterproof document pouch",
+  "fr": "Pochette étanche pour documents"
+ },
+ {
+  "en": "Paper copies and cash.",
+  "fr": "Copies papier et espèces."
+ },
+ {
+  "en": "Paper map of Île-de-France",
+  "fr": "Carte papier d'Île-de-France"
+ },
+ {
+  "en": "Notebook and pens",
+  "fr": "Carnet et stylos"
+ },
+ {
+  "en": "Contacts, notes, messages."
+ },
+ {
+  "en": "Essential",
+  "fr": "Essentiel"
+ },
+ {
+  "en": "Recommended",
+  "fr": "Recommandé"
+ },
+ {
+  "en": "Optional",
+  "fr": "Option"
+ },
+ {
+  "en": "Buy:",
+  "fr": "Acheter :"
+ },
+ {
+  "en": "items",
+  "fr": "articles"
+ },
+ {
+  "en": "Copy",
+  "fr": "Copier"
+ },
+ {
+  "en": " of "
+ },
+ {
+  "en": " items ticked"
+ },
+ {
+  "en": "Copied",
+  "fr": "Copié"
+ },
+ {
+  "en": "Household preparedness · France · 14 days",
+  "fr": "Préparation du foyer · France · 14 jours"
+ },
+ {
+  "en": "Two-Week Household Reserve",
+  "fr": "Réserve familiale 14 jours"
+ },
+ {
+  "en": "A practical plan to get your household through two weeks without shops, card payments, internet or mains power, the most likely shape of a major cyberattack or a wider conflict. Set your household size, and the shopping list, quantities and budget update. Tick items as you buy them; your ticks are saved in this browser.",
+  "fr": "Un plan concret pour tenir deux semaines sans magasins, sans paiement par carte, sans internet ni électricité, le scénario le plus probable d'une cyberattaque majeure ou d'un conflit. Indiquez la taille de votre foyer : la liste, les quantités et le budget s'adaptent. Cochez les articles au fur et à mesure ; vos coches sont enregistrées dans ce navigateur."
+ },
+ {
+  "en": "Compiled from official guidance: FR · EU · NL · BE · UK · US · DE · CH · JP · SE · NO",
+  "fr": "Synthèse des consignes officielles : FR · UE · NL · BE · UK · US · DE · CH · JP · SE · NO"
+ },
+ {
+  "en": "14 days, above every national minimum",
+  "fr": "14 jours, au-dessus de tous les minimums nationaux"
+ },
+ {
+  "en": "Prices indicative, Oct 2026",
+  "fr": "Prix indicatifs, oct. 2026"
+ },
+ {
+  "en": "Shopping list",
+  "fr": "Liste d'achats"
+ },
+ {
+  "en": "Basket per shop",
+  "fr": "Paniers par magasin"
+ },
+ {
+  "en": "Where to buy",
+  "fr": "Où acheter"
+ },
+ {
+  "en": "Data &amp; digital",
+  "fr": "Données &amp; numérique"
+ },
+ {
+  "en": "Money &amp; papers",
+  "fr": "Argent &amp; papiers"
+ },
+ {
+  "en": "Family plan",
+  "fr": "Plan familial"
+ },
+ {
+  "en": "When it happens",
+  "fr": "Le jour J"
+ },
+ {
+  "en": "Upkeep",
+  "fr": "Entretien"
+ },
+ {
+  "en": "Country guidance",
+  "fr": "Consignes par pays"
+ },
+ {
+  "en": "Step 1",
+  "fr": "Étape 1"
+ },
+ {
+  "en": "Adults &amp; teens",
+  "fr": "Adultes &amp; ados"
+ },
+ {
+  "en": "Children (under 12)",
+  "fr": "Enfants (moins de 12 ans)"
+ },
+ {
+  "en": "Pets",
+  "fr": "Animaux"
+ },
+ {
+  "en": "Include optional upgrades (power station, solar)",
+  "fr": "Inclure les options (station d'énergie, solaire)"
+ },
+ {
+  "en": "bottled water (3 L/person/day, as JP, CH, UK)",
+  "fr": "d'eau en bouteille (3 L/pers./jour, comme JP, CH, UK)"
+ },
+ {
+  "en": "kcal for 14 days (2,200/adult/day, as DE)",
+  "fr": "kcal pour 14 jours (2 200/adulte/jour, comme DE)"
+ },
+ {
+  "en": "essentials budget",
+  "fr": "budget essentiels"
+ },
+ {
+  "en": "essentials + recommended",
+  "fr": "essentiels + recommandés"
+ },
+ {
+  "en": "Build it over 4–6 weeks rather than in one trip. Use the Japanese \"everyday stockpiling\" method: keep a little extra of what you already eat, eat the oldest first and replace it on the next shop. Nothing goes to waste and you never need a big panic-buying trip.",
+  "fr": "Constituez-la en 4 à 6 semaines plutôt qu'en un seul passage. Utilisez la méthode japonaise du « stock du quotidien » : gardez un peu plus de ce que vous mangez déjà, consommez le plus ancien en premier et remplacez-le à la course suivante. Rien ne se perd, et pas besoin d'achats de panique."
+ },
+ {
+  "en": "Step 2",
+  "fr": "Étape 2"
+ },
+ {
+  "en": "Quantities are for your whole household for 14 days. Children count as 0.7 of an adult for food. The \"Buy\" links open a search on the shop's website.",
+  "fr": "Quantités pour tout le foyer, pour 14 jours. Un enfant compte pour 0,7 adulte pour la nourriture. Les liens « Acheter » ouvrent une recherche sur le site du magasin."
+ },
+ {
+  "en": "buy first",
+  "fr": "d'abord"
+ },
+ {
+  "en": "next",
+  "fr": "ensuite"
+ },
+ {
+  "en": "if budget allows",
+  "fr": "si le budget le permet"
+ },
+ {
+  "en": "Clear all ticks",
+  "fr": "Tout décocher"
+ },
+ {
+  "en": "Step 3",
+  "fr": "Étape 3"
+ },
+ {
+  "en": "The same list grouped by shop. Each line opens the item on the shop's site; add it to your basket, then order and pay yourself. \"Copy\" puts the list on your clipboard for a click-and-collect order or a message.",
+  "fr": "La même liste regroupée par magasin. Chaque ligne ouvre l'article sur le site ; ajoutez-le au panier, puis commandez et payez vous-même. « Copier » met la liste dans le presse-papiers pour une commande drive ou un message."
+ },
+ {
+  "en": "Step 4",
+  "fr": "Étape 4"
+ },
+ {
+  "en": "Where to buy in France",
+  "fr": "Où acheter en France"
+ },
+ {
+  "en": "Nothing here needs a specialist \"survival\" shop. No product is officially approved by the State, so ignore anything sold as \"the official government kit\".",
+  "fr": "Aucun magasin « survie » spécialisé n'est nécessaire. Aucun produit n'est agréé par l'État : méfiez-vous de tout ce qui est vendu comme « le kit officiel du gouvernement »."
+ },
+ {
+  "en": "Store",
+  "fr": "Magasin"
+ },
+ {
+  "en": "Buy there",
+  "fr": "À y acheter"
+ },
+ {
+  "en": "Tip",
+  "fr": "Conseil"
+ },
+ {
+  "en": "Supermarkets",
+  "fr": "Supermarchés"
+ },
+ {
+  "en": "Water, all food, batteries, bin bags, toilet paper, wipes, lighters, cat litter, gas cartridges (often)",
+  "fr": "Eau, toute la nourriture, piles, sacs poubelle, papier toilette, lingettes, briquets, litière, cartouches de gaz (souvent)"
+ },
+ {
+  "en": "Own-brand canned goods are cheap and keep 2–3 years. Lidl and Aldi weekly offers often include headlamps and power banks.",
+  "fr": "Les conserves marque distributeur sont bon marché et se gardent 2 à 3 ans. Les promos de Lidl et Aldi proposent souvent lampes frontales et batteries externes."
+ },
+ {
+  "en": "Camping stove, gas cartridges, headlamps, lanterns, sleeping bags, survival blankets, foldable water containers, first-aid kit, water filter, multi-tool, whistle",
+  "fr": "Réchaud, cartouches de gaz, lampes frontales, lanternes, sacs de couchage, couvertures de survie, jerricans pliables, trousse de secours, filtre à eau, couteau multifonction, sifflet"
+ },
+ {
+  "en": "The best single stop for the non-food kit. Check the stove and cartridge use the same valve type.",
+  "fr": "Le meilleur arrêt unique pour le matériel non alimentaire. Vérifiez que réchaud et cartouches ont la même valve."
+ },
+ {
+  "en": "Regular medication, paracetamol, oral rehydration salts, thermometer, dressings, FFP2 masks, hand gel",
+  "fr": "Traitements habituels, paracétamol, solutés de réhydratation, thermomètre, pansements, masques FFP2, gel"
+ },
+ {
+  "en": "Ask your doctor for a prescription that covers an extra month of any vital treatment.",
+  "fr": "Demandez à votre médecin une ordonnance couvrant un mois de réserve pour tout traitement vital."
+ },
+ {
+  "en": "DIY stores",
+  "fr": "Bricolage"
+ },
+ {
+  "en": "Fire extinguisher, smoke and CO detectors, buckets with lids, jerrycans, duct tape, work gloves, plastic sheeting",
+  "fr": "Extincteur, détecteurs de fumée et de CO, seaux à couvercle, jerricans, ruban adhésif, gants, bâche"
+ },
+ {
+  "en": "Pick an ABC powder extinguisher (2 kg for a flat, 6 kg for a house).",
+  "fr": "Prenez un extincteur à poudre ABC (2 kg pour un appartement, 6 kg pour une maison)."
+ },
+ {
+  "en": "Electronics",
+  "fr": "Électronique"
+ },
+ {
+  "en": "Emergency radio, power banks, external hard drive, USB keys, portable power station, solar panel",
+  "fr": "Radio d'urgence, batteries externes, disque dur externe, clés USB, station d'énergie, panneau solaire"
+ },
+ {
+  "en": "Choose a radio with FM + AM, hand crank, solar and USB charging.",
+  "fr": "Choisissez une radio FM + AM, à dynamo, solaire et rechargeable en USB."
+ },
+ {
+  "en": "Action / discount stores",
+  "fr": "Action / discount"
+ },
+ {
+  "en": "Batteries, LED lanterns, zip bags, storage boxes, candles, matches",
+  "fr": "Piles, lanternes LED, sacs zip, boîtes de rangement, bougies, allumettes"
+ },
+ {
+  "en": "Fine for cheap extras. Buy the radio and headlamps from a better-known brand.",
+  "fr": "Bien pour les petits compléments. Prenez la radio et les frontales d'une marque reconnue."
+ },
+ {
+  "en": "Hand-crank radio, power station, solar panel, waterproof document pouch",
+  "fr": "Radio à dynamo, station d'énergie, panneau solaire, pochette étanche"
+ },
+ {
+  "en": "Read reviews and check the seller is in the EU (warranty and CE marking).",
+  "fr": "Lisez les avis et vérifiez que le vendeur est dans l'UE (garantie et marquage CE)."
+ },
+ {
+  "en": "Paper road map of Île-de-France and your region",
+  "fr": "Carte routière papier d'Île-de-France et de votre région"
+ },
+ {
+  "en": "GPS and online maps may be down; a paper map is cheap insurance.",
+  "fr": "GPS et cartes en ligne peuvent tomber ; une carte papier est une assurance bon marché."
+ },
+ {
+  "en": "Step 5",
+  "fr": "Étape 5"
+ },
+ {
+  "en": "In a cyberattack this matters most. The goal is that losing your phone, your cloud account or your bank app does not lock you out of your life.",
+  "fr": "En cas de cyberattaque, c'est le plus important. Objectif : perdre votre téléphone, votre compte cloud ou votre appli bancaire ne doit pas vous bloquer."
+ },
+ {
+  "en": "Backups (3-2-1 rule)",
+  "fr": "Sauvegardes (règle 3-2-1)"
+ },
+ {
+  "en": "Keep 3 copies of important data: your device, a cloud service, and an external drive.",
+  "fr": "Gardez 3 copies des données importantes : l'appareil, un service cloud et un disque externe."
+ },
+ {
+  "en": "Store copies on 2 kinds of media (e.g. cloud + external SSD/HDD).",
+  "fr": "Sur 2 supports différents (ex. cloud + disque SSD/HDD)."
+ },
+ {
+  "en": "Keep 1 copy offline: plug the drive in only to back up, then unplug it. Ransomware cannot reach a disconnected drive.",
+  "fr": "1 copie hors ligne : branchez le disque seulement pour sauvegarder, puis débranchez-le. Un rançongiciel ne peut pas atteindre un disque débranché."
+ },
+ {
+  "en": "Back up monthly. Set a calendar reminder.",
+  "fr": "Sauvegardez chaque mois, avec un rappel dans l'agenda."
+ },
+ {
+  "en": "Encrypt the drive (BitLocker on Windows, FileVault on Mac, or VeraCrypt).",
+  "fr": "Chiffrez le disque (BitLocker sous Windows, FileVault sur Mac, ou VeraCrypt)."
+ },
+ {
+  "en": "Test one restore: open a file from the backup to confirm it works.",
+  "fr": "Testez une restauration : ouvrez un fichier depuis la sauvegarde."
+ },
+ {
+  "en": "Accounts &amp; access",
+  "fr": "Comptes &amp; accès"
+ },
+ {
+  "en": "Use a password manager with a strong master password you have memorised.",
+  "fr": "Utilisez un gestionnaire de mots de passe, avec un mot de passe maître mémorisé."
+ },
+ {
+  "en": "Enable two-factor authentication on email, bank and password manager.",
+  "fr": "Activez la double authentification sur e-mail, banque et gestionnaire de mots de passe."
+ },
+ {
+  "en": "Print the 2FA backup codes and keep them with your paper documents.",
+  "fr": "Imprimez les codes de secours 2FA et rangez-les avec vos documents papier."
+ },
+ {
+  "en": "Make sure your main email account has a recovery method that is not your phone alone.",
+  "fr": "Vérifiez que votre e-mail principal a un moyen de récupération autre que le seul téléphone."
+ },
+ {
+  "en": "Update phones, computers and router now, and turn on automatic updates.",
+  "fr": "Mettez à jour téléphones, ordinateurs et box, et activez les mises à jour automatiques."
+ },
+ {
+  "en": "Download offline maps (Organic Maps, or offline areas in Google Maps) for Île-de-France and where your family lives.",
+  "fr": "Téléchargez des cartes hors ligne (Organic Maps, ou zones hors ligne Google Maps) pour l'Île-de-France et là où vit votre famille."
+ },
+ {
+  "en": "Keep a copy on the encrypted USB key",
+  "fr": "Sur la clé USB chiffrée"
+ },
+ {
+  "en": "Scans of ID, passport, carte Vitale, mutuelle card, driving licence",
+  "fr": "Scans : carte d'identité, passeport, carte Vitale, mutuelle, permis"
+ },
+ {
+  "en": "Lease or property deed, home and car insurance contracts",
+  "fr": "Bail ou titre de propriété, contrats d'assurance habitation et auto"
+ },
+ {
+  "en": "Bank details (RIB) and contact numbers for each bank",
+  "fr": "RIB et numéros de contact de chaque banque"
+ },
+ {
+  "en": "Prescriptions, vaccination records, medical summaries",
+  "fr": "Ordonnances, carnet de vaccination, comptes rendus médicaux"
+ },
+ {
+  "en": "Family photos and anything irreplaceable",
+  "fr": "Photos de famille et tout ce qui est irremplaçable"
+ },
+ {
+  "en": "A copy of this file",
+  "fr": "Une copie de ce fichier"
+ },
+ {
+  "en": "During an attack",
+  "fr": "Pendant une attaque"
+ },
+ {
+  "en": "Expect fake \"urgent\" messages from your bank, the government or delivery firms. Never click links in them; go to the official site or app yourself.",
+  "fr": "Attendez-vous à de faux messages « urgents » de la banque, de l'État ou de livreurs. Ne cliquez jamais ; allez vous-même sur le site ou l'appli officielle."
+ },
+ {
+  "en": "Official alerts come via FR-Alert on your phone and on the radio, not by SMS links asking for details.",
+  "fr": "Les alertes officielles arrivent par FR-Alert et à la radio, jamais par SMS avec un lien demandant vos informations."
+ },
+ {
+  "en": "Check rumours against two official sources before acting or sharing.",
+  "fr": "Vérifiez une rumeur auprès de deux sources officielles avant d'agir ou de partager."
+ },
+ {
+  "en": "If an account is compromised, change its password from a clean device and warn your contacts.",
+  "fr": "Si un compte est piraté, changez le mot de passe depuis un appareil sain et prévenez vos contacts."
+ },
+ {
+  "en": "Step 6",
+  "fr": "Étape 6"
+ },
+ {
+  "en": "Cash",
+  "fr": "Espèces"
+ },
+ {
+  "en": "Card terminals and ATMs are among the first things to fail in a cyberattack or blackout.",
+  "fr": "Terminaux de paiement et distributeurs sont parmi les premiers à tomber lors d'une cyberattaque ou d'une coupure."
+ },
+ {
+  "en": "Keep enough cash for 1–2 weeks of essential spending (food, fuel, pharmacy), in small notes (€5, €10, €20) and some coins.",
+  "fr": "Gardez de quoi couvrir 1 à 2 semaines de dépenses essentielles (nourriture, carburant, pharmacie), en petites coupures (5, 10, 20 €) et quelques pièces."
+ },
+ {
+  "en": "Store it in a discreet place at home, split in two.",
+  "fr": "Rangez-les discrètement chez vous, en deux endroits."
+ },
+ {
+  "en": "An account at a second bank avoids a single point of failure.",
+  "fr": "Un compte dans une deuxième banque évite un point de défaillance unique."
+ },
+ {
+  "en": "Paper folder (waterproof pouch)",
+  "fr": "Dossier papier (pochette étanche)"
+ },
+ {
+  "en": "Photocopies of IDs, passports, carte Vitale, mutuelle",
+  "fr": "Photocopies des pièces d'identité, passeports, carte Vitale, mutuelle"
+ },
+ {
+  "en": "Prescriptions and list of medications with doses",
+  "fr": "Ordonnances et liste des médicaments avec doses"
+ },
+ {
+  "en": "Insurance contracts and policy numbers",
+  "fr": "Contrats d'assurance et numéros de police"
+ },
+ {
+  "en": "Printed list of key phone numbers (see Family plan)",
+  "fr": "Liste imprimée des numéros importants (voir Plan familial)"
+ },
+ {
+  "en": "2FA backup codes and bank emergency numbers",
+  "fr": "Codes de secours 2FA et numéros d'urgence des banques"
+ },
+ {
+  "en": "Paper map with your meeting points marked",
+  "fr": "Carte papier avec vos points de rendez-vous"
+ },
+ {
+  "en": "Step 7",
+  "fr": "Étape 7"
+ },
+ {
+  "en": "Family plan &amp; communications",
+  "fr": "Plan familial &amp; communication"
+ },
+ {
+  "en": "Agree on this before anything happens, write it down, and give everyone a copy.",
+  "fr": "Décidez-le avant, écrivez-le et donnez-en une copie à chacun."
+ },
+ {
+  "en": "Decide together",
+  "fr": "À décider ensemble"
+ },
+ {
+  "en": "<b>Meeting point 1:</b> home. <b>Meeting point 2:</b> a fixed place nearby if home is unsafe. <b>Point 3:</b> a relative outside the city.",
+  "fr": "<b>Point de rendez-vous 1 :</b> le domicile. <b>Point 2 :</b> un lieu fixe proche si le domicile est inaccessible. <b>Point 3 :</b> un proche hors de la ville."
+ },
+ {
+  "en": "Who collects the children from school, and the school's own emergency plan.",
+  "fr": "Qui récupère les enfants à l'école, et le plan de mise en sûreté (PPMS) de l'école."
+ },
+ {
+  "en": "Who checks on elderly or isolated relatives and neighbours.",
+  "fr": "Qui prend des nouvelles des proches âgés ou isolés et des voisins."
+ },
+ {
+  "en": "A rule if phones are down: e.g. \"go home and wait until 18:00, then go to point 2\".",
+  "fr": "Une règle si les téléphones ne marchent plus : ex. « rentrer et attendre jusqu'à 18 h, puis aller au point 2 »."
+ },
+ {
+  "en": "One out-of-area contact everyone calls or texts. Send SMS rather than calls.",
+  "fr": "Un contact hors région que tout le monde appelle. Privilégiez les SMS aux appels."
+ },
+ {
+  "en": "Official information",
+  "fr": "Information officielle"
+ },
+ {
+  "en": "<b>FR-Alert:</b> alerts sent to every phone in the affected area. Keep your phone charged and on.",
+  "fr": "<b>FR-Alert :</b> alertes envoyées à tous les téléphones de la zone. Gardez le téléphone chargé et allumé."
+ },
+ {
+  "en": "<b>Radio</b> (works with no internet): France Inter <span class=\"freq\">87.8 FM",
+  "fr": "<b>Radio</b> (sans internet) : France Inter <span class=\"freq\">87.8 FM</span> à Paris ; ici Paris Île-de-France <span class=\"freq\">107.1 FM</span>. Notez les fréquences de vos autres régions."
+ },
+ {
+  "en": "<b>Sirens:</b> the national alert signal is a rising and falling tone, three times 1 min 41 s. Go inside, close windows, listen to the radio.",
+  "fr": "<b>Sirènes :</b> le signal national d'alerte est un son montant et descendant, trois fois 1 min 41 s. Rentrez, fermez les fenêtres, écoutez la radio."
+ },
+ {
+  "en": "<b>Emergency numbers:</b>",
+  "fr": "<b>Numéros d'urgence :</b>"
+ },
+ {
+  "en": "fire",
+  "fr": "pompiers"
+ },
+ {
+  "en": "by SMS",
+  "fr": "par SMS"
+ },
+ {
+  "en": "Local risks for your address: georisques.gouv.fr",
+  "fr": "Risques pour votre adresse : georisques.gouv.fr"
+ },
+ {
+  "en": "Skills worth one weekend",
+  "fr": "Compétences en un week-end"
+ },
+ {
+  "en": "First-aid course PSC1 (about 7 h, around €60) from the Red Cross, Protection Civile or the fire brigade.",
+  "fr": "Formation PSC1 aux premiers secours (environ 7 h, autour de 60 €) : Croix-Rouge, Protection Civile ou pompiers."
+ },
+ {
+  "en": "Know where your water stopcock, electricity meter and gas valve are, and how to close them.",
+  "fr": "Savoir où sont le robinet d'arrivée d'eau, le compteur électrique et la vanne de gaz, et comment les fermer."
+ },
+ {
+  "en": "Practise one evening without power: cook on the stove, light with headlamps, listen to the radio.",
+  "fr": "Faire une soirée test sans électricité : réchaud, frontales, radio."
+ },
+ {
+  "en": "Community",
+  "fr": "Entraide"
+ },
+ {
+  "en": "Swap numbers with two or three neighbours. Shared resources go much further.",
+  "fr": "Échangez vos numéros avec deux ou trois voisins. Les ressources partagées vont beaucoup plus loin."
+ },
+ {
+  "en": "Know who in the building is elderly, disabled or alone.",
+  "fr": "Sachez qui dans l'immeuble est âgé, handicapé ou seul."
+ },
+ {
+  "en": "The guide also suggests volunteering: Réserve civique, Protection Civile, Red Cross, or the military and police reserves.",
+  "fr": "Le guide invite aussi à s'engager : Réserve civique, Protection Civile, Croix-Rouge, réserves militaires et de police."
+ },
+ {
+  "en": "Step 8",
+  "fr": "Étape 8"
+ },
+ {
+  "en": "A large outage rarely announces itself. If several services fail at once (power, card payments, mobile data), assume it may last and follow this sequence.",
+  "fr": "Une grande panne s'annonce rarement. Si plusieurs services tombent en même temps (électricité, carte bancaire, données mobiles), supposez que cela peut durer et suivez cet ordre."
+ },
+ {
+  "en": "<b>Get information.</b> Turn on the battery radio. Check FR-Alert. Do not rely on social media.",
+  "fr": "<b>S'informer.</b> Allumez la radio à piles. Vérifiez FR-Alert. Ne vous fiez pas aux réseaux sociaux."
+ },
+ {
+  "en": "<b>Fill water.</b> While taps still run, fill the bath, buckets and foldable containers. Water pressure can drop when pumps lose power.",
+  "fr": "<b>Faire le plein d'eau.</b> Tant que le robinet coule, remplissez baignoire, seaux et jerricans. La pression peut baisser si les pompes perdent l'alimentation."
+ },
+ {
+  "en": "<b>Contact family</b> by SMS, once. Apply your family plan. Save phone battery: low-power mode, screen brightness down, data off when not needed.",
+  "fr": "<b>Contacter la famille</b> par SMS, une fois. Appliquez le plan familial. Économisez la batterie : mode économie, luminosité basse, données coupées."
+ },
+ {
+  "en": "<b>Protect the fridge.</b> Keep it closed; a full freezer holds about 24–48 h. Eat fresh and frozen food first, then the reserve.",
+  "fr": "<b>Protéger le frigo.</b> Gardez-le fermé ; un congélateur plein tient environ 24 à 48 h. Mangez d'abord le frais et le surgelé, puis la réserve."
+ },
+ {
+  "en": "Day 1",
+  "fr": "Jour 1"
+ },
+ {
+  "en": "<b>Organise the home.</b> One warm room, headlamps at hand, stove set up near an open window or on the balcony, CO detector on.",
+  "fr": "<b>Organiser le logement.</b> Une pièce chaude, frontales à portée, réchaud près d'une fenêtre ouverte ou sur le balcon, détecteur de CO allumé."
+ },
+ {
+  "en": "Day 2–3",
+  "fr": "J2–3"
+ },
+ {
+  "en": "<b>Ration sensibly.</b> 2 L of drinking water per person per day stays non-negotiable; cut washing water instead. Check on neighbours.",
+  "fr": "<b>Rationner raisonnablement.</b> 2 L d'eau potable par personne et par jour restent non négociables ; réduisez plutôt l'eau de toilette. Prenez des nouvelles des voisins."
+ },
+ {
+  "en": "Day 4+",
+  "fr": "J4+"
+ },
+ {
+  "en": "<b>Follow official instructions</b> on distribution points, travel and shelter. Use cash; keep the car for emergencies.",
+  "fr": "<b>Suivre les consignes officielles</b> sur les points de distribution, les déplacements et la mise à l'abri. Payez en espèces ; gardez la voiture pour les urgences."
+ },
+ {
+  "en": "<b>Never</b> use a barbecue, charcoal, generator or patio heater indoors or on an enclosed balcony. Carbon monoxide kills silently every winter in France.",
+  "fr": "<b>Jamais</b> de barbecue, charbon, groupe électrogène ou chauffage d'appoint de terrasse à l'intérieur ou sur un balcon fermé. Le monoxyde de carbone tue chaque hiver en France."
+ },
+ {
+  "en": "Step 9",
+  "fr": "Étape 9"
+ },
+ {
+  "en": "When",
+  "fr": "Quand"
+ },
+ {
+  "en": "What to do",
+  "fr": "Quoi faire"
+ },
+ {
+  "en": "Every month",
+  "fr": "Chaque mois"
+ },
+ {
+  "en": "Offline backup of your data. Recharge power banks.",
+  "fr": "Sauvegarde hors ligne de vos données. Recharger les batteries externes."
+ },
+ {
+  "en": "Every 6 months (e.g. when the clocks change)",
+  "fr": "Tous les 6 mois (ex. aux changements d'heure)"
+ },
+ {
+  "en": "Check use-by dates, eat and replace the oldest food. Test radio, headlamps, smoke and CO detectors. Replace bottled water past its date.",
+  "fr": "Vérifier les dates, consommer et remplacer les plus anciens. Tester radio, frontales, détecteurs de fumée et de CO. Remplacer l'eau périmée."
+ },
+ {
+  "en": "Every year",
+  "fr": "Chaque année"
+ },
+ {
+  "en": "Update medications and prescriptions, paper documents, phone list and family plan. Check the extinguisher gauge. Redo the calculator if the household changes.",
+  "fr": "Mettre à jour médicaments et ordonnances, documents papier, liste de numéros et plan familial. Vérifier l'extincteur. Refaire le calcul si le foyer change."
+ },
+ {
+  "en": "Evidence",
+  "fr": "Fondements"
+ },
+ {
+  "en": "How countries compare",
+  "fr": "Comparaison des pays"
+ },
+ {
+  "en": "Official guidance varies from 72 hours to 10 days. This plan uses 14 days, the US Red Cross target for water at home, and takes the strictest figure from each country.",
+  "fr": "Les consignes officielles vont de 72 heures à 10 jours. Ce plan retient 14 jours, l'objectif américain pour l'eau à domicile, et le chiffre le plus exigeant de chaque pays."
+ },
+ {
+  "en": "Country",
+  "fr": "Pays"
+ },
+ {
+  "en": "Target",
+  "fr": "Objectif"
+ },
+ {
+  "en": "Notable points",
+  "fr": "Points notables"
+ },
+ {
+  "en": "European Union",
+  "fr": "Union européenne"
+ },
+ {
+  "en": "72 h minimum"
+ },
+ {
+  "en": "Preparedness strategy of March 2025 asks every member state to promote 72 h of self-sufficiency.",
+  "fr": "La stratégie de préparation de mars 2025 demande à chaque État membre de promouvoir 72 h d'autonomie."
+ },
+ {
+  "en": "6 L / person (2 L/day)",
+  "fr": "6 L / pers. (2 L/jour)"
+ },
+ {
+  "en": "Guide \"Tous responsables\" (Nov 2025) names war, cyberattacks and disinformation. Kit: water, food, radio, lamp, medicine, first aid, cash, documents.",
+  "fr": "Guide « Tous responsables » (nov. 2025) : guerre, cyberattaques, désinformation. Kit : eau, nourriture, radio, lampe, médicaments, secours, espèces, documents."
+ },
+ {
+  "en": "Netherlands",
+  "fr": "Pays-Bas"
+ },
+ {
+  "en": "\"Denk vooruit\" booklet posted to about 8.5 million households from Nov 2025. Scenarios: power cut, digital attack, flooding.",
+  "fr": "Livret « Denk vooruit » envoyé à environ 8,5 millions de foyers dès nov. 2025. Scénarios : panne d'électricité, attaque numérique, inondation."
+ },
+ {
+  "en": "Belgium",
+  "fr": "Belgique"
+ },
+ {
+  "en": "National Crisis Centre campaign (Apr 2026): water and food for 3 days, torch, battery radio, know official channels.",
+  "fr": "Campagne du Centre de crise (avr. 2026) : eau et vivres pour 3 jours, lampe, radio à piles, canaux officiels."
+ },
+ {
+  "en": "United Kingdom",
+  "fr": "Royaume-Uni"
+ },
+ {
+  "en": "No fixed period",
+  "fr": "Pas de durée fixe"
+ },
+ {
+  "en": "≥ 3 L / person",
+  "fr": "≥ 3 L / pers."
+ },
+ {
+  "en": "\"Prepare\" site (May 2024): torch, power bank, radio, spare batteries, first aid, no-cook food, baby and pet supplies. NI list adds spare keys and glasses.",
+  "fr": "Site « Prepare » (mai 2024) : lampe, batterie externe, radio, piles, secours, nourriture sans cuisson, bébés et animaux. Liste nord-irlandaise : doubles de clés et lunettes."
+ },
+ {
+  "en": "United States",
+  "fr": "États-Unis"
+ },
+ {
+  "en": "3 days kit; 2 weeks of water at home",
+  "fr": "Kit 3 jours ; 2 semaines d'eau à domicile"
+ },
+ {
+  "en": "≈ 3.8 L / person / day (1 gallon, incl. hygiene)",
+  "fr": "≈ 3,8 L / pers. / jour (1 gallon, hygiène incluse)"
+ },
+ {
+  "en": "FEMA / Red Cross. Adds whistle, masks, plastic sheeting and tape for sheltering in place, tools to shut off utilities, cash.",
+  "fr": "FEMA / Croix-Rouge. Ajoute sifflet, masques, bâche et adhésif pour le confinement, outils pour couper les arrivées, espèces."
+ },
+ {
+  "en": "Germany",
+  "fr": "Allemagne"
+ },
+ {
+  "en": "10 days",
+  "fr": "10 jours"
+ },
+ {
+  "en": "20 L / person (2 L/day)",
+  "fr": "20 L / pers. (2 L/jour)"
+ },
+ {
+  "en": "BBK gives food by weight for 10 days at about 2,200 kcal/day: 3.5 kg grains, 4 kg vegetables and legumes, 2.5 kg fruit, 2.6 L dairy.",
+  "fr": "Le BBK donne des poids pour 10 jours à environ 2 200 kcal/jour : 3,5 kg de féculents, 4 kg de légumes et légumineuses, 2,5 kg de fruits, 2,6 L de laitages."
+ },
+ {
+  "en": "Switzerland",
+  "fr": "Suisse"
+ },
+ {
+  "en": "Emergency stock",
+  "fr": "Provisions de secours"
+ },
+ {
+  "en": "9 L / person = 3 days (3 L/day)",
+  "fr": "9 L / pers. = 3 jours (3 L/jour)"
+ },
+ {
+  "en": "Hygiene water not included in the 9 L; plan extra for washing.",
+  "fr": "L'eau d'hygiène n'est pas comprise ; prévoir en plus."
+ },
+ {
+  "en": "Japan",
+  "fr": "Japon"
+ },
+ {
+  "en": "3 days minimum, 1 week ideal",
+  "fr": "3 jours min., 1 semaine idéal"
+ },
+ {
+  "en": "3 L / person / day",
+  "fr": "3 L / pers. / jour"
+ },
+ {
+  "en": "Tokyo promotes \"everyday stockpiling\" of foods you normally eat, plus torches, rechargeable radios and cassette gas stoves.",
+  "fr": "Tokyo promeut le « stock du quotidien », plus lampes, radios rechargeables et réchauds à cartouche."
+ },
+ {
+  "en": "Sweden",
+  "fr": "Suède"
+ },
+ {
+  "en": "At least 1 week",
+  "fr": "Au moins 1 semaine"
+ },
+ {
+  "en": "Bottled and canned water",
+  "fr": "Bouteilles et bidons"
+ },
+ {
+  "en": "\"In case of crisis or war\" brochure (Nov 2024): food that needs no fridge, sleeping bags and blankets, radio, power banks, paper phone list, cash.",
+  "fr": "Brochure « En cas de crise ou de guerre » (nov. 2024) : nourriture sans frigo, sacs de couchage, radio, batteries, liste papier des numéros, espèces."
+ },
+ {
+  "en": "Norway",
+  "fr": "Norvège"
+ },
+ {
+  "en": "1 week (since 2024, was 3 days)",
+  "fr": "1 semaine (depuis 2024, 3 jours avant)"
+ },
+ {
+  "en": "DSB: about 84% of households accept they must cope alone for a week; fewer than half store drinking water.",
+  "fr": "DSB : environ 84 % des foyers acceptent de devoir tenir seuls une semaine ; moins de la moitié stockent de l'eau."
+ },
+ {
+  "en": "Where they all agree",
+  "fr": "Ce sur quoi tous s'accordent"
+ },
+ {
+  "en": "Water first, then food that needs no fridge and little or no cooking.",
+  "fr": "L'eau d'abord, puis une nourriture sans frigo et avec peu ou pas de cuisson."
+ },
+ {
+  "en": "A radio that works without mains power or internet.",
+  "fr": "Une radio qui fonctionne sans secteur ni internet."
+ },
+ {
+  "en": "Light, spare batteries and charged power banks.",
+  "fr": "Éclairage, piles de rechange et batteries chargées."
+ },
+ {
+  "en": "Medication, first aid, hygiene supplies.",
+  "fr": "Médicaments, premiers secours, hygiène."
+ },
+ {
+  "en": "Cash, copies of documents, a paper list of phone numbers.",
+  "fr": "Espèces, copies des documents, liste papier des numéros."
+ },
+ {
+  "en": "Plans for children, older relatives, people with medical needs, and pets.",
+  "fr": "Prévoir pour enfants, aînés, besoins médicaux et animaux."
+ },
+ {
+  "en": "What this plan takes from each",
+  "fr": "Ce que ce plan retient de chacun"
+ },
+ {
+  "en": "<b>Length:</b> 14 days (US home water target), beyond Germany's 10 days.",
+  "fr": "<b>Durée :</b> 14 jours (objectif US pour l'eau), au-delà des 10 jours allemands."
+ },
+ {
+  "en": "<b>Water:</b> 3 L/day bottled (JP, CH, UK) plus containers for hygiene to approach the US 3.8 L.",
+  "fr": "<b>Eau :</b> 3 L/jour en bouteilles (JP, CH, UK) plus des jerricans pour l'hygiène, pour approcher les 3,8 L américains."
+ },
+ {
+  "en": "<b>Food:</b> German calorie and weight benchmarks, scaled to 14 days.",
+  "fr": "<b>Nourriture :</b> repères allemands en calories et en poids, ramenés à 14 jours."
+ },
+ {
+  "en": "<b>Method:</b> Japanese everyday stockpiling, rotating what you eat.",
+  "fr": "<b>Méthode :</b> le stock du quotidien japonais."
+ },
+ {
+  "en": "<b>Shelter-in-place kit:</b> from the US list.",
+  "fr": "<b>Confinement :</b> kit issu de la liste américaine."
+ },
+ {
+  "en": "<b>Cyber scenario:</b> emphasised by France and the Netherlands; covered in the Data section.",
+  "fr": "<b>Scénario cyber :</b> mis en avant par la France et les Pays-Bas ; voir la partie Données."
+ },
+ {
+  "en": "References",
+  "fr": "Références"
+ },
+ {
+  "en": "Prices are rough averages for France in October 2026 and vary by store. \"Buy\" links run a search on the shop's site: check the product, quantity and price before ordering. Quantities are planning estimates; adapt to special diets, babies (formula, nappies) and medical needs.",
+  "fr": "Prix moyens indicatifs pour la France en octobre 2026, variables selon les magasins. Les liens « Acheter » lancent une recherche sur le site du magasin : vérifiez le produit, la quantité et le prix avant de commander. Quantités indicatives ; adaptez aux régimes, bébés (lait, couches) et besoins médicaux."
+ },
+ {
+  "en": "Iodine tablets are distributed by pharmacies to people living near nuclear sites and must only be taken when the authorities say so.",
+  "fr": "Les comprimés d'iode sont distribués par les pharmacies aux habitants proches des sites nucléaires et ne se prennent que sur ordre des autorités."
+ },
+ {
+  "en": "'+o.en+'",
+  "fr": "'+o.fr+'"
+ },
+ {
+  "en": "Baseline compiled on {0} from dated public sources; the situation moves fast.",
+  "fr": "Base établie le {0} à partir de sources publiques datées ; la situation évolue vite."
+ }
+]
