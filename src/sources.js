@@ -92,3 +92,4 @@ function methodGuide(){
 var _drawMethod0=drawMethod;drawMethod=function(){_drawMethod0();var m=document.querySelector("#v-method .method");if(m)m.insertAdjacentHTML("afterbegin",methodGuide());};
 
 (function(){var o=methodGuide;methodGuide=function(){var h=o();var i=h.lastIndexOf("</div>");return h.slice(0,i)+'<p style="margin-top:12px"><a class="btn" href="https://mbaradhy.github.io/globalrisk/method-audit.html" target="_blank" rel="noopener">'+esc(T2("Lire l'audit de la méthode","Read the method audit"))+' →</a></p>'+h.slice(i);};})();
+(function(){var o=setLang;setLang=function(l){o(l);srcBtn();if(typeof srcPanel==="function"){var sp=document.getElementById("src-p");if(sp&&!sp.hidden)srcPanel();}};})();

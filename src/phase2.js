@@ -55,7 +55,7 @@ function mcRun(G,U,n,a,mult,force,row0){var m=G.m,S=new Uint8Array(n*m),c1=0,c2=
 function mcIndep(ps){var dp=[1,0,0];ps.forEach(function(p){var n0=dp[0]*(1-p),n1=dp[1]*(1-p)+dp[0]*p,n2=dp[2]+dp[1]*p;dp=[n0,n1,n2];});return {P1:100*(1-dp[0]),P2:100*dp[2],EK:ps.reduce(function(s,p){return s+p;},0)};}
 function mcPct(arr,q){var b=arr.slice().sort(function(x,y){return x-y;});var i=Math.min(b.length-1,Math.max(0,Math.round(q*(b.length-1))));return b[i];}
 /* steps run one per frame so the page never freezes */
-function mcStart(){if(MC||MC_RUN)return;MC_RUN=true;var G=mcGraph(),U=mcU(MC_N,G.m,20261030),R={G:G,drv:[],ifs:[]},steps=[];
+function mcStart(){if(MC||MC_RUN)return;MC_RUN=true;var G=mcGraph(),U=mcU(MC_N,G.m,20261030),R={G:G,U:U,drv:[],ifs:[]},steps=[];
   steps.push(function(){R.a=mcCalib(G,U,MC_N,1);R.c=mcRun(G,U,MC_N,R.a,1);R.ind=mcIndep(G.N.map(function(i){return G.p[i];}));});
   steps.push(function(){var a=mcCalib(G,U,MC_N/2,0.5);R.lo=mcRun(G,U,MC_N/2,a,0.5);});
   steps.push(function(){var a=mcCalib(G,U,MC_N/2,1.5);R.hi=mcRun(G,U,MC_N/2,a,1.5);});
@@ -148,3 +148,18 @@ function trackCard(){var r=fcRecord();
 /* resolved questions show their outcome */
 (function(){var o=qRow;qRow=function(id,opt){var h=o(id,opt),oc=fcOutcome(id);if(!oc)return h;return h.replace(/<b class="mono">[^<]*<\/b>/,'<b class="mono" style="color:'+(oc.o?"#ff8a65":"#5fd39a")+'">'+(oc.o?"✓ ":"✗ ")+esc(oc.o?T2("oui","yes"):T2("non","no"))+'</b>');};})();
 (function(){var o=anaQuestions;anaQuestions=function(el){o(el);var d=document.createElement("div");d.innerHTML=trackCard();el.insertBefore(d.firstChild,el.firstChild);};})();
+
+/* scenario builder on the linked model: the shocks you set move their own events; the network carries the rest */
+var MC_SC={};
+(function(){var o=scenGRI;scenGRI=function(eff){if(!MC)return o(eff);
+  var seed={};SHOCKS.forEach(function(sh){var a=shockVal(sh);if(!a)return;Object.keys(sh.src).forEach(function(id){if(MC.G.ix[id]==null)return;var w=a*sh.src[id];seed[id]=(seed[id]||0)+(sh.relief?-w:w);});});
+  var key=JSON.stringify(seed);if(MC_SC[key])return MC_SC[key];
+  var G=MC.G,a2=new Float64Array(MC.a),force={},S=0,Nrest=[];
+  Object.keys(seed).forEach(function(id){var i=G.ix[id],w=Math.max(-1,Math.min(1,seed[id])),p=G.p[i],q=QUESTIONS[id];
+    if(q.sys&&q.kind==="occur"&&w>=0.5){force[i]=1;return;}
+    if(q.kind==="persist"&&w<=-0.4){force[i]=0;return;}
+    var p2=w>=0?p+(1-p)*w:p*(1+0.6*w);a2[i]=MC.a[i]+mcLg(p2)-mcLg(p);});
+  Object.keys(QUESTIONS).forEach(function(k){var q=QUESTIONS[k],i=G.ix[k];if(!q.sys||i==null)return;if(q.kind==="persist"){if(force[i]!==0)S++;}else if(force[i]===1)S++;else Nrest.push(i);});
+  var n=MC_N/4,r=mcRun(G,MC.U,n,a2,1,force),c1=0,m=G.m;for(var d=0;d<n;d++){for(var j=0;j<Nrest.length;j++)if(r.S[d*m+Nrest[j]]){c1++;break;}}
+  var Pm=100*c1/n,dl=MC.P1.mid-MC.P1.lo,dh=MC.P1.hi-MC.P1.mid,P={lo:Math.max(0,Pm-dl),mid:Pm,hi:Math.min(100,Pm+dh)};
+  var lv=levelOf(S,P.mid,0),L_=LEVELS[lv-1];var g={tot:P.mid,band:lv-1,col:L_.c,level:lv,L:L_,S:S,P:P,c:[],linked:true};MC_SC[key]=g;return g;};})();

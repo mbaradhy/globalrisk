@@ -1,13 +1,13 @@
 import json,re,os
 D='/tmp/claude-0/-home-claude/9f8c4616-27f1-5910-b924-209665f78c24/scratchpad/i18n/'
 keys=[]
-for f in ['strings.json','strings_extra.json','strings_extra2.json','strings_extra3.json','strings_extra4.json','strings_extra5.json','strings_extra6.json','strings_extra7.json']:
+for f in ['strings.json','strings_extra.json','strings_extra2.json','strings_extra3.json','strings_extra4.json','strings_extra5.json','strings_extra6.json','strings_extra7.json','strings_extra8.json']:
     keys+=[x['en'] for x in json.load(open(D+f))]
 tag=re.compile(r'</?[a-zA-Z][^>]*>|\{\d\}')
 cyr=re.compile('[Ѐ-ӿ]');arab=re.compile('[؀-ۿ]')
 for lg in ['es','de','nl','pl','da','nb','sv','fi','ar','pt','ru','uk','it']:
     m={}
-    for suf in ['','_extra','_extra2','_full','_extra3','_extra4','_extra5','_extra6','_extra7']:
+    for suf in ['','_extra','_extra2','_full','_extra3','_extra4','_extra5','_extra6','_extra7','_extra8']:
         p=D+lg+suf+'.json'
         if os.path.exists(p):
             try:m.update(json.load(open(p)))
