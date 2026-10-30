@@ -10,7 +10,7 @@ keep_vars = true   # keep variables set in the Cloudflare dashboard
 # Replace the id with yours: Cloudflare → Storage & Databases → KV → atlas-stats → ID
 [[kv_namespaces]]
 binding = "STATS"
-id = "PUT_YOUR_KV_NAMESPACE_ID_HERE"
+id = "4de9db1dcb62412dace5d2ab8100089d"   # atlas-stats
 
 # Count headlines every hour
 [triggers]
