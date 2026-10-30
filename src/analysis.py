@@ -4,7 +4,7 @@ def r(x,y,cnt=1):
     global a
     assert x in a,x[:80]; a=a.replace(x,y,cnt)
 iso=open('/tmp/claude-0/-home-claude/9f8c4616-27f1-5910-b924-209665f78c24/scratchpad/iso.json').read()
-js=(open('analysis.js').read()+open('news.js').read()+open('gri2.js').read()).replace('/*ISO*/null',iso)
+js=(open('analysis.js').read()+open('news.js').read()+open('gri2.js').read()+open('sources.js').read()).replace('/*ISO*/null',iso)
 # tab + view
 r('''  <button role="tab" data-t="kit" aria-selected="false">''','''  <button role="tab" data-t="ana" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span data-i="tAna"></span></button>
   <button role="tab" data-t="kit" aria-selected="false">''')
@@ -164,6 +164,21 @@ css+='''
 .mk{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 10px;align-items:baseline;border-bottom:1px solid #1b2631;padding:5px 0;font-size:.88rem}.mk small{grid-column:1/-1;margin-top:-3px}
 .mkgg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:4px 18px}.mkgr h4{margin:6px 0 2px;font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .mrow{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)!important}
+.status .feed{display:none!important}
+.srcw{position:relative;display:inline-block}
+.srcb{font:inherit;display:inline-flex;align-items:center;gap:7px;color:var(--ink);background:var(--panel);border:1px solid #3a4b5c;border-radius:4px;padding:4px 10px;cursor:pointer;line-height:1.2}
+.srcb:hover,.srcb[aria-expanded="true"]{border-color:var(--accent)}.srcb i{width:8px;height:8px;border-radius:50%}.srcb .srl{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em}.srcb .mono{font-size:.8rem}.srcb .srw{color:#ffb547}.srcb .lga{font-size:.7em;opacity:.7}
+.srcp{position:absolute;right:0;top:calc(100% + 6px);z-index:85;width:min(760px,calc(100vw - 32px));max-height:75vh;overflow:auto;background:#111a25;border:1px solid var(--accent);border-radius:6px;padding:14px 16px;box-shadow:0 16px 40px rgba(0,0,0,.55);text-align:left}
+.srcp[hidden]{display:none}
+.srh{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:6px}.srh b{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;letter-spacing:.04em}.srh .btn{margin-left:auto;padding:2px 8px}
+.srg{columns:2 320px;column-gap:24px}.srgr{break-inside:avoid;margin-bottom:10px}.srgr h4{margin:6px 0 2px;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.srr{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:9px;align-items:center;padding:6px 0;border-bottom:1px solid #1b2631}.srr>i{width:8px;height:8px;border-radius:50%}
+.srr span{display:flex;flex-direction:column;min-width:0}.srr small{color:var(--muted);font-size:.74rem}.srs{align-items:flex-end}.srs em{font-style:normal;font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;border:1px solid;border-radius:3px;padding:1px 5px;white-space:nowrap}
+[dir="rtl"] .srcp{right:auto;left:0}
+@media (max-width:700px){.srcp{position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;max-height:70vh;border-radius:16px 16px 0 0;border-width:1px 0 0}.srcb .srl{display:none}}
+.mg h3{margin:10px 0 4px;font-size:1rem}.mgt{display:flex;flex-direction:column;overflow-x:auto}.mgh,.mgr{display:grid;grid-template-columns:minmax(150px,1fr) minmax(110px,.7fr) minmax(0,2.6fr);gap:12px;padding:7px 0;border-bottom:1px solid #1b2631;font-size:.88rem;min-width:560px}
+.mgh{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.mgr .mono{font-size:.78rem;color:var(--accent)}
+.mgo{margin:0;padding-left:20px;font-size:.9rem;display:flex;flex-direction:column;gap:4px}.mg p{margin:4px 0;font-size:.9rem}
 .fxg{display:flex;flex-wrap:wrap;gap:6px}.fxc{display:inline-flex;gap:6px;align-items:baseline;background:var(--panel2);border-radius:4px;padding:4px 8px;font-size:.82rem}.fxc b{font-size:.78rem;color:var(--muted)}
 .mkh{margin:6px 0 0;font-size:.95rem;display:flex;gap:8px;align-items:baseline}
 .ar-in{display:flex;gap:8px;flex-wrap:wrap}.ar-in input{flex:1;min-width:160px;font:inherit;color:var(--ink);background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:7px 10px}

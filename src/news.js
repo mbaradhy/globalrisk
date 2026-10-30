@@ -57,9 +57,9 @@ var _drawNews0=drawNews;drawNews=function(){_drawNews0();var g=document.querySel
 /* ===== Markets: indices, commodities, exchange rates ===== */
 var MKT_N={"^spx":"S&P 500","^ndq":"Nasdaq 100","^dji":"Dow Jones","^tsx":"TSX","^bvsp":"Bovespa","^stoxx":"Euro Stoxx 50","^cac":"CAC 40","^dax":"DAX","^ukx":"FTSE 100","^ibex":"IBEX 35","^ftmib":"FTSE MIB","^smi":"SMI","^aex":"AEX","^omx":"OMX Stockholm","^wig":"WIG20","^nkx":"Nikkei 225","^hsi":"Hang Seng","^sse":"Shanghai","^bse":"Sensex","^kospi":"KOSPI","^asx":"ASX 200","^vix":{fr:"VIX (peur)",en:"VIX (fear)"},"cb.f":{fr:"Pétrole Brent",en:"Brent crude"},"gc.f":{fr:"Or",en:"Gold"},"ng.f":{fr:"Gaz naturel (US)",en:"Natural gas (US)"},"zw.f":{fr:"Blé (Chicago)",en:"Wheat (Chicago)"}};
 var MKT_G=[[{fr:"Amériques",en:"Americas"},["^spx","^ndq","^dji","^tsx","^bvsp"]],[{fr:"Europe",en:"Europe"},["^stoxx","^cac","^dax","^ukx","^ibex","^ftmib","^smi","^aex","^omx","^wig"]],[{fr:"Asie-Pacifique",en:"Asia-Pacific"},["^nkx","^hsi","^sse","^bse","^kospi","^asx"]],[{fr:"Matières premières & volatilité",en:"Commodities & volatility"},["cb.f","gc.f","ng.f","zw.f","^vix"]]];
-var mktQ=null,mktFx=null,mktAt=0,mktErr="";
+var mktQ=null,mktFx=null,mktAt=0,mktErr="",mktSrc="";
 function mktLoad(){if(mktAt&&Date.now()-mktAt<10*60e3)return Promise.resolve();mktAt=Date.now();
-  return Promise.all([relay("quotes",20000).then(function(j){mktQ=j.quotes||[];},function(e){mktQ=false;mktErr=String(e&&e.message||e);}),
+  return Promise.all([relay("quotes",20000).then(function(j){mktQ=j.quotes||[];mktSrc=j.src||"";},function(e){mktQ=false;mktErr=String(e&&e.message||e);}),
     relay("fx",15000).then(function(j){mktFx=j&&j.rates?j:false;},function(){mktFx=false;})]).then(function(){drawMarkets();});}
 function chgSpan(v){if(v==null||isNaN(v))return '<span class="note">—</span>';return '<span class="mono" style="color:'+(v>0.05?"var(--ok)":v<-0.05?"var(--crit)":"var(--muted)")+'">'+(v>0?"+":v<0?"−":"±")+nf(Math.abs(v),2)+' %</span>';}
 function drawMarkets(){var el=document.getElementById("mkt-card");if(!el)return;
