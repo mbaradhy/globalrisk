@@ -354,16 +354,37 @@ async function gri(url, env, ctx) {
 
 // ---------- Markets: stock indices and commodities (Stooq, free, no key) and ECB exchange rates (Frankfurter)
 const QUOTES = ["^spx", "^ndq", "^dji", "^cac", "^dax", "^ukx", "^nkx", "^hsi", "cb.f", "gc.f", "ng.f", "zw.f"];
-async function quotes(ctx) {
-  return cached("quotes", 600, ctx, async () => {
-    const csv = await upText("https://stooq.com/q/l/?s=" + QUOTES.map(encodeURIComponent).join("+") + "&f=sd2t2ohlcp&h&e=csv");
-    const rows = csv.trim().split(/\r?\n/), head = rows.shift().toLowerCase().split(",");
-    const ix = n => head.indexOf(n);
-    const out = rows.map(r => { const c = r.split(","); const num = k => { const v = parseFloat(c[ix(k)]); return isNaN(v) ? null : v; };
-      return { s: (c[ix("symbol")] || "").toLowerCase(), date: c[ix("date")], time: c[ix("time")], open: num("open"), close: num("close"), prev: num("prev") ?? num("previous") }; })
-      .filter(q => q.close != null);
-    if (!out.length) throw new Error("no quotes");
-    return JSON.stringify({ at: new Date().toISOString(), src: "Stooq", quotes: out });
+const YAHOO = { "^spx": "^GSPC", "^ndq": "^NDX", "^dji": "^DJI", "^cac": "^FCHI", "^dax": "^GDAXI", "^ukx": "^FTSE", "^nkx": "^N225", "^hsi": "^HSI", "cb.f": "BZ=F", "gc.f": "GC=F", "ng.f": "NG=F", "zw.f": "ZW=F",
+  "^stoxx": "^STOXX50E", "^sse": "000001.SS", "^bse": "^BSESN", "^kospi": "^KS11", "^asx": "^AXJO", "^tsx": "^GSPTSE", "^bvsp": "^BVSP", "^ibex": "^IBEX", "^ftmib": "FTSEMIB.MI", "^smi": "^SSMI", "^aex": "^AEX", "^omx": "^OMX", "^wig": "WIG20.WA", "^vix": "^VIX" };
+async function quotesStooq() {
+  const syms = QUOTES;
+  const csv = await upText("https://stooq.com/q/l/?s=" + syms.map(encodeURIComponent).join("+") + "&f=sd2t2ohlc&h&e=csv");
+  const rows = csv.trim().split(/\r?\n/), head = rows.shift().toLowerCase().split(",");
+  if (head.indexOf("close") < 0) throw new Error("stooq: " + csv.slice(0, 80));
+  const ix = n => head.indexOf(n);
+  const out = rows.map(r => { const c = r.split(","); const num = k => { const v = parseFloat(c[ix(k)]); return isNaN(v) ? null : v; };
+    return { s: (c[ix("symbol")] || "").toLowerCase(), close: num("close"), prev: num("open"), prevIsOpen: true }; }).filter(q => q.close != null);
+  if (out.length < 3) throw new Error("stooq: too few quotes");
+  return out;
+}
+async function quotesYahoo() {
+  const res = await Promise.all(Object.keys(YAHOO).map(async k => {
+    try {
+      const j = JSON.parse(await upText("https://query1.finance.yahoo.com/v8/finance/chart/" + encodeURIComponent(YAHOO[k]) + "?range=5d&interval=1d", { Accept: "application/json" }));
+      const m = j.chart.result[0].meta;
+      return { s: k, close: m.regularMarketPrice, prev: m.chartPreviousClose ?? m.previousClose, cur: m.currency, t: m.regularMarketTime };
+    } catch (e) { return null; }
+  }));
+  const out = res.filter(Boolean);
+  if (out.length < 3) throw new Error("yahoo: too few quotes");
+  return out;
+}
+async function quotes(ctx, debug) {
+  if (debug) { const r = {}; for (const [n, f] of [["yahoo", quotesYahoo], ["stooq", quotesStooq]]) { try { r[n] = (await f()).length + " quotes"; } catch (e) { r[n] = String(e.message || e); } } return new Response(JSON.stringify(r, null, 1), { headers: { ...J, ...CORS } }); }
+  return cached("quotes2", 600, ctx, async () => {
+    let q, src;
+    try { q = await quotesYahoo(); src = "Yahoo Finance"; } catch (e) { q = await quotesStooq(); src = "Stooq"; }
+    return JSON.stringify({ at: new Date().toISOString(), src, quotes: q });
   });
 }
 async function fx(ctx) {
@@ -425,7 +446,7 @@ export default {
     if (key === "layers") return layersStatus(env);
     if (key === "attention") return attention(env, ctx);
     if (key === "gri") return gri(url, env, ctx);
-    if (key === "quotes") return quotes(ctx);
+    if (key === "quotes") return quotes(ctx, url.searchParams.has("debug"));
     if (key === "fx") return fx(ctx);
     if (key === "warnings") return warnings(url, ctx);
     const route = ROUTES[key];

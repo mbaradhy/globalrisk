@@ -4,7 +4,7 @@ def r(x,y,cnt=1):
     global a
     assert x in a,x[:80]; a=a.replace(x,y,cnt)
 iso=open('/tmp/claude-0/-home-claude/9f8c4616-27f1-5910-b924-209665f78c24/scratchpad/iso.json').read()
-js=(open('analysis.js').read()+open('news.js').read()).replace('/*ISO*/null',iso)
+js=(open('analysis.js').read()+open('news.js').read()+open('gri2.js').read()).replace('/*ISO*/null',iso)
 # tab + view
 r('''  <button role="tab" data-t="kit" aria-selected="false">''','''  <button role="tab" data-t="ana" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span data-i="tAna"></span></button>
   <button role="tab" data-t="kit" aria-selected="false">''')
@@ -162,12 +162,30 @@ css+='''
 @media (max-width:1100px){.mrow{grid-template-columns:minmax(0,1fr)}}
 .mkg{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px 14px}
 .mk{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 10px;align-items:baseline;border-bottom:1px solid #1b2631;padding:5px 0;font-size:.88rem}.mk small{grid-column:1/-1;margin-top:-3px}
+.mkgg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:4px 18px}.mkgr h4{margin:6px 0 2px;font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.mrow{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)!important}
+.fxg{display:flex;flex-wrap:wrap;gap:6px}.fxc{display:inline-flex;gap:6px;align-items:baseline;background:var(--panel2);border-radius:4px;padding:4px 8px;font-size:.82rem}.fxc b{font-size:.78rem;color:var(--muted)}
 .mkh{margin:6px 0 0;font-size:.95rem;display:flex;gap:8px;align-items:baseline}
 .ar-in{display:flex;gap:8px;flex-wrap:wrap}.ar-in input{flex:1;min-width:160px;font:inherit;color:var(--ink);background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:7px 10px}
 .ar-res{display:flex;flex-direction:column}.ar-res button{font:inherit;text-align:left;color:var(--ink);background:none;border:0;border-bottom:1px solid #1b2631;padding:7px 4px;cursor:pointer}.ar-res button:hover{background:var(--panel2)}.ar-res small{color:var(--muted)}
 .wx{display:flex;align-items:center;gap:12px}.wx b{font-size:2rem}.wx>span:last-child{display:flex;flex-direction:column}.wxi{font-size:2rem;line-height:1}.wxi.s{font-size:1.3rem}
 .wxd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.wxd>div{background:var(--panel2);border-radius:4px;padding:6px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.84rem}
 .wr{display:flex;gap:9px;align-items:flex-start;text-decoration:none;color:var(--ink);border-bottom:1px solid #1b2631;padding:6px 0}.wr i{width:10px;height:10px;border-radius:50%;margin-top:5px;flex:none}.wr span{display:flex;flex-direction:column}
+'''
+r('''(L==="fr"?"Base structurelle = moyenne de gravité × probabilité des risques actifs, ramenée sur 100. Ajustements en direct : +2 par alerte GDACS rouge et +1 par orange (max +6) ; +1 par séisme ≥ M6,5 sur 7 jours (max +3) ; +2 si Kp ≥ 5, +4 si Kp ≥ 7 ; attention médiatique des 10 risques majeurs de −3 à +5. Paliers : < 40 modéré, 40–60 élevé, 60–75 haut, > 75 sévère.":"Structural baseline = average severity × likelihood of active risks, scaled to 100. Live adjustments: +2 per GDACS red alert and +1 per orange (max +6); +1 per M6.5+ earthquake in 7 days (max +3); +2 if Kp ≥ 5, +4 if Kp ≥ 7; media attention on the top 10 risks from −3 to +5. Bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe.")''','''T2("Trois chiffres, chacun avec son unité. 1) Crises majeures en cours : nombre de risques de gravité 4 ou 5 déjà en cours (unité : crises). 2) Alertes en direct : alertes catastrophe GDACS rouges ou orange, séismes ≥ M6,5 sur 7 jours, tempête géomagnétique Kp ≥ 5 (unité : alertes) ; elles ne sont pas additionnées au reste. 3) Score de tension : moyenne de gravité (1–5) × probabilité sur 12 mois (1–5) des risques actifs, en % du maximum (100 = tous les risques au maximum et quasi certains). Ce score n'est pas une probabilité ; il sert à comparer dans le temps et entre domaines. Paliers indicatifs : < 40 modéré, 40–60 élevé, 60–75 haut, > 75 sévère. Les probabilités d'événements précis (12 mois) sont données à part, avec leur source : agence officielle, marché prédictif ou estimation de l'atlas.","Three numbers, each with a unit. 1) Major crises under way: how many risks of severity 4 or 5 are already happening (unit: crises). 2) Live alerts: GDACS red or orange disaster alerts, M6.5+ earthquakes in 7 days, geomagnetic storm Kp ≥ 5 (unit: alerts); they are not added to anything else. 3) Tension score: the average severity (1–5) × 12-month likelihood (1–5) of active risks, as a % of the maximum (100 = every risk at maximum and near certain). It is not a probability; it is a yardstick to compare over time and between domains. Indicative bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe. Probabilities of specific events (12 months) are given separately, with their source: official agency, prediction market or atlas estimate.")''')
+css+='''
+.gb2{display:flex;flex-direction:column;gap:12px}
+.gn3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.gn{font:inherit;color:var(--ink);text-align:left;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;cursor:pointer}
+div.gn{cursor:default}button.gn:hover{border-color:var(--accent)}
+.gn b{font-size:2rem;line-height:1.05}.gn b small{font-size:.9rem;color:var(--muted)}.gn span{font-weight:600}.gn small{color:var(--muted);font-size:.74rem}
+.gb2c{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}.gb2c h3{margin:0 0 6px;font-size:.95rem}
+.gb2r{display:flex;gap:12px;align-items:center}.gb2r .gri-ring{width:110px;flex:none}.gb2r .gri-rows{flex:1;min-width:0}
+.shr{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center;border-bottom:1px solid #1b2631;padding:5px 0;font-size:.86rem;cursor:pointer}.shr b{font-size:1rem}
+.gri-row{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)!important}
+@media (max-width:1400px){.gb2c{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.gn3{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.gn3 .gn:last-child{grid-column:1/-1}.gn b{font-size:1.6rem}}
+#gri-pop .gn3{grid-template-columns:minmax(0,1fr)}
 '''
 r('</style>',css+'</style>')
 open('app.html','w').write(a)
