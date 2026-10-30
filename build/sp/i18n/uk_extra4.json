@@ -1,0 +1,9 @@
+{
+ "VIX (fear)": "VIX (страх)",
+ "Americas": "Америка",
+ "Europe": "Європа",
+ "Asia-Pacific": "Азійсько-Тихоокеанський регіон",
+ "Commodities & volatility": "Сировина та волатильність",
+ "Stock indices unavailable right now: the source isn't answering the relay.": "Фондові індекси зараз недоступні: джерело не відповідає ретранслятору.",
+ "Indices and commodities: Yahoo Finance or Stooq, delayed data. Exchange rates: European Central Bank, once per working day. Not financial advice.": "Індекси та сировина: Yahoo Finance або Stooq, дані із затримкою. Курси валют: Європейський центральний банк, раз на робочий день. Не є фінансовою порадою."
+}

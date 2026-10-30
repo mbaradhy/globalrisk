@@ -1,0 +1,20 @@
+{
+ "Three numbers, each with a unit. 1) Major crises under way: how many risks of severity 4 or 5 are already happening (unit: crises). 2) Live alerts: GDACS red or orange disaster alerts, M6.5+ earthquakes in 7 days, geomagnetic storm Kp ≥ 5 (unit: alerts); they are not added to anything else. 3) Tension score: the average severity (1–5) × 12-month likelihood (1–5) of active risks, as a % of the maximum (100 = every risk at maximum and near certain). It is not a probability; it is a yardstick to compare over time and between domains. Indicative bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe. Probabilities of specific events (12 months) are given separately, with their source: official agency, prediction market or atlas estimate.": "Tre numeri, ciascuno con la sua unità. 1) Crisi gravi in corso: quanti rischi di gravità 4 o 5 si stanno già verificando (unità: crisi). 2) Allerte in tempo reale: allerte catastrofe GDACS rosse o arancioni, terremoti M6.5+ in 7 giorni, tempesta geomagnetica Kp ≥ 5 (unità: allerte); non si sommano a nient'altro. 3) Indice di tensione: media di gravità (1–5) × probabilità a 12 mesi (1–5) dei rischi attivi, in % del massimo (100 = tutti i rischi al massimo e quasi certi). Non è una probabilità; è un metro per confrontare nel tempo e tra ambiti. Fasce indicative: < 40 moderato, 40–60 elevato, 60–75 alto, > 75 grave. Le probabilità di eventi specifici (12 mesi) sono indicate a parte, con la fonte: agenzia ufficiale, mercato predittivo o stima dell'atlante.",
+ "Tension score": "Indice di tensione",
+ "Tension score history": "Storico dell'indice di tensione",
+ "Geomagnetic storm, Kp ": "Tempesta geomagnetica, Kp ",
+ "major crises": "crisi gravi",
+ "live alerts": "allerte in tempo reale",
+ "tension": "tensione",
+ "major crises under way": "crisi gravi in corso",
+ "severity 4–5 out of 5, already happening": "gravità 4–5 su 5, già in corso",
+ "red/orange disasters, M6.5+ earthquakes (7 d), solar storm": "catastrofi rosse/arancioni, terremoti M6.5+ (7 g), tempesta solare",
+ "tension score": "indice di tensione",
+ "% of the maximum possible": "% del massimo possibile",
+ "Where the world stands": "A che punto è il mondo",
+ "Chance of specific shocks within 12 months": "Probabilità di shock specifici entro 12 mesi",
+ "What does the tension score mean?": "Che cosa significa l'indice di tensione?",
+ "Each of the ": "Ciascuno dei ",
+ " active risks gets a severity (1–5) and a 12-month likelihood (1–5). The score is the average severity × likelihood, as a % of the maximum: 100 would mean every risk at maximum severity and near certain. It is not a probability: it is a yardstick to compare over time and between domains (above, the 5 most strained domains).": " rischi attivi riceve una gravità (1–5) e una probabilità a 12 mesi (1–5). L'indice è la media di gravità × probabilità, in % del massimo: 100 significherebbe tutti i rischi alla massima gravità e quasi certi. Non è una probabilità: è un metro per confrontare nel tempo e tra ambiti (sopra, i 5 ambiti più sotto pressione).",
+ "Earthquakes, disaster alerts and media attention are no longer added to the score: they are counted separately as live alerts.": "Terremoti, allerte catastrofe e attenzione mediatica non si sommano più all'indice: sono conteggiati a parte come allerte in tempo reale."
+}

@@ -1,0 +1,226 @@
+[
+ {
+  "en": "Severe geomagnetic storm (Kp ",
+  "fr": "Tempête géomagnétique sévère (Kp "
+ },
+ {
+  "en": "Developing story",
+  "fr": "Événement en cours"
+ },
+ {
+  "en": "Major earthquake",
+  "fr": "Séisme majeur"
+ },
+ {
+  "en": "Red disaster alert",
+  "fr": "Alerte catastrophe rouge"
+ },
+ {
+  "en": "BREAKING",
+  "fr": "FLASH"
+ },
+ {
+  "en": "Breaking news",
+  "fr": "Flash info"
+ },
+ {
+  "en": "Nothing major right now: an alert appears when 3 or more outlets cover the same event within 3 h, or on a red disaster alert, an M6.5+ earthquake or a geomagnetic storm.",
+  "fr": "Rien de majeur en ce moment : une alerte apparaît quand 3 médias ou plus couvrent le même événement en 3 h, ou en cas d'alerte rouge, de séisme ≥ M6,5 ou de tempête géomagnétique."
+ },
+ {
+  "en": "Detected automatically: the same event covered by 3+ outlets within 3 h, GDACS red alerts, M6.5+ earthquakes, Kp ≥ 7. Check the sources.",
+  "fr": "Détection automatique : même événement couvert par 3 médias ou plus en 3 h, alertes GDACS rouges, séismes ≥ M6,5, Kp ≥ 7. Vérifiez auprès des sources."
+ },
+ {
+  "en": "News by country",
+  "fr": "Actualités par pays"
+ },
+ {
+  "en": "Country page",
+  "fr": "Fiche pays"
+ },
+ {
+  "en": "Pick a country to see the headlines that mention it, across all the atlas sources.",
+  "fr": "Choisissez un pays pour voir les titres qui le citent, dans toutes les sources de l'atlas."
+ },
+ {
+  "en": "Gold",
+  "fr": "Or"
+ },
+ {
+  "en": "Natural gas (US)",
+  "fr": "Gaz naturel (US)"
+ },
+ {
+  "en": "Wheat (Chicago)",
+  "fr": "Blé (Chicago)"
+ },
+ {
+  "en": "Markets",
+  "fr": "Marchés"
+ },
+ {
+  "en": "Day change",
+  "fr": "Variation du jour"
+ },
+ {
+  "en": "Quotes unavailable right now (relay needs updating?).",
+  "fr": "Cours indisponibles pour le moment (relais à mettre à jour ?)."
+ },
+ {
+  "en": "Exchange rates (ECB)",
+  "fr": "Taux de change (BCE)"
+ },
+ {
+  "en": "Indices and commodities: Stooq, delayed data. Exchange rates: European Central Bank, once per working day. Not financial advice.",
+  "fr": "Indices et matières premières : Stooq, données différées. Changes : Banque centrale européenne, 1 fois par jour ouvré. Pas un conseil financier."
+ },
+ {
+  "en": "Clear",
+  "fr": "Ciel clair"
+ },
+ {
+  "en": "Mostly clear",
+  "fr": "Peu nuageux"
+ },
+ {
+  "en": "Partly cloudy",
+  "fr": "Partiellement nuageux"
+ },
+ {
+  "en": "Overcast",
+  "fr": "Couvert"
+ },
+ {
+  "en": "Fog",
+  "fr": "Brouillard"
+ },
+ {
+  "en": "Freezing fog",
+  "fr": "Brouillard givrant"
+ },
+ {
+  "en": "Drizzle",
+  "fr": "Bruine"
+ },
+ {
+  "en": "Heavy drizzle",
+  "fr": "Bruine forte"
+ },
+ {
+  "en": "Light rain",
+  "fr": "Pluie faible"
+ },
+ {
+  "en": "Rain",
+  "fr": "Pluie"
+ },
+ {
+  "en": "Heavy rain",
+  "fr": "Forte pluie"
+ },
+ {
+  "en": "Freezing rain",
+  "fr": "Pluie verglaçante"
+ },
+ {
+  "en": "Light snow",
+  "fr": "Neige faible"
+ },
+ {
+  "en": "Snow",
+  "fr": "Neige"
+ },
+ {
+  "en": "Heavy snow",
+  "fr": "Forte neige"
+ },
+ {
+  "en": "Snow grains",
+  "fr": "Grésil"
+ },
+ {
+  "en": "Showers",
+  "fr": "Averses"
+ },
+ {
+  "en": "Violent showers",
+  "fr": "Averses violentes"
+ },
+ {
+  "en": "Snow showers",
+  "fr": "Averses de neige"
+ },
+ {
+  "en": "Thunderstorm",
+  "fr": "Orage"
+ },
+ {
+  "en": "Thunderstorm, hail",
+  "fr": "Orage et grêle"
+ },
+ {
+  "en": "My location",
+  "fr": "Ma position"
+ },
+ {
+  "en": "Location refused: search for a town instead.",
+  "fr": "Position refusée : cherchez une ville."
+ },
+ {
+  "en": "My area",
+  "fr": "Ma zone"
+ },
+ {
+  "en": "Weather and official warnings for a place you choose. Nothing is sent anywhere except to the weather services.",
+  "fr": "Météo et alertes officielles pour l'endroit de votre choix. Rien n'est envoyé ailleurs que vers les services météo."
+ },
+ {
+  "en": "Town or city…",
+  "fr": "Ville…"
+ },
+ {
+  "en": "Use my location",
+  "fr": "Ma position"
+ },
+ {
+  "en": "Feels like ",
+  "fr": "Ressenti "
+ },
+ {
+  "en": "wind ",
+  "fr": "vent "
+ },
+ {
+  "en": "Weather unavailable.",
+  "fr": "Météo indisponible."
+ },
+ {
+  "en": "Official warnings",
+  "fr": "Alertes officielles"
+ },
+ {
+  "en": "No warning for your area; warnings elsewhere in the country:",
+  "fr": "Aucune alerte pour votre zone ; alertes en cours ailleurs dans le pays :"
+ },
+ {
+  "en": "until ",
+  "fr": "jusqu'au "
+ },
+ {
+  "en": "No official warning feed connected for this country.",
+  "fr": "Pas de flux d'alertes officiel connecté pour ce pays."
+ },
+ {
+  "en": "No warning in force.",
+  "fr": "Aucune alerte en cours."
+ },
+ {
+  "en": "Warnings unavailable (relay needs updating?).",
+  "fr": "Alertes indisponibles (relais à mettre à jour ?)."
+ },
+ {
+  "en": "Forecast: Open-Meteo. If a warning is in force, follow local authorities' instructions.",
+  "fr": "Prévisions : Open-Meteo. En cas d'alerte, suivez les consignes des autorités locales."
+ }
+]

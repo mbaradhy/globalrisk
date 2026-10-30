@@ -1,0 +1,9 @@
+{
+ "VIX (fear)": "VIX (الخوف)",
+ "Americas": "الأمريكتان",
+ "Europe": "أوروبا",
+ "Asia-Pacific": "آسيا والمحيط الهادئ",
+ "Commodities & volatility": "السلع والتقلب",
+ "Stock indices unavailable right now: the source isn't answering the relay.": "مؤشرات الأسهم غير متاحة حاليًا: المصدر لا يستجيب للمُرحِّل.",
+ "Indices and commodities: Yahoo Finance or Stooq, delayed data. Exchange rates: European Central Bank, once per working day. Not financial advice.": "المؤشرات والسلع: Yahoo Finance أو Stooq، بيانات متأخرة. أسعار الصرف: البنك المركزي الأوروبي، مرة واحدة كل يوم عمل. ليست نصيحة مالية."
+}

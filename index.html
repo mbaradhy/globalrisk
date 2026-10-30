@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Global Risk Atlas</title>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Global risks as checkable questions: a level from 1 to 5, probabilities with sources, a live map and a 14-day household reserve."><meta property="og:type" content="website"><meta property="og:site_name" content="Global Risk Atlas"><meta property="og:title" content="Global Risk Atlas"><meta property="og:description" content="Global risks as checkable questions: level 1–5, probabilities with sources, live map, 14-day reserve. · Les risques mondiaux en questions vérifiables."><meta property="og:url" content="https://mbaradhy.github.io/globalrisk/"><meta property="og:image" content="https://mbaradhy.github.io/globalrisk/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0a1018"><link rel="apple-touch-icon" href="icon-192.png"><link rel="icon" type="image/png" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>Global Risk Atlas</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="author" content="M. BARADHY">
 <meta name="copyright" content="© 2026 M. BARADHY">
@@ -511,6 +511,12 @@ footer{color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);paddi
 .fbk{margin:6px 0 4px!important;color:var(--accent)!important}
 
 .pend{color:var(--muted);font-size:.74rem}
+
+#v-kit .kc{background:var(--panel2,#111a25);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:0 0 20px}.kc-h{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}.kc-h label{font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.78rem;color:var(--accent)}.kc-h select{background:#0a1018;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font:inherit}.kc-g{display:grid;grid-template-columns:1fr 1fr 2fr;gap:10px;margin-top:10px}.kc-g small{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}.kc-g b{font-weight:600}@media(max-width:700px){.kc-g{grid-template-columns:1fr 1fr}.kc-n{grid-column:1/-1}}
+
+#hdr-x{display:inline-flex;gap:6px;align-items:center;margin-right:6px}.hx{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:4px 9px;font:inherit;font-size:.82rem;cursor:pointer;line-height:1.4}.hx.on{border-color:var(--accent)}.hx.off{color:#ffb547;border-color:#ffb547;cursor:default}@media(max-width:700px){.hx span{display:none}}
+
+@media(max-width:700px){.gri-float{padding:4px!important;border-radius:50%!important;gap:0!important;opacity:.92}.gri-float .gri-t{display:none!important}.gri-float svg{width:44px!important;height:44px!important}}
 
 @media(max-width:700px){#v-kit .tbl{overflow:visible}#v-kit .tbl table{width:100%!important;min-width:0!important}#v-kit .tbl thead{display:none}#v-kit .tbl table,#v-kit .tbl tbody,#v-kit .tbl tr,#v-kit .tbl td{display:block}#v-kit .tbl tr{padding:10px 0;border-bottom:1px solid var(--line)}#v-kit .tbl td{border:0!important;padding:2px 14px!important;height:auto!important}#v-kit .tbl td:first-child{font-weight:700;font-size:1.02rem;padding-bottom:4px!important}#v-kit .tbl td[data-l]::before{content:attr(data-l);display:block;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:4px}}
 
@@ -3523,6 +3529,89 @@ var MC_SC={};
   var Pm=100*c1/n,dl=MC.P1.mid-MC.P1.lo,dh=MC.P1.hi-MC.P1.mid,P={lo:Math.max(0,Pm-dl),mid:Pm,hi:Math.min(100,Pm+dh)};
   var lv=levelOf(S,P.mid,0),L_=LEVELS[lv-1];var g={tot:P.mid,band:lv-1,col:L_.c,level:lv,L:L_,S:S,P:P,c:[],linked:true};MC_SC[key]=g;return g;};})();
 
+/* ===== Installable app, offline, alerts, share links ===== */
+var PWA_OK=("serviceWorker" in navigator)&&/github\.io$/.test(location.hostname);
+var swReg=null,instEvt=null;
+if(PWA_OK){navigator.serviceWorker.register("sw.js").then(function(r){swReg=r;},function(){});}
+function hdrSlot(){var s=document.getElementById("hdr-x");if(s)return s;var lg=document.getElementById("lang");if(!lg)return null;s=document.createElement("span");s.id="hdr-x";lg.parentNode.insertBefore(s,lg);return s;}
+function hdrDraw(){var s=hdrSlot();if(!s)return;var on=alertsOn();
+  s.innerHTML=(instEvt?'<button type="button" class="hx" id="hx-inst" title="'+esc(T2("Installer l'application","Install the app"))+'">⤓ <span>'+esc(T2("Installer","Install"))+'</span></button>':'')+
+   (("Notification" in window)?'<button type="button" class="hx'+(on?' on':'')+'" id="hx-al" aria-pressed="'+on+'" title="'+esc(on?T2("Alertes activées : cliquer pour couper","Alerts on: click to turn off"):T2("Recevoir une alerte quand le niveau change ou en cas d'alerte rouge","Get an alert when the level changes or on a red alert"))+'">'+(on?"🔔":"🔕")+'</button>':'')+
+   (!navigator.onLine?'<span class="hx off" title="'+esc(T2("Hors ligne : données enregistrées","Offline: saved data"))+'">'+esc(T2("Hors ligne","Offline"))+'</span>':'');}
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();instEvt=e;hdrDraw();});
+window.addEventListener("appinstalled",function(){instEvt=null;hdrDraw();});
+window.addEventListener("online",hdrDraw);window.addEventListener("offline",hdrDraw);
+document.addEventListener("click",function(e){
+  if(e.target.closest("#hx-inst")&&instEvt){instEvt.prompt();instEvt.userChoice.then(function(){instEvt=null;hdrDraw();});}
+  if(e.target.closest("#hx-al")){if(alertsOn()){try{localStorage.setItem("gra-alerts","0");}catch(x){}hdrDraw();return;}
+    Notification.requestPermission().then(function(p){try{localStorage.setItem("gra-alerts",p==="granted"?"1":"0");}catch(x){}hdrDraw();if(p==="granted")notify(T2("Alertes activées","Alerts on"),T2("Vous serez prévenu quand le niveau change ou en cas d'alerte rouge, tant que l'atlas est ouvert ou installé.","You will be told when the level changes or a red alert appears, while the atlas is open or installed."),"on");});}
+});
+function alertsOn(){try{return localStorage.getItem("gra-alerts")==="1"&&("Notification" in window)&&Notification.permission==="granted";}catch(e){return false;}}
+function notify(title,body,tag){if(!alertsOn())return;var o={body:body,tag:"gra-"+tag,icon:"icon-192.png",badge:"icon-192.png"};
+  if(swReg&&swReg.showNotification)swReg.showNotification(title,o).catch(function(){});else try{new Notification(title,o);}catch(e){}}
+/* level change */
+(function(){var o=updateGRI;updateGRI=function(){o();var g=griLast;if(!g||!g.linked)return;var prev;try{prev=localStorage.getItem("gra-lastlvl");localStorage.setItem("gra-lastlvl",String(g.level));}catch(e){}
+  if(prev&&+prev!==g.level)notify(T2("Niveau de risque mondial : ","Global risk level: ")+prev+" → "+g.level,tx(g.L.k)+" · "+T2("règle : ","rule: ")+tx(g.L.rule),"lvl");};})();
+/* red alerts and major quakes */
+(function(){var o=brkBanner;brkBanner=function(){o();var seen;try{seen=JSON.parse(localStorage.getItem("gra-ntf")||"{}");}catch(e){seen={};}var now=Date.now(),ch=false;
+  (brkItems||[]).forEach(function(b){if(seen[b.id]||(b.kind!=="alert"&&b.kind!=="quake"&&!(b.kind==="news"&&(b.n||0)>=5)))return;seen[b.id]=now;ch=true;notify(tx(BRK_KIND[b.kind]),b.title,b.id.slice(0,40));});
+  Object.keys(seen).forEach(function(k){if(now-seen[k]>7*864e5){delete seen[k];ch=true;}});if(ch)try{localStorage.setItem("gra-ntf",JSON.stringify(seen));}catch(e){}};})();
+/* share links: #r=<risk id> opens that risk's dossier */
+function openHash(){var m=/[#&]r=([a-z0-9-]+)/.exec(location.hash);if(m&&byId[m[1]])setTimeout(function(){showTab("globe");setTimeout(function(){select(m[1],true,true);},300);},200);}
+window.addEventListener("hashchange",openHash);setTimeout(openHash,600);
+function shareRisk(id){var n=byId[id];if(!n)return;var url=location.origin+location.pathname+"#r="+id,q=QUESTIONS[id];
+  var text=tx(n.t)+(q?" · "+tx(q.q)+" · "+(q.kind==="ended"?"✓":q.lo+"–"+q.hi+" %"):"");
+  if(navigator.share)navigator.share({title:tx(n.t)+" · Global Risk Atlas",text:text,url:url}).catch(function(){});
+  else if(navigator.clipboard)navigator.clipboard.writeText(text+"\n"+url).then(function(){var b=document.getElementById("p-share");if(b){b.textContent="✓ "+T2("Lien copié","Link copied");}});}
+(function(){var o=renderPanel;renderPanel=function(){o();if(!sel)return;var p=document.getElementById("panel");if(!p||p.querySelector("#p-share"))return;var h=p.querySelector("h2,h3");if(!h)return;
+  var b=document.createElement("button");b.type="button";b.className="btn";b.id="p-share";b.style.marginTop="6px";b.textContent="↗ "+T2("Partager ce risque","Share this risk");b.onclick=function(){shareRisk(sel);};h.parentNode.insertBefore(b,h.nextSibling);};})();
+(function(){var o=setLang;setLang=function(l){o(l);hdrDraw();};})();
+setTimeout(hdrDraw,300);
+
+/* ===== 14-day reserve for other countries: local chains, local currency, that country's official guidance ===== */
+var KC_LIST={
+ FR:{n:{fr:"France",en:"France"},cur:"EUR",loc:"fr-FR",row:1},
+ BE:{n:{fr:"Belgique",en:"Belgium"},cur:"EUR",loc:"fr-BE",row:3,sh:[["Delhaize","delhaize.be"],["Decathlon","decathlon.be"],["Amazon","amazon.com.be"],["Brico","brico.be"],["MediaMarkt","mediamarkt.be"],["Fnac","fnac.be"]]},
+ NL:{n:{fr:"Pays-Bas",en:"Netherlands"},cur:"EUR",loc:"nl-NL",row:2,sh:[["Albert Heijn","ah.nl"],["Decathlon","decathlon.nl"],["bol","bol.com"],["Gamma","gamma.nl"],["Coolblue","coolblue.nl"],["bol","bol.com"]]},
+ DE:{n:{fr:"Allemagne",en:"Germany"},cur:"EUR",loc:"de-DE",row:6,sh:[["REWE","rewe.de"],["Decathlon","decathlon.de"],["Amazon","amazon.de"],["OBI","obi.de"],["MediaMarkt","mediamarkt.de"],["Otto","otto.de"]]},
+ ES:{n:{fr:"Espagne",en:"Spain"},cur:"EUR",loc:"es-ES",row:0,sh:[["Carrefour","carrefour.es"],["Decathlon","decathlon.es"],["Amazon","amazon.es"],["Leroy Merlin","leroymerlin.es"],["MediaMarkt","mediamarkt.es"],["Fnac","fnac.es"]]},
+ IT:{n:{fr:"Italie",en:"Italy"},cur:"EUR",loc:"it-IT",row:0,sh:[["Carrefour","carrefour.it"],["Decathlon","decathlon.it"],["Amazon","amazon.it"],["Leroy Merlin","leroymerlin.it"],["MediaWorld","mediaworld.it"],["IBS","ibs.it"]]},
+ PT:{n:{fr:"Portugal",en:"Portugal"},cur:"EUR",loc:"pt-PT",row:0,sh:[["Continente","continente.pt"],["Decathlon","decathlon.pt"],["Amazon","amazon.es"],["Leroy Merlin","leroymerlin.pt"],["Worten","worten.pt"],["Fnac","fnac.pt"]]},
+ FI:{n:{fr:"Finlande",en:"Finland"},cur:"EUR",loc:"fi-FI",row:0,sh:[["K-Ruoka","k-ruoka.fi"],["XXL","xxl.fi"],["Amazon","amazon.de"],["K-Rauta","k-rauta.fi"],["Verkkokauppa","verkkokauppa.com"],["Gigantti","gigantti.fi"]]},
+ UK:{n:{fr:"Royaume-Uni",en:"United Kingdom"},cur:"GBP",sym:"£",loc:"en-GB",row:4,sh:[["Tesco","tesco.com"],["Decathlon","decathlon.co.uk"],["Amazon","amazon.co.uk"],["B&Q","diy.com"],["Currys","currys.co.uk"],["Argos","argos.co.uk"]]},
+ US:{n:{fr:"États-Unis",en:"United States"},cur:"USD",sym:"$",loc:"en-US",row:5,sh:[["Walmart","walmart.com"],["REI","rei.com"],["Amazon","amazon.com"],["Home Depot","homedepot.com"],["Best Buy","bestbuy.com"],["Target","target.com"]]},
+ CH:{n:{fr:"Suisse",en:"Switzerland"},cur:"CHF",sym:"CHF",loc:"de-CH",row:7,sh:[["Migros","migros.ch"],["Decathlon","decathlon.ch"],["Galaxus","galaxus.ch"],["Jumbo","jumbo.ch"],["Digitec","digitec.ch"],["Interdiscount","interdiscount.ch"]]},
+ JP:{n:{fr:"Japon",en:"Japan"},cur:"JPY",sym:"¥",loc:"ja-JP",row:8,sh:[["AEON","aeon.com"],["mont-bell","montbell.jp"],["Amazon","amazon.co.jp"],["Cainz","cainz.com"],["Yodobashi","yodobashi.com"],["Bic Camera","biccamera.com"]]},
+ SE:{n:{fr:"Suède",en:"Sweden"},cur:"SEK",sym:"kr",loc:"sv-SE",row:9,sh:[["ICA","ica.se"],["XXL","xxl.se"],["Amazon","amazon.se"],["Bauhaus","bauhaus.se"],["Elgiganten","elgiganten.se"],["Clas Ohlson","clasohlson.com"]]},
+ NO:{n:{fr:"Norvège",en:"Norway"},cur:"NOK",sym:"kr",loc:"nb-NO",row:10,sh:[["Rema 1000","rema.no"],["XXL","xxl.no"],["Komplett","komplett.no"],["Obs Bygg","obsbygg.no"],["Elkjøp","elkjop.no"],["Clas Ohlson","clasohlson.com"]]},
+ DK:{n:{fr:"Danemark",en:"Denmark"},cur:"DKK",sym:"kr",loc:"da-DK",row:0,sh:[["Nemlig","nemlig.com"],["Sportmaster","sportmaster.dk"],["Amazon","amazon.de"],["Bauhaus","bauhaus.dk"],["Elgiganten","elgiganten.dk"],["Proshop","proshop.dk"]]},
+ PL:{n:{fr:"Pologne",en:"Poland"},cur:"PLN",sym:"zł",loc:"pl-PL",row:0,sh:[["Carrefour","carrefour.pl"],["Decathlon","decathlon.pl"],["Amazon","amazon.pl"],["Leroy Merlin","leroymerlin.pl"],["Media Expert","mediaexpert.pl"],["Empik","empik.com"]]}};
+var KC_FX0={GBP:0.86,USD:1.1,CHF:0.94,JPY:165,SEK:11.3,NOK:11.6,DKK:7.46,PLN:4.25},kcFx=null;
+function kcGuess(){var a=(typeof AREA!=="undefined"&&AREA&&(AREA.cc||AREA.country_code))||"";a=String(a).toUpperCase();if(a==="GB")a="UK";if(KC_LIST[a])return a;
+  var m=/-([A-Z]{2})$/i.exec(navigator.language||"");var c=m?m[1].toUpperCase():"";if(c==="GB")c="UK";return KC_LIST[c]?c:"FR";}
+function kcGet(){try{var c=localStorage.getItem("gra-kitc");if(c&&KC_LIST[c])return c;}catch(e){}return kcGuess();}
+var KC=kcGet();
+window.KITC={
+ cur:function(){var c=KC_LIST[KC];if(c.cur==="EUR")return {code:"EUR",loc:c.loc};var r=(kcFx&&kcFx[c.cur])||KC_FX0[c.cur];return {code:c.cur,rate:r,sym:c.sym,loc:c.loc};},
+ shops:function(){var c=KC_LIST[KC];if(!c.sh)return null;var k=["CAR","DEC","AMZ","LM","BOU","FNAC"],o={};k.forEach(function(x,i){o[x]={name:c.sh[i][0],url:"g",site:c.sh[i][1]};});
+   o.PHA={name:{fr:"Pharmacie (sur place)",en:"Pharmacy (in person)"},url:null};return o;}};
+function kcFxLoad(){if(kcFx||typeof relay!=="function")return;relay("fx",15000).then(function(j){if(j&&j.rates){kcFx=j.rates;window.dispatchEvent(new Event("kitc"));kcDraw();}},function(){});}
+function kcRows(){var t=[].filter.call(document.querySelectorAll("#v-kit .tbl table"),function(x){return x.querySelectorAll("thead th").length===4;})[0];return t?t.querySelectorAll("tbody tr"):[];}
+function kcDraw(){var v=document.getElementById("v-kit");if(!v)return;var hd=v.querySelector("header.top");if(!hd)return;var box=document.getElementById("kc-box");
+  if(!box){box=document.createElement("section");box.id="kc-box";box.className="kc";hd.parentNode.insertBefore(box,hd.nextSibling);}
+  var c=KC_LIST[KC],rows=kcRows(),row=rows[c.row],cu=window.KITC.cur();
+  var cells=row?[].map.call(row.children,function(td){return td.innerHTML;}):[];
+  var opts=Object.keys(KC_LIST).sort(function(a,b){return tx(KC_LIST[a].n).localeCompare(tx(KC_LIST[b].n));}).map(function(k){return '<option value="'+k+'"'+(k===KC?" selected":"")+'>'+esc(tx(KC_LIST[k].n))+'</option>';}).join("");
+  box.innerHTML='<div class="kc-h"><label for="kc-s">'+esc(T2("Votre pays","Your country"))+'</label><select id="kc-s">'+opts+'</select>'+
+   (cu.code!=="EUR"?'<span class="note">'+esc(T2("Prix français convertis : ","French prices converted: "))+'1 € ≈ '+(Math.round(cu.rate*100)/100).toLocaleString(cu.loc)+' '+esc(cu.sym)+(kcFx&&kcFx[cu.code]?' · '+T2("taux BCE","ECB rate"):' · '+T2("taux approximatif","approximate rate"))+'</span>':'')+'</div>'+
+   (row?'<div class="kc-g"><div><small>'+esc(T2("Consigne officielle","Official guidance"))+(c.row===0?' · '+esc(T2("niveau UE, pas de consigne nationale dans notre tableau","EU level, no national guidance in our table")):'')+'</small><b>'+cells[1]+'</b></div><div><small>'+esc(T2("Eau","Water"))+'</small><b>'+cells[2]+'</b></div><div class="kc-n"><small>'+esc(T2("Points notables","Notable points"))+'</small><span>'+cells[3]+'</span></div></div>':'')+
+   (c.sh?'<p class="note">'+esc(T2("Les liens « Acheter » cherchent chez : ","“Buy” links search at: "))+c.sh.filter(function(x,i,a){return a.map(function(y){return y[0];}).indexOf(x[0])===i;}).map(function(x){return esc(x[0]);}).join(" · ")+esc(T2(". Le plan reste de 14 jours, au-dessus de chaque minimum national.",". The plan stays at 14 days, above every national minimum."))+'</p>':'');
+  var st=[].filter.call(v.querySelectorAll(".tbl"),function(x){var th=x.querySelectorAll("thead th");return th.length===3;})[0];if(st){var sec=st.closest("section")||st;sec.style.display=c.sh?"none":"";}
+  document.getElementById("kc-s").onchange=function(){KC=this.value;try{localStorage.setItem("gra-kitc",KC);}catch(e){}window.dispatchEvent(new Event("kitc"));kcDraw();if(typeof kitLabels==="function")kitLabels();};}
+document.addEventListener("click",function(e){if(e.target.closest('button[data-t="kit"]'))setTimeout(function(){kcDraw();kcFxLoad();},60);});
+(function(){var o=setLang;setLang=function(l){o(l);setTimeout(kcDraw,60);};})();
+setTimeout(function(){kcDraw();window.dispatchEvent(new Event("kitc"));},1300);
+
 /* ---------- boot ---------- */
 applyI18n();renderFilters();renderPanel();fillPathSelects();
 var h0=(location.hash||"").slice(1);showTab(["dash","kit","globe","net","mind","matrix","news","brief","method"].indexOf(h0)>=0?h0:"dash");
@@ -3642,11 +3731,13 @@ drawTicker();setTimeout(loadTicker,800);loadMarkets();loadReliefWeb();setTimeout
 
   var ia=document.getElementById('in-a'),ic=document.getElementById('in-c'),ip=document.getElementById('in-p'),io=document.getElementById('in-opt');
   function clamp(v,lo,hi){v=parseInt(v,10);if(isNaN(v))v=lo;return Math.max(lo,Math.min(hi,v));}
-  function eur(x){return Math.round(x).toLocaleString('fr-FR')+' €';}
-  function link(b){var s=SHOPS[b.s];return s.url?s.url+encodeURIComponent(b.q):null;}
+  function eur(x){var c=window.KITC&&window.KITC.cur&&window.KITC.cur();if(!c||c.code==='EUR')return Math.round(x).toLocaleString(c&&c.loc||'fr-FR')+' €';return '≈ '+Math.round(x*c.rate).toLocaleString(c.loc)+' '+c.sym;}
+  function SH(){return (window.KITC&&window.KITC.shops&&window.KITC.shops())||SHOPS;}
+  function link(b,it){var s=SH()[b.s];if(!s||!s.url)return null;if(s.site)return 'https://www.google.com/search?q='+encodeURIComponent((it?P(it.n):b.q)+' site:'+s.site);return s.url+encodeURIComponent(b.q);}
   function qtyText(it,q){return q+' '+T(U[it.u]||it.u);}
   function qtyPlain(it,q){return it.bq?it.bq(q):q+' '+P(U[it.u]||it.u);}
 
+  window.addEventListener('kitc',function(){render();});
   function render(){
     ia.value=S.a;ic.value=S.c;ip.value=S.p;io.checked=!!S.opt;
     var h={a:S.a,c:S.c,p:S.p,opt:S.opt,people:S.a+S.c,eat:S.a+0.7*S.c};
@@ -3659,7 +3750,7 @@ drawTicker();setTimeout(loadTicker,800);loadMarkets();loadReliefWeb();setTimeout
         var c=it.cost?it.cost(q):q*(it.price||0);
         if(it.pr==='E')tE+=c;else if(it.pr==='R')tR+=c;else tO+=c;
         sub+=c;n++;var d=!!S.done[it.id];if(d)nd++;
-        var buys=it.b.filter(function(b){return SHOPS[b.s].url;}).map(function(b){return '<a href="'+esc(link(b))+'" target="_blank" rel="noopener">'+SHOPS[b.s].name+' ↗</a>';}).join('');
+        var buys=it.b.filter(function(b){return SH()[b.s].url;}).map(function(b){return '<a href="'+esc(link(b,it))+'" target="_blank" rel="noopener">'+SH()[b.s].name+' ↗</a>';}).join('');
         if(it.b.length){var first=it.b[0];(baskets[first.s]=baskets[first.s]||[]).push({it:it,q:q,b:first,d:d});}
         rows.push('<div class="row'+(d?' done':'')+'"><input type="checkbox" id="i-'+it.id+'" data-id="'+it.id+'"'+(d?' checked':'')+' aria-label="'+esc(it.n.fr)+'">'+
           '<div><label class="nm" for="i-'+it.id+'">'+T(it.n)+' <span class="pri '+it.pr+'">'+T(PRI[it.pr])+'</span></label>'+
@@ -3677,8 +3768,8 @@ drawTicker();setTimeout(loadTicker,800);loadMarkets();loadReliefWeb();setTimeout
     // baskets
     var bh=document.getElementById('bask');bh.innerHTML='';
     ['CAR','DEC','AMZ','LM','BOU','FNAC','PHA'].forEach(function(k){
-      var list=baskets[k];if(!list)return;var s=SHOPS[k];
-      var lis=list.map(function(x){var u=link(x.b);var nm=T(x.it.n);
+      var list=baskets[k];if(!list)return;var s=SH()[k];
+      var lis=list.map(function(x){var u=link(x.b,x.it);var nm=T(x.it.n);
         return '<li><span class="q">'+esc(qtyPlain(x.it,x.q))+'</span>'+(u?'<a href="'+esc(u)+'" target="_blank" rel="noopener">'+nm+'</a>':'<span>'+nm+'</span>')+'</li>';}).join('');
       var el=document.createElement('div');el.className='bk';
       el.innerHTML='<div class="bk-h"><h3>'+T(s.name)+'</h3><span style="display:flex;gap:8px;align-items:center"><small>'+list.length+' '+T({fr:'articles',en:'items'})+'</small><button class="btn" type="button" data-copy="'+k+'">'+T({fr:'Copier',en:'Copy'})+'</button></span></div><ul>'+lis+'</ul>';
@@ -3704,7 +3795,7 @@ drawTicker();setTimeout(loadTicker,800);loadMarkets();loadReliefWeb();setTimeout
   document.getElementById('reset').addEventListener('click',function(){Object.keys(S.done).forEach(function(k){if(k.indexOf('x-')!==0)delete S.done[k];});save();render();});
   document.getElementById('bask').addEventListener('click',function(e){
     var btn=e.target.closest('[data-copy]');if(!btn)return;var k=btn.dataset.copy;var list=document.getElementById('bask')._data[k]||[];
-    var txt=P(SHOPS[k].name)+'\n'+list.map(function(x){var u=link(x.b);return '- '+qtyPlain(x.it,x.q)+' · '+P(x.it.n)+(u?' — '+u:'');}).join('\n');
+    var txt=P(SH()[k].name)+'\n'+list.map(function(x){var u=link(x.b,x.it);return '- '+qtyPlain(x.it,x.q)+' · '+P(x.it.n)+(u?' — '+u:'');}).join('\n');
     var done=function(){btn.innerHTML=T({fr:'Copié',en:'Copied'});setTimeout(function(){btn.innerHTML=T({fr:'Copier',en:'Copy'});},1600);};
     var fallback=function(){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(err){}document.body.removeChild(ta);};
     try{navigator.clipboard.writeText(txt).then(done,fallback);}catch(err){fallback();}

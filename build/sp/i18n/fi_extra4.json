@@ -1,0 +1,9 @@
+{
+ "VIX (fear)": "VIX (pelko)",
+ "Americas": "Amerikka",
+ "Europe": "Eurooppa",
+ "Asia-Pacific": "Aasia ja Tyynimeri",
+ "Commodities & volatility": "Raaka-aineet ja volatiliteetti",
+ "Stock indices unavailable right now: the source isn't answering the relay.": "Osakeindeksit eivät ole juuri nyt saatavilla: lähde ei vastaa välityspalvelimelle.",
+ "Indices and commodities: Yahoo Finance or Stooq, delayed data. Exchange rates: European Central Bank, once per working day. Not financial advice.": "Indeksit ja raaka-aineet: Yahoo Finance tai Stooq, viivästetyt tiedot. Valuuttakurssit: Euroopan keskuspankki, kerran arkipäivässä. Ei sijoitusneuvontaa."
+}

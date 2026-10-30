@@ -1,0 +1,20 @@
+{
+ "Three numbers, each with a unit. 1) Major crises under way: how many risks of severity 4 or 5 are already happening (unit: crises). 2) Live alerts: GDACS red or orange disaster alerts, M6.5+ earthquakes in 7 days, geomagnetic storm Kp ≥ 5 (unit: alerts); they are not added to anything else. 3) Tension score: the average severity (1–5) × 12-month likelihood (1–5) of active risks, as a % of the maximum (100 = every risk at maximum and near certain). It is not a probability; it is a yardstick to compare over time and between domains. Indicative bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe. Probabilities of specific events (12 months) are given separately, with their source: official agency, prediction market or atlas estimate.": "ثلاثة أرقام، لكلٍّ منها وحدته. 1) الأزمات الكبرى الجارية: عدد المخاطر ذات الخطورة 4 أو 5 التي تحدث بالفعل (الوحدة: أزمات). 2) التنبيهات الحية: تنبيهات الكوارث الحمراء أو البرتقالية من GDACS، وزلازل بقوة M6.5+ خلال 7 أيام، وعاصفة مغناطيسية أرضية Kp ≥ 5 (الوحدة: تنبيهات)؛ ولا تُضاف إلى أي شيء آخر. 3) مؤشر التوتر: متوسط الخطورة (1–5) × الاحتمال خلال 12 شهرًا (1–5) للمخاطر النشطة، كنسبة % من الحد الأقصى (100 = جميع المخاطر في حدها الأقصى وشبه مؤكدة). وهو ليس احتمالًا، بل مقياس للمقارنة عبر الزمن وبين المجالات. نطاقات استرشادية: < 40 معتدل، 40–60 مرتفع، 60–75 عالٍ، > 75 حاد. تُعرض احتمالات الأحداث المحددة (12 شهرًا) بشكل منفصل مع مصدرها: جهة رسمية أو سوق تنبؤات أو تقدير الأطلس.",
+ "Tension score": "مؤشر التوتر",
+ "Tension score history": "سجل مؤشر التوتر",
+ "Geomagnetic storm, Kp ": "عاصفة مغناطيسية أرضية، Kp ",
+ "major crises": "أزمات كبرى",
+ "live alerts": "تنبيهات حية",
+ "tension": "التوتر",
+ "major crises under way": "أزمات كبرى جارية",
+ "severity 4–5 out of 5, already happening": "خطورة 4–5 من 5، تحدث بالفعل",
+ "red/orange disasters, M6.5+ earthquakes (7 d), solar storm": "كوارث حمراء/برتقالية، زلازل M6.5+ (7 أيام)، عاصفة شمسية",
+ "tension score": "مؤشر التوتر",
+ "% of the maximum possible": "% من الحد الأقصى الممكن",
+ "Where the world stands": "أين يقف العالم",
+ "Chance of specific shocks within 12 months": "احتمال صدمات محددة خلال 12 شهرًا",
+ "What does the tension score mean?": "ماذا يعني مؤشر التوتر؟",
+ "Each of the ": "يحصل كلٌّ من المخاطر النشطة البالغ عددها ",
+ " active risks gets a severity (1–5) and a 12-month likelihood (1–5). The score is the average severity × likelihood, as a % of the maximum: 100 would mean every risk at maximum severity and near certain. It is not a probability: it is a yardstick to compare over time and between domains (above, the 5 most strained domains).": " على درجة خطورة (1–5) واحتمال خلال 12 شهرًا (1–5). المؤشر هو متوسط الخطورة × الاحتمال كنسبة % من الحد الأقصى: 100 تعني أن جميع المخاطر بأقصى خطورة وشبه مؤكدة. وهو ليس احتمالًا، بل مقياس للمقارنة عبر الزمن وبين المجالات (في الأعلى، أكثر 5 مجالات توترًا).",
+ "Earthquakes, disaster alerts and media attention are no longer added to the score: they are counted separately as live alerts.": "لم تعد الزلازل وتنبيهات الكوارث والاهتمام الإعلامي تُضاف إلى المؤشر: بل تُحتسب بشكل منفصل كتنبيهات حية."
+}

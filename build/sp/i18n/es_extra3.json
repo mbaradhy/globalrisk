@@ -1,0 +1,20 @@
+{
+ "Three numbers, each with a unit. 1) Major crises under way: how many risks of severity 4 or 5 are already happening (unit: crises). 2) Live alerts: GDACS red or orange disaster alerts, M6.5+ earthquakes in 7 days, geomagnetic storm Kp ≥ 5 (unit: alerts); they are not added to anything else. 3) Tension score: the average severity (1–5) × 12-month likelihood (1–5) of active risks, as a % of the maximum (100 = every risk at maximum and near certain). It is not a probability; it is a yardstick to compare over time and between domains. Indicative bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe. Probabilities of specific events (12 months) are given separately, with their source: official agency, prediction market or atlas estimate.": "Tres cifras, cada una con su unidad. 1) Crisis graves en curso: cuántos riesgos de gravedad 4 o 5 ya se están produciendo (unidad: crisis). 2) Alertas en directo: alertas de desastre rojas o naranjas de GDACS, terremotos M6.5+ en 7 días, tormenta geomagnética Kp ≥ 5 (unidad: alertas); no se suman a nada más. 3) Índice de tensión: la media de gravedad (1–5) × probabilidad a 12 meses (1–5) de los riesgos activos, en % del máximo (100 = todos los riesgos al máximo y casi seguros). No es una probabilidad; es una referencia para comparar en el tiempo y entre ámbitos. Franjas orientativas: < 40 moderado, 40–60 elevado, 60–75 alto, > 75 grave. Las probabilidades de sucesos concretos (12 meses) se indican por separado, con su fuente: organismo oficial, mercado de predicción o estimación del atlas.",
+ "Tension score": "Índice de tensión",
+ "Tension score history": "Historial del índice de tensión",
+ "Geomagnetic storm, Kp ": "Tormenta geomagnética, Kp ",
+ "major crises": "crisis graves",
+ "live alerts": "alertas en directo",
+ "tension": "tensión",
+ "major crises under way": "crisis graves en curso",
+ "severity 4–5 out of 5, already happening": "gravedad 4–5 sobre 5, ya en curso",
+ "red/orange disasters, M6.5+ earthquakes (7 d), solar storm": "desastres rojos/naranjas, terremotos M6.5+ (7 d), tormenta solar",
+ "tension score": "índice de tensión",
+ "% of the maximum possible": "% del máximo posible",
+ "Where the world stands": "Cómo está el mundo",
+ "Chance of specific shocks within 12 months": "Probabilidad de shocks concretos en 12 meses",
+ "What does the tension score mean?": "¿Qué significa el índice de tensión?",
+ "Each of the ": "Cada uno de los ",
+ " active risks gets a severity (1–5) and a 12-month likelihood (1–5). The score is the average severity × likelihood, as a % of the maximum: 100 would mean every risk at maximum severity and near certain. It is not a probability: it is a yardstick to compare over time and between domains (above, the 5 most strained domains).": " riesgos activos recibe una gravedad (1–5) y una probabilidad a 12 meses (1–5). El índice es la media de gravedad × probabilidad, en % del máximo: 100 significaría que todos los riesgos tienen gravedad máxima y son casi seguros. No es una probabilidad: es una referencia para comparar en el tiempo y entre ámbitos (arriba, los 5 ámbitos con más tensión).",
+ "Earthquakes, disaster alerts and media attention are no longer added to the score: they are counted separately as live alerts.": "Los terremotos, las alertas de desastre y la atención mediática ya no se suman al índice: se cuentan aparte como alertas en directo."
+}

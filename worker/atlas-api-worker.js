@@ -244,7 +244,7 @@ async function planes(url, ctx, env) {
 // Ships: a few seconds of live AIS from aisstream.io (needs secret AISSTREAM_KEY)
 const AIS_BOX = { hormuz: [[24, 54], [27.6, 58.6]], bab: [[11, 42], [15.5, 45]], suez: [[29.5, 32.2], [31.6, 32.8]], malacca: [[1, 100], [4.5, 104]], taiwan: [[22, 118], [26, 121.5]], finland: [[59, 22], [60.7, 30]], channel: [[49.8, -2], [51.3, 2]] };
 function inBox(la, lo, b) { return la >= b[0][0] && la <= b[1][0] && lo >= b[0][1] && lo <= b[1][1]; }
-async function collectAis(key) {
+async function collectAis(key, ms) {
   const resp = await fetch("https://stream.aisstream.io/v0/stream", { headers: { Upgrade: "websocket" } });
   const ws = resp.webSocket;
   if (!ws) throw new Error("aisstream refused the connection (" + resp.status + ")");
@@ -253,7 +253,7 @@ async function collectAis(key) {
   ws.addEventListener("close", ev => { closed = "closed by aisstream (" + ev.code + (ev.reason ? " " + ev.reason : "") + ")"; });
   let sample = "", perr = "";
   ws.addEventListener("message", async ev => {
-    if (++n > 2500) return;
+    if (++n > 1500) return;
     try {
       const x = ev.data;
       const txt = typeof x === "string" ? x : (x && typeof x.text === "function") ? await x.text() : new TextDecoder().decode(x instanceof ArrayBuffer ? new Uint8Array(x) : x);
@@ -267,16 +267,28 @@ async function collectAis(key) {
     } catch (e) { if (!perr) perr = String(e.message || e).slice(0, 80); }
   });
   ws.send(JSON.stringify({ APIKey: key, BoundingBoxes: Object.values(AIS_BOX), FilterMessageTypes: ["PositionReport"] }));
-  await new Promise(r => setTimeout(r, 9000));
+  await new Promise(r => setTimeout(r, ms || 9000));
   try { ws.close(1000, "done"); } catch (e) {}
   const list = Object.values(ships);
-  if (!list.length) throw new Error("aisstream: " + (err || closed || "no positions received in 9 s (" + n + " messages" + (perr ? "; parse error: " + perr : "") + (sample ? "; first: " + sample : "") + ")")); // not cached, so the next call retries
+  if (!list.length) throw new Error("aisstream: " + (err || closed || "no positions received in " + Math.round((ms || 9000) / 1000) + " s (" + n + " messages" + (perr ? "; parse error: " + perr : "") + (sample ? "; first: " + sample : "") + ")")); // not cached, so the next call retries
   return list;
+}
+// keep every ship seen in the last 30 minutes (KV), so each short listen adds to the picture; the cron tops it up every 30 min
+async function aisRefresh(env, ms) {
+  let fresh = [], err = "";
+  try { fresh = await collectAis(env.AISSTREAM_KEY, ms); } catch (e) { err = String(e.message || e); }
+  if (!env.STATS) return { list: fresh, err };
+  const now = Date.now(), rec = (await env.STATS.get("ais:recent", "json")) || {};
+  fresh.forEach(x => { rec[x[5]] = x.concat([now]); });
+  Object.keys(rec).forEach(k => { if (now - rec[k][6] > 30 * 60000) delete rec[k]; });
+  await env.STATS.put("ais:recent", JSON.stringify(rec), { expirationTtl: 3600 });
+  return { list: Object.values(rec).map(x => x.slice(0, 6)), err, fresh: fresh.length };
 }
 async function ships(env, ctx) {
   if (!env.AISSTREAM_KEY) return jerr(503, "AISSTREAM_KEY not set");
-  return cached("ships3", 600, ctx, async () => {
-    const list = await collectAis(env.AISSTREAM_KEY);
+  return cached("ships4", 300, ctx, async () => {
+    const r = await aisRefresh(env, 15000), list = r.list;
+    if (!list.length) throw new Error(r.err || "aisstream: no ships yet");
     const counts = {}; Object.keys(AIS_BOX).forEach(k => counts[k] = list.filter(s => inBox(s[0], s[1], AIS_BOX[k])).length);
     let avg = null;
     if (env.STATS) { // keep the daily maximum per region to compare with a normal day
@@ -288,7 +300,7 @@ async function ships(env, ctx) {
       for (let i = 1; i <= 14; i++) { const x = await env.STATS.get("ais:" + day(new Date(Date.now() - i * 86400000)), "json"); if (x) past.push(x); }
       if (past.length) { avg = {}; Object.keys(counts).forEach(r => avg[r] = Math.round(past.reduce((s, x) => s + (x[r] || 0), 0) / past.length)); avg._days = past.length; }
     }
-    return JSON.stringify({ at: new Date().toISOString(), window: 9, ships: list, counts, avg });
+    return JSON.stringify({ at: new Date().toISOString(), window: 30, fresh: r.fresh || 0, ships: list, counts, avg });
   });
 }
 // Internet outages by country (Cloudflare Radar; needs secret CF_RADAR_TOKEN with Radar read access)
@@ -387,6 +399,10 @@ async function gri(url, env, ctx) {
 async function fc(url, env, ctx) {
   if (!env.STATS) return jerr(503, "STATS KV not bound");
   const sp = url.searchParams, ok = o => new Response(JSON.stringify(o), { headers: { ...J, ...CORS } });
+  if (sp.get("auto")) {
+    if (!env.RESOLVE_KEY || sp.get("k") !== env.RESOLVE_KEY) return jerr(403, "bad key");
+    return ok({ ok: true, result: await autoResolve(env, true) });
+  }
   if (sp.get("id")) {
     if (!env.RESOLVE_KEY || sp.get("k") !== env.RESOLVE_KEY) return jerr(403, "bad key");
     const id = sp.get("id").slice(0, 40), oc = (await env.STATS.get("fc:oc", "json")) || {};
@@ -414,6 +430,41 @@ async function fc(url, env, ctx) {
   return cached("fc-" + Math.floor(Date.now() / 600000), 600, ctx, async () => JSON.stringify({ at: new Date().toISOString(), versions: (await env.STATS.get("fc:v", "json")) || [], outcomes: (await env.STATS.get("fc:oc", "json")) || {} }));
 }
 
+
+
+// ---------- Automatic outcomes: questions that public data can settle on their own (runs once a day from the cron).
+// Outcomes you set by hand are never overwritten.
+async function autoResolve(env, force) {
+  if (!env.STATS) return { skipped: "no KV" };
+  const today = day(new Date());
+  if (!force && (await env.STATS.get("ar:last")) === today) return { skipped: "already ran today" };
+  await env.STATS.put("ar:last", today, { expirationTtl: 3 * 86400 });
+  const oc = (await env.STATS.get("fc:oc", "json")) || {}, done = {};
+  // "ai": Nasdaq 100 closes 30 % or more below its 2026 high before 30 Oct 2027
+  if (!oc.ai) try {
+    const j = JSON.parse(await upText("https://query1.finance.yahoo.com/v8/finance/chart/%5ENDX?range=2y&interval=1d", { Accept: "application/json" }));
+    const r = j.chart.result[0], ts = r.timestamp, cl = r.indicators.quote[0].close;
+    let hi = 0, hiT = 0;
+    ts.forEach((t, i) => { const d = new Date(t * 1000).toISOString().slice(0, 10); if (d.startsWith("2026") && cl[i] > hi) { hi = cl[i]; hiT = t; } });
+    let hit = null;
+    ts.forEach((t, i) => { const d = new Date(t * 1000).toISOString().slice(0, 10); if (!hit && t > hiT && d <= "2027-10-30" && cl[i] != null && cl[i] <= hi * 0.7) hit = { d, c: cl[i] }; });
+    if (hit) done.ai = { o: 1, d: hit.d, n: "auto: Nasdaq 100 closed at " + Math.round(hit.c) + ", 30 % below its 2026 high of " + Math.round(hi) };
+    else if (today > "2027-10-30") done.ai = { o: 0, d: "2027-10-30", n: "auto: no close 30 % below the 2026 high of " + Math.round(hi) };
+    else done.ai_check = "2026 high " + Math.round(hi) + ", threshold " + Math.round(hi * 0.7) + ", last close " + Math.round(cl[cl.length - 1]);
+  } catch (e) { done.ai_error = String(e.message || e).slice(0, 120); }
+  // "el-nino": NOAA's seasonal ONI for JFM 2027 at +1.5 or more
+  if (!oc["el-nino"]) try {
+    const t = await upText("https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt");
+    const m = t.match(/\bJFM\s+2027\s+[-\d.]+\s+([-\d.]+)/);
+    if (m) { const v = parseFloat(m[1]); done["el-nino"] = { o: v >= 1.5 ? 1 : 0, d: "2027-03-31", n: "auto: NOAA ONI JFM 2027 = " + v }; }
+    else done.elnino_check = "JFM 2027 not published yet";
+  } catch (e) { done.elnino_error = String(e.message || e).slice(0, 120); }
+  let changed = false;
+  Object.keys(done).forEach(k => { if (done[k] && typeof done[k] === "object") { oc[k] = done[k]; changed = true; } });
+  if (changed) await env.STATS.put("fc:oc", JSON.stringify(oc));
+  await env.STATS.put("ar:log", JSON.stringify({ at: new Date().toISOString(), done }), { expirationTtl: 40 * 86400 });
+  return done;
+}
 
 // ---------- OpenSky bridge: OpenSky blocks Cloudflare, so a scheduled GitHub job fetches it with your keys every 10 min
 // and POSTs the snapshot here (header X-Key = secret OSK_PUSH_KEY); the atlas reads it with GET /osk.
@@ -504,7 +555,7 @@ const CORS = {
 };
 
 export default {
-  async scheduled(event, env, ctx) { ctx.waitUntil(attUpdate(env, ctx)); },
+  async scheduled(event, env, ctx) { ctx.waitUntil(Promise.all([attUpdate(env, ctx).catch(() => {}), env.AISSTREAM_KEY ? aisRefresh(env, 20000).catch(() => {}) : null, autoResolve(env).catch(() => {})])); },
   async fetch(request, env, ctx) {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
     const url = new URL(request.url);

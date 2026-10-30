@@ -1,0 +1,9 @@
+{
+ "VIX (fear)": "VIX (medo)",
+ "Americas": "Américas",
+ "Europe": "Europa",
+ "Asia-Pacific": "Ásia-Pacífico",
+ "Commodities & volatility": "Matérias-primas e volatilidade",
+ "Stock indices unavailable right now: the source isn't answering the relay.": "Índices bolsistas indisponíveis de momento: a fonte não está a responder ao relay.",
+ "Indices and commodities: Yahoo Finance or Stooq, delayed data. Exchange rates: European Central Bank, once per working day. Not financial advice.": "Índices e matérias-primas: Yahoo Finance ou Stooq, dados diferidos. Taxas de câmbio: Banco Central Europeu, uma vez por dia útil. Não constitui aconselhamento financeiro."
+}

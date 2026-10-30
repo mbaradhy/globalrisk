@@ -69,6 +69,18 @@ body=body.replace('<a href="#','<a data-kj="#')  # in-page jumps handled by scri
 # ---- JS: language follows the atlas
 old=js[js.index("  var rf=document.getElementById('lg-fr')"):js.index("  function T(o)")]
 js=js.replace(old,"  var L=(document.documentElement.lang==='en')?'en':'fr';\n  window.kitLang=function(l){L=l;S.lang=l;render();};\n\n")
+
+# ---- per-country shops and currency (window.KITC is set by the atlas)
+def _r(x,y,c=1):
+    global js
+    assert js.count(x)>=c,(x[:60],js.count(x))
+    js=js.replace(x,y)
+_r("function eur(x){return Math.round(x).toLocaleString('fr-FR')+' €';}","function eur(x){var c=window.KITC&&window.KITC.cur&&window.KITC.cur();if(!c||c.code==='EUR')return Math.round(x).toLocaleString(c&&c.loc||'fr-FR')+' €';return '≈ '+Math.round(x*c.rate).toLocaleString(c.loc)+' '+c.sym;}")
+_r("function link(b){var s=SHOPS[b.s];return s.url?s.url+encodeURIComponent(b.q):null;}","function SH(){return (window.KITC&&window.KITC.shops&&window.KITC.shops())||SHOPS;}\n  function link(b,it){var s=SH()[b.s];if(!s||!s.url)return null;if(s.site)return 'https://www.google.com/search?q='+encodeURIComponent((it?P(it.n):b.q)+' site:'+s.site);return s.url+encodeURIComponent(b.q);}")
+js=js.replace("SHOPS[","SH()[")
+_r("esc(link(b))","esc(link(b,it))")
+_r("link(x.b)","link(x.b,x.it)",2)
+_r("function render(){","window.addEventListener('kitc',function(){render();});\n  function render(){")
 js+='''
 document.getElementById("v-kit").addEventListener("click",function(e){var a=e.target.closest("a[data-kj]");if(!a)return;e.preventDefault();var t=document.querySelector("#v-kit "+a.getAttribute("data-kj"));if(t)t.scrollIntoView({behavior:"smooth",block:"start"});});
 '''

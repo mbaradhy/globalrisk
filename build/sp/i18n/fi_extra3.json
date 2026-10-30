@@ -1,0 +1,20 @@
+{
+ "Three numbers, each with a unit. 1) Major crises under way: how many risks of severity 4 or 5 are already happening (unit: crises). 2) Live alerts: GDACS red or orange disaster alerts, M6.5+ earthquakes in 7 days, geomagnetic storm Kp ≥ 5 (unit: alerts); they are not added to anything else. 3) Tension score: the average severity (1–5) × 12-month likelihood (1–5) of active risks, as a % of the maximum (100 = every risk at maximum and near certain). It is not a probability; it is a yardstick to compare over time and between domains. Indicative bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe. Probabilities of specific events (12 months) are given separately, with their source: official agency, prediction market or atlas estimate.": "Kolme lukua, kullakin oma yksikkönsä. 1) Käynnissä olevat suuret kriisit: kuinka moni vakavuusluokan 4 tai 5 riskeistä on jo toteutumassa (yksikkö: kriisit). 2) Ajankohtaiset hälytykset: GDACS:n punaiset tai oranssit katastrofihälytykset, M6.5+ maanjäristykset 7 päivän aikana, geomagneettinen myrsky Kp ≥ 5 (yksikkö: hälytykset); niitä ei lasketa yhteen minkään muun kanssa. 3) Jännitysindeksi: aktiivisten riskien keskimääräinen vakavuus (1–5) × todennäköisyys 12 kuukauden sisällä (1–5), %:na maksimista (100 = kaikki riskit maksimissa ja lähes varmoja). Se ei ole todennäköisyys; se on mittapuu vertailuun ajassa ja alueiden välillä. Suuntaa-antavat tasot: < 40 kohtalainen, 40–60 koholla, 60–75 korkea, > 75 vakava. Tiettyjen tapahtumien todennäköisyydet (12 kuukautta) ilmoitetaan erikseen lähteineen: virallinen viranomainen, ennustemarkkina tai atlaksen oma arvio.",
+ "Tension score": "Jännitysindeksi",
+ "Tension score history": "Jännitysindeksin historia",
+ "Geomagnetic storm, Kp ": "Geomagneettinen myrsky, Kp ",
+ "major crises": "suuret kriisit",
+ "live alerts": "ajankohtaiset hälytykset",
+ "tension": "jännitys",
+ "major crises under way": "käynnissä olevat suuret kriisit",
+ "severity 4–5 out of 5, already happening": "vakavuus 4–5/5, jo käynnissä",
+ "red/orange disasters, M6.5+ earthquakes (7 d), solar storm": "punaiset/oranssit katastrofit, M6.5+ maanjäristykset (7 pv), aurinkomyrsky",
+ "tension score": "jännitysindeksi",
+ "% of the maximum possible": "% suurimmasta mahdollisesta",
+ "Where the world stands": "Missä maailma menee",
+ "Chance of specific shocks within 12 months": "Tiettyjen sokkien todennäköisyys 12 kuukauden sisällä",
+ "What does the tension score mean?": "Mitä jännitysindeksi tarkoittaa?",
+ "Each of the ": "Jokainen ",
+ " active risks gets a severity (1–5) and a 12-month likelihood (1–5). The score is the average severity × likelihood, as a % of the maximum: 100 would mean every risk at maximum severity and near certain. It is not a probability: it is a yardstick to compare over time and between domains (above, the 5 most strained domains).": " aktiivisesta riskistä saa vakavuuden (1–5) ja todennäköisyyden 12 kuukauden sisällä (1–5). Indeksi on keskimääräinen vakavuus × todennäköisyys, %:na maksimista: 100 tarkoittaisi, että kaikki riskit ovat vakavuudeltaan maksimissa ja lähes varmoja. Se ei ole todennäköisyys: se on mittapuu vertailuun ajassa ja alueiden välillä (yllä 5 kuormittuneinta aluetta).",
+ "Earthquakes, disaster alerts and media attention are no longer added to the score: they are counted separately as live alerts.": "Maanjäristyksiä, katastrofihälytyksiä ja mediahuomiota ei enää lasketa indeksiin: ne lasketaan erikseen ajankohtaisina hälytyksinä."
+}

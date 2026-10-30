@@ -1,0 +1,20 @@
+{
+ "Three numbers, each with a unit. 1) Major crises under way: how many risks of severity 4 or 5 are already happening (unit: crises). 2) Live alerts: GDACS red or orange disaster alerts, M6.5+ earthquakes in 7 days, geomagnetic storm Kp ≥ 5 (unit: alerts); they are not added to anything else. 3) Tension score: the average severity (1–5) × 12-month likelihood (1–5) of active risks, as a % of the maximum (100 = every risk at maximum and near certain). It is not a probability; it is a yardstick to compare over time and between domains. Indicative bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe. Probabilities of specific events (12 months) are given separately, with their source: official agency, prediction market or atlas estimate.": "Drie getallen, elk met een eenheid. 1) Lopende grote crises: hoeveel risico's met ernst 4 of 5 zich al voordoen (eenheid: crises). 2) Live-meldingen: rode of oranje GDACS-rampmeldingen, aardbevingen M6.5+ in 7 dagen, geomagnetische storm Kp ≥ 5 (eenheid: meldingen); ze worden nergens bij opgeteld. 3) Spanningsscore: gemiddelde ernst (1–5) × waarschijnlijkheid binnen 12 maanden (1–5) van de actieve risico's, als % van het maximum (100 = elk risico maximaal en vrijwel zeker). Het is geen kans; het is een maatstaf om door de tijd en tussen domeinen te vergelijken. Indicatieve banden: < 40 matig, 40–60 verhoogd, 60–75 hoog, > 75 ernstig. Kansen op specifieke gebeurtenissen (12 maanden) worden apart vermeld, met bron: officiële instantie, voorspellingsmarkt of schatting van de atlas.",
+ "Tension score": "Spanningsscore",
+ "Tension score history": "Verloop van de spanningsscore",
+ "Geomagnetic storm, Kp ": "Geomagnetische storm, Kp ",
+ "major crises": "grote crises",
+ "live alerts": "live-meldingen",
+ "tension": "spanning",
+ "major crises under way": "lopende grote crises",
+ "severity 4–5 out of 5, already happening": "ernst 4–5 van 5, al gaande",
+ "red/orange disasters, M6.5+ earthquakes (7 d), solar storm": "rode/oranje rampen, aardbevingen M6.5+ (7 d), zonnestorm",
+ "tension score": "spanningsscore",
+ "% of the maximum possible": "% van het maximaal mogelijke",
+ "Where the world stands": "Waar de wereld staat",
+ "Chance of specific shocks within 12 months": "Kans op specifieke schokken binnen 12 maanden",
+ "What does the tension score mean?": "Wat betekent de spanningsscore?",
+ "Each of the ": "Elk van de ",
+ " active risks gets a severity (1–5) and a 12-month likelihood (1–5). The score is the average severity × likelihood, as a % of the maximum: 100 would mean every risk at maximum severity and near certain. It is not a probability: it is a yardstick to compare over time and between domains (above, the 5 most strained domains).": " actieve risico's krijgt een ernst (1–5) en een waarschijnlijkheid binnen 12 maanden (1–5). De score is de gemiddelde ernst × waarschijnlijkheid, als % van het maximum: 100 zou betekenen dat elk risico maximale ernst heeft en vrijwel zeker is. Het is geen kans: het is een maatstaf om door de tijd en tussen domeinen te vergelijken (hierboven de 5 meest gespannen domeinen).",
+ "Earthquakes, disaster alerts and media attention are no longer added to the score: they are counted separately as live alerts.": "Aardbevingen, rampmeldingen en media-aandacht worden niet meer bij de score opgeteld: ze worden apart geteld als live-meldingen."
+}

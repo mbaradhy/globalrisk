@@ -1,0 +1,20 @@
+{
+ "Three numbers, each with a unit. 1) Major crises under way: how many risks of severity 4 or 5 are already happening (unit: crises). 2) Live alerts: GDACS red or orange disaster alerts, M6.5+ earthquakes in 7 days, geomagnetic storm Kp ≥ 5 (unit: alerts); they are not added to anything else. 3) Tension score: the average severity (1–5) × 12-month likelihood (1–5) of active risks, as a % of the maximum (100 = every risk at maximum and near certain). It is not a probability; it is a yardstick to compare over time and between domains. Indicative bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe. Probabilities of specific events (12 months) are given separately, with their source: official agency, prediction market or atlas estimate.": "Tre tal, vart och ett med sin enhet. 1) Pågående stora kriser: hur många risker med allvarlighetsgrad 4 eller 5 som redan pågår (enhet: kriser). 2) Aktuella larm: röda eller orange katastroflarm från GDACS, jordbävningar M6.5+ inom 7 dagar, geomagnetisk storm Kp ≥ 5 (enhet: larm); de läggs inte ihop med något annat. 3) Spänningsindex: genomsnittlig allvarlighetsgrad (1–5) × sannolikhet inom 12 månader (1–5) för aktiva risker, i % av maximum (100 = alla risker på max och nästan säkra). Det är ingen sannolikhet; det är en måttstock för jämförelser över tid och mellan områden. Vägledande nivåer: < 40 måttlig, 40–60 förhöjd, 60–75 hög, > 75 allvarlig. Sannolikheter för specifika händelser (12 månader) anges separat, med källa: officiell myndighet, prediktionsmarknad eller atlasens egen uppskattning.",
+ "Tension score": "Spänningsindex",
+ "Tension score history": "Spänningsindexets utveckling",
+ "Geomagnetic storm, Kp ": "Geomagnetisk storm, Kp ",
+ "major crises": "stora kriser",
+ "live alerts": "aktuella larm",
+ "tension": "spänning",
+ "major crises under way": "pågående stora kriser",
+ "severity 4–5 out of 5, already happening": "allvarlighetsgrad 4–5 av 5, pågår redan",
+ "red/orange disasters, M6.5+ earthquakes (7 d), solar storm": "röda/orange katastrofer, jordbävningar M6.5+ (7 d), solstorm",
+ "tension score": "spänningsindex",
+ "% of the maximum possible": "% av möjligt maximum",
+ "Where the world stands": "Var världen står",
+ "Chance of specific shocks within 12 months": "Sannolikhet för specifika chocker inom 12 månader",
+ "What does the tension score mean?": "Vad betyder spänningsindexet?",
+ "Each of the ": "Var och en av de ",
+ " active risks gets a severity (1–5) and a 12-month likelihood (1–5). The score is the average severity × likelihood, as a % of the maximum: 100 would mean every risk at maximum severity and near certain. It is not a probability: it is a yardstick to compare over time and between domains (above, the 5 most strained domains).": " aktiva riskerna får en allvarlighetsgrad (1–5) och en sannolikhet inom 12 månader (1–5). Indexet är genomsnittlig allvarlighetsgrad × sannolikhet, i % av maximum: 100 skulle betyda att alla risker har maximal allvarlighetsgrad och är nästan säkra. Det är ingen sannolikhet: det är en måttstock för jämförelser över tid och mellan områden (ovan de 5 mest ansträngda områdena).",
+ "Earthquakes, disaster alerts and media attention are no longer added to the score: they are counted separately as live alerts.": "Jordbävningar, katastroflarm och mediebevakning läggs inte längre till indexet: de räknas separat som aktuella larm."
+}

@@ -1,0 +1,20 @@
+{
+ "Three numbers, each with a unit. 1) Major crises under way: how many risks of severity 4 or 5 are already happening (unit: crises). 2) Live alerts: GDACS red or orange disaster alerts, M6.5+ earthquakes in 7 days, geomagnetic storm Kp ≥ 5 (unit: alerts); they are not added to anything else. 3) Tension score: the average severity (1–5) × 12-month likelihood (1–5) of active risks, as a % of the maximum (100 = every risk at maximum and near certain). It is not a probability; it is a yardstick to compare over time and between domains. Indicative bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe. Probabilities of specific events (12 months) are given separately, with their source: official agency, prediction market or atlas estimate.": "Trzy liczby, każda z jednostką. 1) Trwające poważne kryzysy: ile ryzyk o dotkliwości 4 lub 5 już się materializuje (jednostka: kryzysy). 2) Alerty na żywo: czerwone lub pomarańczowe alerty katastrof GDACS, trzęsienia ziemi M6.5+ w ciągu 7 dni, burza geomagnetyczna Kp ≥ 5 (jednostka: alerty); nie są do niczego doliczane. 3) Wskaźnik napięcia: średnia dotkliwość (1–5) × prawdopodobieństwo w ciągu 12 miesięcy (1–5) aktywnych ryzyk, jako % maksimum (100 = każde ryzyko na maksimum i niemal pewne). Nie jest to prawdopodobieństwo; to miara do porównań w czasie i między dziedzinami. Orientacyjne przedziały: < 40 umiarkowany, 40–60 podwyższony, 60–75 wysoki, > 75 poważny. Prawdopodobieństwa konkretnych zdarzeń (12 miesięcy) podawane są osobno, wraz ze źródłem: oficjalna agencja, rynek predykcyjny lub szacunek atlasu.",
+ "Tension score": "Wskaźnik napięcia",
+ "Tension score history": "Historia wskaźnika napięcia",
+ "Geomagnetic storm, Kp ": "Burza geomagnetyczna, Kp ",
+ "major crises": "poważne kryzysy",
+ "live alerts": "alerty na żywo",
+ "tension": "napięcie",
+ "major crises under way": "trwające poważne kryzysy",
+ "severity 4–5 out of 5, already happening": "dotkliwość 4–5 na 5, już trwają",
+ "red/orange disasters, M6.5+ earthquakes (7 d), solar storm": "czerwone/pomarańczowe katastrofy, trzęsienia M6.5+ (7 dni), burza słoneczna",
+ "tension score": "wskaźnik napięcia",
+ "% of the maximum possible": "% możliwego maksimum",
+ "Where the world stands": "Stan świata",
+ "Chance of specific shocks within 12 months": "Szansa konkretnych wstrząsów w ciągu 12 miesięcy",
+ "What does the tension score mean?": "Co oznacza wskaźnik napięcia?",
+ "Each of the ": "Każde z ",
+ " active risks gets a severity (1–5) and a 12-month likelihood (1–5). The score is the average severity × likelihood, as a % of the maximum: 100 would mean every risk at maximum severity and near certain. It is not a probability: it is a yardstick to compare over time and between domains (above, the 5 most strained domains).": " aktywnych ryzyk otrzymuje dotkliwość (1–5) i prawdopodobieństwo w ciągu 12 miesięcy (1–5). Wskaźnik to średnia dotkliwość × prawdopodobieństwo, jako % maksimum: 100 oznaczałoby, że każde ryzyko ma maksymalną dotkliwość i jest niemal pewne. Nie jest to prawdopodobieństwo: to miara do porównań w czasie i między dziedzinami (powyżej 5 najbardziej napiętych dziedzin).",
+ "Earthquakes, disaster alerts and media attention are no longer added to the score: they are counted separately as live alerts.": "Trzęsienia ziemi, alerty katastrof i uwaga mediów nie są już doliczane do wskaźnika: liczone są osobno jako alerty na żywo."
+}

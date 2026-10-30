@@ -1,0 +1,337 @@
+[
+ {
+  "en": "just now",
+  "fr": "à l'instant"
+ },
+ {
+  "en": "Disasters & science",
+  "fr": "Catastrophes & science"
+ },
+ {
+  "en": "M4.5+ earthquakes, 7 days",
+  "fr": "Séismes M4,5+, 7 jours"
+ },
+ {
+  "en": "Wildfires, storms, volcanoes",
+  "fr": "Feux, tempêtes, volcans"
+ },
+ {
+  "en": "UN / EU disaster alerts",
+  "fr": "Alertes catastrophes ONU / UE"
+ },
+ {
+  "en": "News feeds",
+  "fr": "Flux d'actualités"
+ },
+ {
+  "en": "30 outlets, 15 languages",
+  "fr": "30 médias, 15 langues"
+ },
+ {
+  "en": "headlines",
+  "fr": "titres"
+ },
+ {
+  "en": "Humanitarian reports",
+  "fr": "Rapports humanitaires"
+ },
+ {
+  "en": "Media attention (often rate-limited)",
+  "fr": "Attention médiatique (souvent limité)"
+ },
+ {
+  "en": "Headline counts",
+  "fr": "Comptage des titres"
+ },
+ {
+  "en": "Hourly, in your relay",
+  "fr": "Chaque heure, dans votre relais"
+ },
+ {
+  "en": "KV needed",
+  "fr": "KV à lier"
+ },
+ {
+  "en": "Markets & forecasts",
+  "fr": "Marchés & prévisions"
+ },
+ {
+  "en": "Stock exchanges",
+  "fr": "Bourses"
+ },
+ {
+  "en": "Exchange rates",
+  "fr": "Taux de change"
+ },
+ {
+  "en": "European Central Bank",
+  "fr": "Banque centrale européenne"
+ },
+ {
+  "en": "Prediction markets",
+  "fr": "Marchés prédictifs"
+ },
+ {
+  "en": "Weather",
+  "fr": "Météo"
+ },
+ {
+  "en": "Forecast for your area",
+  "fr": "Prévisions pour votre zone"
+ },
+ {
+  "en": "no area set",
+  "fr": "zone non choisie"
+ },
+ {
+  "en": "Live map",
+  "fr": "Carte en direct"
+ },
+ {
+  "en": "Aircraft worldwide",
+  "fr": "Avions (mondial)"
+ },
+ {
+  "en": "Fires & strikes",
+  "fr": "Feux & frappes"
+ },
+ {
+  "en": "Score history",
+  "fr": "Historique du score"
+ },
+ {
+  "en": "Slow",
+  "fr": "Lent"
+ },
+ {
+  "en": "Down",
+  "fr": "En panne"
+ },
+ {
+  "en": "Key needed",
+  "fr": "Clé à ajouter"
+ },
+ {
+  "en": "Not used yet",
+  "fr": "Pas encore utilisé"
+ },
+ {
+  "en": "SOURCES"
+ },
+ {
+  "en": "Data sources",
+  "fr": "Sources de données"
+ },
+ {
+  "en": "live",
+  "fr": "en direct"
+ },
+ {
+  "en": "slow or down",
+  "fr": "lentes ou en panne"
+ },
+ {
+  "en": "need a key",
+  "fr": "clé à ajouter"
+ },
+ {
+  "en": "Everything goes through your atlas-api relay; keys stay in Cloudflare. “Key needed”: see Method.",
+  "fr": "Tout passe par votre relais atlas-api ; les clés restent dans Cloudflare. « Clé à ajouter » : voir Méthode."
+ },
+ {
+  "en": "Major crises under way",
+  "fr": "Crises majeures en cours"
+ },
+ {
+  "en": "crises (count)",
+  "fr": "crises (nombre)"
+ },
+ {
+  "en": "Risks with severity 4 or 5 whose status is active, escalating or de-escalating.",
+  "fr": "Risques de gravité 4 ou 5 dont le statut est « en cours », « en escalade » ou « en désescalade »."
+ },
+ {
+  "en": "alerts (count)",
+  "fr": "alertes (nombre)"
+ },
+ {
+  "en": "GDACS red or orange alerts + M6.5+ earthquakes in 7 days + Kp ≥ 5. Never added to any other number.",
+  "fr": "Alertes GDACS rouges ou orange + séismes ≥ M6,5 sur 7 jours + Kp ≥ 5. Jamais additionnées à un autre chiffre."
+ },
+ {
+  "en": "% of maximum",
+  "fr": "% du maximum"
+ },
+ {
+  "en": "Sum of severity × likelihood of every active risk ÷ (number of risks × 25) × 100.",
+  "fr": "Somme de gravité × probabilité de chaque risque actif ÷ (nombre de risques × 25) × 100."
+ },
+ {
+  "en": "Domain tension",
+  "fr": "Tension par domaine"
+ },
+ {
+  "en": "Same calculation, limited to one domain's risks (wars, energy…).",
+  "fr": "Même calcul, limité aux risques d'un domaine (guerres, énergie…)."
+ },
+ {
+  "en": "scale 1–5",
+  "fr": "échelle 1–5"
+ },
+ {
+  "en": "Size of the impact if the risk materialises, using the scale below (local → global and systemic).",
+  "fr": "Ampleur de l'impact si le risque se réalise, selon la grille ci-dessous (local → mondial et systémique)."
+ },
+ {
+  "en": "Likelihood",
+  "fr": "Probabilité"
+ },
+ {
+  "en": "scale 1–5 = % band",
+  "fr": "échelle 1–5 = fourchette de %"
+ },
+ {
+  "en": "Chance the risk happens or continues within 12 months: 1 = under 5%, 5 = over 80% or already happening.",
+  "fr": "Chance que le risque se produise ou se poursuive dans les 12 mois : 1 = moins de 5 %, 5 = plus de 80 % ou déjà en cours."
+ },
+ {
+  "en": "Probability of a specific shock",
+  "fr": "Probabilité d'un choc précis"
+ },
+ {
+  "en": "For a dated, checkable event. Source shown: official agency, prediction market or atlas estimate (≈).",
+  "fr": "Pour un événement daté et vérifiable. Source indiquée : agence officielle, marché prédictif ou estimation de l'atlas (≈)."
+ },
+ {
+  "en": "Cascade intensity",
+  "fr": "Intensité d'une cascade"
+ },
+ {
+  "en": "Share of the initial shock that reaches a risk along the links: link strength (1–3) ÷ 3 × 0.82 × (0.6 + severity ÷ 12.5), multiplied step by step.",
+  "fr": "Part du choc initial qui atteint un risque en suivant les liens : force du lien (1–3) ÷ 3 × 0,82 × (0,6 + gravité ÷ 12,5), multipliée étape par étape."
+ },
+ {
+  "en": "Country exposure",
+  "fr": "Exposition d'un pays"
+ },
+ {
+  "en": "% of the country's total",
+  "fr": "% du total du pays"
+ },
+ {
+  "en": "Each risk's contribution (direct or knock-on) to the country's exposure; shares add up to 100%.",
+  "fr": "Contribution de chaque risque (direct ou par ricochet) à l'exposition du pays ; les parts font 100 %."
+ },
+ {
+  "en": "headlines per day",
+  "fr": "titres par jour"
+ },
+ {
+  "en": "Number of headlines mentioning the risk in the news feeds, counted hourly.",
+  "fr": "Nombre de titres citant le risque dans les flux d'actualités, comptés chaque heure."
+ },
+ {
+  "en": "% vs previous close",
+  "fr": "% sur la veille"
+ },
+ {
+  "en": "Last price compared with the previous close; delayed data.",
+  "fr": "Dernier cours comparé à la clôture précédente ; données différées."
+ },
+ {
+  "en": "How the numbers are made",
+  "fr": "Comment les chiffres sont établis"
+ },
+ {
+  "en": "Number",
+  "fr": "Chiffre"
+ },
+ {
+  "en": "Unit",
+  "fr": "Unité"
+ },
+ {
+  "en": "How it is computed",
+  "fr": "Calcul"
+ },
+ {
+  "en": "How a risk is evaluated",
+  "fr": "Comment un risque est évalué"
+ },
+ {
+  "en": "The risk is written as a checkable question: “within 12 months, does X happen or continue, with an impact of level Y?”.",
+  "fr": "Le risque est formulé comme une question vérifiable : « dans les 12 mois, X se produit-il ou se poursuit-il, avec un impact de niveau Y ? »."
+ },
+ {
+  "en": "Dated public sources are gathered: official agencies first (IMF, NOAA, FAO, WHO, UN…), then data firms, then the press. Each dossier lists its sources.",
+  "fr": "Des sources publiques datées sont rassemblées : agences officielles d'abord (FMI, NOAA, FAO, OMS, ONU…), puis sociétés de données, puis presse. Chaque dossier liste ses sources."
+ },
+ {
+  "en": "Severity is set with the 1–5 scale: the plausible impact if the risk materialises, not the worst case imaginable.",
+  "fr": "La gravité est fixée avec la grille 1–5 : l'impact plausible si le risque se réalise, pas le pire cas imaginable."
+ },
+ {
+  "en": "Likelihood is the band that best matches the sources. A crisis already happening gets 5.",
+  "fr": "La probabilité est la fourchette qui correspond le mieux aux sources. Une crise déjà en cours reçoit 5."
+ },
+ {
+  "en": "Confidence is “high” when several official or reference sources agree, otherwise “medium”.",
+  "fr": "La confiance est « élevée » quand plusieurs sources officielles ou de référence concordent, sinon « moyenne »."
+ },
+ {
+  "en": "Cause-and-effect links get a strength (1–3) and a delay in months, each explained in one sentence.",
+  "fr": "Les liens de cause à effet reçoivent une force (1–3) et un délai en mois, chacun expliqué en une phrase."
+ },
+ {
+  "en": "Everything is reviewed at the baseline date shown; the live feeds update continuously.",
+  "fr": "L'ensemble est revu à la date de base affichée ; les flux en direct, eux, se mettent à jour en continu."
+ },
+ {
+  "en": "Worked example",
+  "fr": "Exemple chiffré"
+ },
+ {
+  "en": "severity ",
+  "fr": "gravité "
+ },
+ {
+  "en": "likelihood ",
+  "fr": "probabilité "
+ },
+ {
+  "en": "just as severe, but much less likely within 12 months.",
+  "fr": "aussi grave, mais beaucoup moins probable dans les 12 mois."
+ },
+ {
+  "en": "Tension score: ",
+  "fr": "Score de tension : "
+ },
+ {
+  "en": "% of the maximum.",
+  "fr": "% du maximum."
+ },
+ {
+  "en": "Cascade: Hormuz → oil, link strength 3, source severity 5: 3 ÷ 3 × 0.82 × (0.6 + 5 ÷ 12.5) = 0.82, an intensity of 82 out of 100.",
+  "fr": "Cascade : Ormuz → pétrole, lien de force 3, gravité de la source 5 : 3 ÷ 3 × 0,82 × (0,6 + 5 ÷ 12,5) = 0,82, soit une intensité de 82 sur 100."
+ },
+ {
+  "en": "What these numbers are not",
+  "fr": "Ce que ces chiffres ne sont pas"
+ },
+ {
+  "en": "Not official forecasts: severity and likelihood are the atlas's judgements, documented and sourced, compiled with AI assistance from public sources.",
+  "fr": "Pas des prévisions officielles : gravité et probabilité sont des jugements de l'atlas, documentés et sourcés, compilés avec l'aide d'une IA à partir de sources publiques."
+ },
+ {
+  "en": "The tension score is not a probability: it compares over time and between domains.",
+  "fr": "Le score de tension n'est pas une probabilité : il compare dans le temps et entre domaines."
+ },
+ {
+  "en": "Scenarios show plausible directions and delays, not precise prices or dates.",
+  "fr": "Les scénarios montrent des directions et des délais plausibles, pas des prix ou des dates précis."
+ },
+ {
+  "en": "In an emergency, follow the authorities: the atlas informs, it does not give instructions.",
+  "fr": "En cas d'urgence, suivez les autorités : l'atlas informe, il ne donne pas de consignes."
+ }
+]

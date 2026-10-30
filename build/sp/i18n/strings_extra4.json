@@ -1,0 +1,29 @@
+[
+ {
+  "en": "VIX (fear)",
+  "fr": "VIX (peur)"
+ },
+ {
+  "en": "Americas",
+  "fr": "Amériques"
+ },
+ {
+  "en": "Europe"
+ },
+ {
+  "en": "Asia-Pacific",
+  "fr": "Asie-Pacifique"
+ },
+ {
+  "en": "Commodities & volatility",
+  "fr": "Matières premières & volatilité"
+ },
+ {
+  "en": "Stock indices unavailable right now: the source isn't answering the relay.",
+  "fr": "Bourses indisponibles pour le moment : la source ne répond pas au relais."
+ },
+ {
+  "en": "Indices and commodities: Yahoo Finance or Stooq, delayed data. Exchange rates: European Central Bank, once per working day. Not financial advice.",
+  "fr": "Indices et matières premières : Yahoo Finance ou Stooq, données différées. Changes : Banque centrale européenne, 1 fois par jour ouvré. Pas un conseil financier."
+ }
+]

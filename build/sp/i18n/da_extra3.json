@@ -1,0 +1,20 @@
+{
+ "Three numbers, each with a unit. 1) Major crises under way: how many risks of severity 4 or 5 are already happening (unit: crises). 2) Live alerts: GDACS red or orange disaster alerts, M6.5+ earthquakes in 7 days, geomagnetic storm Kp ≥ 5 (unit: alerts); they are not added to anything else. 3) Tension score: the average severity (1–5) × 12-month likelihood (1–5) of active risks, as a % of the maximum (100 = every risk at maximum and near certain). It is not a probability; it is a yardstick to compare over time and between domains. Indicative bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe. Probabilities of specific events (12 months) are given separately, with their source: official agency, prediction market or atlas estimate.": "Tre tal, hvert med sin enhed. 1) Igangværende store kriser: hvor mange risici med alvorlighed 4 eller 5 der allerede finder sted (enhed: kriser). 2) Aktuelle varsler: røde eller orange GDACS-katastrofevarsler, jordskælv M6.5+ inden for 7 dage, geomagnetisk storm Kp ≥ 5 (enhed: varsler); de lægges ikke sammen med noget andet. 3) Spændingsscore: gennemsnitlig alvorlighed (1–5) × sandsynlighed inden for 12 måneder (1–5) for aktive risici, i % af maksimum (100 = alle risici på maksimum og næsten sikre). Den er ikke en sandsynlighed; den er en målestok til sammenligning over tid og mellem områder. Vejledende niveauer: < 40 moderat, 40–60 forhøjet, 60–75 høj, > 75 alvorlig. Sandsynligheder for konkrete hændelser (12 måneder) angives separat med kilde: officiel myndighed, prognosemarked eller atlassets eget skøn.",
+ "Tension score": "Spændingsscore",
+ "Tension score history": "Spændingsscorens udvikling",
+ "Geomagnetic storm, Kp ": "Geomagnetisk storm, Kp ",
+ "major crises": "store kriser",
+ "live alerts": "aktuelle varsler",
+ "tension": "spænding",
+ "major crises under way": "igangværende store kriser",
+ "severity 4–5 out of 5, already happening": "alvorlighed 4–5 af 5, finder allerede sted",
+ "red/orange disasters, M6.5+ earthquakes (7 d), solar storm": "røde/orange katastrofer, jordskælv M6.5+ (7 d), solstorm",
+ "tension score": "spændingsscore",
+ "% of the maximum possible": "% af det mulige maksimum",
+ "Where the world stands": "Hvor verden står",
+ "Chance of specific shocks within 12 months": "Sandsynlighed for konkrete chok inden for 12 måneder",
+ "What does the tension score mean?": "Hvad betyder spændingsscoren?",
+ "Each of the ": "Hver af de ",
+ " active risks gets a severity (1–5) and a 12-month likelihood (1–5). The score is the average severity × likelihood, as a % of the maximum: 100 would mean every risk at maximum severity and near certain. It is not a probability: it is a yardstick to compare over time and between domains (above, the 5 most strained domains).": " aktive risici får en alvorlighed (1–5) og en sandsynlighed inden for 12 måneder (1–5). Scoren er gennemsnittet af alvorlighed × sandsynlighed, i % af maksimum: 100 ville betyde, at alle risici har maksimal alvorlighed og er næsten sikre. Den er ikke en sandsynlighed: den er en målestok til sammenligning over tid og mellem områder (ovenfor de 5 mest pressede områder).",
+ "Earthquakes, disaster alerts and media attention are no longer added to the score: they are counted separately as live alerts.": "Jordskælv, katastrofevarsler og medieopmærksomhed lægges ikke længere til scoren: de tælles separat som aktuelle varsler."
+}

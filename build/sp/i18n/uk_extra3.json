@@ -1,0 +1,20 @@
+{
+ "Three numbers, each with a unit. 1) Major crises under way: how many risks of severity 4 or 5 are already happening (unit: crises). 2) Live alerts: GDACS red or orange disaster alerts, M6.5+ earthquakes in 7 days, geomagnetic storm Kp ≥ 5 (unit: alerts); they are not added to anything else. 3) Tension score: the average severity (1–5) × 12-month likelihood (1–5) of active risks, as a % of the maximum (100 = every risk at maximum and near certain). It is not a probability; it is a yardstick to compare over time and between domains. Indicative bands: < 40 moderate, 40–60 elevated, 60–75 high, > 75 severe. Probabilities of specific events (12 months) are given separately, with their source: official agency, prediction market or atlas estimate.": "Три числа, кожне зі своєю одиницею. 1) Великі кризи, що тривають: скільки ризиків тяжкості 4 або 5 уже відбуваються (одиниця: кризи). 2) Поточні сповіщення: червоні або помаранчеві сповіщення GDACS про катастрофи, землетруси M6.5+ за 7 днів, геомагнітна буря Kp ≥ 5 (одиниця: сповіщення); вони ні до чого не додаються. 3) Індекс напруженості: середня тяжкість (1–5) × імовірність протягом 12 місяців (1–5) активних ризиків, у % від максимуму (100 = усі ризики на максимумі й майже певні). Це не ймовірність; це мірило для порівняння в часі та між сферами. Орієнтовні рівні: < 40 помірний, 40–60 підвищений, 60–75 високий, > 75 дуже високий. Імовірності конкретних подій (12 місяців) наведено окремо, із джерелом: офіційне відомство, ринок прогнозів або оцінка атласу.",
+ "Tension score": "Індекс напруженості",
+ "Tension score history": "Історія індексу напруженості",
+ "Geomagnetic storm, Kp ": "Геомагнітна буря, Kp ",
+ "major crises": "великі кризи",
+ "live alerts": "поточні сповіщення",
+ "tension": "напруженість",
+ "major crises under way": "великі кризи, що тривають",
+ "severity 4–5 out of 5, already happening": "тяжкість 4–5 з 5, уже відбуваються",
+ "red/orange disasters, M6.5+ earthquakes (7 d), solar storm": "червоні/помаранчеві катастрофи, землетруси M6.5+ (7 дн.), сонячна буря",
+ "tension score": "індекс напруженості",
+ "% of the maximum possible": "% від можливого максимуму",
+ "Where the world stands": "Стан світу",
+ "Chance of specific shocks within 12 months": "Імовірність конкретних потрясінь протягом 12 місяців",
+ "What does the tension score mean?": "Що означає індекс напруженості?",
+ "Each of the ": "Кожному з ",
+ " active risks gets a severity (1–5) and a 12-month likelihood (1–5). The score is the average severity × likelihood, as a % of the maximum: 100 would mean every risk at maximum severity and near certain. It is not a probability: it is a yardstick to compare over time and between domains (above, the 5 most strained domains).": " активних ризиків присвоюється тяжкість (1–5) та ймовірність протягом 12 місяців (1–5). Індекс — це середня тяжкість × імовірність у % від максимуму: 100 означало б, що всі ризики мають максимальну тяжкість і майже певні. Це не ймовірність: це мірило для порівняння в часі та між сферами (вище — 5 найнапруженіших сфер).",
+ "Earthquakes, disaster alerts and media attention are no longer added to the score: they are counted separately as live alerts.": "Землетруси, сповіщення про катастрофи та увага медіа більше не додаються до індексу: їх враховано окремо як поточні сповіщення."
+}
