@@ -330,7 +330,7 @@ async function attention(env, ctx) {
 // the relay keeps up to 7 reports per hour and serves the hourly median (robust to an odd report).
 async function gri(url, env, ctx) {
   if (!env.STATS) return jerr(503, "STATS KV not bound");
-  const P = url.searchParams.get("s") === "2" ? "gri2:" : "gri:"; // series 2 = tension score without live add-ons (from 30 Oct 2026)
+  const sv = url.searchParams.get("s"), P = sv === "3" ? "gri3:" : sv === "2" ? "gri2:" : "gri:"; // series 2 = tension score (30 Oct 2026); series 3 = P, chance of a new global shock (from 30 Oct 2026)
   const v = parseFloat(url.searchParams.get("v"));
   if (!isNaN(v)) {
     if (v < 0 || v > 100) return jerr(400, "out of range");
@@ -351,6 +351,40 @@ async function gri(url, env, ctx) {
     }
     return JSON.stringify({ at: new Date().toISOString(), points: pts });
   });
+}
+
+
+// ---------- Forecast record (phase 3): question bands are versioned so each forecast can be scored once it resolves.
+// Browsers report the bands they ship with (?v=JSON {id:[lo,hi]}); a new version is kept once 3 reports agree.
+// Outcomes are set by the owner: /fc?id=taiwan&o=0&k=RESOLVE_KEY (o=1 yes, o=0 no, del=1 to remove; optional d=YYYY-MM-DD, n=note).
+async function fc(url, env, ctx) {
+  if (!env.STATS) return jerr(503, "STATS KV not bound");
+  const sp = url.searchParams, ok = o => new Response(JSON.stringify(o), { headers: { ...J, ...CORS } });
+  if (sp.get("id")) {
+    if (!env.RESOLVE_KEY || sp.get("k") !== env.RESOLVE_KEY) return jerr(403, "bad key");
+    const id = sp.get("id").slice(0, 40), oc = (await env.STATS.get("fc:oc", "json")) || {};
+    if (sp.get("del")) delete oc[id];
+    else { const o = sp.get("o"); if (o !== "0" && o !== "1") return jerr(400, "o must be 0 or 1");
+      oc[id] = { o: +o, d: (sp.get("d") || day(new Date())).slice(0, 10), n: (sp.get("n") || "").slice(0, 200) }; }
+    await env.STATS.put("fc:oc", JSON.stringify(oc));
+    return ok({ ok: true, outcomes: oc });
+  }
+  const v = sp.get("v");
+  if (v) {
+    let b; try { b = JSON.parse(v); } catch (e) { return jerr(400, "bad json"); }
+    const keys = Object.keys(b || {});
+    if (!keys.length || keys.length > 200 || keys.some(k => !/^[a-z0-9-]{1,40}$/.test(k) || !Array.isArray(b[k]) || b[k].length !== 2 || b[k].some(x => typeof x !== "number" || x < 0 || x > 100))) return jerr(400, "bad bands");
+    const norm = JSON.stringify(Object.fromEntries(keys.sort().map(k => [k, b[k]])));
+    const vs = (await env.STATS.get("fc:v", "json")) || [];
+    if (vs.length && JSON.stringify(vs[vs.length - 1].b) === norm) return ok({ ok: true, same: true });
+    const pend = (await env.STATS.get("fc:p", "json")) || {};
+    pend[norm] = (pend[norm] || 0) + 1;
+    if (pend[norm] >= 3) { vs.push({ d: new Date().toISOString().slice(0, 10), b: JSON.parse(norm) }); await env.STATS.put("fc:v", JSON.stringify(vs)); await env.STATS.put("fc:p", "{}"); return ok({ ok: true, stored: vs.length }); }
+    const ks = Object.keys(pend); if (ks.length > 5) delete pend[ks[0]];
+    await env.STATS.put("fc:p", JSON.stringify(pend), { expirationTtl: 30 * 86400 });
+    return ok({ ok: true, pending: pend[norm] });
+  }
+  return cached("fc-" + Math.floor(Date.now() / 600000), 600, ctx, async () => JSON.stringify({ at: new Date().toISOString(), versions: (await env.STATS.get("fc:v", "json")) || [], outcomes: (await env.STATS.get("fc:oc", "json")) || {} }));
 }
 
 // ---------- Markets: stock indices and commodities (Stooq, free, no key) and ECB exchange rates (Frankfurter)
@@ -447,12 +481,13 @@ export default {
     if (key === "layers") return layersStatus(env);
     if (key === "attention") return attention(env, ctx);
     if (key === "gri") return gri(url, env, ctx);
+    if (key === "fc") return fc(url, env, ctx);
     if (key === "quotes") return quotes(ctx, url.searchParams.has("debug"));
     if (key === "fx") return fx(ctx);
     if (key === "warnings") return warnings(url, ctx);
     const route = ROUTES[key];
     if (!route) {
-      return new Response(JSON.stringify({ ok: true, routes: Object.keys(ROUTES).concat(["rss", "gdacs", "planes", "ships", "outages", "fires", "layers", "attention", "gri", "quotes", "fx", "warnings", "hit", "stats"]) }), {
+      return new Response(JSON.stringify({ ok: true, routes: Object.keys(ROUTES).concat(["rss", "gdacs", "planes", "ships", "outages", "fires", "layers", "attention", "gri", "fc", "quotes", "fx", "warnings", "hit", "stats"]) }), {
         headers: { "Content-Type": "application/json", ...CORS }
       });
     }

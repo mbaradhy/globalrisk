@@ -4,7 +4,7 @@ def r(x,y,cnt=1):
     global a
     assert x in a,x[:80]; a=a.replace(x,y,cnt)
 iso=open('/tmp/claude-0/-home-claude/9f8c4616-27f1-5910-b924-209665f78c24/scratchpad/iso.json').read()
-js=(open('questions.js').read()+open('analysis.js').read()+open('news.js').read()+open('gri2.js').read()+open('sources.js').read()+open('level.js').read()).replace('/*ISO*/null',iso)
+js=(open('questions.js').read()+open('analysis.js').read()+open('news.js').read()+open('gri2.js').read()+open('sources.js').read()+open('level.js').read()+(open('impact.js').read() if __import__('os').path.exists('impact.js') else '')+open('phase2.js').read()).replace('/*ISO*/null',iso)
 # tab + view
 r('''  <button role="tab" data-t="kit" aria-selected="false">''','''  <button role="tab" data-t="ana" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span data-i="tAna"></span></button>
   <button role="tab" data-t="kit" aria-selected="false">''')
@@ -35,6 +35,14 @@ r('''function setLang(l){L=l;''','''function setLang(l){L=l;setTimeout(function(
 r('''/* ---------- boot ---------- */''',js+'''
 /* ---------- boot ---------- */''')
 css='''
+.mct{display:grid;gap:2px;margin:6px 0 10px;font-size:.86rem}.mct>div{display:grid;grid-template-columns:minmax(0,2.2fr) 1fr 1.3fr 1.3fr;gap:8px;align-items:baseline;padding:5px 8px;background:var(--panel2);border-radius:6px}.mct .mch{background:none;color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.04em}.mct small{color:var(--muted);font-weight:400}
+.mc2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:6px 0}.mcr{display:flex;justify-content:space-between;gap:10px;padding:5px 8px;border-bottom:1px solid var(--line);font-size:.84rem;cursor:pointer}.mcr:hover{background:var(--panel2)}.mcr b{white-space:nowrap}
+.imt{display:grid;gap:3px;margin:8px 0;font-size:.83rem;overflow-x:auto}.imr{display:grid;grid-template-columns:minmax(150px,1.6fr) repeat(4,minmax(86px,1fr));gap:8px;align-items:baseline;padding:6px 8px;background:var(--panel2);border-radius:6px;min-width:560px}.imr.imh{background:none;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.03em}.imn{cursor:pointer}.imn small{display:block;color:var(--muted)}.ims{grid-column:1/-1;color:var(--muted);font-size:.76rem;line-height:1.4}.ims a{color:var(--accent)}.ims summary{cursor:pointer;color:var(--accent);font-size:.76rem}
+.cal{width:100%;max-width:300px;height:auto}.trk .mts{margin-bottom:8px}
+@media(max-width:600px){.mcr{flex-wrap:wrap;row-gap:2px}.mcr>span{flex:1 1 100%}.mct>div{grid-template-columns:minmax(0,1.6fr) 1fr 1.2fr;}.mct>div>:nth-child(4){display:none}}
+
+.chain{gap:6px}.chain .ar{color:var(--accent);font-size:1.3rem;font-weight:800;line-height:1;margin:0 1px;text-shadow:0 0 6px rgba(127,209,255,.45)}[dir=rtl] .chain .ar{display:inline-block;transform:scaleX(-1)}
+
 /* ---- analysis ---- */
 .asub{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
 .asub button,.seg button{font:inherit;font-size:.86rem;color:#c7d2dc;background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:6px 13px;cursor:pointer}
