@@ -414,6 +414,25 @@ async function fc(url, env, ctx) {
   return cached("fc-" + Math.floor(Date.now() / 600000), 600, ctx, async () => JSON.stringify({ at: new Date().toISOString(), versions: (await env.STATS.get("fc:v", "json")) || [], outcomes: (await env.STATS.get("fc:oc", "json")) || {} }));
 }
 
+
+// ---------- OpenSky bridge: OpenSky blocks Cloudflare, so a scheduled GitHub job fetches it with your keys every 10 min
+// and POSTs the snapshot here (header X-Key = secret OSK_PUSH_KEY); the atlas reads it with GET /osk.
+async function osk(request, env, ctx) {
+  if (!env.STATS) return jerr(503, "STATS KV not bound");
+  if (request.method === "POST") {
+    if (!env.OSK_PUSH_KEY || request.headers.get("X-Key") !== env.OSK_PUSH_KEY) return jerr(403, "bad key");
+    const body = await request.text();
+    if (body.length > 8e6 || !body.startsWith("{")) return jerr(400, "bad snapshot");
+    await env.STATS.put("osk:last", body, { expirationTtl: 7200 });
+    return new Response(JSON.stringify({ ok: true, bytes: body.length }), { headers: { ...J, ...CORS } });
+  }
+  return cached("osk-" + Math.floor(Date.now() / 60000), 60, ctx, async () => {
+    const v = await env.STATS.get("osk:last");
+    if (!v) throw new Error("no OpenSky snapshot yet (the GitHub job has not run, or its secrets are missing)");
+    return v;
+  });
+}
+
 // ---------- Markets: stock indices and commodities (Stooq, free, no key) and ECB exchange rates (Frankfurter)
 const QUOTES = ["^spx", "^ndq", "^dji", "^cac", "^dax", "^ukx", "^nkx", "^hsi", "cb.f", "gc.f", "ng.f", "zw.f"];
 const YAHOO = { "^spx": "^GSPC", "^ndq": "^NDX", "^dji": "^DJI", "^cac": "^FCHI", "^dax": "^GDAXI", "^ukx": "^FTSE", "^nkx": "^N225", "^hsi": "^HSI", "cb.f": "BZ=F", "gc.f": "GC=F", "ng.f": "NG=F", "zw.f": "ZW=F",
@@ -488,9 +507,10 @@ export default {
   async scheduled(event, env, ctx) { ctx.waitUntil(attUpdate(env, ctx)); },
   async fetch(request, env, ctx) {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
+    const url = new URL(request.url);
+    if (request.method === "POST" && /^\/(api\/)?osk/.test(url.pathname)) return osk(request, env, ctx);
     if (request.method !== "GET") return new Response("Method not allowed", { status: 405, headers: CORS });
 
-    const url = new URL(request.url);
     const key = url.pathname.replace(/^\/(api\/)?/, "").split("/")[0];
     if (key === "hit") return hit(request, url, env, ctx);
     if (key === "stats") return stats(url, env);
@@ -509,12 +529,13 @@ export default {
     if (key === "attention") return attention(env, ctx);
     if (key === "gri") return gri(url, env, ctx);
     if (key === "fc") return fc(url, env, ctx);
+    if (key === "osk") return osk(request, env, ctx);
     if (key === "quotes") return quotes(ctx, url.searchParams.has("debug"));
     if (key === "fx") return fx(ctx);
     if (key === "warnings") return warnings(url, ctx);
     const route = ROUTES[key];
     if (!route) {
-      return new Response(JSON.stringify({ ok: true, routes: Object.keys(ROUTES).concat(["rss", "gdacs", "planes", "ships", "outages", "fires", "layers", "attention", "gri", "fc", "quotes", "fx", "warnings", "hit", "stats"]) }), {
+      return new Response(JSON.stringify({ ok: true, routes: Object.keys(ROUTES).concat(["rss", "gdacs", "planes", "ships", "outages", "fires", "layers", "attention", "gri", "fc", "osk", "quotes", "fx", "warnings", "hit", "stats"]) }), {
         headers: { "Content-Type": "application/json", ...CORS }
       });
     }

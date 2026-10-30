@@ -19,6 +19,7 @@ Empty values are skipped, so you can add keys one at a time. `secrets.json` is i
 | `FIRMS_KEY` | firms.modaps.eosdis.nasa.gov/api/map_key → enter your email → key arrives by email |
 | `CF_RADAR_TOKEN` | dash.cloudflare.com → My Profile → API Tokens → Create Custom Token → permission Account · Radar · Read |
 | `RESOLVE_KEY` | any long password you make up; used to record question outcomes |
+| `OSK_PUSH_KEY` | any password you make up; the GitHub OpenSky job uses it to hand snapshots to the relay (same value as the GitHub secret) |
 | `STATS_KEY` | any password you make up; opens the visitor statistics page |
 
 ## Without scripts
@@ -26,3 +27,10 @@ Cloudflare dashboard → Workers & Pages → atlas-api → Settings → Variable
 
 ## Recording an outcome (track record)
 `https://atlas-api.mbaradhy.workers.dev/fc?id=QUESTION_ID&o=1&k=YOUR_RESOLVE_KEY` (o=1 yes, o=0 no; add `&del=1` to undo).
+
+## OpenSky (worldwide planes)
+OpenSky blocks Cloudflare, so a scheduled GitHub job (`.github/workflows/opensky.yml`) fetches it with your keys every 10 minutes and gives the snapshot to the relay.
+1. GitHub → this repo → Settings → Secrets and variables → Actions → New repository secret, three times:
+   `OPENSKY_CLIENT_ID`, `OPENSKY_CLIENT_SECRET` (from the OpenSky credentials file) and `OSK_PUSH_KEY` (a password you make up).
+2. Add the same `OSK_PUSH_KEY` to Cloudflare (secrets.json + set-secrets, or the dashboard).
+3. GitHub → Actions → OpenSky bridge → Run workflow, to test it at once. A green tick and "OK: … aircraft sent" means it works.

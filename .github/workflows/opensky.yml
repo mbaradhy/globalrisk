@@ -1,0 +1,27 @@
+name: OpenSky bridge
+# Fetches worldwide air traffic from OpenSky with your keys every 10 minutes and gives it to the atlas-api relay.
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+permissions:
+  contents: read
+concurrency:
+  group: opensky-bridge
+  cancel-in-progress: true
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tools
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tools/opensky-bridge.mjs
+        env:
+          OPENSKY_CLIENT_ID: ${{ secrets.OPENSKY_CLIENT_ID }}
+          OPENSKY_CLIENT_SECRET: ${{ secrets.OPENSKY_CLIENT_SECRET }}
+          OSK_PUSH_KEY: ${{ secrets.OSK_PUSH_KEY }}
