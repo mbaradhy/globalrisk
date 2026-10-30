@@ -26,5 +26,6 @@
  "Denmark": "Дания",
  "Poland": "Польша",
  "France": "Франция",
- "aisstream.io · live AIS": "aisstream.io · AIS в реальном времени"
+ "aisstream.io · live AIS": "aisstream.io · AIS в реальном времени",
+ "Thin AIS coverage here: aisstream relies on volunteer receivers on the coast. A low count can mean “no receiver” rather than “no ships”.": "Здесь слабое покрытие AIS: aisstream зависит от приёмников волонтёров на побережье. Малое число может означать «нет приёмника», а не «нет судов»."
 }

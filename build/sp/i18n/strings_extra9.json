@@ -110,5 +110,9 @@
  {
   "en": "aisstream.io · live AIS",
   "fr": "aisstream.io · AIS en direct"
+ },
+ {
+  "en": "Thin AIS coverage here: aisstream relies on volunteer receivers on the coast. A low count can mean “no receiver” rather than “no ships”.",
+  "fr": "Couverture AIS limitée ici : aisstream dépend de récepteurs bénévoles sur les côtes. Un chiffre bas peut signifier « pas de récepteur » plutôt que « pas de navires »."
  }
 ]

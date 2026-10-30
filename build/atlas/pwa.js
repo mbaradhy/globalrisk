@@ -37,3 +37,8 @@ function shareRisk(id){var n=byId[id];if(!n)return;var url=location.origin+locat
   var b=document.createElement("button");b.type="button";b.className="btn";b.id="p-share";b.style.marginTop="6px";b.textContent="↗ "+T2("Partager ce risque","Share this risk");b.onclick=function(){shareRisk(sel);};h.parentNode.insertBefore(b,h.nextSibling);};})();
 (function(){var o=setLang;setLang=function(l){o(l);hdrDraw();};})();
 setTimeout(hdrDraw,300);
+/* live map: the strait card closes when you pan away from that strait; thin AIS coverage is said plainly */
+(function(){if(typeof lmDraw!=="function")return;var o=lmDraw;lmDraw=function(){o();try{if(LMAP.box&&LMAP.card&&lmCv){var b=BOXES[LMAP.box];var x=(mx_(b[0][1])+mx_(b[1][1]))/2,y=(my_(b[0][0])+my_(b[1][0]))/2,w=1000/LMAP.k,h=w*lmCv.height/lmCv.width;
+  if(Math.abs(x-LMAP.cx)>w*0.6||Math.abs(y-LMAP.cy)>h*0.6){LMAP.card=false;var el=document.getElementById("lm-card");if(el)el.hidden=true;}}}catch(e){}};})();
+(function(){if(typeof lmCard!=="function")return;var o=lmCard;lmCard=function(){o();var el=document.getElementById("lm-card");if(!el||el.hidden||!LMAP.box||LMAP.box==="finland"||LMAP.box==="channel")return;
+  var p=document.createElement("p");p.className="note";p.textContent=T2("Couverture AIS limitée ici : aisstream dépend de récepteurs bénévoles sur les côtes. Un chiffre bas peut signifier « pas de récepteur » plutôt que « pas de navires ».","Thin AIS coverage here: aisstream relies on volunteer receivers on the coast. A low count can mean “no receiver” rather than “no ships”.");el.appendChild(p);};})();
