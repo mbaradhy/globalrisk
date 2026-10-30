@@ -2,7 +2,10 @@
 
 The relay needs a few free keys. They are stored in Cloudflare as encrypted secrets, never in the code or this repo.
 
-## Easiest: fill in one file and run one script
+## One click: setup.cmd
+Double-click `setup.cmd` (Windows) or run `./setup.sh`. It makes up the passwords you left empty, deploys the relay code, stores the keys in Cloudflare and the OpenSky keys in GitHub, runs the OpenSky job once and checks the result. Logins open in your browser the first time (Cloudflare, then GitHub). Needs Node.js; on Windows it installs the GitHub CLI if missing (then run it once more).
+
+## Only the keys: fill in one file and run one script
 1. Install Node.js (LTS) from https://nodejs.org if you don't have it.
 2. Double-click `set-secrets.cmd` (Windows) or run `./set-secrets.sh` (Mac/Linux).
    The first run creates `secrets.json` next to it.
