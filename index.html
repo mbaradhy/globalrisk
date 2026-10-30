@@ -2822,7 +2822,7 @@ var TRAIL={},planeSrc="",relayCfg=null;
 function relayCfgP(){if(relayCfg)return Promise.resolve(relayCfg);return relay("layers",10000).then(function(j){relayCfg=j;return j;},function(){return {};});}
 function poolMap(arr,n,fn){var i=0,out=[],act=0;return new Promise(function(res){function nx(){if(i>=arr.length&&!act){res(out);return;}while(act<n&&i<arr.length){(function(k){act++;fn(arr[k]).then(function(v){out[k]=v;},function(){out[k]=null;}).then(function(){act--;nx();});})(i++);}}nx();});}
 function addTrail(h,la,lo){var t=TRAIL[h]||(TRAIL[h]=[]);var l=t[t.length-1];if(!l||Math.abs(l[0]-la)>0.01||Math.abs(l[1]-lo)>0.01)t.push([la,lo]);if(t.length>40)t.shift();}
-var oskErr,oskSnap=null,oskAt=0,oskWait=0,oskT=0;
+var oskErr,oskSnap=null,oskAt=0,oskWait=0,oskT=0,oskAge=0;
 function loadPlanes(){var now=Date.now();
   function cfgRegions(){return (relayCfg&&relayCfg.regions)||PLANE_R;}
   function regional(){return poolMap(cfgRegions(),6,function(r){return relay("planes?r="+r,15000);}).then(function(a){var seen={},out=[];
@@ -2833,12 +2833,12 @@ function loadPlanes(){var now=Date.now();
      merged with the live regional ADS-B feeds; regional positions win where both exist */
   function osky(){if(oskSnap&&now-oskAt<300000)return Promise.resolve(oskSnap);if(now<oskWait)return Promise.resolve(oskSnap);
     return relay("osk",20000).then(function(j){var st=j.states||[],t0=(j.time||0)*1000;
-      if(!st.length)throw new Error("empty");if(now-t0>1800000)throw new Error(T2("instantané OpenSky trop ancien","OpenSky snapshot too old")+" ("+Math.round((now-t0)/60000)+" min)");
+      if(!st.length)throw new Error("empty");var age=Math.round((now-t0)/60000);if(age>180)throw new Error(T2("instantané OpenSky trop ancien","OpenSky snapshot too old")+" ("+age+" min)");
       var out=st.map(function(a){return {h:a[0],cs:a[1]||"",og:a[2],lo:a[3],la:a[4],alt:a[6]?0:Math.round((a[5]||0)*3.281),gs:(a[7]||0)*1.944,trk:a[8]||0,gnd:!!a[6],t:a[9]?a[9]*1000:t0};});
-      oskSnap=out;oskAt=now;oskT=t0;oskErr=null;return out;},function(e){oskErr=String(e&&e.message||e).slice(0,140);oskWait=now+300000;return oskSnap;});}
+      oskSnap=out;oskAt=now;oskT=t0;oskAge=age;oskErr=null;return out;}).catch(function(e){oskErr=String(e&&e.message||e).slice(0,140);oskWait=now+300000;return oskSnap;});}
   return Promise.all([regional(),osky()]).then(function(r){var reg=r[0]||[],gl=r[1]||[];if(!gl.length)return reg;
     var seen={};reg.forEach(function(a){seen[a.h]=1;});var add=0;gl.forEach(function(a){if(!seen[a.h]){reg.push(a);add++;}});
-    planeSrc=planeSrc+" + OpenSky "+nf(add,0);return reg;});
+    planeSrc=planeSrc+" + OpenSky "+nf(add,0)+(oskAge>20?" ("+oskAge+" min)":"");return reg;});
 }
 var AIS_NAMES={hormuz:{fr:"Ormuz",en:"Hormuz"},bab:{fr:"Bab el-Mandeb",en:"Bab el-Mandeb"},suez:{fr:"Suez",en:"Suez"},malacca:{fr:"Malacca",en:"Malacca"},taiwan:{fr:"Détroit de Taïwan",en:"Taiwan Strait"},finland:{fr:"Golfe de Finlande",en:"Gulf of Finland"},channel:{fr:"Manche",en:"English Channel"}};
 function lyrSave(){try{localStorage.setItem("gra-lyr",JSON.stringify({l:LYR,b:LBASE}));}catch(e){}}
