@@ -12,7 +12,7 @@ function srcList(){var cfg=relayCfg||{};var rc=function(k){return (typeof rssCac
    [{fr:"Actualités",en:"News"},[
      [T2("Flux d'actualités","News feeds"),T2("30 médias, 15 langues","30 outlets, 15 languages")+(news?" · "+news.v.length+" "+T2("titres","headlines"):""),news?{s:"ok",t:srcAgo(news.at)}:{s:"idle"}],
      ["ReliefWeb",T2("Rapports humanitaires","Humanitarian reports"),rw?{s:"ok",t:srcAgo(rw.at)}:{s:"idle"}],
-     ["GDELT",T2("Attention médiatique (souvent limité)","Media attention (often rate-limited)"),badgeSt("fd-gdelt")],
+     ["GDELT",T2("Attention médiatique (souvent limité)","Media attention (often rate-limited)"),(function(b){return b.s==="err"?{s:"slow",t:T2("limité par GDELT","rate-limited by GDELT")}:b;})(badgeSt("fd-gdelt"))],
      [T2("Comptage des titres","Headline counts"),T2("Chaque heure, dans votre relais","Hourly, in your relay"),typeof attData!=="undefined"&&attData?(attData.fallback?{s:"key",t:T2("KV à lier","KV needed")}:{s:"ok",t:(attData.days||[]).length+" "+T2("jours","days")}):{s:"idle"}]]],
    [{fr:"Marchés & prévisions",en:"Markets & forecasts"},[
      [T2("Bourses","Stock exchanges"),(typeof mktSrc!=="undefined"&&mktSrc?mktSrc:"Yahoo Finance / Stooq")+(mktQ&&mktQ.length?" · "+mktQ.length:""),mktQ==null?{s:"idle"}:mktQ?{s:"ok",t:srcAgo(mktAt)}:{s:"err"}],
@@ -30,7 +30,7 @@ function srcList(){var cfg=relayCfg||{};var rc=function(k){return (typeof rssCac
    [{fr:"Atlas",en:"Atlas"},[
      [T2("Historique du score","Score history"),T2("Chaque heure, dans votre relais","Hourly, in your relay"),griHist&&griHist.length?{s:"ok",t:griHist.length+" pts"}:{s:"idle"}]]]];
   return G;}
-var SRC_L={ok:{fr:"En direct",en:"Live"},slow:{fr:"Lent",en:"Slow"},err:{fr:"En panne",en:"Down"},key:{fr:"Clé à ajouter",en:"Key needed"},idle:{fr:"Pas encore utilisé",en:"Not used yet"}};
+var SRC_L={ok:{fr:"En direct",en:"Live"},slow:{fr:"Limité",en:"Limited"},err:{fr:"En panne",en:"Down"},key:{fr:"Clé à ajouter",en:"Key needed"},idle:{fr:"Pas encore utilisé",en:"Not used yet"}};
 var SRC_C={ok:"#5fd39a",slow:"#ffb547",err:"#ff5c4d",key:"#8c9aa8",idle:"#5d6b78"};
 function srcCount(G){var n=0,ok=0,slow=0,key=0;G.forEach(function(g){g[1].forEach(function(r){n++;if(r[2].s==="ok")ok++;else if(r[2].s==="slow"||r[2].s==="err")slow++;else if(r[2].s==="key")key++;});});return {n:n,ok:ok,slow:slow,key:key};}
 function srcBtn(){var b=document.getElementById("src-b");if(!b)return;var c=srcCount(srcList());
