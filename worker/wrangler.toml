@@ -17,4 +17,5 @@ id = "PUT_YOUR_KV_NAMESPACE_ID_HERE"
 crons = ["0 * * * *"]
 
 # Secrets stay in Cloudflare (Settings → Variables and Secrets), never in this file:
-# STATS_KEY, OPENSKY_CLIENT_ID, OPENSKY_CLIENT_SECRET, AISSTREAM_KEY, FIRMS_KEY, CF_RADAR_TOKEN
+# STATS_KEY, OPENSKY_CLIENT_ID, OPENSKY_CLIENT_SECRET, AISSTREAM_KEY, FIRMS_KEY, CF_RADAR_TOKEN, RESOLVE_KEY
+# To set them in one go: fill in secrets.json and run set-secrets.cmd (see README.md)
