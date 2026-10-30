@@ -8,16 +8,47 @@ const ROUTES = {
   poly:      { base: "https://gamma-api.polymarket.com/events",                    ttl: 600 },
   usgs:      { base: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", ttl: 300 },
   eonet:     { base: "https://eonet.gsfc.nasa.gov/api/v3/events",                  ttl: 600 },
-  kp:        { base: "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json", ttl: 600 }
+  kp:        { base: "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json", ttl: 600 },
+  meteo:     { base: "https://api.open-meteo.com/v1/forecast",                     ttl: 900 },
+  geo:       { base: "https://geocoding-api.open-meteo.com/v1/search",             ttl: 86400 }
 };
 const GDACS_RSS = "https://www.gdacs.org/xml/rss.xml";
 
 const RSS = {
-  f24fr:   { url: "https://www.france24.com/fr/rss",                      name: "France 24",  lang: "fr" },
-  lemonde: { url: "https://www.lemonde.fr/international/rss_full.xml",    name: "Le Monde",   lang: "fr" },
+  // English
   f24en:   { url: "https://www.france24.com/en/rss",                      name: "France 24",  lang: "en" },
   bbc:     { url: "https://feeds.bbci.co.uk/news/world/rss.xml",          name: "BBC News",   lang: "en" },
   aje:     { url: "https://www.aljazeera.com/xml/rss/all.xml",            name: "Al Jazeera", lang: "en" },
+  guard:   { url: "https://www.theguardian.com/world/rss",                name: "The Guardian", lang: "en" },
+  npr:     { url: "https://feeds.npr.org/1004/rss.xml",                   name: "NPR",        lang: "en" },
+  dwen:    { url: "https://rss.dw.com/rdf/rss-en-world",                  name: "DW",         lang: "en" },
+  unnews:  { url: "https://news.un.org/feed/subscribe/en/news/all/rss.xml", name: "UN News",  lang: "en" },
+  // French
+  f24fr:   { url: "https://www.france24.com/fr/rss",                      name: "France 24",  lang: "fr" },
+  lemonde: { url: "https://www.lemonde.fr/international/rss_full.xml",    name: "Le Monde",   lang: "fr" },
+  rfi:     { url: "https://www.rfi.fr/fr/rss",                            name: "RFI",        lang: "fr" },
+  finfo:   { url: "https://www.francetvinfo.fr/monde.rss",                name: "franceinfo", lang: "fr" },
+  // Other languages (the atlas shows these when that language is selected)
+  f24es:   { url: "https://www.france24.com/es/rss",                      name: "France 24",  lang: "es" },
+  bbcmundo:{ url: "https://feeds.bbci.co.uk/mundo/rss.xml",               name: "BBC Mundo",  lang: "es" },
+  elpais:  { url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada", name: "El País", lang: "es" },
+  dwde:    { url: "https://rss.dw.com/xml/rss-de-all",                    name: "DW",         lang: "de" },
+  tagess:  { url: "https://www.tagesschau.de/xml/rss2/",                  name: "tagesschau", lang: "de" },
+  ansa:    { url: "https://www.ansa.it/sito/notizie/mondo/mondo_rss.xml", name: "ANSA",       lang: "it" },
+  bbcpt:   { url: "https://feeds.bbci.co.uk/portuguese/rss.xml",          name: "BBC News Brasil", lang: "pt" },
+  rtp:     { url: "https://www.rtp.pt/noticias/rss/mundo",                name: "RTP",        lang: "pt" },
+  nos:     { url: "https://feeds.nos.nl/nosnieuwsbuitenland",             name: "NOS",        lang: "nl" },
+  dr:      { url: "https://www.dr.dk/nyheder/service/feeds/udland",       name: "DR",         lang: "da" },
+  yle:     { url: "https://yle.fi/rss/uutiset/tuoreimmat",                name: "Yle",        lang: "fi" },
+  svt:     { url: "https://www.svt.se/nyheter/utrikes/rss.xml",           name: "SVT",        lang: "sv" },
+  nrk:     { url: "https://www.nrk.no/urix/toppsaker.rss",                name: "NRK",        lang: "nb" },
+  tvn24:   { url: "https://tvn24.pl/swiat.xml",                           name: "TVN24",      lang: "pl" },
+  bbcua:   { url: "https://feeds.bbci.co.uk/ukrainian/rss.xml",          name: "BBC News Україна", lang: "uk" },
+  bbcru:   { url: "https://feeds.bbci.co.uk/russian/rss.xml",             name: "BBC News Русская служба", lang: "ru" },
+  dwru:    { url: "https://rss.dw.com/xml/rss-ru-all",                    name: "DW",         lang: "ru" },
+  bbcar:   { url: "https://feeds.bbci.co.uk/arabic/rss.xml",              name: "BBC News عربي", lang: "ar" },
+  f24ar:   { url: "https://www.france24.com/ar/rss",                      name: "France 24",  lang: "ar" },
+  // Humanitarian
   rw:      { url: "https://reliefweb.int/updates/rss.xml",                name: "ReliefWeb",  lang: "un" }
 };
 function pick(xml, tag) {
@@ -25,8 +56,8 @@ function pick(xml, tag) {
   if (!m) return "";
   return m[1].replace(/<!\[CDATA\[|\]\]>/g, "").replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").trim();
 }
-async function rss(lang, ctx) {
-  const keys = Object.keys(RSS).filter(k => lang === "all" ? true : lang ? RSS[k].lang === lang : RSS[k].lang !== "un");
+async function rss(lang, ctx, debug) {
+  const keys = Object.keys(RSS).filter(k => lang === "any" ? true : lang === "all" ? ["en", "fr", "un"].includes(RSS[k].lang) : lang ? RSS[k].lang === lang : RSS[k].lang !== "un" && ["en", "fr"].includes(RSS[k].lang));
   const cache = caches.default;
   const lists = await Promise.all(keys.map(async k => {
     const src = RSS[k];
@@ -47,6 +78,7 @@ async function rss(lang, ctx) {
     } catch (e) { return []; }
   }));
   const items = [].concat(...lists).sort((a, b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0));
+  if (debug) return new Response(JSON.stringify({ sources: keys.map((k, i) => ({ id: k, name: RSS[k].name, lang: RSS[k].lang, items: lists[i].length })) }, null, 1), { headers: { "Content-Type": "application/json; charset=utf-8", ...CORS } });
   return new Response(JSON.stringify({ items }), { headers: { "Content-Type": "application/json; charset=utf-8", ...CORS } });
 }
 
@@ -290,7 +322,7 @@ async function attention(env, ctx) {
       const x = await env.STATS.get("att:" + dd, "json");
       if (x) days.push({ d: dd, n: x.n, c: x.c });
     }
-    return JSON.stringify({ at: new Date().toISOString(), sources: Object.values(RSS).map(r => r.name).filter((v, i, a) => a.indexOf(v) === i), days });
+    return JSON.stringify({ at: new Date().toISOString(), sources: Object.values(RSS).filter(r => ["en", "fr", "un"].includes(r.lang)).map(r => r.name).filter((v, i, a) => a.indexOf(v) === i), days });
   });
 }
 
@@ -320,6 +352,48 @@ async function gri(url, env, ctx) {
   });
 }
 
+// ---------- Markets: stock indices and commodities (Stooq, free, no key) and ECB exchange rates (Frankfurter)
+const QUOTES = ["^spx", "^ndq", "^dji", "^cac", "^dax", "^ukx", "^nkx", "^hsi", "cb.f", "gc.f", "ng.f", "zw.f"];
+async function quotes(ctx) {
+  return cached("quotes", 600, ctx, async () => {
+    const csv = await upText("https://stooq.com/q/l/?s=" + QUOTES.map(encodeURIComponent).join("+") + "&f=sd2t2ohlcp&h&e=csv");
+    const rows = csv.trim().split(/\r?\n/), head = rows.shift().toLowerCase().split(",");
+    const ix = n => head.indexOf(n);
+    const out = rows.map(r => { const c = r.split(","); const num = k => { const v = parseFloat(c[ix(k)]); return isNaN(v) ? null : v; };
+      return { s: (c[ix("symbol")] || "").toLowerCase(), date: c[ix("date")], time: c[ix("time")], open: num("open"), close: num("close"), prev: num("prev") ?? num("previous") }; })
+      .filter(q => q.close != null);
+    if (!out.length) throw new Error("no quotes");
+    return JSON.stringify({ at: new Date().toISOString(), src: "Stooq", quotes: out });
+  });
+}
+async function fx(ctx) {
+  return cached("fx", 3600, ctx, async () => {
+    const start = day(new Date(Date.now() - 40 * 86400000));
+    const q = start + "..?from=EUR&to=USD,GBP,CHF,JPY,CNY,PLN,SEK,NOK,DKK,TRY";
+    try { return await upText("https://api.frankfurter.dev/v1/" + q, { Accept: "application/json" }); }
+    catch (e) { return await upText("https://api.frankfurter.app/" + q, { Accept: "application/json" }); }
+  });
+}
+// ---------- Official weather warnings: MeteoAlarm (Europe) by country, US National Weather Service by point
+const MA = { AT: "austria", BE: "belgium", BA: "bosnia-herzegovina", BG: "bulgaria", HR: "croatia", CY: "cyprus", CZ: "czechia", DK: "denmark", EE: "estonia", FI: "finland", FR: "france", DE: "germany", GR: "greece", HU: "hungary", IS: "iceland", IE: "ireland", IL: "israel", IT: "italy", LV: "latvia", LT: "lithuania", LU: "luxembourg", MT: "malta", MD: "moldova", ME: "montenegro", NL: "netherlands", MK: "north-macedonia", NO: "norway", PL: "poland", PT: "portugal", RO: "romania", RS: "serbia", SK: "slovakia", SI: "slovenia", ES: "spain", SE: "sweden", CH: "switzerland", UA: "ukraine", GB: "united-kingdom" };
+async function warnings(url, ctx) {
+  const cc = (url.searchParams.get("cc") || "").toUpperCase(), lat = url.searchParams.get("lat"), lon = url.searchParams.get("lon");
+  if (cc === "US" && lat && lon) {
+    return cached("nws-" + (+lat).toFixed(2) + "," + (+lon).toFixed(2), 600, ctx, async () => {
+      const j = JSON.parse(await upText("https://api.weather.gov/alerts/active?point=" + (+lat).toFixed(3) + "," + (+lon).toFixed(3), { Accept: "application/geo+json" }));
+      return JSON.stringify({ src: "US National Weather Service", items: (j.features || []).map(f => ({ event: f.properties.event, severity: f.properties.severity, area: f.properties.areaDesc, onset: f.properties.onset, expires: f.properties.expires, title: f.properties.headline, url: f.properties["@id"] || "" })) });
+    });
+  }
+  const slug = MA[cc];
+  if (!slug) return new Response(JSON.stringify({ src: null, items: [], note: "no official warning feed for this country" }), { headers: { ...J, ...CORS } });
+  return cached("ma-" + slug, 900, ctx, async () => {
+    const xml = await upText("https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-" + slug);
+    const items = (xml.match(/<entry[\s\S]*?<\/entry>/gi) || []).map(e => ({ event: pick(e, "cap:event"), severity: pick(e, "cap:severity"), level: pick(e, "cap:awareness_level"), area: pick(e, "cap:areaDesc"), onset: pick(e, "cap:onset") || pick(e, "cap:effective"), expires: pick(e, "cap:expires"), title: pick(e, "title"), url: (e.match(/<link[^>]*href="([^"]+)"/) || [])[1] || "" }))
+      .filter(x => x.event || x.title).filter(x => !x.expires || Date.parse(x.expires) > Date.now());
+    return JSON.stringify({ src: "MeteoAlarm", items });
+  });
+}
+
 const CORS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, OPTIONS",
@@ -337,7 +411,12 @@ export default {
     const key = url.pathname.replace(/^\/(api\/)?/, "").split("/")[0];
     if (key === "hit") return hit(request, url, env, ctx);
     if (key === "stats") return stats(url, env);
-    if (key === "rss") return rss(url.searchParams.get("lang") || "", ctx);
+    if (key === "rss") {
+      const lg = url.searchParams.get("lang") || "", dbg = url.searchParams.has("debug");
+      if (dbg) return rss(lg, ctx, true);
+      // whole answer cached 5 minutes per language, so feeds are parsed at most once every 5 minutes
+      return cached("rss-out-" + lg, 300, ctx, async () => await (await rss(lg, ctx)).text());
+    }
     if (key === "gdacs") return gdacs(ctx);
     if (key === "planes") return planes(url, ctx, env);
     if (key === "ships") return ships(env, ctx);
@@ -346,9 +425,12 @@ export default {
     if (key === "layers") return layersStatus(env);
     if (key === "attention") return attention(env, ctx);
     if (key === "gri") return gri(url, env, ctx);
+    if (key === "quotes") return quotes(ctx);
+    if (key === "fx") return fx(ctx);
+    if (key === "warnings") return warnings(url, ctx);
     const route = ROUTES[key];
     if (!route) {
-      return new Response(JSON.stringify({ ok: true, routes: Object.keys(ROUTES).concat(["rss", "gdacs", "planes", "ships", "outages", "fires", "layers", "attention", "gri", "hit", "stats"]) }), {
+      return new Response(JSON.stringify({ ok: true, routes: Object.keys(ROUTES).concat(["rss", "gdacs", "planes", "ships", "outages", "fires", "layers", "attention", "gri", "quotes", "fx", "warnings", "hit", "stats"]) }), {
         headers: { "Content-Type": "application/json", ...CORS }
       });
     }

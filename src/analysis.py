@@ -4,7 +4,7 @@ def r(x,y,cnt=1):
     global a
     assert x in a,x[:80]; a=a.replace(x,y,cnt)
 iso=open('/tmp/claude-0/-home-claude/9f8c4616-27f1-5910-b924-209665f78c24/scratchpad/iso.json').read()
-js=open('analysis.js').read().replace('/*ISO*/null',iso)
+js=(open('analysis.js').read()+open('news.js').read()).replace('/*ISO*/null',iso)
 # tab + view
 r('''  <button role="tab" data-t="kit" aria-selected="false">''','''  <button role="tab" data-t="ana" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span data-i="tAna"></span></button>
   <button role="tab" data-t="kit" aria-selected="false">''')
@@ -141,6 +141,33 @@ css+='''
 .gri-row>.card{margin:0}
 @media (max-width:1100px){.gri-row{grid-template-columns:minmax(0,1fr)}}
 #gri-hist .seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
+'''
+r('''fetchRSS(L==="fr"?"fr":"en")''','''fetchRSSL()''')
+r('''<div class="ticker" id="ticker" role="region" aria-label="News ticker"><span class="tk-l" id="tkl"></span><div class="tk-w"><div class="tk-t" id="tkt"></div></div></div>''','''<div class="ticker" id="ticker" role="region" aria-label="News ticker"><span class="tk-l" id="tkl"></span><div class="tk-w"><div class="tk-t" id="tkt"></div></div></div>
+<div class="brk" id="brk" role="alert" hidden></div>''')
+css+='''
+/* breaking */
+.brk{display:flex;align-items:center;gap:10px;margin:8px 0 0;padding:8px 12px;background:linear-gradient(90deg,rgba(224,72,58,.28),rgba(224,72,58,.08));border:1px solid #a8352b;border-radius:4px;min-width:0}
+.brk[hidden]{display:none}
+.brk-l{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.12em;color:#fff;background:#e0483a;border-radius:3px;padding:2px 8px;flex:none;animation:brkp 1.6s ease-in-out infinite}
+@keyframes brkp{50%{opacity:.55}}
+.brk-k{font-size:.78rem;color:#ffb3aa;flex:none}.brk-t{color:var(--ink);font-weight:600;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1}.brk-t:hover{text-decoration:underline}
+.brk-m,.brk-x{font:inherit;font-size:.8rem;color:var(--ink);background:rgba(0,0,0,.25);border:1px solid #a8352b;border-radius:3px;padding:2px 8px;cursor:pointer;flex:none}
+.brkc h2{display:flex;align-items:center;gap:8px}.brk-dot{width:9px;height:9px;border-radius:50%;background:#e0483a;animation:brkp 1.6s infinite}
+.brk-i{border-bottom:1px solid #1b2631;padding:8px 0;display:flex;flex-direction:column;gap:4px}.brk-i a{color:var(--ink);text-decoration:none}.brk-i a:hover{text-decoration:underline}.brk-i ul{margin:2px 0 0;padding-left:18px;font-size:.86rem}
+.brk-h{display:flex;gap:8px;align-items:center}.badge.crit{background:#e0483a;color:#fff;border-color:#e0483a}
+@media (max-width:700px){.brk-k{display:none}.brk{gap:7px;padding:7px 9px}}
+/* markets & my area */
+.mrow{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:12px;align-items:start}
+@media (max-width:1100px){.mrow{grid-template-columns:minmax(0,1fr)}}
+.mkg{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px 14px}
+.mk{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 10px;align-items:baseline;border-bottom:1px solid #1b2631;padding:5px 0;font-size:.88rem}.mk small{grid-column:1/-1;margin-top:-3px}
+.mkh{margin:6px 0 0;font-size:.95rem;display:flex;gap:8px;align-items:baseline}
+.ar-in{display:flex;gap:8px;flex-wrap:wrap}.ar-in input{flex:1;min-width:160px;font:inherit;color:var(--ink);background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:7px 10px}
+.ar-res{display:flex;flex-direction:column}.ar-res button{font:inherit;text-align:left;color:var(--ink);background:none;border:0;border-bottom:1px solid #1b2631;padding:7px 4px;cursor:pointer}.ar-res button:hover{background:var(--panel2)}.ar-res small{color:var(--muted)}
+.wx{display:flex;align-items:center;gap:12px}.wx b{font-size:2rem}.wx>span:last-child{display:flex;flex-direction:column}.wxi{font-size:2rem;line-height:1}.wxi.s{font-size:1.3rem}
+.wxd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.wxd>div{background:var(--panel2);border-radius:4px;padding:6px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.84rem}
+.wr{display:flex;gap:9px;align-items:flex-start;text-decoration:none;color:var(--ink);border-bottom:1px solid #1b2631;padding:6px 0}.wr i{width:10px;height:10px;border-radius:50%;margin-top:5px;flex:none}.wr span{display:flex;flex-direction:column}
 '''
 r('</style>',css+'</style>')
 open('app.html','w').write(a)
