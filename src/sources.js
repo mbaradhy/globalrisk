@@ -93,3 +93,6 @@ var _drawMethod0=drawMethod;drawMethod=function(){_drawMethod0();var m=document.
 
 (function(){var o=methodGuide;methodGuide=function(){var h=o();var i=h.lastIndexOf("</div>");return h.slice(0,i)+'<p style="margin-top:12px"><a class="btn" href="https://mbaradhy.github.io/globalrisk/method-audit.html" target="_blank" rel="noopener">'+esc(T2("Lire l'audit de la méthode","Read the method audit"))+' →</a></p>'+h.slice(i);};})();
 (function(){var o=setLang;setLang=function(l){o(l);srcBtn();if(typeof srcPanel==="function"){var sp=document.getElementById("src-p");if(sp&&!sp.hidden)srcPanel();}};})();
+/* reserve tables: on phones each row becomes a card; column names are copied onto the cells */
+function kitLabels(){document.querySelectorAll("#v-kit .tbl table").forEach(function(t){var h=[].map.call(t.querySelectorAll("thead th"),function(x){var sp=x.querySelector('[lang="'+(L==="fr"?"fr":"en")+'"]');return (sp||x).textContent.trim();});t.querySelectorAll("tbody tr").forEach(function(tr){[].forEach.call(tr.children,function(td,i){if(i>0)td.setAttribute("data-l",h[i]||"");});});});}
+(function(){var o=setLang;setLang=function(l){o(l);setTimeout(kitLabels,50);};document.addEventListener("click",function(e){if(e.target.closest('button[data-t="kit"]'))setTimeout(kitLabels,50);});setTimeout(kitLabels,1200);})();
