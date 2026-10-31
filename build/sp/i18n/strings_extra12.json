@@ -1,0 +1,539 @@
+[
+ {
+  "en": "Gaza"
+ },
+ {
+  "en": "vs"
+ },
+ {
+  "en": "No",
+  "fr": "Non"
+ },
+ {
+  "en": "Bab el-Mandeb"
+ },
+ {
+  "en": "Suez"
+ },
+ {
+  "en": "no",
+  "fr": "non"
+ },
+ {
+  "en": "Incidents"
+ },
+ {
+  "en": "Unrest · protests & strikes",
+  "fr": "Troubles · manifestations & grèves"
+ },
+ {
+  "en": "Hybrid & sabotage",
+  "fr": "Hybride & sabotage"
+ },
+ {
+  "en": "Natural hazards",
+  "fr": "Catastrophes naturelles"
+ },
+ {
+  "en": "Maritime"
+ },
+ {
+  "en": "Farmers",
+  "fr": "Agriculteurs"
+ },
+ {
+  "en": "Labour & pensions",
+  "fr": "Travail & retraites"
+ },
+ {
+  "en": "Cost of living",
+  "fr": "Coût de la vie"
+ },
+ {
+  "en": "Gaza / Middle East",
+  "fr": "Gaza / Moyen-Orient"
+ },
+ {
+  "en": "Anti-government",
+  "fr": "Antigouvernement"
+ },
+ {
+  "en": "War & peace",
+  "fr": "Guerre & paix"
+ },
+ {
+  "en": "Migration",
+  "fr": "Migrations"
+ },
+ {
+  "en": "Rights",
+  "fr": "Droits"
+ },
+ {
+  "en": "Other",
+  "fr": "Autre"
+ },
+ {
+  "en": "Drones (airports, bases)",
+  "fr": "Drones (aéroports, bases)"
+ },
+ {
+  "en": "Cables & pipelines",
+  "fr": "Câbles & pipelines"
+ },
+ {
+  "en": "Sabotage & arson",
+  "fr": "Sabotage & incendies"
+ },
+ {
+  "en": "GPS jamming",
+  "fr": "Brouillage GPS"
+ },
+ {
+  "en": "Ransomware (claimed)",
+  "fr": "Rançongiciels (revendiqués)"
+ },
+ {
+  "en": "Cyberattacks (press)",
+  "fr": "Cyberattaques (presse)"
+ },
+ {
+  "en": "Earthquakes",
+  "fr": "Séismes"
+ },
+ {
+  "en": "Storms & volcanoes",
+  "fr": "Tempêtes & volcans"
+ },
+ {
+  "en": "Disaster alerts",
+  "fr": "Alertes catastrophe"
+ },
+ {
+  "en": "WHO notices",
+  "fr": "Notes de l'OMS"
+ },
+ {
+  "en": "Outbreaks (press)",
+  "fr": "Épidémies (presse)"
+ },
+ {
+  "en": "Attacks & seizures",
+  "fr": "Attaques & saisies"
+ },
+ {
+  "en": "Unusual traffic",
+  "fr": "Trafic anormal"
+ },
+ {
+  "en": "Protest",
+  "fr": "Manifestation"
+ },
+ {
+  "en": "Strike",
+  "fr": "Grève"
+ },
+ {
+  "en": "Blockade",
+  "fr": "Blocage"
+ },
+ {
+  "en": "Riot / clashes",
+  "fr": "Émeute / heurts"
+ },
+ {
+  "en": "Hunger strike",
+  "fr": "Grève de la faim"
+ },
+ {
+  "en": "Middle East",
+  "fr": "Moyen-Orient"
+ },
+ {
+  "en": "Africa",
+  "fr": "Afrique"
+ },
+ {
+  "en": "Asia",
+  "fr": "Asie"
+ },
+ {
+  "en": "Internet outage · ",
+  "fr": "Coupure d'internet · "
+ },
+ {
+  "en": "Hotspots (24 h): ",
+  "fr": "Points chauds (24 h) : "
+ },
+ {
+  "en": "Atlas AIS relay",
+  "fr": "Relais AIS de l'atlas"
+ },
+ {
+  "en": "Likely GPS jamming: ",
+  "fr": "Brouillage GPS probable : "
+ },
+ {
+  "en": " % of aircraft with degraded accuracy",
+  "fr": " % des avions en précision dégradée"
+ },
+ {
+  "en": "Atlas computation (ADS-B, GPSJAM method)",
+  "fr": "Calcul de l'atlas (ADS-B, méthode GPSJAM)"
+ },
+ {
+  "en": "Protests & strikes",
+  "fr": "Manifestations & grèves"
+ },
+ {
+  "en": "Outbreaks",
+  "fr": "Épidémies"
+ },
+ {
+  "en": "Maritime incidents",
+  "fr": "Incidents maritimes"
+ },
+ {
+  "en": "Nothing in this region, but ",
+  "fr": "Rien dans cette région, mais "
+ },
+ {
+  "en": " incident(s) elsewhere: ",
+  "fr": " incident(s) ailleurs : "
+ },
+ {
+  "en": "reports",
+  "fr": "signalements"
+ },
+ {
+  "en": "after de-duplication",
+  "fr": "après dédoublonnage"
+ },
+ {
+  "en": "vs the previous period",
+  "fr": "par rapport à la période précédente"
+ },
+ {
+  "en": "same length",
+  "fr": "même durée"
+ },
+ {
+  "en": "baseline being built",
+  "fr": "référence en cours de constitution"
+ },
+ {
+  "en": "countries",
+  "fr": "pays"
+ },
+ {
+  "en": "most: ",
+  "fr": "le plus : "
+ },
+ {
+  "en": "waves detected",
+  "fr": "vagues détectées"
+ },
+ {
+  "en": "see Patterns",
+  "fr": "voir Tendances"
+ },
+ {
+  "en": "with clashes or riots",
+  "fr": "avec heurts ou émeutes"
+ },
+ {
+  "en": "confirmed",
+  "fr": "confirmés"
+ },
+ {
+  "en": "2+ sources or an official source",
+  "fr": "2 sources ou plus, ou source officielle"
+ },
+ {
+  "en": "Region",
+  "fr": "Région"
+ },
+ {
+  "en": "Time",
+  "fr": "Période"
+ },
+ {
+  "en": "30 days",
+  "fr": "30 jours"
+ },
+ {
+  "en": "Type"
+ },
+ {
+  "en": "Theme",
+  "fr": "Thème"
+ },
+ {
+  "en": "Size (reports)",
+  "fr": "Taille (signalements)"
+ },
+ {
+  "en": "any",
+  "fr": "toutes"
+ },
+ {
+  "en": "Confirmed (2+ sources)",
+  "fr": "Confirmé (2+ sources)"
+ },
+ {
+  "en": "Single report",
+  "fr": "Source unique"
+ },
+ {
+  "en": "Alert on for this filter",
+  "fr": "Alerte active sur ce filtre"
+ },
+ {
+  "en": "Alert me on this filter",
+  "fr": "M'alerter sur ce filtre"
+ },
+ {
+  "en": "Share",
+  "fr": "Partager"
+ },
+ {
+  "en": "filled = confirmed",
+  "fr": "plein = confirmé"
+ },
+ {
+  "en": "hollow = single report",
+  "fr": "creux = source unique"
+ },
+ {
+  "en": "red ring = clashes",
+  "fr": "anneau rouge = heurts"
+ },
+ {
+  "en": "size = number of reports",
+  "fr": "taille = nombre de signalements"
+ },
+ {
+  "en": "dotted = wave",
+  "fr": "pointillés = vague"
+ },
+ {
+  "en": "Timeline · drag to select a period",
+  "fr": "Chronologie · glissez pour choisir une période"
+ },
+ {
+  "en": "clear",
+  "fr": "effacer"
+ },
+ {
+  "en": "stacked by theme",
+  "fr": "empilé par thème"
+ },
+ {
+  "en": "Patterns detected",
+  "fr": "Tendances détectées"
+ },
+ {
+  "en": "since ",
+  "fr": "depuis le "
+ },
+ {
+  "en": "vs previous period",
+  "fr": "vs période précédente"
+ },
+ {
+  "en": "Atlas risks: ",
+  "fr": "Risques de l'atlas : "
+ },
+ {
+  "en": "No wave: one theme in 3+ countries or 10+ groups, above normal.",
+  "fr": "Aucune vague : un même thème dans 3 pays ou plus, ou 10 groupes ou plus, au-dessus de la normale."
+ },
+ {
+  "en": "who is protesting, where, about what, and whether it is spreading",
+  "fr": "qui manifeste, où, pour quoi, et si cela s'étend"
+ },
+ {
+  "en": "drones, cables, sabotage, GPS jamming",
+  "fr": "drones, câbles, sabotages, brouillage GPS"
+ },
+ {
+  "en": "claimed ransomware, outages, cyberattacks",
+  "fr": "rançongiciels revendiqués, coupures, cyberattaques"
+ },
+ {
+  "en": "earthquakes, fires, storms, alerts",
+  "fr": "séismes, feux, tempêtes, alertes"
+ },
+ {
+  "en": "outbreaks reported by WHO and the press",
+  "fr": "épidémies signalées par l'OMS et la presse"
+ },
+ {
+  "en": "attacks, seizures, unusual traffic",
+  "fr": "attaques, saisies, trafic anormal"
+ },
+ {
+  "en": "Click a point on the map to see the incident and its sources.",
+  "fr": "Cliquez un point sur la carte pour voir l'incident et ses sources."
+ },
+ {
+  "en": "Reports",
+  "fr": "Signalements"
+ },
+ {
+  "en": "outlets",
+  "fr": "médias"
+ },
+ {
+  "en": "Confirmed",
+  "fr": "Confirmé"
+ },
+ {
+  "en": "Single report, unconfirmed",
+  "fr": "Source unique, à confirmer"
+ },
+ {
+  "en": "approximate place (country or sea)",
+  "fr": "lieu approximatif (pays ou mer)"
+ },
+ {
+  "en": "Incident map",
+  "fr": "Carte des incidents"
+ },
+ {
+  "en": "CLEAN FEED",
+  "fr": "FLUX PROPRE"
+ },
+ {
+  "en": "FAST · NOISY",
+  "fr": "RAPIDE · BRUITÉ"
+ },
+ {
+  "en": "CURATED / LICENSED",
+  "fr": "RÉFÉRENCE / SOUS LICENCE"
+ },
+ {
+  "en": "1 · Where the data comes from",
+  "fr": "1 · D'où viennent les données"
+ },
+ {
+  "en": "2 · How a pattern is defined",
+  "fr": "2 · Comment une tendance est définie"
+ },
+ {
+  "en": "An incident: one place, one day, one theme, with its sources. Articles about the same event (same place within 0.1°, same day, same theme and type) are merged and their outlets counted. Confirmed: at least 2 different outlets, or an official source. Wave: one theme in at least 3 countries or 10 groups in the period, and at least 2 × the previous period when it exists.",
+  "fr": "Un incident : un lieu, un jour, un thème, avec ses sources. Les articles du même événement (même lieu à 0,1° près, même jour, même thème et type) sont fusionnés et leurs médias comptés. Confirmé : au moins 2 médias différents, ou une source officielle. Vague : un même thème dans au moins 3 pays ou 10 groupes sur la période, et au moins 2 × la période précédente quand elle existe."
+ },
+ {
+  "en": "3 · Limits",
+  "fr": "3 · Limites"
+ },
+ {
+  "en": "Coverage follows the press: big cities and English-language outlets are over-represented. Places taken from a headline are approximate (country or sea). A GDELT event's theme is inferred from the article's address. A single report stays hollow until confirmed. Ransomware claims are the criminals' own.",
+  "fr": "La couverture suit la presse : grandes villes et médias anglophones surreprésentés. Les lieux tirés d'un titre sont approximatifs (pays ou mer). Le thème d'un événement GDELT est déduit de l'adresse de l'article. Une source unique reste creuse jusqu'à confirmation. Les revendications de rançongiciels sont celles des criminels."
+ },
+ {
+  "en": "Machine-read news, protest codes (CAMEO 14x), placed on the map; files every 15 min, read by the atlas's GitHub job",
+  "fr": "Presse lue par machine, codes de manifestation (CAMEO 14x), placés sur la carte ; fichiers toutes les 15 min, lus par la tâche GitHub de l'atlas"
+ },
+ {
+  "en": "30 outlets, headlines matched on keywords and place names",
+  "fr": "30 médias, titres repérés par mots-clés et noms de lieux"
+ },
+ {
+  "en": "Hand-coded reference; weekly; needs an account and its terms (not connected yet)",
+  "fr": "Référence codée à la main ; hebdomadaire ; compte et conditions d'utilisation requis (pas encore connecté)"
+ },
+ {
+  "en": "Curated significant protests, to name big movements (reference link)",
+  "fr": "Manifestations majeures sélectionnées, pour nommer les grands mouvements (lien de référence)"
+ },
+ {
+  "en": "Drone sightings, cable damage, sabotage, arson: headlines matched on keywords",
+  "fr": "Drones aperçus, câbles endommagés, sabotages, incendies : titres repérés par mots-clés"
+ },
+ {
+  "en": "GPS jamming: share of aircraft reporting poor accuracy (NACp below 8) per 2° cell, GPSJAM method",
+  "fr": "Brouillage GPS : part des avions signalant une précision dégradée (NACp sous 8) par case de 2°, méthode GPSJAM"
+ },
+ {
+  "en": "Victims claimed by ransomware groups (claims, not confirmed attacks); free API, personal use",
+  "fr": "Victimes revendiquées par des groupes de rançongiciels (revendications, pas attaques confirmées) ; API gratuite, usage personnel"
+ },
+ {
+  "en": "Cyberattack headlines",
+  "fr": "Titres sur les cyberattaques"
+ },
+ {
+  "en": "Earthquakes M4.5+, 7 days",
+  "fr": "Séismes M4,5+, 7 jours"
+ },
+ {
+  "en": "UN/EU disaster alerts",
+  "fr": "Alertes catastrophe ONU/UE"
+ },
+ {
+  "en": "Storms, volcanoes, natural events",
+  "fr": "Tempêtes, volcans, phénomènes naturels"
+ },
+ {
+  "en": "Fire hotspots (Europe, Middle East), 24 h, grouped per 1° cell",
+  "fr": "Points chauds de feux (Europe, Moyen-Orient), 24 h, regroupés par case de 1°"
+ },
+ {
+  "en": "Official outbreak notices, 90 days",
+  "fr": "Notes officielles d'épidémies, 90 jours"
+ },
+ {
+  "en": "Outbreak headlines",
+  "fr": "Titres sur les épidémies"
+ },
+ {
+  "en": "Attacks, seizures, boardings: headlines matched on keywords and seas",
+  "fr": "Attaques, saisies, abordages : titres repérés par mots-clés et mers"
+ },
+ {
+  "en": "Ship counts in the straits vs their 7-day normal",
+  "fr": "Nombre de navires dans les détroits par rapport à leur normale sur 7 jours"
+ },
+ {
+  "en": "Official notices (PDF): reference link",
+  "fr": "Notes officielles (PDF) : lien de référence"
+ },
+ {
+  "en": "Internet outages",
+  "fr": "Coupures d'internet"
+ },
+ {
+  "en": "weekly",
+  "fr": "hebdomadaire"
+ },
+ {
+  "en": "live",
+  "fr": "en direct"
+ },
+ {
+  "en": "hourly",
+  "fr": "toutes les heures"
+ },
+ {
+  "en": "daily",
+  "fr": "quotidien"
+ },
+ {
+  "en": "irregular",
+  "fr": "irrégulier"
+ },
+ {
+  "en": "notices",
+  "fr": "notes"
+ },
+ {
+  "en": "Atlas news feeds",
+  "fr": "Flux d'actualités de l'atlas"
+ },
+ {
+  "en": "Atlas planes (ADS-B)",
+  "fr": "Avions de l'atlas (ADS-B)"
+ }
+]

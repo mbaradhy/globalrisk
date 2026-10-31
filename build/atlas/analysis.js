@@ -244,7 +244,7 @@ function loadPlanes(){var now=Date.now();
   function cfgRegions(){return (relayCfg&&relayCfg.regions)||PLANE_R;}
   function regional(){return poolMap(cfgRegions(),6,function(r){return relay("planes?r="+r,15000);}).then(function(a){var seen={},out=[];
     a.forEach(function(j){((j&&(j.ac||j.aircraft))||[]).forEach(function(x){if(typeof x.lat!=="number"||seen[x.hex])return;seen[x.hex]=1;var ago=(x.seen_pos||x.seen||0)*1000;
-      out.push({h:x.hex,cs:(x.flight||"").trim(),og:x.r||"",ty:x.t||"",la:x.lat,lo:x.lon,alt:x.alt_baro==="ground"?0:(+x.alt_baro||0),gs:+x.gs||0,trk:+x.track||0,gnd:x.alt_baro==="ground",t:now-ago});});});
+      out.push({h:x.hex,np:x.nac_p,cs:(x.flight||"").trim(),og:x.r||"",ty:x.t||"",la:x.lat,lo:x.lon,alt:x.alt_baro==="ground"?0:(+x.alt_baro||0),gs:+x.gs||0,trk:+x.track||0,gnd:x.alt_baro==="ground",t:now-ago});});});
     planeSrc="ADS-B · "+a.filter(Boolean).length+" "+T2("zones","regions");return out;});}
   /* OpenSky blocks Cloudflare, so the browser asks it directly (anonymous, no key): one worldwide snapshot at most every 10 min,
      merged with the live regional ADS-B feeds; regional positions win where both exist */

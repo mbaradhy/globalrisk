@@ -4,17 +4,20 @@ def r(x,y,cnt=1):
     global a
     assert x in a,x[:80]; a=a.replace(x,y,cnt)
 iso=open('/tmp/claude-0/-home-claude/9f8c4616-27f1-5910-b924-209665f78c24/scratchpad/iso.json').read()
-js=(open('questions.js').read()+open('analysis.js').read()+open('news.js').read()+open('gri2.js').read()+open('sources.js').read()+open('level.js').read()+(open('impact.js').read() if __import__('os').path.exists('impact.js') else '')+open('phase2.js').read()+open('pwa.js').read()+open('country.js').read()+open('adv.js').read()).replace('/*ISO*/null',iso)
+js=(open('questions.js').read()+open('analysis.js').read()+open('news.js').read()+open('gri2.js').read()+open('sources.js').read()+open('level.js').read()+(open('impact.js').read() if __import__('os').path.exists('impact.js') else '')+open('phase2.js').read()+open('pwa.js').read()+open('country.js').read()+open('adv.js').read()+open('inc.js').read()).replace('/*ISO*/null',iso)
 # tab + view
-r('''  <button role="tab" data-t="kit" aria-selected="false">''','''  <button role="tab" data-t="ana" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span data-i="tAna"></span></button>
+r('''  <button role="tab" data-t="kit" aria-selected="false">''','''  <button role="tab" data-t="inc" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l10 18H2z"/><path d="M12 9v5M12 17v.5"/></svg><span data-i="tInc"></span></button>
+  <button role="tab" data-t="ana" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span data-i="tAna"></span></button>
   <button role="tab" data-t="kit" aria-selected="false">''')
 r('''    <div data-v="method" id="v-method" class="scroll" hidden></div>''','''    <div data-v="method" id="v-method" class="scroll" hidden></div>
-    <div data-v="ana" id="v-ana" class="scroll" hidden></div>''')
-r('''["dash","brief","news","matrix","method"].indexOf(t)>=0''','''["dash","brief","news","matrix","method","ana"].indexOf(t)>=0''')
+    <div data-v="ana" id="v-ana" class="scroll" hidden></div>
+    <div data-v="inc" id="v-inc" class="scroll" hidden></div>''')
+r('''["dash","brief","news","matrix","method"].indexOf(t)>=0''','''["dash","brief","news","matrix","method","ana","inc"].indexOf(t)>=0''')
 r('''  if(t==="news")drawNews();\n''','''  if(t==="news")drawNews();
   if(t==="ana")drawAna();
+  if(t==="inc"&&typeof drawInc==="function")drawInc();
   if(t!=="globe"&&typeof lyrOpen==="function")lyrOpen(false);
-  document.querySelector(".stage").classList.toggle("ana",t==="ana");
+  document.querySelector(".stage").classList.toggle("ana",t==="ana"||t==="inc");
 ''')
 # globe: outages as points, particles, init
 r('''  if(p.k==="q")return "#c9a27a";''','''  if(p.k==="o")return "#a98af6";
@@ -35,6 +38,19 @@ r('''function setLang(l){L=l;''','''function setLang(l){L=l;setTimeout(function(
 r('''/* ---------- boot ---------- */''',js+'''
 /* ---------- boot ---------- */''')
 css='''
+@media(max-width:700px){#v-inc .mts{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px}#v-inc .mts .mt{padding:8px 10px}#v-inc .mts .mt b{font-size:1.3rem}#v-inc .mts .mt small{display:none}.inc-tabs button{font-size:.8rem;padding:5px 9px}}
+
+.stage.wide #v-inc{position:relative;inset:auto;height:auto;overflow:visible;padding:0}
+
+.inc-tabs{flex-wrap:wrap}.inc-h{margin:6px 0 10px}.inc-g{display:grid;grid-template-columns:250px minmax(0,1fr) 320px;gap:12px;align-items:start;margin-top:12px}
+.inc-rail summary{font-family:var(--f-display);font-weight:700;letter-spacing:.04em;cursor:pointer;font-size:1rem}.inc-l{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:12px 0 5px}
+.inc-rail .chip{margin:0 4px 5px 0}.inc-mid{display:flex;flex-direction:column;gap:12px;min-width:0}.inc-mapc{padding:8px}.inc-svg{width:100%;height:auto;display:block;border-radius:6px;touch-action:none}
+.inc-leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.76rem;color:var(--muted);margin-top:6px}.inc-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.iw{border-left:3px solid;padding:6px 10px;margin:8px 0;background:var(--panel2);border-radius:0 6px 6px 0;cursor:pointer}.iw small{display:block;color:var(--muted);font-size:.76rem}.iw .iwl a{color:var(--accent);cursor:pointer}
+.ig2{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;font-size:.84rem}.ig2 small{display:block;color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.04em}.isrc{display:flex;flex-wrap:wrap;gap:6px}.isrc a,.isrc span{font-size:.8rem;border:1px solid var(--line);border-radius:4px;padding:2px 7px;color:var(--accent);text-decoration:none}
+.inc-how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}.inc-how h3{margin:0 0 6px;font-size:.95rem}.ihs{margin:6px 0}.ihs small{display:block;color:var(--muted);font-size:.78rem}
+@media(max-width:1100px){.inc-g{grid-template-columns:minmax(0,1fr)}.inc-rail:not([open]){padding-bottom:8px}.inc-how{grid-template-columns:1fr}}
+
 .my-g{display:grid;grid-template-columns:1fr 2fr;gap:12px;margin:6px 0}.my-g label{display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.my-g select,#hs-s{background:#0a1018;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font:inherit;text-transform:none;letter-spacing:0}.my-sup{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.chip{display:inline-flex;align-items:center;gap:5px;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:4px 10px;font-size:.82rem;color:var(--ink);cursor:pointer;text-transform:none;letter-spacing:0}.chip.on{border-color:var(--accent);background:#11283a}.chip input{margin:0}.my-sec{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .my-r{display:grid;grid-template-columns:minmax(0,1fr) 110px auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}.my-r small{display:block;color:var(--muted);font-size:.78rem}.my-r .my-w{color:var(--accent)}.my-r .xb{height:8px;background:var(--panel2);border-radius:4px;overflow:hidden;display:block}.my-r .xb i{display:block;height:100%}
 .qmw{grid-column:1/-1}.qmk{display:block;font-size:.78rem;color:var(--muted);text-decoration:none;margin-top:3px}.qmk:hover{color:var(--accent)}.qbox .qmk{margin-top:4px}
