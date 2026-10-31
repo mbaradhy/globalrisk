@@ -289,7 +289,7 @@ async function aisRefresh(env, ms) {
 }
 async function ships(env, ctx) {
   if (!env.AISSTREAM_KEY) return jerr(503, "AISSTREAM_KEY not set");
-  return cached("ships5", 300, ctx, async () => {
+  return cached("ships5", 600, ctx, async () => {
     const r = await aisRefresh(env, 15000), list = r.list;
     if (!list.length) throw new Error(r.err || "aisstream: no ships yet");
     const counts = {}; Object.keys(AIS_BOX).forEach(k => counts[k] = list.filter(s => inBox(s[0], s[1], AIS_BOX[k])).length);
@@ -297,8 +297,8 @@ async function ships(env, ctx) {
     if (env.STATS) { // keep the daily maximum per region to compare with a normal day
       const today = day(new Date()), k = "ais:" + today;
       const d = (await env.STATS.get(k, "json")) || {};
-      Object.keys(counts).forEach(r => d[r] = Math.max(d[r] || 0, counts[r]));
-      await env.STATS.put(k, JSON.stringify(d), { expirationTtl: 40 * 86400 });
+      let up = false; Object.keys(counts).forEach(r => { if (counts[r] > (d[r] || 0)) { d[r] = counts[r]; up = true; } });
+      if (up) await env.STATS.put(k, JSON.stringify(d), { expirationTtl: 40 * 86400 });
       const past = [];
       for (let i = 1; i <= 14; i++) { const x = await env.STATS.get("ais:" + day(new Date(Date.now() - i * 86400000)), "json"); if (x) past.push(x); }
       if (past.length) { avg = {}; Object.keys(counts).forEach(r => avg[r] = Math.round(past.reduce((s, x) => s + (x[r] || 0), 0) / past.length)); avg._days = past.length; }
@@ -350,6 +350,11 @@ async function attUpdate(env, ctx) {
     Object.keys(ATT_RE).forEach(n => { if (ATT_RE[n].test(it.title)) d.c[n] = (d.c[n] || 0) + 1; });
   });
   d.s = Array.from(seen).slice(-6000).join(",");
+  // incident headlines (hybrid, maritime, health, cyber, unrest) kept for the incident pages, max 400 a day
+  d.inc = d.inc || []; const ih = new Set(d.inc.map(x => x.h));
+  items.forEach(it => { const h = h32(it.title.toLowerCase()); if (ih.has(h)) return; const k = incKind(it.title); if (!k) return; ih.add(h);
+    d.inc.push({ h, k: k[0], th: k[1], t: it.title.slice(0, 200), u: it.url, s: it.source, ts: Date.parse(it.date) || Date.now() }); });
+  if (d.inc.length > 400) d.inc = d.inc.slice(-400);
   await env.STATS.put(k, JSON.stringify(d), { expirationTtl: 60 * 86400 });
   await env.STATS.put("att:last", String(Date.now()), { expirationTtl: 60 * 86400 });
 }
@@ -379,7 +384,7 @@ async function gri(url, env, ctx) {
     const now = new Date(), k = P + day(now), hh = String(now.getUTCHours()).padStart(2, "0");
     const d = (await env.STATS.get(k, "json")) || { h: {} };
     const arr = d.h[hh] || [];
-    if (arr.length < 7) { arr.push(Math.round(v * 10) / 10); d.h[hh] = arr; await env.STATS.put(k, JSON.stringify(d), { expirationTtl: 400 * 86400 }); }
+    if (arr.length < 3) { arr.push(Math.round(v * 10) / 10); d.h[hh] = arr; await env.STATS.put(k, JSON.stringify(d), { expirationTtl: 400 * 86400 }); }
     return new Response(JSON.stringify({ ok: true }), { headers: { ...J, ...CORS } });
   }
   const days = Math.min(90, Math.max(1, parseInt(url.searchParams.get("days") || "30", 10)));
@@ -436,6 +441,65 @@ async function fc(url, env, ctx) {
 
 
 
+
+// ---------- Incident pages
+const INC_KW = [
+  ["hybrid", "drone", /\bdrones?\b.*\b(airport|sighting|sighted|airspace|base|closed|over)\b|\b(airport|airspace)\b.*\bdrones?\b|\bdrones? (survol|aéroport)|survol.*drone/i],
+  ["hybrid", "cable", /\b(undersea|subsea|submarine|baltic)\b.*\b(cable|pipeline)\b|\b(cable|pipeline)s?\b.*\b(damaged|cut|severed|sabotage)|câble.*(sectionné|endommagé)/i],
+  ["hybrid", "sabotage", /\bsabotage|\barson\b.*\b(rail|depot|warehouse|factory)|incendie criminel|\bparcel bomb|colis piégé/i],
+  ["hybrid", "jamming", /\bgps\b.*\b(jamming|spoofing|interference)|brouillage (gps|du gps)/i],
+  ["maritime", "attack", /\b(ship|vessel|tanker|cargo|freighter|merchant|bulk carrier|navire|pétrolier)s?\b.*\b(attack|attacked|struck|hit|missile|drone|explosion|fire|boarded|seized|hijack|pirat)|\bukmto\b|\bpiracy\b|piraterie/i],
+  ["health", "outbreak", /\b(outbreak|epidemic|cholera|ebola|mpox|measles|marburg|dengue|bird flu|h5n1|polio|plague|anthrax|épidémie|choléra|rougeole)\b/i],
+  ["cyber", "cyber", /\b(cyberattack|cyber-attack|ransomware|hackers?|hacked|data breach|ddos|cyberattaque|rançongiciel|piratage)\b/i],
+  ["unrest", "protest", /\b(protest|protesters|demonstrat|riot|strike|walkout|march against|rally against|manifestation|manifestants|grève|émeute)/i]];
+function incKind(t) { for (const k of INC_KW) if (k[2].test(t)) return [k[0], k[1]]; return null; }
+// GDELT protest events arrive from the GitHub job (POST, X-Key = OSK_PUSH_KEY) and are merged into one document per day.
+async function inc(request, url, env, ctx) {
+  if (!env.STATS) return jerr(503, "STATS KV not bound");
+  if (request.method === "POST") {
+    if (!env.OSK_PUSH_KEY || request.headers.get("X-Key") !== env.OSK_PUSH_KEY) return jerr(403, "bad key");
+    let b; try { b = await request.json(); } catch (e) { return jerr(400, "bad json"); }
+    const byDay = {}; (b.rows || []).forEach(r => { (byDay[r.d] = byDay[r.d] || []).push(r); });
+    const days = Object.keys(byDay); if (!days.length) days.push(day(new Date()));
+    for (const dd of days) {
+      const k = "inc:" + dd, doc = (await env.STATS.get(k, "json")) || { r: {}, last: "" };
+      (byDay[dd] || []).forEach(r => { const key = r.k, o = doc.r[key];
+        if (!o) doc.r[key] = { la: r.la, lo: r.lo, th: r.th, c: r.c, p: r.p, pl: r.pl, cc: r.cc, n: r.n, m: r.m, dm: r.dm.slice(0, 8), u: r.u.slice(0, 2), t0: r.t0, t1: r.t1 };
+        else { o.n += r.n; o.m += r.m; r.dm.forEach(x => { if (o.dm.indexOf(x) < 0 && o.dm.length < 8) o.dm.push(x); }); r.u.forEach(x => { if (o.u.indexOf(x) < 0 && o.u.length < 2) o.u.push(x); }); o.t0 = Math.min(o.t0, r.t0); o.t1 = Math.max(o.t1, r.t1); } });
+      if (b.last && b.last > (doc.last || "")) doc.last = b.last;
+      const keys = Object.keys(doc.r); if (keys.length > 5000) keys.sort((x, y) => (doc.r[x].n * doc.r[x].dm.length) - (doc.r[y].n * doc.r[y].dm.length)).slice(0, keys.length - 5000).forEach(x => delete doc.r[x]);
+      await env.STATS.put(k, JSON.stringify(doc), { expirationTtl: 60 * 86400 });
+    }
+    return new Response(JSON.stringify({ ok: true, days }), { headers: { ...J, ...CORS } });
+  }
+  if (url.searchParams.get("meta")) {
+    let last = ""; for (let i = 0; i < 2 && !last; i++) { const x = await env.STATS.get("inc:" + day(new Date(Date.now() - i * 86400000)), "json"); if (x && x.last) last = x.last; }
+    return new Response(JSON.stringify({ last }), { headers: { ...J, ...CORS } });
+  }
+  const days = Math.min(30, Math.max(1, parseInt(url.searchParams.get("days") || "7", 10)));
+  const bb = (url.searchParams.get("bb") || "-90,-180,90,180").split(",").map(Number), mn = Math.max(1, parseInt(url.searchParams.get("min") || "1", 10));
+  return cached("inc-" + days + "-" + bb.join("_") + "-" + mn + "-" + Math.floor(Date.now() / 600000), 600, ctx, async () => {
+    const rows = [], news = []; let last = "";
+    for (let i = 0; i < days; i++) {
+      const dd = day(new Date(Date.now() - i * 86400000));
+      const x = await env.STATS.get("inc:" + dd, "json");
+      if (x) { if (x.last > last) last = x.last; Object.values(x.r).forEach(r => { if (r.n >= mn && r.la >= bb[0] && r.la <= bb[2] && r.lo >= bb[1] && r.lo <= bb[3]) rows.push(Object.assign({ d: dd }, r)); }); }
+      const a = await env.STATS.get("att:" + dd, "json"); if (a && a.inc) a.inc.forEach(n => news.push(n));
+    }
+    return JSON.stringify({ at: new Date().toISOString(), last, rows, news });
+  });
+}
+// ransomware.live (free API: 1 request a minute, personal use) and WHO Disease Outbreak News, cached by the relay
+async function rw(ctx) {
+  return cached("rw-" + Math.floor(Date.now() / 3600000), 3600, ctx, async () => {
+    try { return await upText("https://api.ransomware.live/v2/recentvictims", { Accept: "application/json" }); }
+    catch (e) { return await upText("https://api.ransomware.live/recentvictims", { Accept: "application/json" }); }
+  });
+}
+async function don(ctx) {
+  return cached("don-" + Math.floor(Date.now() / 10800000), 10800, ctx, () => upText("https://www.who.int/api/news/diseaseoutbreaknews?$orderby=PublicationDateAndTime%20desc&$top=30&$select=Title,PublicationDateAndTime,ItemDefaultUrl,UrlName", { Accept: "application/json" }));
+}
+
 // ---------- Hourly snapshots of the live state (history, replay and early-warning signals)
 async function snapTake(env) {
   if (!env.STATS) return;
@@ -447,7 +511,7 @@ async function snapTake(env) {
   if (g && g.h) { const hs = Object.keys(g.h).sort(); const a = g.h[hs[hs.length - 1]].slice().sort((x, y) => x - y); if (a.length) s.p = a[a.length >> 1]; }
   const rec = await env.STATS.get("ais:recent", "json");
   if (rec) { const list = Object.values(rec); s.sh = list.length; s.st = {}; Object.keys(AIS_BOX).forEach(b => s.st[b] = list.filter(x => inBox(x[0], x[1], AIS_BOX[b])).length); }
-  const on = await env.STATS.get("osk:n"); if (on) s.pl = +on;
+  const ol = await env.STATS.get("osk:last"); if (ol) { const mn = ol.slice(0, 80).match(/"n":(\d+)/); if (mn) s.pl = +mn[1]; }
   const at = await env.STATS.get("att:" + dd, "json"); if (at) { s.hl = at.n; s.hc = at.c; }
   d.h[hh] = s;
   await env.STATS.put(k, JSON.stringify(d), { expirationTtl: 120 * 86400 });
@@ -507,7 +571,7 @@ async function oskKick(env) {
   const r = await fetch("https://api.github.com/repos/mbaradhy/globalrisk/actions/workflows/opensky.yml/dispatches", { method: "POST",
     headers: { Authorization: "Bearer " + env.GH_DISPATCH_TOKEN, Accept: "application/vnd.github+json", "User-Agent": "atlas-api", "X-GitHub-Api-Version": "2022-11-28", "Content-Type": "application/json" },
     body: JSON.stringify({ ref: "main" }) });
-  await env.STATS.put("osk:kick", JSON.stringify({ at: new Date().toISOString(), status: r.status }), { expirationTtl: 86400 });
+  if (r.status !== 204) await env.STATS.put("osk:kick", JSON.stringify({ at: new Date().toISOString(), status: r.status }), { expirationTtl: 86400 });
 }
 
 // ---------- OpenSky bridge: OpenSky blocks Cloudflare, so a scheduled GitHub job fetches it with your keys every 10 min
@@ -519,7 +583,6 @@ async function osk(request, env, ctx) {
     const body = await request.text();
     if (body.length > 8e6 || !body.startsWith("{")) return jerr(400, "bad snapshot");
     await env.STATS.put("osk:last", body, { expirationTtl: 7200 });
-    const mn = body.slice(0, 80).match(/"n":(\d+)/); if (mn) await env.STATS.put("osk:n", mn[1], { expirationTtl: 7200 });
     return new Response(JSON.stringify({ ok: true, bytes: body.length }), { headers: { ...J, ...CORS } });
   }
   return cached("osk-" + Math.floor(Date.now() / 60000), 60, ctx, async () => {
@@ -610,6 +673,7 @@ export default {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
     const url = new URL(request.url);
     if (request.method === "POST" && /^\/(api\/)?osk/.test(url.pathname)) return osk(request, env, ctx);
+    if (request.method === "POST" && /^\/(api\/)?inc/.test(url.pathname)) return inc(request, url, env, ctx);
     if (request.method !== "GET") return new Response("Method not allowed", { status: 405, headers: CORS });
 
     const key = url.pathname.replace(/^\/(api\/)?/, "").split("/")[0];
@@ -631,13 +695,16 @@ export default {
     if (key === "gri") return gri(url, env, ctx);
     if (key === "fc") return fc(url, env, ctx);
     if (key === "snaps") return snaps(url, env, ctx);
+    if (key === "inc") return inc(request, url, env, ctx);
+    if (key === "rw") return rw(ctx);
+    if (key === "don") return don(ctx);
     if (key === "osk") return osk(request, env, ctx);
     if (key === "quotes") return quotes(ctx, url.searchParams.has("debug"));
     if (key === "fx") return fx(ctx);
     if (key === "warnings") return warnings(url, ctx);
     const route = ROUTES[key];
     if (!route) {
-      return new Response(JSON.stringify({ ok: true, routes: Object.keys(ROUTES).concat(["rss", "gdacs", "planes", "ships", "outages", "fires", "layers", "attention", "gri", "fc", "osk", "snaps", "quotes", "fx", "warnings", "hit", "stats"]) }), {
+      return new Response(JSON.stringify({ ok: true, routes: Object.keys(ROUTES).concat(["rss", "gdacs", "planes", "ships", "outages", "fires", "layers", "attention", "gri", "fc", "osk", "snaps", "inc", "rw", "don", "quotes", "fx", "warnings", "hit", "stats"]) }), {
         headers: { "Content-Type": "application/json", ...CORS }
       });
     }

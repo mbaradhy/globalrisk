@@ -12,7 +12,7 @@ concurrency:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,7 +21,11 @@ jobs:
         with:
           node-version: 22
       - run: node tools/opensky-bridge.mjs
+        continue-on-error: true
         env:
           OPENSKY_CLIENT_ID: ${{ secrets.OPENSKY_CLIENT_ID }}
           OPENSKY_CLIENT_SECRET: ${{ secrets.OPENSKY_CLIENT_SECRET }}
+          OSK_PUSH_KEY: ${{ secrets.OSK_PUSH_KEY }}
+      - run: node tools/incidents-bridge.mjs
+        env:
           OSK_PUSH_KEY: ${{ secrets.OSK_PUSH_KEY }}
