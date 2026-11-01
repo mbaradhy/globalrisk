@@ -15,7 +15,8 @@ function brkCompute(arts){
     if(Object.keys(srcs).length>=3||flag){cl.forEach(function(k){used[k]=1;});var its=cl.map(function(k){return rec[k];}).sort(function(x,y){return y.ts-x.ts;});
       out.push({id:"n:"+Object.keys(toks[i]).sort().slice(0,4).join("-"),kind:"news",title:its[0].title,url:its[0].url,n:Object.keys(srcs).length,items:its,ts:its[0].ts,flag:flag});}});
   live.quakes.forEach(function(e){if(e.mag>=6.5&&e.ts&&now-e.ts<12*3600e3)out.push({id:"q:"+e.title,kind:"quake",title:e.title,url:e.url,ts:e.ts});});
-  live.gdacs.forEach(function(g){if(g.lvl==="Red")out.push({id:"g:"+g.title,kind:"alert",title:g.title,url:g.url,ts:Date.now()});});
+  /* GDACS red alerts keep the event's real start time and leave the banner after 72 h (before, they were stamped "now" and never expired) */
+  live.gdacs.forEach(function(g){if(g.lvl==="Red"&&g.ts&&now-g.ts<72*3600e3)out.push({id:"g:"+g.title,kind:"alert",title:g.title,url:g.url,ts:g.ts});});
   if(live.kp!=null&&live.kp>=7)out.push({id:"k:"+new Date().toISOString().slice(0,10),kind:"space",title:T2("Tempête géomagnétique sévère (Kp ","Severe geomagnetic storm (Kp ")+nf(live.kp,1)+")",url:"https://www.swpc.noaa.gov/",ts:now});
   out.sort(function(a,b){var p={alert:0,quake:1,space:2,news:3};return (p[a.kind]-p[b.kind])||((b.n||0)-(a.n||0))||(b.ts-a.ts);});
   return out.slice(0,8);
