@@ -469,7 +469,7 @@ async function inc(request, url, env, ctx) {
     for (const dd of days) {
       const k = "inc:" + dd, doc = (await env.STATS.get(k, "json")) || { r: {}, last: "" };
       (byDay[dd] || []).forEach(r => { const key = r.k, o = doc.r[key];
-        if (!o) doc.r[key] = { la: r.la, lo: r.lo, th: r.th, c: r.c, p: r.p, pl: r.pl, cc: r.cc, n: r.n, m: r.m, dm: r.dm.slice(0, 8), u: r.u.slice(0, 2), t0: r.t0, t1: r.t1 };
+        if (!o) doc.r[key] = { la: r.la, lo: r.lo, th: r.th, c: r.c, pg: r.pg, p: r.p, pl: r.pl, cc: r.cc, n: r.n, m: r.m, dm: r.dm.slice(0, 8), u: r.u.slice(0, 2), t0: r.t0, t1: r.t1 };
         else { o.n += r.n; o.m += r.m; r.dm.forEach(x => { if (o.dm.indexOf(x) < 0 && o.dm.length < 8) o.dm.push(x); }); r.u.forEach(x => { if (o.u.indexOf(x) < 0 && o.u.length < 2) o.u.push(x); }); o.t0 = Math.min(o.t0, r.t0); o.t1 = Math.max(o.t1, r.t1); } });
       if (b.last && b.last > (doc.last || "")) doc.last = b.last;
       const keys = Object.keys(doc.r); if (keys.length > 5000) keys.sort((x, y) => (doc.r[x].n * doc.r[x].dm.length) - (doc.r[y].n * doc.r[y].dm.length)).slice(0, keys.length - 5000).forEach(x => delete doc.r[x]);
